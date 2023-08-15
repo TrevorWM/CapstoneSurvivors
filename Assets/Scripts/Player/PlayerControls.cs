@@ -73,9 +73,8 @@ public class PlayerControls : MonoBehaviour
     private void Update()
     {
         moveVector = moveInput.ReadValue<Vector2>().normalized;
-        float movementDirection = Input.GetAxis("Horizontal");
-
-        if (movementDirection > 0)
+        
+        if (moveVector.x > 0)
         {
             spriteRenderer.flipX = true;
         } else
@@ -124,6 +123,7 @@ public class PlayerControls : MonoBehaviour
             StartCoroutine("DodgeDuration");
             moveSpeed += dodgeForce;
             spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
+            //this is where we could disable the player hitbox so they have i-frames
         }
     }
 
@@ -137,6 +137,7 @@ public class PlayerControls : MonoBehaviour
         isDodging = false;
         spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
         moveSpeed -= dodgeForce;
+        //and then re-enable the hitbox here
 
     }
 }
