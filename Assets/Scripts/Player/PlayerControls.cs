@@ -36,16 +36,9 @@ public class PlayerControls : MonoBehaviour
         dodgeCooldown = 1.5f;
         dodgeDuration = 0.2f;
 
-        Transform spriteChild = transform.Find("Sprite"); 
+        
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        if (spriteChild != null)
-        {
-            spriteRenderer = spriteChild.GetComponent<SpriteRenderer>();
-        }
-        else
-        {
-            Debug.LogError("Sprite child object not found!");
-        }
 
         if (TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidbody))
         {
