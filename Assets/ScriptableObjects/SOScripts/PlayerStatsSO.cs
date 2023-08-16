@@ -36,20 +36,76 @@ public class PlayerStatsSO : ScriptableObject
         each of our stats. If needed we can add maximum values, but for now I left the
         max values open ended.
     */
-    public float MaxHealth { get => maxHealth; set => maxHealth = Mathf.Max(0, value); }
-    public float Defense { get => defense; set => defense = Mathf.Max(0, value); }
-    public float MoveSpeed { get => moveSpeed; set => moveSpeed = Mathf.Max(0, value); }
-    public float BaseDamage { get => baseDamage; set => baseDamage = Mathf.Max(1, value); }
-    public float AttacksPerSecond { get => attacksPerSecond; set => attacksPerSecond = Mathf.Max(0.5f, value); }
-    public float CriticalChance { get => criticalChance; set => criticalChance = Mathf.Max(0, value); }
-    public float CriticalDamageBonus { get => criticalDamageBonus; set => criticalDamageBonus = Mathf.Max(0, value); }
-    public float DodgeForce { get => dodgeForce; set => dodgeForce = Mathf.Max(1, value); }
-    public float DodgeDuration { get => dodgeDuration; set => dodgeDuration = Mathf.Max(0.1f, value); }
-    public float DodgeCooldown { get => dodgeCooldown; set => dodgeCooldown = Mathf.Max(0, value); }
-    public float WaterAffinity { get => waterAffinity; set => waterAffinity = Mathf.Max(0, value); }
-    public float FireAffinity { get => fireAffinity; set => fireAffinity = Mathf.Max(0, value); }
-    public float NatureAffinity { get => natureAffinity; set => natureAffinity = Mathf.Max(0, value); }
-    public float CooldownReduction { get => cooldownReduction; set => cooldownReduction = Mathf.Max(0, value); }
+    public float MaxHealth 
+    { 
+        get => maxHealth;
+        set => maxHealth = Mathf.Max(0, value); 
+    }
+    public float Defense 
+    { 
+        get => defense; 
+        set => defense = Mathf.Max(0, value); 
+    }
+    public float MoveSpeed 
+    { 
+        get => moveSpeed; 
+        set => moveSpeed = Mathf.Max(0, value); 
+    }
+    public float BaseDamage 
+    { 
+        get => baseDamage; 
+        set => baseDamage = Mathf.Max(1, value); 
+    }
+    public float AttacksPerSecond 
+    { 
+        get => attacksPerSecond; 
+        set => attacksPerSecond = Mathf.Max(0.5f, value); 
+    }
+    public float CriticalChance 
+    { 
+        get => criticalChance; 
+        set => criticalChance = Mathf.Max(0, value); 
+    }
+    public float CriticalDamageBonus 
+    { 
+        get => criticalDamageBonus; 
+        set => criticalDamageBonus = Mathf.Max(0, value); 
+    }
+    public float DodgeForce 
+    { 
+        get => dodgeForce; 
+        set => dodgeForce = Mathf.Max(1, value); 
+    }
+    public float DodgeDuration 
+    { 
+        get => dodgeDuration; 
+        set => dodgeDuration = Mathf.Max(0.1f, value); 
+    }
+    public float DodgeCooldown 
+    { 
+        get => dodgeCooldown; 
+        set => dodgeCooldown = Mathf.Max(0, value); 
+    }
+    public float WaterAffinity 
+    { 
+        get => waterAffinity; 
+        set => waterAffinity = Mathf.Max(0, value); 
+    }
+    public float FireAffinity 
+    { 
+        get => fireAffinity;
+        set => fireAffinity = Mathf.Max(0, value); 
+    }
+    public float NatureAffinity 
+    { 
+        get => natureAffinity; 
+        set => natureAffinity = Mathf.Max(0, value); 
+    }
+    public float CooldownReduction 
+    { 
+        get => cooldownReduction; 
+        set => cooldownReduction = Mathf.Max(0, value); 
+    }
 
     /// <summary>
     /// Validates values when they are set in the inspector
