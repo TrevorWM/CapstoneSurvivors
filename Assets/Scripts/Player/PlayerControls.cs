@@ -7,13 +7,15 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
     [SerializeField]
-    private float moveSpeed = 5.0f;
+    private float moveSpeed;
     [SerializeField]
     private bool moveEnabled = true;
     [SerializeField]
-    private float dodgeForce = 1.05f;
+    private float dodgeForce;
     [SerializeField]
-    private float dodgeCooldown = 0.3f;
+    private float dodgeCooldown;
+    [SerializeField]
+    private float dodgeDuration;
 
 
     private bool isDodging = false;
@@ -24,9 +26,20 @@ public class PlayerControls : MonoBehaviour
     private PlayerInputActions playerInputActions;
     private InputAction moveInput;
     private InputAction dodgeInput;
+    private float lastDodgeTime;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
+        moveSpeed = 5.05f;
+        dodgeForce = 8.5f;
+        dodgeCooldown = 1.5f;
+        dodgeDuration = 0.2f;
+
+        
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+
         if (TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidbody))
         {
             playerRigidbody = rigidbody;
@@ -53,6 +66,14 @@ public class PlayerControls : MonoBehaviour
     private void Update()
     {
         moveVector = moveInput.ReadValue<Vector2>().normalized;
+        
+        if (moveVector.x > 0)
+        {
+            spriteRenderer.flipX = true;
+        } else
+        {
+            spriteRenderer.flipX = false;
+        }
     }
 
     // Update is called once per frame
@@ -88,11 +109,14 @@ public class PlayerControls : MonoBehaviour
     /// </summary>
     private void HandleDodge()
     {
-        if (moveVector != Vector2.zero)
+        if (moveVector != Vector2.zero && Time.time - lastDodgeTime >= dodgeCooldown)
         {
             isDodging = true;
-            StartCoroutine("DodgeCooldown");
-            playerRigidbody.AddForce(playerRigidbody.velocity * dodgeForce, ForceMode2D.Impulse);
+            lastDodgeTime = Time.time;
+            StartCoroutine("DodgeDuration");
+            moveSpeed += dodgeForce;
+            spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
+            //this is where we could disable the player hitbox so they have i-frames
         }
     }
 
@@ -100,11 +124,13 @@ public class PlayerControls : MonoBehaviour
     /// Handles the cooldown for the dodge ability so that the player cannot keep
     /// pressing the dodge button to infinitely gain speed.
     /// </summary>
-    IEnumerator DodgeCooldown()
+    IEnumerator DodgeDuration()
     {
-        yield return new WaitForSeconds(dodgeCooldown);
-        playerRigidbody.velocity = moveVector * moveSpeed;
+        yield return new WaitForSeconds(dodgeDuration);
         isDodging = false;
+        spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
+        moveSpeed -= dodgeForce;
+        //and then re-enable the hitbox here
 
     }
 }
