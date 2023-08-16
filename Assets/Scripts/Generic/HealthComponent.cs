@@ -43,6 +43,15 @@ public class HealthComponent : MonoBehaviour
         Debug.LogFormat("Sending spawn event with {0}/{1} HP", CurrentHP, maximumHP);
     }
 
+    /// <summary>
+    /// Removes health from the object this component is attached to accounting
+    /// for defense. 
+    /// 
+    /// Emits an Action event to let other objects know this object's HP has changed.
+    /// 
+    /// If health reaches 0 this function will call the HandleDeath function.
+    /// </summary>
+    /// <param name="damageTaken"></param>
     private void RemoveHealth(float damageTaken)
     {
         // TODO: implement defense value into this calculation once StatSO is added
@@ -56,6 +65,13 @@ public class HealthComponent : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adds health the object this component is attached too. Will not heal
+    /// over the maximum HP value.
+    /// 
+    /// Emits an Action event to let other objects know this object's HP has changed
+    /// </summary>
+    /// <param name="damageHealed"></param>
     private void AddHealth(float damageHealed)
     {
         CurrentHP += damageHealed;
@@ -63,6 +79,12 @@ public class HealthComponent : MonoBehaviour
         OnUpdateCurrentHealth?.Invoke(CurrentHP);
     }
 
+    /// <summary>
+    /// Handles the logic for when the object this component is attached to loses
+    /// all of its HP.
+    /// 
+    /// Emits an action event to let other objects know when this object has died.
+    /// </summary>
     private void HandleDeath()
     {
         Debug.LogFormat("I died!");
