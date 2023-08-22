@@ -12,18 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
   m_Name: PlayerStatSO
   m_EditorClassIdentifier: 
-  characterName: 
-  maxHealth: 0
-  Defense: 0
-  moveSpeed: 0
-  dodgeForce: 0
-  dodgeDuration: 0
-  dodgeCooldown: 0
-  baseDamage: 0
+  maxHealth: 100
+  defense: 0
+  moveSpeed: 5.05
+  baseDamage: 10
+  attacksPerSecond: 0.5
+  criticalChance: 2
+  criticalDamageBonus: 10
+  dodgeForce: 8.5
+  dodgeDuration: 0.2
+  dodgeCooldown: 1.5
   waterAffinity: 0
   fireAffinity: 0
   natureAffinity: 0
-  attacksPerSecond: 0
   cooldownReduction: 0
-  criticalChance: 0
-  criticalDamageBonus: 0
+  characterSprite: {fileID: 21300000, guid: 143a9a9eb39f06b439a83d40a992559c, type: 3}
+  weaponSprite: {fileID: 0}
