@@ -7,13 +7,13 @@ public class HealthComponent : MonoBehaviour
 {
     //Replace with health from PlayerStatSO when available
     [SerializeField]
-    private float maximumHP;
-
-    [SerializeField]
-    private float currentHP;
+    private PlayerStatsSO playerStats;
 
     [SerializeField]
     private HealthBar healthBar;
+
+    private float currentHP;
+    private float maximumHP;
 
     public float CurrentHP 
     { 
@@ -29,6 +29,7 @@ public class HealthComponent : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        maximumHP = playerStats.MaxHealth;
         CurrentHP = MaximumHP;
         Debug.LogFormat("Spawning with {0}/{1} HP", CurrentHP, maximumHP);
     }

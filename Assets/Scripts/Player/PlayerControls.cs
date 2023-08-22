@@ -7,16 +7,17 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
     [SerializeField]
-    private float moveSpeed;
-    [SerializeField]
-    private bool moveEnabled = true;
-    [SerializeField]
-    private float dodgeForce;
-    [SerializeField]
-    private float dodgeCooldown;
-    [SerializeField]
-    private float dodgeDuration;
+    private PlayerStatsSO playerStats;
 
+    [SerializeField]
+    private bool moveEnabled;
+
+    private float moveSpeed;
+    
+    private float dodgeForce;
+    private float dodgeCooldown;
+    private float dodgeDuration;
+    
 
     private bool isDodging = false;
 
@@ -31,10 +32,10 @@ public class PlayerControls : MonoBehaviour
 
     private void Awake()
     {
-        moveSpeed = 5.05f;
-        dodgeForce = 8.5f;
-        dodgeCooldown = 1.5f;
-        dodgeDuration = 0.2f;
+        moveSpeed = playerStats.MoveSpeed;
+        dodgeForce = playerStats.DodgeForce;
+        dodgeCooldown = playerStats.DodgeCooldown;
+        dodgeDuration = playerStats.DodgeDuration;
 
         
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -70,7 +71,8 @@ public class PlayerControls : MonoBehaviour
         if (moveVector.x > 0)
         {
             spriteRenderer.flipX = true;
-        } else
+        }
+        else if (moveVector.x < 0)
         {
             spriteRenderer.flipX = false;
         }
