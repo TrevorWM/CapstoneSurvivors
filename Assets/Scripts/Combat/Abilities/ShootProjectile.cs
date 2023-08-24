@@ -7,7 +7,7 @@ using UnityEngine.Pool;
 public class ShootProjectile : MonoBehaviour
 {
     [SerializeField]
-    private AimComponent aimHelper;
+    private AimTowardsMouseComponent aimHelper;
 
     [SerializeField]
     private ProjectilePool projectilePool;

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AimComponent : MonoBehaviour
+public class AimTowardsMouseComponent : MonoBehaviour
 {
     [SerializeField] Transform shootPosTransform;
     private Vector2 lookDirection;
