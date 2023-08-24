@@ -16,7 +16,7 @@ MonoBehaviour:
   defense: 0
   moveSpeed: 5.05
   baseDamage: 10
-  attacksPerSecond: 1
+  attacksPerSecond: 2
   criticalChance: 2
   criticalDamageBonus: 10
   dodgeForce: 8.5

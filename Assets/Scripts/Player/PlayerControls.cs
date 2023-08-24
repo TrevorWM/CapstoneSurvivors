@@ -13,7 +13,7 @@ public class PlayerControls : MonoBehaviour
     private bool moveEnabled;
 
     [SerializeField]
-    private PlayerBasicAttack basicAttackScript;
+    private ShootProjectile basicAttackScript;
 
     private bool isDodging = false;
     private bool isAttacking = false;
@@ -38,6 +38,7 @@ public class PlayerControls : MonoBehaviour
             playerRigidbody = rigidbody;
         }
         
+        playerInputActions = new PlayerInputActions();
         playerInputActions = new PlayerInputActions();
     }
 
