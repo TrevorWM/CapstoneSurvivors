@@ -46,7 +46,7 @@ public class HealthComponent : MonoBehaviour
     {
         // TODO: implement defense value into this calculation once StatSO is added
         CurrentHP -= damageTaken;
-        updateHealth.Invoke();
+        updateHealth?.Invoke();
         Debug.LogFormat("Took {0} damage, now at {1} HP", damageTaken, CurrentHP);
 
         if (CurrentHP == 0)
@@ -63,7 +63,7 @@ public class HealthComponent : MonoBehaviour
     private void AddHealth(float damageHealed)
     {
         CurrentHP += damageHealed;
-        updateHealth.Invoke();
+        updateHealth?.Invoke();
         Debug.LogFormat("I healed for {0} and am now at {1} HP!", damageHealed, CurrentHP);
     }
 
