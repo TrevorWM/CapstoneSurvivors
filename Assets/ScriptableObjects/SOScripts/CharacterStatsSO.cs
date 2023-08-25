@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerStatSO", menuName = "ScriptableObjects/StatSheets/PlayerStats", order = 0)]
-public class PlayerStatsSO : ScriptableObject
+[CreateAssetMenu(fileName = "PlayerStatSO", menuName = "ScriptableObjects/StatSheets/CharacterStats", order = 0)]
+public class CharacterStatsSO : ScriptableObject
 {
     [Header("==== Default Stats ====")]
     [Header ("Base Stats")]
