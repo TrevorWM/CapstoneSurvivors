@@ -8,6 +8,6 @@ public class TargetDummy : MonoBehaviour, IDamageable
     {
         Debug.LogFormat("I've been hit by the following attack:\n" +
             "Damage: {0}, Critical: {1}, DoT Time: {2}, Element: {3}",
-            payload.damage, payload.isCrit, payload.dotSeconds, payload.element);
+            payload.Damage, payload.IsCrit, payload.DotSeconds, payload.Element);
     }
 }

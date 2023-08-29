@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class AttackPayload
 {
-    public float damage;
-    public bool isCrit;
-    public int dotSeconds;
+    private float damage;
+    private bool isCrit;
+    private int dotSeconds;
 
-    public ElementType element;
+    private ElementType element;
+
+    public float Damage { get; }
+    public bool IsCrit { get; }
+    public int DotSeconds { get; }
+    public ElementType Element { get; }
 
     public AttackPayload(float damage, bool isCrit, int dotSeconds, ElementType element)
     {
-        this.damage = damage;
-        this.isCrit = isCrit;
-        this.dotSeconds = dotSeconds;
-        this.element = element;
+        this.Damage = damage;
+        this.IsCrit = isCrit;
+        this.DotSeconds = dotSeconds;
+        this.Element = element;
     }
 }
 
