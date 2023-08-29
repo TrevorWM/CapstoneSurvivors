@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
     [SerializeField]
-    private PlayerStatsSO playerStats;
+    private CharacterStatsSO playerStats;
 
     [SerializeField]
     private bool moveEnabled;
@@ -38,7 +38,6 @@ public class PlayerControls : MonoBehaviour
             playerRigidbody = rigidbody;
         }
         
-        playerInputActions = new PlayerInputActions();
         playerInputActions = new PlayerInputActions();
     }
 

@@ -2,15 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthComponent : MonoBehaviour
 {
     //Replace with health from PlayerStatSO when available
     [SerializeField]
-    private PlayerStatsSO playerStats;
+    private CharacterStatsSO characterStats;
 
-    [SerializeField]
-    private HealthBar healthBar;
+    public UnityEvent updateHealth;
 
     private float currentHP;
     private float maximumHP;
@@ -29,9 +29,10 @@ public class HealthComponent : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        maximumHP = playerStats.MaxHealth;
+        maximumHP = characterStats.MaxHealth;
         CurrentHP = MaximumHP;
         Debug.LogFormat("Spawning with {0}/{1} HP", CurrentHP, maximumHP);
+        //StartCoroutine(TestHP());
     }
 
     /// <summary>
@@ -45,7 +46,7 @@ public class HealthComponent : MonoBehaviour
     {
         // TODO: implement defense value into this calculation once StatSO is added
         CurrentHP -= damageTaken;
-        healthBar.UpdateHealthBarValue(CurrentHP, MaximumHP);
+        updateHealth?.Invoke();
         Debug.LogFormat("Took {0} damage, now at {1} HP", damageTaken, CurrentHP);
 
         if (CurrentHP == 0)
@@ -62,7 +63,7 @@ public class HealthComponent : MonoBehaviour
     private void AddHealth(float damageHealed)
     {
         CurrentHP += damageHealed;
-        healthBar.UpdateHealthBarValue(CurrentHP, MaximumHP);
+        updateHealth?.Invoke();
         Debug.LogFormat("I healed for {0} and am now at {1} HP!", damageHealed, CurrentHP);
     }
 
@@ -85,8 +86,8 @@ public class HealthComponent : MonoBehaviour
     /// <returns>None</returns>
     IEnumerator TestHP()
     {
-        RemoveHealth(MaximumHP);
-        yield return new WaitForSeconds(1);
+        RemoveHealth(MaximumHP/3);
+        yield return new WaitForSeconds(2);
         AddHealth(MaximumHP);
     }
 }
