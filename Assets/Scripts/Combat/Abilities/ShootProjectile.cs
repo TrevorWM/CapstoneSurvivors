@@ -7,6 +7,9 @@ using UnityEngine.Pool;
 public class ShootProjectile : MonoBehaviour
 {
     [SerializeField]
+    private CharacterStatsSO stats;
+
+    [SerializeField]
     private AimTowardsMouseComponent aimHelper;
 
     [SerializeField]
@@ -15,11 +18,24 @@ public class ShootProjectile : MonoBehaviour
     [SerializeField]
     private float projectileSpeed;
 
+    private AttackPayload payload;
 
-    // Everything in here is to define the behaviour of the object pool.
-    #region ObjectPool Stuff
+    /// <summary>
+    /// Function that creates an AttackPayload object with the information for the attack.
+    /// This is then passed to the hurtbox so that the hurtbox knows information about what
+    /// kind of attack it took and then can provide that info to other objects it is attached
+    /// to.
+    /// </summary>
+    private void BuildAttackPayload()
+    {
+        payload = new AttackPayload(stats.BaseDamage, false, 0, ElementType.None);
+    }
 
-    #endregion
+    /// <summary>
+    /// Grabs a projectile from the pool object on the attack prefab. Then gets
+    /// the aim position and rotatin from the mouse. Afterwards it spawns the projectile
+    /// and fires it in the direction of the mouse.
+    /// </summary>
     public void Attack()
     {
         Projectile projectile = projectilePool.GetProjectile();
@@ -27,7 +43,8 @@ public class ShootProjectile : MonoBehaviour
         projectile.transform.position = aimHelper.transform.position;
         projectile.transform.rotation = aimHelper.transform.rotation;
         Vector2 shootDirection = aimHelper.LookDirection;
+        BuildAttackPayload();
 
-        projectile.FireProjectile(shootDirection, projectileSpeed);
+        projectile.FireProjectile(shootDirection, projectileSpeed, payload);
     }
 }

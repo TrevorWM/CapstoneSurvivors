@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1384413629121615093}
   - component: {fileID: 7074876166481371371}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicAttackProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8869135436300976636}
   - component: {fileID: 4956463639149200283}
-  m_Layer: 0
+  - component: {fileID: 4622606458305063435}
+  m_Layer: 8
   m_Name: BasicAttackProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,3 +130,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8776429e88bbf6444be75b18f3af8c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &4622606458305063435
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5150777315927819286}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.15
