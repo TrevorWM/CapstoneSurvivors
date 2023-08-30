@@ -6,7 +6,7 @@ public class TargetDetector : Detector
 {
     // Range radius to detect the player
     [SerializeField]
-    private float targetDetectionRange = 5;
+    private float targetDetectionRange = 5f;
 
     // Since we need to check the obstacles layer and the player layer
     [SerializeField]
@@ -17,6 +17,12 @@ public class TargetDetector : Detector
 
     // gizmo parameters
     private List<Transform> colliders;
+
+    private void Start()
+    {
+        BasicEnemy basicEnemy = GetComponentInParent<BasicEnemy>();
+        targetDetectionRange = basicEnemy.EnemyStats.DetectionRadius;
+    }
 
     public override void Detect(AIData aiData)
     {

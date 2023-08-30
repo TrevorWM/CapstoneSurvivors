@@ -13,18 +13,15 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField]
     private AIData aiData;
 
-    // Timings between detections, updates, attacks
+    // Timings between detections
     [SerializeField]
-    private float detectionDelay = 0.05f;//, aiUpdateDelay = 0.06f;//, attackDelay = 1f;
+    private float detectionDelay = 0.05f;
 
     [SerializeField]
     private Vector2 movementInput;
 
     [SerializeField]
     private ContextSolver movementDirectionSolver;
-
-    // bool if we are currently following the player or not
-    //bool following = false;
 
     [SerializeField]
     private CharacterStatsSO enemyStats;
@@ -33,6 +30,7 @@ public class BasicEnemy : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    public CharacterStatsSO EnemyStats { get => enemyStats; private set => enemyStats = value; }
 
     private void Awake()
     {
@@ -87,8 +85,7 @@ public class BasicEnemy : MonoBehaviour
 
         if (enemyRigidbody && movementInput != null)
         {
-            Debug.Log(movementInput);
-            enemyRigidbody.velocity = movementInput * enemyStats.MoveSpeed;
+            enemyRigidbody.velocity = movementInput * EnemyStats.MoveSpeed;
         }
     }
 

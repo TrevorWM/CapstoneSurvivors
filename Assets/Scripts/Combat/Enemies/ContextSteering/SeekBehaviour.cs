@@ -18,6 +18,12 @@ public class SeekBehaviour : SteeringBehaviour
     private Vector2 targetPositionCached;
     private float[] interestsTemp;
 
+    private void Start()
+    {
+        BasicEnemy basicEnemy = GetComponentInParent<BasicEnemy>();
+        targetRechedThreshold = basicEnemy.EnemyStats.FollowDistance;
+    }
+
     public override (float[] danger, float[] interest) GetSteering(float[] danger, float[] interest, AIData aiData)
     {
         //if we don't have a target stop seeking
