@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Much of this code is adapted from: https://github.com/SunnyValleyStudio/Unity-2D-Context-steering-AI
+// along with all the helper files AIData.cs, ContextSolver.cs, Detector.cs, ObstacleAvoidanceBehaviour.cs,
+// ObstacleDetector.cs, SeekBehaviour.cs, SteeringBehaviour.cs, and TargetDetector.cs
+
 public class BasicEnemy : MonoBehaviour
 {
     [SerializeField]
@@ -44,7 +49,7 @@ public class BasicEnemy : MonoBehaviour
 
     private void Start()
     {
-        //Detecting Player and Obstacles around
+        // Detecting Player and Obstacles around
         InvokeRepeating("PerformDetection", 0, detectionDelay);
     }
 
@@ -58,7 +63,7 @@ public class BasicEnemy : MonoBehaviour
 
     private void Update()
     {
-        //Enemy AI movement based on Target availability
+        // Enemy AI movement based on Target availability
         if (aiData.currentTarget != null)
         {
             if (movementInput.x > 0)
@@ -72,15 +77,16 @@ public class BasicEnemy : MonoBehaviour
         }
         else if (aiData.GetTargetsCount() > 0)
         {
-            //Target acquisition logic
+            // Target acquisition logic
             aiData.currentTarget = aiData.targets[0];
         }
-        //Moving the enemy
+        // Moving the enemy
         HandleMovement();
     }
 
     private void HandleMovement()
     {
+        // getting movement direction
         movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aiData);
 
         if (enemyRigidbody && movementInput != null)
