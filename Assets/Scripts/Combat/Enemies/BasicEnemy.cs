@@ -31,7 +31,14 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField]
     private CharacterStatsSO enemyStats;
 
+    [SerializeField]
+    private ProjectilePool projectilePool;
+
+    private AttackPayload payload;
+
     private bool rightFacingSprite;
+
+    private bool isAttacking = false;
 
     private Vector2 targetDirection;
 
@@ -83,12 +90,21 @@ public class BasicEnemy : MonoBehaviour
         }
         else if (aiData.GetTargetsCount() > 0)
         {
-            // Target acquisition logic
+            // Target acquisition logic, enemy has found the player
             aiData.currentTarget = aiData.targets[0];
+
+            // can try to attack
+            if (EnemyStats.RangedEnemy)
+            {
+                HandleRangedAttack();
+            }
+
         }
         // Moving the enemy
         HandleMovement();
+
     }
+
 
     private void HandleMovement()
     {
@@ -100,6 +116,33 @@ public class BasicEnemy : MonoBehaviour
             enemyRigidbody.velocity = movementInput * EnemyStats.MoveSpeed;
         }
     }
+
+    private void HandleRangedAttack()
+    {
+        if (!isAttacking)
+        {
+            Projectile projectile = projectilePool.GetProjectile();
+
+            projectile.transform.position = transform.position;
+            projectile.transform.rotation = transform.rotation;
+
+            Vector2 shootDirection = getDirectionFromTarget();
+
+            payload = new AttackPayload(EnemyStats.BaseDamage, false, 0, ElementType.None);
+
+            projectile.FireProjectile(shootDirection, EnemyStats.ProjectileSpeed, payload);
+
+            isAttacking = true;
+            StartCoroutine("BasicAttackCooldown");
+        }
+    }
+
+    IEnumerator BasicAttackCooldown()
+    {
+        yield return new WaitForSeconds(1 / EnemyStats.AttacksPerSecond);
+        isAttacking = false;
+    }
+
 
     /// <summary>
     /// This function defo needs a rework BUT I am dumb so I cant figure out how to make it prettier.
@@ -114,8 +157,6 @@ public class BasicEnemy : MonoBehaviour
         {
             if (detector is TargetDetector td)
             {
-                Debug.Log(td.Direction);
-
                 return td.Direction;
             }
         }

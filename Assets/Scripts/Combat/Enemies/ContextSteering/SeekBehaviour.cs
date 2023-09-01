@@ -22,7 +22,6 @@ public class SeekBehaviour : SteeringBehaviour
     {
         BasicEnemy basicEnemy = GetComponentInParent<BasicEnemy>();
         targetRechedThreshold = basicEnemy.EnemyStats.FollowDistance;
-        Debug.Log(targetRechedThreshold);
     }
 
     public override (float[] danger, float[] interest) GetSteering(float[] danger, float[] interest, AIData aiData)
