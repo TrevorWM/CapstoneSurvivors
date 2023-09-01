@@ -18,6 +18,10 @@ public class TargetDetector : Detector
     // gizmo parameters
     private List<Transform> colliders;
 
+    private Vector2 direction;
+
+    public Vector2 Direction { get => direction; set => direction = value; }
+
     private void Start()
     {
         BasicEnemy basicEnemy = GetComponentInParent<BasicEnemy>();
@@ -32,13 +36,13 @@ public class TargetDetector : Detector
         if (playerCollider != null)
         {
             // Check if you see the player
-            Vector2 direction = (playerCollider.transform.position - transform.position).normalized;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, targetDetectionRange, obstaclesLayerMask);
+            Direction = (playerCollider.transform.position - transform.position).normalized;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Direction, targetDetectionRange, obstaclesLayerMask);
 
             // Make sure that the collider we see is on the "Player" layer
             if (hit.collider != null && (playerLayerMask & (1 << hit.collider.gameObject.layer)) != 0)
             {
-                Debug.DrawRay(transform.position, direction * targetDetectionRange, Color.magenta);
+                Debug.DrawRay(transform.position, Direction * targetDetectionRange, Color.magenta);
                 colliders = new List<Transform>() { playerCollider.transform };
             }
             else

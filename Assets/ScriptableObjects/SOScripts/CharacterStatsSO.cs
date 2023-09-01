@@ -33,6 +33,7 @@ public class CharacterStatsSO : ScriptableObject
     [Header("Visual Elements")]
     [SerializeField] private Sprite characterSprite;
     [SerializeField] private Sprite weaponSprite;
+    [SerializeField] private bool rightFacingSprite;
     
     /*
         Field encapsulation so that we can contain the data validation logic to this class
@@ -120,6 +121,12 @@ public class CharacterStatsSO : ScriptableObject
         get => followDistance; 
         set => followDistance = Mathf.Max(0, value); 
     }
+    public global::System.Boolean RightFacingSprite 
+    { 
+        get => rightFacingSprite; 
+        set => rightFacingSprite = value; 
+    }
+
 
     /// <summary>
     /// Validates values when they are set in the inspector

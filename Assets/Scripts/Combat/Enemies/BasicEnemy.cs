@@ -31,6 +31,10 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField]
     private CharacterStatsSO enemyStats;
 
+    private bool rightFacingSprite;
+
+    private Vector2 targetDirection;
+
     private Rigidbody2D enemyRigidbody;
 
     private SpriteRenderer spriteRenderer;
@@ -51,6 +55,32 @@ public class BasicEnemy : MonoBehaviour
     {
         // Detecting Player and Obstacles around
         InvokeRepeating("PerformDetection", 0, detectionDelay);
+
+        BasicEnemy basicEnemy = GetComponentInParent<BasicEnemy>();
+        rightFacingSprite = basicEnemy.EnemyStats.RightFacingSprite;
+
+        
+    }
+
+    /// <summary>
+    /// This function defo needs a rework BUT I am dumb so I cant figure out how to make it prettier.
+    /// ANYWAY, this function returns the direction of the player from the enemies point of view
+    /// 
+    /// The idea is that this can be used to get the direction the enemy is aiming at to shoot at the player
+    /// </summary>
+    /// <returns>Vector2 - the direction of the player from the enemy</returns>
+    private Vector2 getDirectionFromTarget()
+    {
+        foreach (Detector detector in detectors)
+        {
+            if (detector is TargetDetector td)
+            {
+                Debug.Log(td.Direction);
+
+                return td.Direction;
+            }
+        }
+        return Vector2.zero;
     }
 
     private void PerformDetection()
@@ -68,11 +98,11 @@ public class BasicEnemy : MonoBehaviour
         {
             if (movementInput.x > 0)
             {
-                spriteRenderer.flipX = true;
+                spriteRenderer.flipX = !rightFacingSprite;
             }
             else if (movementInput.x < 0)
             {
-                spriteRenderer.flipX = false;
+                spriteRenderer.flipX = rightFacingSprite;
             }
         }
         else if (aiData.GetTargetsCount() > 0)
