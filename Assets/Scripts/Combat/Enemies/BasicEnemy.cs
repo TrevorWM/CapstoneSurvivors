@@ -56,31 +56,7 @@ public class BasicEnemy : MonoBehaviour
         // Detecting Player and Obstacles around
         InvokeRepeating("PerformDetection", 0, detectionDelay);
 
-        BasicEnemy basicEnemy = GetComponentInParent<BasicEnemy>();
-        rightFacingSprite = basicEnemy.EnemyStats.RightFacingSprite;
-
-        
-    }
-
-    /// <summary>
-    /// This function defo needs a rework BUT I am dumb so I cant figure out how to make it prettier.
-    /// ANYWAY, this function returns the direction of the player from the enemies point of view
-    /// 
-    /// The idea is that this can be used to get the direction the enemy is aiming at to shoot at the player
-    /// </summary>
-    /// <returns>Vector2 - the direction of the player from the enemy</returns>
-    private Vector2 getDirectionFromTarget()
-    {
-        foreach (Detector detector in detectors)
-        {
-            if (detector is TargetDetector td)
-            {
-                Debug.Log(td.Direction);
-
-                return td.Direction;
-            }
-        }
-        return Vector2.zero;
+        rightFacingSprite = EnemyStats.RightFacingSprite;
     }
 
     private void PerformDetection()
@@ -123,6 +99,27 @@ public class BasicEnemy : MonoBehaviour
         {
             enemyRigidbody.velocity = movementInput * EnemyStats.MoveSpeed;
         }
+    }
+
+    /// <summary>
+    /// This function defo needs a rework BUT I am dumb so I cant figure out how to make it prettier.
+    /// ANYWAY, this function returns the direction of the player from the enemies point of view
+    /// 
+    /// The idea is that this can be used to get the direction the enemy is aiming at to shoot at the player
+    /// </summary>
+    /// <returns>Vector2 - the direction of the player from the enemy</returns>
+    private Vector2 getDirectionFromTarget()
+    {
+        foreach (Detector detector in detectors)
+        {
+            if (detector is TargetDetector td)
+            {
+                Debug.Log(td.Direction);
+
+                return td.Direction;
+            }
+        }
+        return Vector2.zero;
     }
 
 
