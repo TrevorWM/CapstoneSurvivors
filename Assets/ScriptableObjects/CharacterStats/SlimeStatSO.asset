@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
   m_Name: SlimeStatSO
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 10
   defense: 0
-  moveSpeed: 0
-  baseDamage: 0
-  attacksPerSecond: 0
+  moveSpeed: 1.5
+  baseDamage: 1
+  attacksPerSecond: 0.5
   criticalChance: 0
   criticalDamageBonus: 0
-  dodgeForce: 0
-  dodgeDuration: 0
+  dodgeForce: 1
+  dodgeDuration: 0.1
   dodgeCooldown: 0
   waterAffinity: 0
   fireAffinity: 0
   natureAffinity: 0
   cooldownReduction: 0
-  detectionRadius: 0
-  followDistance: 0
+  detectionRadius: 8
+  followDistance: 0.5
   rangedEnemy: 0
   projectileSpeed: 0
   characterSprite: {fileID: 0}
   weaponSprite: {fileID: 0}
-  rightFacingSprite: 0
+  rightFacingSprite: 1
