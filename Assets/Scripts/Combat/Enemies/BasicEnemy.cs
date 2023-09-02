@@ -74,7 +74,7 @@ public class BasicEnemy : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // Enemy AI movement based on Target availability
         if (aiData.currentTarget != null)
@@ -93,10 +93,18 @@ public class BasicEnemy : MonoBehaviour
             // Target acquisition logic, enemy has found the player
             aiData.currentTarget = aiData.targets[0];
 
-            // can try to attack
-            if (EnemyStats.RangedEnemy)
+            // check if enemy has reached player
+            float distance = Vector3.Distance(aiData.currentTarget.position, transform.position);
+            if(distance < EnemyStats.FollowDistance)
             {
-                HandleRangedAttack();
+                // if they have, they can try to attack
+                if (EnemyStats.RangedEnemy)
+                {
+                    HandleRangedAttack();
+                } else
+                {
+                    // basic melee enemy attack code here
+                }
             }
 
         }
