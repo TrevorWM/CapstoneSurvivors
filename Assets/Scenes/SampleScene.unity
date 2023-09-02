@@ -1837,7 +1837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2293014966238584519, guid: b44c5ca768a13ce44a9e58cb90ed6c31, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.75
+      value: -4.82
       objectReference: {fileID: 0}
     - target: {fileID: 2293014966238584519, guid: b44c5ca768a13ce44a9e58cb90ed6c31, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1874,6 +1874,18 @@ PrefabInstance:
     - target: {fileID: 7630982809948621786, guid: b44c5ca768a13ce44a9e58cb90ed6c31, type: 3}
       propertyPath: m_Name
       value: Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801472001764520651, guid: b44c5ca768a13ce44a9e58cb90ed6c31, type: 3}
+      propertyPath: m_Radius
+      value: 0.3398943
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801472001764520651, guid: b44c5ca768a13ce44a9e58cb90ed6c31, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0026854873
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801472001764520651, guid: b44c5ca768a13ce44a9e58cb90ed6c31, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.2416954
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
