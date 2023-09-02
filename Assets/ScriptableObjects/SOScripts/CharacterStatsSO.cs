@@ -25,10 +25,17 @@ public class CharacterStatsSO : ScriptableObject
     [SerializeField] private float fireAffinity;
     [SerializeField] private float natureAffinity;
     [SerializeField] private float cooldownReduction;
-  
+
+    [Header ("Enemy Specific Stats")]
+    [SerializeField] private float detectionRadius;
+    [SerializeField] private float followDistance;
+    [SerializeField] private bool rangedEnemy;
+    [SerializeField] private float projectileSpeed;
+
     [Header("Visual Elements")]
     [SerializeField] private Sprite characterSprite;
     [SerializeField] private Sprite weaponSprite;
+    [SerializeField] private bool rightFacingSprite;
     
     /*
         Field encapsulation so that we can contain the data validation logic to this class
@@ -106,6 +113,32 @@ public class CharacterStatsSO : ScriptableObject
         get => cooldownReduction; 
         set => cooldownReduction = Mathf.Max(0, value); 
     }
+    public float DetectionRadius 
+    { 
+        get => detectionRadius;
+        set => detectionRadius = Mathf.Max(0, value); 
+    }
+    public float FollowDistance 
+    { 
+        get => followDistance; 
+        set => followDistance = Mathf.Max(0, value); 
+    }
+    public global::System.Boolean RightFacingSprite 
+    { 
+        get => rightFacingSprite; 
+        set => rightFacingSprite = value; 
+    }
+    public global::System.Boolean RangedEnemy 
+    { 
+        get => rangedEnemy; 
+        set => rangedEnemy = value; 
+    }
+    public float ProjectileSpeed 
+    { 
+        get => projectileSpeed; 
+        set => projectileSpeed = value; 
+    }
+
 
     /// <summary>
     /// Validates values when they are set in the inspector
@@ -127,5 +160,7 @@ public class CharacterStatsSO : ScriptableObject
         FireAffinity = fireAffinity;
         NatureAffinity = natureAffinity;
         CooldownReduction = cooldownReduction;
+        DetectionRadius = detectionRadius;
+        FollowDistance = followDistance;
     }
 }
