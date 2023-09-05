@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
@@ -25,11 +26,15 @@ public class PlayerControls : MonoBehaviour
     private InputAction moveInput;
     private InputAction dodgeInput;
     private InputAction basicAttackInput;
+    private InputAction interactInput;
     private float lastDodgeTime;
     private SpriteRenderer spriteRenderer;
 
+    private IInteractable interactableInRange;
+
     private void Awake()
     {
+        playerInputActions = new PlayerInputActions();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
 
@@ -37,8 +42,6 @@ public class PlayerControls : MonoBehaviour
         {
             playerRigidbody = rigidbody;
         }
-        
-        playerInputActions = new PlayerInputActions();
     }
 
     private void OnEnable()
@@ -46,10 +49,12 @@ public class PlayerControls : MonoBehaviour
         moveInput = playerInputActions.Gameplay.Move;
         dodgeInput = playerInputActions.Gameplay.Dodge;
         basicAttackInput = playerInputActions.Gameplay.Fire;
+        interactInput = playerInputActions.Gameplay.Interact;
 
         moveInput.Enable();
         dodgeInput.Enable();
         basicAttackInput.Enable();
+        interactInput.Enable();
     }
 
     private void OnDisable()
@@ -57,12 +62,14 @@ public class PlayerControls : MonoBehaviour
         moveInput.Disable();
         dodgeInput.Disable();
         basicAttackInput.Disable();
+        interactInput.Disable();
     }
 
     private void Update()
     {
         moveVector = moveInput.ReadValue<Vector2>().normalized;
-        
+        HandleInteract();
+
         if (moveVector.x > 0)
         {
             spriteRenderer.flipX = true;
@@ -81,6 +88,26 @@ public class PlayerControls : MonoBehaviour
             HandleDodge();
             HandleMovement();
             HandleBasicAttack();
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        IInteractable collisionInteractable = collision.GetComponent<IInteractable>();
+
+        if (collisionInteractable != null)
+        {
+            interactableInRange = collisionInteractable;
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        IInteractable collisionInteractable = collision.GetComponent<IInteractable>();
+
+        if (collisionInteractable != null)
+        {
+            interactableInRange = null;
         }
     }
 
@@ -157,4 +184,15 @@ public class PlayerControls : MonoBehaviour
         isAttacking = false;
     }
 
+    /// <summary>
+    /// Handles the interact logic for when the player presses the interact key.
+    /// </summary>
+    private void HandleInteract()
+    {
+        if (interactInput.WasPerformedThisFrame() && interactableInRange != null)
+        {
+            interactableInRange.OnInteract();
+        }
+        
+    }
 }
