@@ -10,6 +10,9 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     [SerializeField] 
     private GameObject interactHint;
 
+    [SerializeField]
+    private bool testing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +24,9 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     {
         string upgradeString = upgradeOrbSO.RollUpgrade();
         Debug.LogFormat("UpgradeOrb rolled a {0}", upgradeString);
-        this.gameObject.SetActive(false);
+
+        if (!testing) this.gameObject.SetActive(false);
+
     }
 
     public void ToggleInteractUI()

@@ -22,10 +22,10 @@ public class UpgradeOrbSO : ScriptableObject
     [SerializeField]
     private int minimumWeight;
 
-    [Header("=== Upgrade List ===")]
+    [Header("=== Upgrade Lists ===")]
     //Change this to Upgrade objects once implemented
-    [SerializeField]
-    private string[] upgradeList;
+    [SerializeField, SerializeReference]
+    private PassiveUpgradeBase[] passiveUpgradeList;
 
     public int CommonWeight 
     {
@@ -59,10 +59,15 @@ public class UpgradeOrbSO : ScriptableObject
 
     public string RollUpgrade()
     {
-        UpgradeRarity itemRarity = RollRarity();
-        string upgradeName = upgradeList[UnityEngine.Random.Range(0, upgradeList.Length)];
-        return itemRarity.ToString() + " " + upgradeName;
-        
+        if (passiveUpgradeList.Length > 0)
+        {
+            UpgradeRarity itemRarity = RollRarity();
+            PassiveUpgradeBase upgrade = passiveUpgradeList[UnityEngine.Random.Range(0, passiveUpgradeList.Length)];
+            return itemRarity.ToString() + " " + upgrade;
+        } else
+        {
+            throw new Exception("No upgrades in list");
+        }
     }
 
     private UpgradeRarity RollRarity()

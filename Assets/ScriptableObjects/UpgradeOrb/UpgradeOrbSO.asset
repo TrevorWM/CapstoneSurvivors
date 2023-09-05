@@ -17,8 +17,5 @@ MonoBehaviour:
   rareWeight: 6
   legendaryWeight: 1
   minimumWeight: 1
-  upgradeList:
-  - Item 1 Test
-  - Item 2 Test
-  - Item 3 Test
-  - Item 4 Test
+  passiveUpgradeList:
+  - {fileID: 6245891642149629093, guid: 06ca424f405ed3b4fa22c610749c3bbd, type: 3}
