@@ -6,5 +6,5 @@ public interface IInteractable
 {
     public void OnInteract();
 
-    public void ShowInteractUI();
+    public void ToggleInteractUI();
 }

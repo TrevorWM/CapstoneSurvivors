@@ -7,22 +7,42 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     [SerializeField]
     private UpgradeOrbSO upgradeOrbSO;
 
+    [SerializeField] 
+    private GameObject interactHint;
+
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("OnInteract", 1f, .1f);
+        interactHint.SetActive(false);
     }
 
 
     public void OnInteract()
     {
-        Debug.Log("I was interacted with!");
         string upgradeString = upgradeOrbSO.RollUpgrade();
-        Debug.LogFormat("I rolled a {0}", upgradeString);
+        Debug.LogFormat("UpgradeOrb rolled a {0}", upgradeString);
+        this.gameObject.SetActive(false);
     }
 
-    public void ShowInteractUI()
+    public void ToggleInteractUI()
     {
-        Debug.Log("Press F to Interact");
+        interactHint.SetActive(!interactHint.activeInHierarchy);
+        
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            ToggleInteractUI();
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            ToggleInteractUI();
+        }
     }
 }
