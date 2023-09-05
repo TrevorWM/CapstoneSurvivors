@@ -7,7 +7,7 @@ using UnityEngine;
 // along with all the helper files AIData.cs, ContextSolver.cs, Detector.cs, ObstacleAvoidanceBehaviour.cs,
 // ObstacleDetector.cs, SeekBehaviour.cs, SteeringBehaviour.cs, and TargetDetector.cs
 
-public class BasicEnemy : MonoBehaviour
+public class BasicEnemy : MonoBehaviour, IDamageable
 {
     [SerializeField]
     private List<SteeringBehaviour> steeringBehaviours;
@@ -46,6 +46,8 @@ public class BasicEnemy : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    private float currentHealth;
+
     public CharacterStatsSO EnemyStats { get => enemyStats; private set => enemyStats = value; }
 
     private void Awake()
@@ -64,6 +66,9 @@ public class BasicEnemy : MonoBehaviour
         InvokeRepeating("PerformDetection", 0, detectionDelay);
 
         rightFacingSprite = EnemyStats.RightFacingSprite;
+
+        //set starting health
+        currentHealth = EnemyStats.MaxHealth;
     }
 
     private void PerformDetection()
@@ -171,5 +176,15 @@ public class BasicEnemy : MonoBehaviour
         return Vector2.zero;
     }
 
+    public void TakeDamage(AttackPayload payload)
+    {
+        currentHealth -= payload.Damage;
 
+        //check if enemy died from the attack
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject, 0.0f);
+        }
+    }
+    
 }

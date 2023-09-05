@@ -35,7 +35,11 @@ public class Hurtbox : MonoBehaviour
 
     IEnumerator DamageFlash()
     {
-        spriteRenderer = owner.GetComponent<SpriteRenderer>();
+        // gets the sprite from either the object or the objects child if visuals are separate
+        spriteRenderer = owner.GetComponent<SpriteRenderer>() != null ?
+                  owner.GetComponent<SpriteRenderer>() :
+                  owner.GetComponentInChildren<SpriteRenderer>();
+
         spriteRenderer.color = new Color(1, 0, 0, 0.5f);
 
         yield return new WaitForSeconds(0.1f);
