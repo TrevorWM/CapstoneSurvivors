@@ -10,6 +10,9 @@ public class HealthComponent : MonoBehaviour
     [SerializeField]
     private CharacterStatsSO characterStats;
 
+    [SerializeField]
+    private bool testing;
+
     public UnityEvent updateHealth;
 
     private float currentHP;
@@ -32,7 +35,7 @@ public class HealthComponent : MonoBehaviour
         maximumHP = characterStats.MaxHealth;
         CurrentHP = MaximumHP;
         Debug.LogFormat("Spawning with {0}/{1} HP", CurrentHP, maximumHP);
-        //StartCoroutine(TestHP());
+        if (testing) InvokeRepeating("TestHP", 2, 1);
     }
 
     /// <summary>
@@ -84,10 +87,9 @@ public class HealthComponent : MonoBehaviour
     /// with values as needed and add StartCoroutine where you wish to test.
     /// </summary>
     /// <returns>None</returns>
-    IEnumerator TestHP()
+    private void TestHP()
     {
         RemoveHealth(MaximumHP/3);
-        yield return new WaitForSeconds(2);
         AddHealth(MaximumHP);
     }
 }

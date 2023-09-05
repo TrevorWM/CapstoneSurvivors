@@ -887,6 +887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStats: {fileID: 11400000, guid: a7f3e91ef6c93914db8d1f795c324785, type: 2}
+  testing: 1
   updateHealth:
     m_PersistentCalls:
       m_Calls:
@@ -1664,9 +1665,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1772979314}
+  - component: {fileID: 1772979315}
   - component: {fileID: 1772979313}
   - component: {fileID: 1772979312}
-  - component: {fileID: 1772979315}
   m_Layer: 11
   m_Name: UpgradeOrb
   m_TagString: Untagged
@@ -1687,7 +1688,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeOrbSO: {fileID: 11400000, guid: 247757629a92ff24cb5cbf50366eed47, type: 2}
+  playerStatsSO: {fileID: 11400000, guid: a7f3e91ef6c93914db8d1f795c324785, type: 2}
   interactHint: {fileID: 1141873126}
+  testing: 1
 --- !u!58 &1772979313
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -57,13 +57,13 @@ public class UpgradeOrbSO : ScriptableObject
         LegendaryWeight = legendaryWeight;
     }
 
-    public string RollUpgrade()
+    public (PassiveUpgradeBase, UpgradeRarity) RollUpgrade()
     {
         if (passiveUpgradeList.Length > 0)
         {
             UpgradeRarity itemRarity = RollRarity();
             PassiveUpgradeBase upgrade = passiveUpgradeList[UnityEngine.Random.Range(0, passiveUpgradeList.Length)];
-            return itemRarity.ToString() + " " + upgrade;
+            return (upgrade, itemRarity);
         } else
         {
             throw new Exception("No upgrades in list");
