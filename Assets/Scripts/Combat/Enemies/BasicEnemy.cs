@@ -183,8 +183,14 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         //check if enemy died from the attack
         if (currentHealth <= 0)
         {
-            Destroy(gameObject, 0.0f);
+            OnDeath();
         }
+    }
+
+    private void OnDeath()
+    {
+        // do whatever else we want
+        Destroy(gameObject, 0.0f);
     }
     
 }
