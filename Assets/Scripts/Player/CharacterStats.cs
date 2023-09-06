@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class CharacterStats : MonoBehaviour
 {
     [SerializeField] private CharacterStatsSO characterStatsSO;
-    [SerializeField] private bool testing;
+    [SerializeField] private bool testHealth;
 
     // Base Stats
     private float maxHealth;
@@ -36,11 +36,7 @@ public class CharacterStats : MonoBehaviour
     public float MaxHealth
     {
         get => maxHealth;
-        set
-        {
-            maxHealth = Mathf.Max(0, value);
-            Debug.LogFormat("New Max Health is: {0}", maxHealth);
-        }
+        set => maxHealth = Mathf.Max(0, value);
     }
 
     public float CurrentHealth
@@ -154,7 +150,7 @@ public class CharacterStats : MonoBehaviour
         
         
         Debug.LogFormat("Spawning with {0}/{1} HP", CurrentHealth, maxHealth);
-        if (testing) InvokeRepeating("TestHP", 2, 1);
+        if (testHealth) InvokeRepeating("TestHP", 2, 3);
     }
 
     #region Health Functions
@@ -206,4 +202,21 @@ public class CharacterStats : MonoBehaviour
         AddHealth(MaxHealth);
     }
     #endregion
+
+    public void PrintStatSheet()
+    {
+        Debug.LogFormat("=== Character Stats ===\n" +
+            "Max Health: {0}\n" +
+            "Current Health: {1}\n" +
+            "Defense: {2}\n" +
+            "Base Damage: {3}\n" +
+            "Critical Chance: {4}\n" +
+            "Critical Damage Bonus: {5}\n" +
+            "Water Affinity: {6}\n" +
+            "Fire Affinity {7}\n" +
+            "Nature Affinity {8}\n" +
+            "Cooldown Reduction: {9}", MaxHealth, CurrentHealth, Defense, BaseDamage, CriticalChance, CriticalDamageBonus,
+            WaterAffinity, FireAffinity, NatureAffinity, CooldownReduction);
+
+    }
 }

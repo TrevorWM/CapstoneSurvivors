@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PassiveUpgradeSO", menuName = "ScriptableObjects/Upgrades/PassiveUpgrade", order = 1)]
 public class PassiveUpgradeSO : ScriptableObject
 {
-    public string upgradeName = "Health Up";
+    [SerializeField]
+    private string upgradeName;
 
     [SerializeField]
     private Stat statToModify;
@@ -22,11 +23,13 @@ public class PassiveUpgradeSO : ScriptableObject
     [SerializeField]
     private float legendaryUpgradeAmount;
 
+
     public float CommonUpgradeAmount { get => commonUpgradeAmount; set => commonUpgradeAmount = Mathf.Max(0, value); }
     public float UncommonUpgradeAmount { get => uncommonUpgradeAmount; set => uncommonUpgradeAmount = Mathf.Max(0, value); }
     public float RareUpgradeAmount { get => rareUpgradeAmount; set => rareUpgradeAmount = Mathf.Max(0, value); }
     public float LegendaryUpgradeAmount { get => legendaryUpgradeAmount; set => legendaryUpgradeAmount = Mathf.Max(0, value); }
     public Stat StatToModify { get => statToModify; set => statToModify = value; }
+    public string UpgradeName { get => upgradeName; }
 
     private void OnValidate()
     {

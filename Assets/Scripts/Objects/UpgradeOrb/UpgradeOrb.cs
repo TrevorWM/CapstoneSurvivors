@@ -29,9 +29,10 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         (PassiveUpgradeBase upgrade, UpgradeRarity rolledRarity) = upgradeOrbSO.RollUpgrade();
-        Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade);
+        Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade.PassiveUpgradeSO.UpgradeName);
         upgrade.ModifyStat(playerStats, rolledRarity);
-        
+        playerStats.PrintStatSheet();
+
         if (!testing) this.gameObject.SetActive(false);
     }
 

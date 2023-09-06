@@ -11,6 +11,8 @@ public class PassiveUpgradeBase : MonoBehaviour
 
     private float upgradeModifyValue = 0;
 
+    public PassiveUpgradeSO PassiveUpgradeSO { get => passiveUpgradeSO; }
+
     /// <summary>
     /// Changes the value to increase a stat by depending on the rarity of the upgrade.
     /// </summary>
@@ -20,16 +22,16 @@ public class PassiveUpgradeBase : MonoBehaviour
         switch(rolledUpgradeRarity)
         {
             case UpgradeRarity.Common:
-                upgradeModifyValue = passiveUpgradeSO.CommonUpgradeAmount;
+                upgradeModifyValue = PassiveUpgradeSO.CommonUpgradeAmount;
                 break;
             case UpgradeRarity.Uncommon:
-                upgradeModifyValue = passiveUpgradeSO.UncommonUpgradeAmount;
+                upgradeModifyValue = PassiveUpgradeSO.UncommonUpgradeAmount;
                 break;
             case UpgradeRarity.Rare:
-                upgradeModifyValue = passiveUpgradeSO.RareUpgradeAmount;
+                upgradeModifyValue = PassiveUpgradeSO.RareUpgradeAmount;
                 break;
             case UpgradeRarity.Legendary:
-                upgradeModifyValue = passiveUpgradeSO.LegendaryUpgradeAmount;
+                upgradeModifyValue = PassiveUpgradeSO.LegendaryUpgradeAmount;
                 break;
         }
     }
@@ -44,7 +46,7 @@ public class PassiveUpgradeBase : MonoBehaviour
     { 
         InitializeUpgradeValue(rolledUpgradeRarity);
 
-        switch (passiveUpgradeSO.StatToModify)
+        switch (PassiveUpgradeSO.StatToModify)
         {
             case Stat.MaxHealth:
                 playerStats.MaxHealth += upgradeModifyValue;
