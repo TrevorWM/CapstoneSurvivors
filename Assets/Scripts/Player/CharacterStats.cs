@@ -133,7 +133,7 @@ public class CharacterStats : MonoBehaviour
     private void Start()
     {
         maxHealth = characterStatsSO.MaxHealth;
-        CurrentHealth = maxHealth;
+        currentHealth = maxHealth;
         defense = characterStatsSO.Defense;
         moveSpeed = characterStatsSO.MoveSpeed;
         baseDamage = characterStatsSO.BaseDamage;
@@ -150,7 +150,7 @@ public class CharacterStats : MonoBehaviour
         
         
         Debug.LogFormat("Spawning with {0}/{1} HP", CurrentHealth, maxHealth);
-        if (testHealth) InvokeRepeating("TestHP", 2, 3);
+        if (testHealth) StartCoroutine(TestHP());
     }
 
     #region Health Functions
@@ -196,10 +196,13 @@ public class CharacterStats : MonoBehaviour
     /// with values as needed and add StartCoroutine where you wish to test.
     /// </summary>
     /// <returns>None</returns>
-    private void TestHP()
+    private IEnumerator TestHP()
     {
         RemoveHealth(MaxHealth / 3);
+        yield return new WaitForSeconds(1);
         AddHealth(MaxHealth);
+        yield return new WaitForSeconds(1);
+        StartCoroutine(TestHP());
     }
     #endregion
 
