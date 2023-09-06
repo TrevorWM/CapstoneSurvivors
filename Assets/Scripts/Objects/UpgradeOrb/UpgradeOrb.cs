@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,14 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     [SerializeField]
     private UpgradeOrbSO upgradeOrbSO;
 
+    [SerializeField]
+    private CharacterStats playerStats;
+
     [SerializeField] 
     private GameObject interactHint;
+
+    [SerializeField]
+    private bool testing;
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +26,12 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        string upgradeString = upgradeOrbSO.RollUpgrade();
-        Debug.LogFormat("UpgradeOrb rolled a {0}", upgradeString);
-        this.gameObject.SetActive(false);
+        (PassiveUpgradeBase upgrade, UpgradeRarity rolledRarity) = upgradeOrbSO.RollUpgrade();
+        Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade.PassiveUpgradeSO.UpgradeName);
+        upgrade.ModifyStat(playerStats, rolledRarity);
+        playerStats.PrintStatSheet();
+
+        if (!testing) this.gameObject.SetActive(false);
     }
 
     public void ToggleInteractUI()

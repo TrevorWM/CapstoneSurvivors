@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ad886edf118ce40b5fa791bfbd30f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: a7f3e91ef6c93914db8d1f795c324785, type: 2}
   aimHelper: {fileID: 6244058384008395406}
   projectilePool: {fileID: 1475194096648116332}
   projectileSpeed: 10

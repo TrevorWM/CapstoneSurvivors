@@ -17,8 +17,13 @@ MonoBehaviour:
   rareWeight: 6
   legendaryWeight: 1
   minimumWeight: 1
-  upgradeList:
-  - Item 1 Test
-  - Item 2 Test
-  - Item 3 Test
-  - Item 4 Test
+  passiveUpgradeList:
+  - {fileID: 6245891642149629093, guid: 06ca424f405ed3b4fa22c610749c3bbd, type: 3}
+  - {fileID: 529743361393889229, guid: 207fcae2932676848bb9e975754fb578, type: 3}
+  - {fileID: 4317245788382846787, guid: c10c21abbe874a44ebb39330d99030c2, type: 3}
+  - {fileID: 5202946349344583872, guid: 82ff8561bc10c8d4494de1dfee454158, type: 3}
+  - {fileID: 5505093430787001045, guid: be19454a1be26084d910e2fcbafac800, type: 3}
+  - {fileID: 9061736548272900262, guid: fca7d0cd6cdc8f843b5b0e07bf3f69bb, type: 3}
+  - {fileID: 5613871900788665773, guid: ef96fc3efae9b0d47bed5b6dc4c6e1af, type: 3}
+  - {fileID: 4554284593772026248, guid: 0d964270a13b13c448c74eb94b5cce59, type: 3}
+  - {fileID: 4496310898251710144, guid: 354ef79ac58a5d0468f61b044e3d0ace, type: 3}
