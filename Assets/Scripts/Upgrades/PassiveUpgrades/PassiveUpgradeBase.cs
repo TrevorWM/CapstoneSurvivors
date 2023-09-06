@@ -11,6 +11,10 @@ public class PassiveUpgradeBase : MonoBehaviour
 
     private float upgradeModifyValue = 0;
 
+    /// <summary>
+    /// Changes the value to increase a stat by depending on the rarity of the upgrade.
+    /// </summary>
+    /// <param name="rolledUpgradeRarity"></param>
     private void InitializeUpgradeValue(UpgradeRarity rolledUpgradeRarity)
     {
         switch(rolledUpgradeRarity)
@@ -30,44 +34,50 @@ public class PassiveUpgradeBase : MonoBehaviour
         }
     }
 
-    public void ModifyStat(CharacterStatsSO characterStats, UpgradeRarity rolledUpgradeRarity)
+    /// <summary>
+    /// Modifies the player's stats based on the stat type and rarity level of
+    /// the upgrade.
+    /// </summary>
+    /// <param name="playerStats"></param>
+    /// <param name="rolledUpgradeRarity"></param>
+    public void ModifyStat(CharacterStats playerStats, UpgradeRarity rolledUpgradeRarity)
     { 
         InitializeUpgradeValue(rolledUpgradeRarity);
 
         switch (passiveUpgradeSO.StatToModify)
         {
             case Stat.MaxHealth:
-                characterStats.MaxHealth += upgradeModifyValue;
+                playerStats.MaxHealth += upgradeModifyValue;
                 break;
             case Stat.Defense:
-                characterStats.Defense += upgradeModifyValue;
+                playerStats.Defense += upgradeModifyValue;
                 break;
             case Stat.MoveSpeed:
-                characterStats.MoveSpeed += upgradeModifyValue;
+                playerStats.MoveSpeed += upgradeModifyValue;
                 break;
             case Stat.BaseDamage:
-                characterStats.BaseDamage += upgradeModifyValue;
+                playerStats.BaseDamage += upgradeModifyValue;
                 break;
             case Stat.AttacksPerSecond:
-                characterStats.AttacksPerSecond += upgradeModifyValue;
+                playerStats.AttacksPerSecond += upgradeModifyValue;
                 break;
             case Stat.CriticalChance:
-                characterStats.CriticalChance += upgradeModifyValue;
+                playerStats.CriticalChance += upgradeModifyValue;
                 break;
             case Stat.CriticalDamageBonus:
-                characterStats.CriticalDamageBonus += upgradeModifyValue;
+                playerStats.CriticalDamageBonus += upgradeModifyValue;
                 break;
             case Stat.WaterAffinity:
-                characterStats.WaterAffinity += upgradeModifyValue;
+                playerStats.WaterAffinity += upgradeModifyValue;
                 break;
             case Stat.FireAffinity:
-                characterStats.FireAffinity += upgradeModifyValue;
+                playerStats.FireAffinity += upgradeModifyValue;
                 break;
             case Stat.NatureAffinity:
-                characterStats.NatureAffinity += upgradeModifyValue;
+                playerStats.NatureAffinity += upgradeModifyValue;
                 break;
             case Stat.CooldownReduction:
-                characterStats.CooldownReduction += upgradeModifyValue;
+                playerStats.CooldownReduction += upgradeModifyValue;
                 break;
         }
     }

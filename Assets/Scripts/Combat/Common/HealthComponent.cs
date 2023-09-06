@@ -8,7 +8,7 @@ public class HealthComponent : MonoBehaviour
 {
     //Replace with health from PlayerStatSO when available
     [SerializeField]
-    private CharacterStatsSO characterStats;
+    private CharacterStats characterStats;
 
     [SerializeField]
     private bool testing;

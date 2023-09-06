@@ -9,7 +9,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     private UpgradeOrbSO upgradeOrbSO;
 
     [SerializeField]
-    private CharacterStatsSO playerStatsSO;
+    private CharacterStats playerStats;
 
     [SerializeField] 
     private GameObject interactHint;
@@ -29,8 +29,9 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         (PassiveUpgradeBase upgrade, UpgradeRarity rolledRarity) = upgradeOrbSO.RollUpgrade();
-        Debug.LogFormat("UpgradeOrb rolled a {0}", upgrade);
-        upgrade.ModifyStat(playerStatsSO, rolledRarity);
+        Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade);
+        upgrade.ModifyStat(playerStats, rolledRarity);
+        
         if (!testing) this.gameObject.SetActive(false);
     }
 

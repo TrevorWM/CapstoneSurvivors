@@ -771,12 +771,13 @@ GameObject:
   m_Component:
   - component: {fileID: 522046511}
   - component: {fileID: 522046514}
+  - component: {fileID: 522046517}
+  - component: {fileID: 522046518}
   - component: {fileID: 522046512}
   - component: {fileID: 522046513}
   - component: {fileID: 522046515}
   - component: {fileID: 522046516}
-  - component: {fileID: 522046517}
-  - component: {fileID: 522046518}
+  - component: {fileID: 522046519}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -881,12 +882,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522046510}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b21ab2768d5bfd43889522ff51dd49d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterStats: {fileID: 11400000, guid: a7f3e91ef6c93914db8d1f795c324785, type: 2}
+  characterStats: {fileID: 0}
   testing: 1
   updateHealth:
     m_PersistentCalls:
@@ -915,7 +916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d67cc4b572234e44b637ec7e91659dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthComponent: {fileID: 522046515}
+  playerStats: {fileID: 522046519}
   healthBarSlider: {fileID: 727512950}
 --- !u!58 &522046517
 CircleCollider2D:
@@ -997,6 +998,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &522046519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522046510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf1f9971e040a54aad874dfe3fa0ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterStatsSO: {fileID: 11400000, guid: a7f3e91ef6c93914db8d1f795c324785, type: 2}
+  testing: 0
+  updateHealth:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 522046516}
+        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
+        m_MethodName: UpdateHealthBarValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,7 +1718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeOrbSO: {fileID: 11400000, guid: 247757629a92ff24cb5cbf50366eed47, type: 2}
-  playerStatsSO: {fileID: 11400000, guid: a7f3e91ef6c93914db8d1f795c324785, type: 2}
+  playerStats: {fileID: 522046519}
   interactHint: {fileID: 1141873126}
   testing: 1
 --- !u!58 &1772979313
