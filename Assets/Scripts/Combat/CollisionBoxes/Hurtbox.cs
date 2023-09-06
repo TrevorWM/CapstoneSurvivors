@@ -11,8 +11,6 @@ public class Hurtbox : MonoBehaviour
 
     private AttackPayload attackPayload;
 
-    SpriteRenderer spriteRenderer;
-
     /// <summary>
     /// Gets the object the hurtbox is colliding with. Checks if it is a Damager object.
     /// If it is then it will get the payload from the object and send it to the owner
@@ -27,24 +25,9 @@ public class Hurtbox : MonoBehaviour
 
             if (attackPayload != null)
             {
-                StartCoroutine(DamageFlash());
                 SendPayloadToOwner();
             }
         }
-    }
-
-    IEnumerator DamageFlash()
-    {
-        // gets the sprite from either the object or the objects child if visuals are separate
-        spriteRenderer = owner.GetComponent<SpriteRenderer>() != null ?
-                  owner.GetComponent<SpriteRenderer>() :
-                  owner.GetComponentInChildren<SpriteRenderer>();
-
-        spriteRenderer.color = new Color(1, 0, 0, 0.5f);
-
-        yield return new WaitForSeconds(0.1f);
-
-        spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
     /// <summary>

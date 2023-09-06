@@ -14,13 +14,15 @@ public class AttackPayload
     public bool IsCrit { get; }
     public int DotSeconds { get; }
     public ElementType Element { get; }
+    public bool enemyProjectile { get; }
 
-    public AttackPayload(float damage, bool isCrit, int dotSeconds, ElementType element)
+    public AttackPayload(float damage, bool isCrit, int dotSeconds, ElementType element, bool enemyProjectile = false)
     {
         this.Damage = damage;
         this.IsCrit = isCrit;
         this.DotSeconds = dotSeconds;
         this.Element = element;
+        this.enemyProjectile = enemyProjectile;
     }
 }
 

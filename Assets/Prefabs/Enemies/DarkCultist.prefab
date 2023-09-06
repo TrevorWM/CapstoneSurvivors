@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 6044418783289596776}
   - component: {fileID: 7912134576936129769}
   - component: {fileID: 6163762315155271820}
+  - component: {fileID: 7262775752156142786}
   m_Layer: 6
   m_Name: DarkCultist
   m_TagString: Untagged
@@ -352,6 +353,7 @@ MonoBehaviour:
   movementDirectionSolver: {fileID: 2635953697194223028}
   enemyStats: {fileID: 11400000, guid: 921e55709eba3164d8e44f5fa4d63f9e, type: 2}
   projectilePool: {fileID: 6163762315155271820}
+  flashSprite: {fileID: 7262775752156142786}
 --- !u!114 &6163762315155271820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,10 +366,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5d5bf3d782b674fa2e61b354f99084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 4956463639149200283, guid: 53a5c1dea0a59a94c9b345315bac1a77, type: 3}
+  projectilePrefab: {fileID: 7669817654390952335, guid: 51c111ed6f2642244bd35f9a73317ea4, type: 3}
   defaultPoolSize: 5
   maxPoolSize: 5
   projectileLifeTime: 5
+--- !u!114 &7262775752156142786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3574591359294871927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e335fcaf65541354781d75475eee10fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7829224044452778152
 GameObject:
   m_ObjectHideFlags: 0

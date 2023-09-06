@@ -34,6 +34,9 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     [SerializeField]
     private ProjectilePool projectilePool;
 
+    [SerializeField]
+    private FlashSprite flashSprite;
+
     private AttackPayload payload;
 
     private bool rightFacingSprite;
@@ -141,7 +144,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
             Vector2 shootDirection = getDirectionFromTarget();
 
-            payload = new AttackPayload(EnemyStats.BaseDamage, false, 0, ElementType.None);
+            payload = new AttackPayload(EnemyStats.BaseDamage, false, 0, ElementType.None, true);
 
             projectile.FireProjectile(shootDirection, EnemyStats.ProjectileSpeed, payload);
 
@@ -178,7 +181,12 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
     public void TakeDamage(AttackPayload payload)
     {
-        currentHealth -= payload.Damage;
+        // make sure it is not an enemy projectile
+        if (!payload.enemyProjectile)
+        {
+            currentHealth -= payload.Damage;
+            flashSprite.HitFlash(spriteRenderer);
+        }
 
         //check if enemy died from the attack
         if (currentHealth <= 0)
