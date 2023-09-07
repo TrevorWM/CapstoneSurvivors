@@ -7,7 +7,7 @@ public class TargetDummy : MonoBehaviour, IDamageable
    public void TakeDamage(AttackPayload payload)
     {
         Debug.LogFormat("I've been hit by the following attack:\n" +
-            "Damage: {0}, Critical: {1}, DoT Time: {2}, Element: {3}",
-            payload.Damage, payload.IsCrit, payload.DotSeconds, payload.Element);
+            "Damage: {0}, DoT Time: {1}, Element: {2}",
+            payload.Damage, payload.DotSeconds, payload.Element);
     }
 }

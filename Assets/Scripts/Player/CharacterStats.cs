@@ -17,7 +17,7 @@ public class CharacterStats : MonoBehaviour
     private float baseDamage;
     private float attacksPerSecond;
     private float criticalChance;
-    private float criticalDamageBonus;
+    private float criticalDamageMultiplier;
 
     //Dodge Stats
     private float dodgeForce;
@@ -69,10 +69,10 @@ public class CharacterStats : MonoBehaviour
         get => criticalChance;
         set => criticalChance = Mathf.Max(0, value);
     }
-    public float CriticalDamageBonus
+    public float CriticalDamageMultiplier
     {
-        get => criticalDamageBonus;
-        set => criticalDamageBonus = Mathf.Max(0, value);
+        get => criticalDamageMultiplier;
+        set => criticalDamageMultiplier = Mathf.Max(0, value);
     }
     public float DodgeForce
     {
@@ -120,7 +120,7 @@ public class CharacterStats : MonoBehaviour
         BaseDamage = baseDamage;
         AttacksPerSecond = attacksPerSecond;
         CriticalChance = criticalChance;
-        CriticalDamageBonus = criticalDamageBonus;
+        CriticalDamageMultiplier = criticalDamageMultiplier;
         DodgeForce = dodgeForce;
         DodgeDuration = dodgeDuration;
         DodgeCooldown = dodgeCooldown;
@@ -139,7 +139,7 @@ public class CharacterStats : MonoBehaviour
         baseDamage = characterStatsSO.BaseDamage;
         attacksPerSecond = characterStatsSO.AttacksPerSecond;
         criticalChance = characterStatsSO.CriticalChance;
-        criticalDamageBonus = characterStatsSO.CriticalDamageBonus;
+        criticalDamageMultiplier = characterStatsSO.CriticalDamageMultiplier;
         dodgeForce = characterStatsSO.DodgeForce;
         dodgeDuration = characterStatsSO.DodgeDuration;
         dodgeCooldown = characterStatsSO.DodgeCooldown;
@@ -218,7 +218,7 @@ public class CharacterStats : MonoBehaviour
             "Water Affinity: {6}\n" +
             "Fire Affinity {7}\n" +
             "Nature Affinity {8}\n" +
-            "Cooldown Reduction: {9}", MaxHealth, CurrentHealth, Defense, BaseDamage, CriticalChance, CriticalDamageBonus,
+            "Cooldown Reduction: {9}", MaxHealth, CurrentHealth, Defense, BaseDamage, CriticalChance, CriticalDamageMultiplier,
             WaterAffinity, FireAffinity, NatureAffinity, CooldownReduction);
 
     }

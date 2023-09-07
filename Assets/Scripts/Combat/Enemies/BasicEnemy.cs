@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -7,44 +8,36 @@ using UnityEngine;
 // along with all the helper files AIData.cs, ContextSolver.cs, Detector.cs, ObstacleAvoidanceBehaviour.cs,
 // ObstacleDetector.cs, SeekBehaviour.cs, SteeringBehaviour.cs, and TargetDetector.cs
 
-public class BasicEnemy : MonoBehaviour
+public class BasicEnemy : MonoBehaviour, IDamageable
 {
     [SerializeField]
     private List<SteeringBehaviour> steeringBehaviours;
-
     [SerializeField]
     private List<Detector> detectors;
-
     [SerializeField]
     private AIData aiData;
-
-    // Timings between detections
     [SerializeField]
-    private float detectionDelay = 0.05f;
-
+    private float detectionDelay = 0.05f; // Timings between detections
     [SerializeField]
     private Vector2 movementInput;
-
     [SerializeField]
     private ContextSolver movementDirectionSolver;
-
     [SerializeField]
     private CharacterStatsSO enemyStats;
-
     [SerializeField]
     private ProjectilePool projectilePool;
+    [SerializeField]
+    private FlashSprite flashSprite;
+    [SerializeField]
+    private DamageCalculator calculator;
 
     private AttackPayload payload;
-
     private bool rightFacingSprite;
-
     private bool isAttacking = false;
-
     private Vector2 targetDirection;
-
     private Rigidbody2D enemyRigidbody;
-
     private SpriteRenderer spriteRenderer;
+    private float currentHealth;
 
     public CharacterStatsSO EnemyStats { get => enemyStats; private set => enemyStats = value; }
 
@@ -64,6 +57,9 @@ public class BasicEnemy : MonoBehaviour
         InvokeRepeating("PerformDetection", 0, detectionDelay);
 
         rightFacingSprite = EnemyStats.RightFacingSprite;
+
+        //set starting health
+        currentHealth = EnemyStats.MaxHealth;
     }
 
     private void PerformDetection()
@@ -135,8 +131,9 @@ public class BasicEnemy : MonoBehaviour
             projectile.transform.rotation = transform.rotation;
 
             Vector2 shootDirection = getDirectionFromTarget();
-
-            payload = new AttackPayload(EnemyStats.BaseDamage, false, 0, ElementType.None);
+            int dotSeconds = 0;
+            bool enemyAttack = true;
+            payload = new AttackPayload(EnemyStats.BaseDamage, dotSeconds, EnemyStats.CharacterElement, EnemyStats.CriticalChance, EnemyStats.CriticalDamageMultiplier, enemyProjectile: enemyAttack);
 
             projectile.FireProjectile(shootDirection, EnemyStats.ProjectileSpeed, payload);
 
@@ -171,5 +168,27 @@ public class BasicEnemy : MonoBehaviour
         return Vector2.zero;
     }
 
+    public void TakeDamage(AttackPayload payload)
+    {
+        // make sure it is not an enemy projectile
+        if (!payload.EnemyProjectile)
+        {
+            float damage = calculator.CalculateDamage(enemyStats, payload);
+            currentHealth -= damage;
+            flashSprite.HitFlash(spriteRenderer);
+        }
 
+        //check if enemy died from the attack
+        if (currentHealth <= 0)
+        {
+            OnDeath();
+        }
+    }
+
+    private void OnDeath()
+    {
+        // do whatever else we want
+        Destroy(gameObject, 0.0f);
+    }
+    
 }
