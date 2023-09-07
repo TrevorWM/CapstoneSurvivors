@@ -672,7 +672,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 8.03125
+  orthographic size: 6.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1783,7 +1783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeOrbSO: {fileID: 11400000, guid: 247757629a92ff24cb5cbf50366eed47, type: 2}
-  playerStats: {fileID: 0}
+  playerStats: {fileID: 522046519}
   interactHint: {fileID: 1141873126}
   testing: 0
 --- !u!58 &1772979313
