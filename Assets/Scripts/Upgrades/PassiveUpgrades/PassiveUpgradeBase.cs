@@ -68,7 +68,7 @@ public class PassiveUpgradeBase : MonoBehaviour
                 playerStats.CriticalChance += upgradeModifyValue;
                 break;
             case Stat.CriticalDamageBonus:
-                playerStats.CriticalDamageBonus += upgradeModifyValue;
+                playerStats.CriticalDamageMultiplier += upgradeModifyValue;
                 break;
             case Stat.WaterAffinity:
                 playerStats.WaterAffinity += upgradeModifyValue;

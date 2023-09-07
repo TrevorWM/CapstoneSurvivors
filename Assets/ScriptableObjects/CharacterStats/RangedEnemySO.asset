@@ -19,7 +19,7 @@ MonoBehaviour:
   attacksPerSecond: 1
   criticalChance: 25
   criticalDamageMultiplier: 2
-  characterElement: 1
+  characterElement: 3
   dodgeForce: 1
   dodgeDuration: 0.1
   dodgeCooldown: 0
