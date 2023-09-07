@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class AttackPayload
 {
     private float damage;
@@ -11,18 +7,24 @@ public class AttackPayload
     private ElementType element;
 
     public float Damage { get; }
-    public bool IsCrit { get; }
     public int DotSeconds { get; }
     public ElementType Element { get; }
-    public bool enemyProjectile { get; }
+    public float CritChance { get; }
+    public float CritMultiplier { get; }
+    public float DamageMultiplier { get; }
+    public float ElementalAffinity { get; }
+    public bool EnemyProjectile { get; }
 
-    public AttackPayload(float damage, bool isCrit, int dotSeconds, ElementType element, bool enemyProjectile = false)
+    public AttackPayload(float damage, int dotSeconds, ElementType element, float critChance, float critMultiplier, float damageMultiplier = 1f, float elementalAffinity = 1f, bool enemyProjectile = false)
     {
         this.Damage = damage;
-        this.IsCrit = isCrit;
         this.DotSeconds = dotSeconds;
         this.Element = element;
-        this.enemyProjectile = enemyProjectile;
+        this.CritChance = critChance;
+        this.CritMultiplier = critMultiplier;
+        this.DamageMultiplier = damageMultiplier;
+        this.ElementalAffinity = elementalAffinity;
+        this.EnemyProjectile = enemyProjectile;
     }
 }
 

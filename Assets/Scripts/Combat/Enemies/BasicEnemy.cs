@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -11,44 +12,31 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 {
     [SerializeField]
     private List<SteeringBehaviour> steeringBehaviours;
-
     [SerializeField]
     private List<Detector> detectors;
-
     [SerializeField]
     private AIData aiData;
-
-    // Timings between detections
     [SerializeField]
-    private float detectionDelay = 0.05f;
-
+    private float detectionDelay = 0.05f; // Timings between detections
     [SerializeField]
     private Vector2 movementInput;
-
     [SerializeField]
     private ContextSolver movementDirectionSolver;
-
     [SerializeField]
     private CharacterStatsSO enemyStats;
-
     [SerializeField]
     private ProjectilePool projectilePool;
-
     [SerializeField]
     private FlashSprite flashSprite;
+    [SerializeField]
+    private DamageCalculator calculator;
 
     private AttackPayload payload;
-
     private bool rightFacingSprite;
-
     private bool isAttacking = false;
-
     private Vector2 targetDirection;
-
     private Rigidbody2D enemyRigidbody;
-
     private SpriteRenderer spriteRenderer;
-
     private float currentHealth;
 
     public CharacterStatsSO EnemyStats { get => enemyStats; private set => enemyStats = value; }
@@ -143,8 +131,9 @@ public class BasicEnemy : MonoBehaviour, IDamageable
             projectile.transform.rotation = transform.rotation;
 
             Vector2 shootDirection = getDirectionFromTarget();
-
-            payload = new AttackPayload(EnemyStats.BaseDamage, false, 0, ElementType.None, true);
+            int dotSeconds = 0;
+            bool enemyAttack = true;
+            payload = new AttackPayload(EnemyStats.BaseDamage, dotSeconds, EnemyStats.CharacterElement, EnemyStats.CriticalChance, EnemyStats.CriticalDamageMultiplier, enemyProjectile: enemyAttack);
 
             projectile.FireProjectile(shootDirection, EnemyStats.ProjectileSpeed, payload);
 
@@ -182,9 +171,10 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     public void TakeDamage(AttackPayload payload)
     {
         // make sure it is not an enemy projectile
-        if (!payload.enemyProjectile)
+        if (!payload.EnemyProjectile)
         {
-            currentHealth -= payload.Damage;
+            float damage = calculator.CalculateDamage(enemyStats, payload);
+            currentHealth -= damage;
             flashSprite.HitFlash(spriteRenderer);
         }
 

@@ -28,7 +28,7 @@ public class ShootProjectile : MonoBehaviour
     /// </summary>
     private void BuildAttackPayload()
     {
-        payload = new AttackPayload(stats.BaseDamage, false, 0, ElementType.None);
+        payload = new AttackPayload(stats.BaseDamage, 0, ElementType.None, stats.CriticalChance, stats.CriticalDamageMultiplier);
     }
 
     /// <summary>

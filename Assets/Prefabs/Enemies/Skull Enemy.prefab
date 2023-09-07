@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2489430892388782455}
   - component: {fileID: 6190118244469720244}
   - component: {fileID: -2127570542225975703}
+  - component: {fileID: -3325749578843443305}
   m_Layer: 6
   m_Name: Skull Enemy
   m_TagString: Untagged
@@ -142,6 +143,7 @@ MonoBehaviour:
   enemyStats: {fileID: 11400000, guid: 3d512d233dcec564eb5defb24b4b4699, type: 2}
   projectilePool: {fileID: 0}
   flashSprite: {fileID: -2127570542225975703}
+  calculator: {fileID: -3325749578843443305}
 --- !u!114 &-2127570542225975703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +154,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e335fcaf65541354781d75475eee10fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3325749578843443305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273105804648034894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58c7418162d43249b66dd2980c54061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1647832932542821959

@@ -16,9 +16,10 @@ MonoBehaviour:
   defense: 0
   moveSpeed: 1.5
   baseDamage: 5
-  attacksPerSecond: 0.5
-  criticalChance: 0
-  criticalDamageBonus: 0
+  attacksPerSecond: 1
+  criticalChance: 25
+  criticalDamageMultiplier: 2
+  characterElement: 1
   dodgeForce: 1
   dodgeDuration: 0.1
   dodgeCooldown: 0

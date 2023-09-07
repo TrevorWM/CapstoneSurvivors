@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1161368235640066073}
   - component: {fileID: 3288900188048505130}
   - component: {fileID: -751698198919829183}
+  - component: {fileID: -2273367290027620618}
   m_Layer: 6
   m_Name: Empty Pathfinder Enemy
   m_TagString: Untagged
@@ -141,6 +142,7 @@ MonoBehaviour:
   enemyStats: {fileID: 0}
   projectilePool: {fileID: 0}
   flashSprite: {fileID: -751698198919829183}
+  calculator: {fileID: -2273367290027620618}
 --- !u!114 &-751698198919829183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +153,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e335fcaf65541354781d75475eee10fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2273367290027620618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511993135225563833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58c7418162d43249b66dd2980c54061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1430117844629294357

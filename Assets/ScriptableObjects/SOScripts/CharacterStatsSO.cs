@@ -13,7 +13,8 @@ public class CharacterStatsSO : ScriptableObject
     [SerializeField] private float baseDamage;
     [SerializeField] private float attacksPerSecond;
     [SerializeField] private float criticalChance;
-    [SerializeField] private float criticalDamageBonus;
+    [SerializeField] private float criticalDamageMultiplier;
+    [SerializeField] private ElementType characterElement;
 
     [Header ("Dodge Stats")]
     [SerializeField] private float dodgeForce;
@@ -73,10 +74,10 @@ public class CharacterStatsSO : ScriptableObject
         get => criticalChance; 
         set => criticalChance = Mathf.Max(0, value); 
     }
-    public float CriticalDamageBonus 
+    public float CriticalDamageMultiplier 
     { 
-        get => criticalDamageBonus; 
-        set => criticalDamageBonus = Mathf.Max(0, value); 
+        get => criticalDamageMultiplier; 
+        set => criticalDamageMultiplier = Mathf.Max(0, value); 
     }
     public float DodgeForce 
     { 
@@ -138,6 +139,11 @@ public class CharacterStatsSO : ScriptableObject
         get => projectileSpeed; 
         set => projectileSpeed = value; 
     }
+    public ElementType CharacterElement 
+    { 
+        get => characterElement; 
+        set => characterElement = value; 
+    }
 
 
     /// <summary>
@@ -152,7 +158,7 @@ public class CharacterStatsSO : ScriptableObject
         BaseDamage = baseDamage;
         AttacksPerSecond = attacksPerSecond;
         CriticalChance = criticalChance;
-        CriticalDamageBonus = criticalDamageBonus;
+        CriticalDamageMultiplier = criticalDamageMultiplier;
         DodgeForce = dodgeForce;
         DodgeDuration = dodgeDuration;
         DodgeCooldown = dodgeCooldown;
