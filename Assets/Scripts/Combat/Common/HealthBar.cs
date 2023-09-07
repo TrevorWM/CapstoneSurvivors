@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     [SerializeField]
-    private HealthComponent healthComponent;
+    private CharacterStats playerStats;
 
     [SerializeField]
     private Slider healthBarSlider;
@@ -14,7 +14,7 @@ public class HealthBar : MonoBehaviour
 
     public void UpdateHealthBarValue()
     {
-        healthBarSlider.value = healthComponent.CurrentHP / healthComponent.MaximumHP;
+        healthBarSlider.value = playerStats.CurrentHealth / playerStats.MaxHealth;
     }
 
     private void Awake()
