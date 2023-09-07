@@ -15,7 +15,8 @@ public class PlayerControls : MonoBehaviour, IDamageable
 
     [SerializeField]
     private ShootProjectile basicAttackScript;
-
+    [SerializeField]
+    private FlashSprite flashSprite;
     [SerializeField]
     private DamageCalculator calculator;
 
@@ -205,6 +206,7 @@ public class PlayerControls : MonoBehaviour, IDamageable
         {
             float damage = calculator.CalculateDamage(playerStats, payload);
             Debug.Log("Player hit for: " + damage);
+            flashSprite.HitFlash(spriteRenderer);
         }
     }
 }
