@@ -196,7 +196,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     {
         // do whatever else we want
         enemyDeath.Invoke();
-        Destroy(gameObject, 0.0f);
+        gameObject.SetActive(false);
     }
     
 }

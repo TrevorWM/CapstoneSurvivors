@@ -7,65 +7,92 @@ using UnityEngine.Tilemaps;
 public class RoomManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject dungeonRoom;
+    private GameObject startingRoom;
 
     [SerializeField]
-    private Tilemap doorTilemap;
+    private GameObject player;
 
     [SerializeField]
-    private TileBase openDoorTile;
+    private GameObject upgradeOrb;
 
-    [SerializeField]
-    private bool roomComplete = false;
+    [SerializeField, SerializeReference]
+    private GameObject[] roomPool;
 
-    private TileBase[] doorTiles = { };
-    private int numberOfEnemies = 0;
+    private GameObject currentRoom;
+    private IDungeonRoom currentRoomLogic;
+    private GameObject nextRoom;
+
+    private GameObject currentPlayer;
+    private GameObject currentUpgradeOrb;
+
+    private int roomCount;
 
     public void Awake()
     {
-        //Tilemap doorTilemap = transform.GetComponent<Tilemap>();
+        roomCount = 0;
+        StartRoom(startingRoom);
     }
 
-    public void Start()
+    /// <summary>
+    /// This function checks if there is a current room, and destroys it if it exists.
+    /// Afterwards it will create an instance of the room prefab that we will be entering.
+    /// It will create a new instance of the player if this is the first room, but if not then
+    /// it will simply move the player to the new room start position definied in the room prefab.
+    /// </summary>
+    /// <param name="newRoom"></param>
+    public void StartRoom(GameObject newRoom)
     {
-        GetDoorsInLevel();
-    }
+        if (currentRoom) Destroy(currentRoom);
 
-    public void OpenDoor()
-    {
-        Debug.Log("Room complete!");
-        roomComplete = true;
-        foreach (TileBase door in doorTiles)
+        currentRoom = Instantiate<GameObject>(newRoom);
+        currentRoomLogic = currentRoom.GetComponent<IDungeonRoom>();
+
+        Vector3 playerPosition = currentRoomLogic.GetPlayerStartPosition();
+
+        if (currentPlayer == null)
         {
-            doorTilemap.SwapTile(door, openDoorTile);
+            currentPlayer = Instantiate(player, playerPosition, Quaternion.identity);
+        } else
+        {
+            currentPlayer.transform.position = playerPosition;
         }
     }
 
-    private void GetDoorsInLevel()
+    /// <summary>
+    /// Called by the RoomLogic script for the individual level. This will increase our roomCount
+    /// so that we can keep track of when the next room should be a boss instead of a random level.
+    /// It will then pick a random room from the pool of rooms assigned in the inspector. This also
+    /// creates an instance of the Upgrade Orb if it does not exist yet, or simply moves it if it does.
+    /// </summary>
+    public void OnRoomComplete()
     {
-        if (doorTilemap)
-        {
-            Debug.Log("We have the Tilemap");
+        Debug.Log("Room Complete!");
+        roomCount++;
+        int roomIndex = UnityEngine.Random.Range(0, roomPool.Length);
+        nextRoom = roomPool[roomIndex];
 
-            foreach (Vector3Int position in doorTilemap.cellBounds.allPositionsWithin)
-            {
-                if (doorTilemap.HasTile(position))
-                {
-                    doorTiles.Append(doorTilemap.GetTile(position));
-                    Debug.LogFormat("Found {0}!", doorTilemap.GetTile(position));
-                }
-            }
+        Vector3 upgradeOrbPosition = currentRoomLogic.GetUpgradeOrbPosition();
+
+        if (currentUpgradeOrb == null)
+        {
+            currentUpgradeOrb = Instantiate(upgradeOrb, upgradeOrbPosition, Quaternion.identity);
+            currentUpgradeOrb.GetComponent<UpgradeOrb>().InitializeOrb(currentPlayer);
+        }
+        else
+        {
+            currentUpgradeOrb.transform.position = upgradeOrbPosition;
+            currentUpgradeOrb.SetActive(true);
         }
     }
 
-    public void AddEnemyToCount()
+    /// <summary>
+    /// Called when the player actually walks to a door. This loads in the next room, and
+    /// sets the Upgrade Orb to inactive so that the player doesn't see it upon loading into the
+    /// room right away.
+    /// </summary>
+    public void GoToNextRoom()
     {
-        numberOfEnemies++;
-    }
-
-    public void RemoveEnemyFromCount()
-    {
-        numberOfEnemies--;
-        if (numberOfEnemies <= 0) OpenDoor();
+        StartRoom(nextRoom);
+        currentUpgradeOrb?.SetActive(false);
     }
 }

@@ -1,22 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DoorLogic : MonoBehaviour
 {
-    private bool roomComplete;
-
-    public bool RoomComplete { get => roomComplete; set => roomComplete = value; }
+    private bool canOpen = false;
+    public UnityEvent onDoorEnter;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!RoomComplete)
+        if (!canOpen)
         {
-            Debug.Log("Door Closed");
+            Debug.Log("Door closed");
         }
         else
         {
-            Debug.Log("Door Open");
+            canOpen = false;
+            onDoorEnter.Invoke();
         }
+    }
+
+    public void OnRoomComplete()
+    {
+        canOpen = true;
     }
 }
