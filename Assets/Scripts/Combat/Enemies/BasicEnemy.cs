@@ -34,10 +34,11 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private AttackPayload payload;
     private bool rightFacingSprite;
     private bool isAttacking = false;
-    private Vector2 targetDirection;
     private Rigidbody2D enemyRigidbody;
     private SpriteRenderer spriteRenderer;
     private float currentHealth;
+    private bool runAway = false;
+    private readonly float tooClose = 3f;
 
     public CharacterStatsSO EnemyStats { get => enemyStats; private set => enemyStats = value; }
 
@@ -97,6 +98,11 @@ public class BasicEnemy : MonoBehaviour, IDamageable
                 if (EnemyStats.RangedEnemy)
                 {
                     HandleRangedAttack();
+                    // if a ranged enemy gets too close we want them to run away
+                    if (distance < tooClose)
+                    {
+                        runAway = true;
+                    }
                 } else
                 {
                     // basic melee enemy attack code here
@@ -112,13 +118,35 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
     private void HandleMovement()
     {
-        // getting movement direction
-        movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aiData);
+        if (runAway)
+        {
+            // make them run a bit faster cause the speed is wonky
+            movementInput = -getDirectionFromTarget() * 1.75f;
+            StartCoroutine(StopRunning());
+        }
+        else
+        {
+            // getting movement direction
+            movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aiData);
+        }
 
         if (enemyRigidbody && movementInput != null)
         {
             enemyRigidbody.velocity = movementInput * EnemyStats.MoveSpeed;
         }
+    }
+
+    /// <summary>
+    /// This coroutune makes it so setting runAway to false is delayed,
+    /// otherwise it is continually swapped from true to false, slowing
+    /// down the enemies movement.
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator StopRunning()
+    {
+        yield return new WaitForSeconds(0.75f);
+        runAway = false;
+
     }
 
     private void HandleRangedAttack()
