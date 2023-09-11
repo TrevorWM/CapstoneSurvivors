@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 // Much of this code is adapted from: https://github.com/SunnyValleyStudio/Unity-2D-Context-steering-AI
@@ -30,6 +31,10 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private FlashSprite flashSprite;
     [SerializeField]
     private DamageCalculator calculator;
+    [SerializeField]
+    public UnityEvent enemySpawn;
+    [SerializeField]
+    public UnityEvent enemyDeath;
 
     private AttackPayload payload;
     private bool rightFacingSprite;
@@ -61,6 +66,8 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
         //set starting health
         currentHealth = EnemyStats.MaxHealth;
+
+        enemySpawn.Invoke();
     }
 
     private void PerformDetection()
@@ -216,7 +223,8 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private void OnDeath()
     {
         // do whatever else we want
-        Destroy(gameObject, 0.0f);
+        enemyDeath.Invoke();
+        gameObject.SetActive(false);
     }
     
 }

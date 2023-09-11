@@ -21,8 +21,13 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     void Start()
     {
         interactHint.SetActive(false);
+
     }
 
+    public void InitializeOrb(GameObject playerObject)
+    {
+        playerStats = playerObject.GetComponent<CharacterStats>();
+    }
 
     public void OnInteract()
     {
@@ -31,7 +36,11 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         upgrade.ModifyStat(playerStats, rolledRarity);
         playerStats.PrintStatSheet();
 
-        if (!testing) this.gameObject.SetActive(false);
+        if (!testing)
+        {
+            this.gameObject.SetActive(false);
+            interactHint.SetActive(false);
+        }
     }
 
     public void ToggleInteractUI()
