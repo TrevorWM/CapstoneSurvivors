@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour, IDamager
     private Vector3 shootDirection;
     private float projectileSpeed;
     public AttackPayload attackPayload;
+    [SerializeField]
+    public LayerMask colliderLayers;
 
     /// <summary>
     /// Used when creating a new projectile in order to set its direction
@@ -25,6 +27,12 @@ public class Projectile : MonoBehaviour, IDamager
     private void Update()
     {
         transform.position += shootDirection * projectileSpeed * Time.deltaTime;
+        float bulletRadius = 0.1f;
+        Collider2D overlap = Physics2D.OverlapCircle(transform.position, bulletRadius, colliderLayers);
+        if (overlap != null)
+        {
+            Destroy(transform.gameObject);
+        }
     }
 
     public AttackPayload GetAttackPayload()
