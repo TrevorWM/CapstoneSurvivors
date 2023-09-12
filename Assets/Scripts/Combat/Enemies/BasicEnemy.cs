@@ -208,7 +208,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         // make sure it is not an enemy projectile
         if (!payload.EnemyProjectile)
         {
-            float damage = calculator.CalculateDamage(enemyStats, payload);
+            float damage = calculator.CalculateDamage(payload, defaultOwnerStats: enemyStats);
             currentHealth -= damage;
             flashSprite.HitFlash(spriteRenderer);
         }
