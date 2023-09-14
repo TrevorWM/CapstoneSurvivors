@@ -6,7 +6,7 @@ public abstract class ProjectileBase : MonoBehaviour, IDamager
 {
     private Vector3 shootDirection;
     private float projectileSpeed;
-    private AttackPayload attackPayload;
+    protected AttackPayload attackPayload;
 
     private ProjectilePool pool;
     [SerializeField]

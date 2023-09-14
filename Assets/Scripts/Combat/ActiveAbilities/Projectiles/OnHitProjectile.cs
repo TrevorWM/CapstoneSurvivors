@@ -4,5 +4,27 @@ using UnityEngine;
 
 public class OnHitProjectile : ProjectileBase
 {
-    
+    [SerializeField]
+    private OnHitEffect[] hitEffects;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+
+        if (collision != null)
+        {
+            bool isPlayer = collision.CompareTag("Player");
+
+            if (!isPlayer) ActivateOnHitEffects(attackPayload);
+
+        }
+    }
+
+    private void ActivateOnHitEffects(AttackPayload payload)
+    {
+        foreach (OnHitEffect effect in hitEffects)
+        {
+            effect.ActivateEffect();
+        }
+    }
 }

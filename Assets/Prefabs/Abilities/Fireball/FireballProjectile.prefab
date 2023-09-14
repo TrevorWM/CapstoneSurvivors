@@ -84,6 +84,14 @@ MonoBehaviour:
   colliderLayers:
     serializedVersion: 2
     m_Bits: 1024
+  hitEffects:
+  - rid: -2
+  - rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &3785683127918331083
 GameObject:
   m_ObjectHideFlags: 0
