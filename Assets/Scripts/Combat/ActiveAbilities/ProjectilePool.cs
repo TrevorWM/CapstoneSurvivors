@@ -66,7 +66,8 @@ public class ProjectilePool : MonoBehaviour
     private IEnumerator ReleaseObjectAfterTime(Projectile projectile)
     {
         yield return projectileTimeout;
-        projectilePool.Release(projectile);
+
+        if (projectile != null) projectilePool.Release(projectile);
     }
 
     public Projectile GetProjectile()
