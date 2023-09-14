@@ -611,11 +611,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4048436168766289364, guid: 6cc3652d311da0140b57a6e28afcbab9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.81
+      value: 8.59
       objectReference: {fileID: 0}
     - target: {fileID: 4048436168766289364, guid: 6cc3652d311da0140b57a6e28afcbab9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.88
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 4048436168766289364, guid: 6cc3652d311da0140b57a6e28afcbab9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1014,6 +1014,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+      propertyPath: testing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 522046519}
@@ -1171,6 +1175,10 @@ PrefabInstance:
     - target: {fileID: 3076822655540029441, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816929903169527994, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
+      propertyPath: orthographic size
+      value: 8.3125
       objectReference: {fileID: 0}
     - target: {fileID: 6817480207312608784, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_LocalPosition.x
