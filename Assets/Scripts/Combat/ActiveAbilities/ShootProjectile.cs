@@ -42,6 +42,7 @@ public class ShootProjectile : MonoBehaviour
         aimHelper.UpdateAimTowardsMouse();
         projectile.transform.position = aimHelper.transform.position;
         projectile.transform.rotation = aimHelper.transform.rotation;
+
         Vector2 shootDirection = aimHelper.LookDirection;
         BuildAttackPayload();
 

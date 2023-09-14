@@ -7,8 +7,12 @@ public class Projectile : MonoBehaviour, IDamager
     private Vector3 shootDirection;
     private float projectileSpeed;
     public AttackPayload attackPayload;
+
+    private ProjectilePool pool;
     [SerializeField]
     public LayerMask colliderLayers;
+
+    public ProjectilePool Pool { get => pool; set => pool = value; }
 
     /// <summary>
     /// Used when creating a new projectile in order to set its direction
@@ -31,7 +35,7 @@ public class Projectile : MonoBehaviour, IDamager
         Collider2D overlap = Physics2D.OverlapCircle(transform.position, bulletRadius, colliderLayers);
         if (overlap != null)
         {
-            Destroy(transform.gameObject);
+            pool.ReleaseProjectileFromPool(this);
         }
     }
 
