@@ -8,6 +8,12 @@ public abstract class ProjectileBase : MonoBehaviour, IDamager
     private float projectileSpeed;
     private AttackPayload attackPayload;
 
+    private ProjectilePool pool;
+    [SerializeField]
+    public LayerMask colliderLayers;
+
+    public ProjectilePool Pool { get => pool; set => pool = value; }
+
     /// <summary>
     /// Used when creating a new projectile in order to set its direction
     /// and the speed of the projectile.
@@ -25,6 +31,12 @@ public abstract class ProjectileBase : MonoBehaviour, IDamager
     private void Update()
     {
         transform.position += shootDirection * projectileSpeed * Time.deltaTime;
+        float bulletRadius = 0.1f;
+        Collider2D overlap = Physics2D.OverlapCircle(transform.position, bulletRadius, colliderLayers);
+        if (overlap != null)
+        {
+            pool.ReleaseProjectileFromPool(this);
+        }
     }
 
     public AttackPayload GetAttackPayload()

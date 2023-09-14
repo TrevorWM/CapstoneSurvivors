@@ -8,9 +8,6 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour, IDamageable
 {
     [SerializeField]
-    private CharacterStatsSO playerStats;
-
-    [SerializeField]
     private bool moveEnabled;
 
     [SerializeField]
@@ -36,6 +33,8 @@ public class PlayerControls : MonoBehaviour, IDamageable
 
     private IInteractable interactableInRange;
 
+    private CharacterStats runtimeStats;
+
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
@@ -45,6 +44,11 @@ public class PlayerControls : MonoBehaviour, IDamageable
         if (TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidbody))
         {
             playerRigidbody = rigidbody;
+        }
+
+        if (TryGetComponent<CharacterStats>(out CharacterStats stats))
+        {
+            runtimeStats = stats;
         }
     }
 
@@ -59,6 +63,7 @@ public class PlayerControls : MonoBehaviour, IDamageable
         dodgeInput.Enable();
         basicAttackInput.Enable();
         interactInput.Enable();
+
     }
 
     private void OnDisable()
@@ -123,7 +128,7 @@ public class PlayerControls : MonoBehaviour, IDamageable
     {
         if (playerRigidbody)
         {
-            playerRigidbody.velocity = moveVector * playerStats.MoveSpeed;
+            playerRigidbody.velocity = moveVector * runtimeStats.MoveSpeed;
         }
     }
 
@@ -135,12 +140,12 @@ public class PlayerControls : MonoBehaviour, IDamageable
     {
         if (dodgeInput.IsPressed())
         {
-            if (moveVector != Vector2.zero && Time.time - lastDodgeTime >= playerStats.DodgeCooldown)
+            if (moveVector != Vector2.zero && Time.time - lastDodgeTime >= runtimeStats.DodgeCooldown)
             {
                 isDodging = true;
                 lastDodgeTime = Time.time;
                 StartCoroutine("DodgeDuration");
-                playerStats.MoveSpeed += playerStats.DodgeForce;
+                runtimeStats.MoveSpeed += runtimeStats.DodgeForce;
                 spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
                 //this is where we could disable the player hitbox so they have i-frames
             }
@@ -154,10 +159,10 @@ public class PlayerControls : MonoBehaviour, IDamageable
     /// </summary>
     IEnumerator DodgeDuration()
     {
-        yield return new WaitForSeconds(playerStats.DodgeDuration);
+        yield return new WaitForSeconds(runtimeStats.DodgeDuration);
         isDodging = false;
         spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
-        playerStats.MoveSpeed -= playerStats.DodgeForce;
+        runtimeStats.MoveSpeed -= runtimeStats.DodgeForce;
         //and then re-enable the hitbox here
 
     }
@@ -184,7 +189,7 @@ public class PlayerControls : MonoBehaviour, IDamageable
 
     IEnumerator BasicAttackCooldown()
     {
-        yield return new WaitForSeconds(1 / playerStats.AttacksPerSecond);
+        yield return new WaitForSeconds(1 / runtimeStats.AttacksPerSecond);
         isAttacking = false;
     }
 
@@ -204,7 +209,7 @@ public class PlayerControls : MonoBehaviour, IDamageable
     {
         if (payload.EnemyProjectile)
         {
-            float damage = calculator.CalculateDamage(playerStats, payload);
+            float damage = calculator.CalculateDamage(payload, ownerStats: runtimeStats);
             Debug.Log("Player hit for: " + damage);
             flashSprite.HitFlash(spriteRenderer);
         }
