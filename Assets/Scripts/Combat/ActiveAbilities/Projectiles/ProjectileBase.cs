@@ -52,6 +52,6 @@ public abstract class ProjectileBase : MonoBehaviour
     /// </summary>
     protected virtual void OnTriggerEnterLogic()
     {
-
+        return;
     }
 }

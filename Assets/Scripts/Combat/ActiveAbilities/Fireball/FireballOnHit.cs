@@ -20,6 +20,7 @@ public class FireballOnHit : OnHitEffect, IDamager
     {
         this.transform.position = hitLocation.position;
         this.transform.rotation = hitLocation.rotation;
+        this.transform.localScale = new Vector3(2,2,1);
         this.attackPayload = payload;
 
         this.gameObject.SetActive(true);
