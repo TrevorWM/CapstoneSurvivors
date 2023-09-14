@@ -165,6 +165,11 @@ public class BasicEnemy : MonoBehaviour, IDamageable
             projectile.transform.position = transform.position;
             projectile.transform.rotation = transform.rotation;
 
+            // This parents the projectiles to the room rather than the enemy
+            // if we change where the enemies shoot we will need to change how this parents
+            // Easiest would be to grab a reference to the dungeon room object.
+            projectile.transform.parent = gameObject.transform.parent;
+
             Vector2 shootDirection = getDirectionFromTarget();
             int dotSeconds = 0;
             bool enemyAttack = true;
@@ -222,7 +227,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
     private void OnDeath()
     {
-        // do whatever else we want
+        CancelInvoke();
         enemyDeath.Invoke();
         gameObject.SetActive(false);
     }
