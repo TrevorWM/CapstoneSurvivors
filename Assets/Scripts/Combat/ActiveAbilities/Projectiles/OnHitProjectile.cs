@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class OnHitProjectile : ProjectileBase
@@ -7,25 +8,27 @@ public class OnHitProjectile : ProjectileBase
     [SerializeField]
     private OnHitEffect[] hitEffects;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnterLogic()
     {
-        if (collision != null)
-        {
-            bool isPlayer = collision.CompareTag("Player");
-
-            if (!isPlayer) ActivateOnHitEffects(attackPayload);
-
-        }
+        ActivateOnHitEffects(attackPayload);
     }
 
+    /// <summary>
+    /// If the projectile has a prefab with a OnHitEffect script this will
+    /// iterate over all of the attached prefabs in order to instantiate them
+    /// and run their effects.
+    /// </summary>
+    /// <param name="payload"></param>
     private void ActivateOnHitEffects(AttackPayload payload)
     {
         if (hitEffects.Length > 0)
         {
             foreach (OnHitEffect effect in hitEffects)
             {
-                effect.ActivateEffect();
+                OnHitEffect effectInstance = Instantiate(effect);
+                effectInstance.ActivateEffect(payload, this.transform);
             }
-        } 
+        }
+        
     }
 }

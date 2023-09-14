@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
-public abstract class ProjectileBase : MonoBehaviour, IDamager
+public abstract class ProjectileBase : MonoBehaviour
 {
+    [SerializeField]
+    private LayerMask hitLayers;
+
     private Vector3 shootDirection;
     private float projectileSpeed;
     protected AttackPayload attackPayload;
-
-    private ProjectilePool pool;
-    [SerializeField]
-    public LayerMask colliderLayers;
+    protected ProjectilePool pool;
 
     public ProjectilePool Pool { get => pool; set => pool = value; }
 
@@ -31,16 +32,26 @@ public abstract class ProjectileBase : MonoBehaviour, IDamager
     private void Update()
     {
         transform.position += shootDirection * projectileSpeed * Time.deltaTime;
-        float bulletRadius = 0.1f;
-        Collider2D overlap = Physics2D.OverlapCircle(transform.position, bulletRadius, colliderLayers);
-        if (overlap != null)
-        {
-            pool.ReleaseProjectileFromPool(this);
-        }
     }
 
-    public AttackPayload GetAttackPayload()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        return attackPayload;
+        // Uses a bitshift and bitwise and in order to see if the object being
+        // hit is in the layermask that the projectile is looking at.
+        if ((hitLayers.value & (1 << collision.gameObject.layer)) > 0)
+        {
+            OnTriggerEnterLogic();
+            pool.ReleaseProjectileFromPool(this);
+        }   
+    }
+
+    /// <summary>
+    /// Virtual function that allows children to override to add their logic to the
+    /// OnTriggerEnter2D function without having to re-implement the collision behavior
+    /// logic.
+    /// </summary>
+    protected virtual void OnTriggerEnterLogic()
+    {
+
     }
 }

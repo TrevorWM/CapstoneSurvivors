@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicProjectile : ProjectileBase
+public class BasicProjectile : ProjectileBase, IDamager
 {
-    //Just does all the stuff in ProjectileBase, but this is a non-abstract version
+    public AttackPayload GetAttackPayload()
+    {
+        return this.attackPayload;
+    }
 }
