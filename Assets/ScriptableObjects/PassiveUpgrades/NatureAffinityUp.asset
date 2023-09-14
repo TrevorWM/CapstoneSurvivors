@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Nature Affinity Up
   statToModify: 9
-  commonUpgradeAmount: 2
-  uncommonUpgradeAmount: 5
-  rareUpgradeAmount: 10
-  legendaryUpgradeAmount: 20
+  commonUpgradeAmount: 0.02
+  uncommonUpgradeAmount: 0.05
+  rareUpgradeAmount: 0.1
+  legendaryUpgradeAmount: 0.2
