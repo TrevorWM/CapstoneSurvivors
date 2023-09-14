@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5d5bf3d782b674fa2e61b354f99084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 4956463639149200283, guid: 53a5c1dea0a59a94c9b345315bac1a77, type: 3}
+  projectilePrefab: {fileID: 5206291657012932737, guid: 53a5c1dea0a59a94c9b345315bac1a77, type: 3}
   defaultPoolSize: 5
   maxPoolSize: 5
   projectileLifeTime: 5

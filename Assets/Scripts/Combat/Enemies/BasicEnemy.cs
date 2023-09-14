@@ -160,7 +160,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     {
         if (!isAttacking)
         {
-            Projectile projectile = projectilePool.GetProjectile();
+            ProjectileBase projectile = projectilePool.GetProjectile();
 
             projectile.transform.position = transform.position;
             projectile.transform.rotation = transform.rotation;

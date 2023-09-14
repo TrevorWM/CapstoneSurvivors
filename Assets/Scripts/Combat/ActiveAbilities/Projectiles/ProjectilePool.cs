@@ -6,7 +6,7 @@ using UnityEngine.Pool;
 public class ProjectilePool : MonoBehaviour
 {
     [SerializeField]
-    private Projectile projectilePrefab;
+    private ProjectileBase projectilePrefab;
 
     [SerializeField]
     private int defaultPoolSize;
@@ -17,7 +17,7 @@ public class ProjectilePool : MonoBehaviour
     [SerializeField]
     private int projectileLifeTime;
 
-    private ObjectPool<Projectile> projectilePool;
+    private ObjectPool<ProjectileBase> projectilePool;
 
     WaitForSeconds projectileTimeout;
 
@@ -30,20 +30,20 @@ public class ProjectilePool : MonoBehaviour
 
     private void Start()
     {
-        projectilePool = new ObjectPool<Projectile>(CreateProjectile, GetProjectileFromPool, ReleaseProjectileFromPool, DestroyPoolObject, true, defaultPoolSize, MaxPoolSize);
+        projectilePool = new ObjectPool<ProjectileBase>(CreateProjectile, GetProjectileFromPool, ReleaseProjectileFromPool, DestroyPoolObject, true, defaultPoolSize, MaxPoolSize);
         projectileTimeout = new WaitForSeconds(projectileLifeTime);
     }
 
     // Creation of a new projectile when the pool is full
-    private Projectile CreateProjectile()
+    private ProjectileBase CreateProjectile()
     {
-        Projectile projectile = Instantiate(projectilePrefab);
+        ProjectileBase projectile = Instantiate(projectilePrefab);
         return projectile;
     }
 
     // How the game will grab an object from the pool.
     // In our case we just set the projectile to be active
-    private void GetProjectileFromPool(Projectile projectile)
+    private void GetProjectileFromPool(ProjectileBase projectile)
     {
         projectile.gameObject.SetActive(true);
         StartCoroutine(ReleaseObjectAfterTime(projectile));
@@ -51,26 +51,26 @@ public class ProjectilePool : MonoBehaviour
 
     // Logic performed when an object is placed in the pool and ready
     // to be spawned again.
-    private void ReleaseProjectileFromPool(Projectile projectile)
+    private void ReleaseProjectileFromPool(ProjectileBase projectile)
     {
         projectile.gameObject.SetActive(false);
     }
 
     // Logic when getting rid of an object from the pool.
-    private void DestroyPoolObject(Projectile projectile)
+    private void DestroyPoolObject(ProjectileBase projectile)
     {
         Destroy(projectile.gameObject);
     }
 
     // Timer to tell the pool when to release an object
-    private IEnumerator ReleaseObjectAfterTime(Projectile projectile)
+    private IEnumerator ReleaseObjectAfterTime(ProjectileBase projectile)
     {
         yield return projectileTimeout;
 
         if (projectile != null) projectilePool.Release(projectile);
     }
 
-    public Projectile GetProjectile()
+    public ProjectileBase GetProjectile()
     {
        return projectilePool.Get();
     }

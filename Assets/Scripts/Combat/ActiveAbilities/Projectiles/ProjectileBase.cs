@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour, IDamager
+public abstract class ProjectileBase : MonoBehaviour, IDamager
 {
     private Vector3 shootDirection;
     private float projectileSpeed;
-    public AttackPayload attackPayload;
+    private AttackPayload attackPayload;
 
     /// <summary>
     /// Used when creating a new projectile in order to set its direction

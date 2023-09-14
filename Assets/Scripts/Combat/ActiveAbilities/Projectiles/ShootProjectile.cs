@@ -38,7 +38,7 @@ public class ShootProjectile : MonoBehaviour
     /// </summary>
     public void Attack()
     {
-        Projectile projectile = projectilePool.GetProjectile();
+        ProjectileBase projectile = projectilePool.GetProjectile();
         aimHelper.UpdateAimTowardsMouse();
         projectile.transform.position = aimHelper.transform.position;
         projectile.transform.rotation = aimHelper.transform.rotation;
