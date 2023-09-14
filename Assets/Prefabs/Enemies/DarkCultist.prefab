@@ -356,6 +356,12 @@ MonoBehaviour:
   projectilePool: {fileID: 6163762315155271820}
   flashSprite: {fileID: 7262775752156142786}
   calculator: {fileID: 5442042487240499199}
+  enemySpawn:
+    m_PersistentCalls:
+      m_Calls: []
+  enemyDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6163762315155271820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5d5bf3d782b674fa2e61b354f99084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 7669817654390952335, guid: 51c111ed6f2642244bd35f9a73317ea4, type: 3}
+  projectilePrefab: {fileID: 5710632682410789928, guid: 51c111ed6f2642244bd35f9a73317ea4, type: 3}
   defaultPoolSize: 5
   maxPoolSize: 5
   projectileLifeTime: 5

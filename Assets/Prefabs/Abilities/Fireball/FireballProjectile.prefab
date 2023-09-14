@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7442527606504452852}
-  - component: {fileID: 1493663414531365338}
   - component: {fileID: 5093625153285513122}
+  - component: {fileID: 7000009239317955858}
   m_Layer: 0
   m_Name: FireballProjectile
   m_TagString: Untagged
@@ -34,18 +34,6 @@ Transform:
   - {fileID: 8708444299252928123}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1493663414531365338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363371375337651334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20efe220a0a882b46adf7c51468ff172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &5093625153285513122
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -75,12 +63,27 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.1, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
+--- !u!114 &7000009239317955858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363371375337651334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb087eaa8fe3ebb429f03db4b2c69135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderLayers:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &3785683127918331083
 GameObject:
   m_ObjectHideFlags: 0

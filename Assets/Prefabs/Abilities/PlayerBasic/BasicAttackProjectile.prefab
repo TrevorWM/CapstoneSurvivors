@@ -93,8 +93,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8869135436300976636}
-  - component: {fileID: 4956463639149200283}
   - component: {fileID: 4622606458305063435}
+  - component: {fileID: 5331424988415741922}
   m_Layer: 8
   m_Name: BasicAttackProjectile
   m_TagString: Untagged
@@ -118,21 +118,6 @@ Transform:
   - {fileID: 1384413629121615093}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4956463639149200283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5150777315927819286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8776429e88bbf6444be75b18f3af8c99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliderLayers:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!58 &4622606458305063435
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -168,3 +153,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
+--- !u!114 &5331424988415741922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5150777315927819286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20efe220a0a882b46adf7c51468ff172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderLayers:
+    serializedVersion: 2
+    m_Bits: 1024
