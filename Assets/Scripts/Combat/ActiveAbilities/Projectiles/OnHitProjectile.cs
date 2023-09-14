@@ -9,8 +9,6 @@ public class OnHitProjectile : ProjectileBase
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-
         if (collision != null)
         {
             bool isPlayer = collision.CompareTag("Player");
@@ -22,9 +20,12 @@ public class OnHitProjectile : ProjectileBase
 
     private void ActivateOnHitEffects(AttackPayload payload)
     {
-        foreach (OnHitEffect effect in hitEffects)
+        if (hitEffects.Length > 0)
         {
-            effect.ActivateEffect();
-        }
+            foreach (OnHitEffect effect in hitEffects)
+            {
+                effect.ActivateEffect();
+            }
+        } 
     }
 }
