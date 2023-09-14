@@ -46,20 +46,27 @@ public class ProjectilePool : MonoBehaviour
     private void GetProjectileFromPool(Projectile projectile)
     {
         projectile.gameObject.SetActive(true);
+        projectile.Pool = this;
         StartCoroutine(ReleaseObjectAfterTime(projectile));
     }
 
     // Logic performed when an object is placed in the pool and ready
     // to be spawned again.
-    private void ReleaseProjectileFromPool(Projectile projectile)
+    public void ReleaseProjectileFromPool(Projectile projectile)
     {
-        projectile.gameObject.SetActive(false);
+        if (projectile)
+        {
+            projectile.gameObject.SetActive(false);
+        }
     }
 
     // Logic when getting rid of an object from the pool.
     private void DestroyPoolObject(Projectile projectile)
     {
-        Destroy(projectile.gameObject);
+        if (projectile)
+        {
+            Destroy(projectile.gameObject);
+        }
     }
 
     // Timer to tell the pool when to release an object
