@@ -14,7 +14,7 @@ public class PassiveUpgradeBase : MonoBehaviour
     public PassiveUpgradeSO PassiveUpgradeSO { get => passiveUpgradeSO; }
 
     /// <summary>
-    /// Changes the value to increase a stat by depending on the rarity of the upgrade.
+    /// Changes the value to increase a stat by depending on the rarity of the upgradeType.
     /// </summary>
     /// <param name="rolledUpgradeRarity"></param>
     private void InitializeUpgradeValue(UpgradeRarity rolledUpgradeRarity)
@@ -38,7 +38,7 @@ public class PassiveUpgradeBase : MonoBehaviour
 
     /// <summary>
     /// Modifies the player's stats based on the stat type and rarity level of
-    /// the upgrade.
+    /// the upgradeType.
     /// </summary>
     /// <param name="playerStats"></param>
     /// <param name="rolledUpgradeRarity"></param>

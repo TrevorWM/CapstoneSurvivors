@@ -17,11 +17,14 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     [SerializeField]
     private bool testing;
 
+    [SerializeField]
+    public UpgradeMenu upgradeUI;
+
     // Start is called before the first frame update
     void Start()
     {
         interactHint.SetActive(false);
-
+        Debug.Log(upgradeUI);
     }
 
     public void InitializeOrb(GameObject playerObject)
@@ -31,16 +34,34 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        (PassiveUpgradeBase upgrade, UpgradeRarity rolledRarity) = upgradeOrbSO.RollUpgrade();
-        Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade.PassiveUpgradeSO.UpgradeName);
-        upgrade.ModifyStat(playerStats, rolledRarity);
+        Upgrade upgrade = upgradeOrbSO.RollUpgrade();
+        Debug.LogFormat("UpgradeOrb rolled a {0} {1}", upgrade.Rarity, upgrade.UpgradeType);
+        upgrade.UpgradeType.ModifyStat(playerStats, upgrade.Rarity);
         playerStats.PrintStatSheet();
+
+        HandleUI();
 
         if (!testing)
         {
             this.gameObject.SetActive(false);
             interactHint.SetActive(false);
         }
+    }
+
+    /// <summary>
+    /// Handles all the Upgrade UI elements
+    /// </summary>
+    private void HandleUI()
+    {
+        upgradeUI.ShowUpgradeMenu();
+        Upgrade[] upgrades = new Upgrade[3];
+        for (int i = 0; i < 3; i++)
+        {
+            upgrades[i] = upgradeOrbSO.RollUpgrade();
+        }
+
+        upgradeUI.GetUpgrade(upgrades);
+
     }
 
     public void ToggleInteractUI()

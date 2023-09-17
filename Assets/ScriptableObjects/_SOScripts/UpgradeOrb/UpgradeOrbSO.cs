@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.Windows;
 
 [CreateAssetMenu(fileName = "UpgradeOrbSO", menuName = "ScriptableObjects/Upgrades/UpgradeOrb", order = 0)]
 public class UpgradeOrbSO : ScriptableObject
@@ -57,13 +59,18 @@ public class UpgradeOrbSO : ScriptableObject
         LegendaryWeight = legendaryWeight;
     }
 
-    public (PassiveUpgradeBase, UpgradeRarity) RollUpgrade()
+    
+
+    public Upgrade RollUpgrade()
     {
         if (passiveUpgradeList.Length > 0)
         {
-            UpgradeRarity itemRarity = RollRarity();
-            PassiveUpgradeBase upgrade = passiveUpgradeList[UnityEngine.Random.Range(0, passiveUpgradeList.Length)];
-            return (upgrade, itemRarity);
+            Upgrade upgrade = new()
+            {
+                Rarity = RollRarity(),
+                UpgradeType = passiveUpgradeList[UnityEngine.Random.Range(0, passiveUpgradeList.Length)]
+            };
+            return (upgrade);
         } else
         {
             throw new Exception("No upgrades in list");
@@ -100,6 +107,31 @@ public class UpgradeOrbSO : ScriptableObject
     }
 }
 
+public class Upgrade
+{
+    private PassiveUpgradeBase upgradeType;
+    private UpgradeRarity rarity;
+
+    public PassiveUpgradeBase UpgradeType { get => upgradeType; set => upgradeType = value; }
+    public UpgradeRarity Rarity { get => rarity; set => rarity = value; }
+
+    public override string ToString()
+    {
+        return "Upgrade: " + upgradeType + ", Rarity: " + Rarity;
+    }
+
+    public string DisplayName()
+    {
+        // add space after each capital
+        string upgradeName = Regex.Replace(upgradeType.ToString(), "([A-Z])", " $1");
+        // remove text in paranthesis
+        upgradeName = Regex.Replace(upgradeName, "\\([^()]*\\)", "");
+        // remove "passive"
+        upgradeName = Regex.Replace(upgradeName, "Passive", "");
+
+        return upgradeName;
+    }
+}
 public enum UpgradeRarity
 {
     Common = 0,
