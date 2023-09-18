@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class FireballOnHit : OnHitEffect, IDamager
 {
+
+    // Not used at the moment, was thinking of having the explosion lifetime here, but
+    // might be better to have it on the projectile bit, so that all the info is in one
+    // place
     [SerializeField]
     private float effectLifetime;
 
@@ -40,6 +44,6 @@ public class FireballOnHit : OnHitEffect, IDamager
 
     private void Despawn()
     {
-        this.gameObject.SetActive(false);
+        Destroy(this.gameObject);
     }
 }

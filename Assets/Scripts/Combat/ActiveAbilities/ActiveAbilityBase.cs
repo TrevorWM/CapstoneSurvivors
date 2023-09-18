@@ -15,6 +15,10 @@ public class ActiveAbilityBase : MonoBehaviour
     public ActiveAbilitySO ActiveAbilitySO { get => abilitySO; }
     public float DamageModifierValue { get => damageModifierValue; }
 
+    /// <summary>
+    /// Changes the value to increase a stat by depending on the rarity of the upgrade.
+    /// </summary>
+    /// <param name="rolledUpgradeRarity"></param>
     private void InitializeDamageModifier(UpgradeRarity rolledUpgradeRarity)
     {
         switch (rolledUpgradeRarity)
@@ -34,6 +38,11 @@ public class ActiveAbilityBase : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adds the ability to the player's loadout once we have the hotkeys implemented.
+    /// </summary>
+    /// <param name="playerControls"></param>
+    /// <param name="rolledAbilityRarity"></param>
     public void AddAbilityToPlayer(PlayerControls playerControls, UpgradeRarity rolledAbilityRarity)
     {
         InitializeDamageModifier(rolledAbilityRarity);

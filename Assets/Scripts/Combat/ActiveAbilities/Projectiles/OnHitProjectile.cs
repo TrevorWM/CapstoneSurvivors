@@ -5,9 +5,18 @@ using UnityEngine;
 
 public class OnHitProjectile : ProjectileBase
 {
+
+    [SerializeField]
+    private float hitEffectDuration = 0.2f;
+
     [SerializeField]
     private OnHitEffect[] hitEffects;
 
+    /// <summary>
+    /// Override for the ProjectileBase virtual function. Allows us to change the
+    /// logic of OnTriggerEnter without having to override the shared collision detection
+    /// behaviour.
+    /// </summary>
     protected override void OnTriggerEnterLogic()
     {
         ActivateOnHitEffects(attackPayload);
@@ -26,7 +35,7 @@ public class OnHitProjectile : ProjectileBase
             foreach (OnHitEffect effect in hitEffects)
             {
                 OnHitEffect effectInstance = Instantiate(effect);
-                effectInstance.ActivateEffect(payload, this.transform);
+                effectInstance.ActivateEffect(payload, this.transform, hitEffectDuration);
             }
         }
         
