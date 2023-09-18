@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4377598328506804696}
   - component: {fileID: 7780626915160464531}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 71437639456968865}
   - component: {fileID: 2031545312147860449}
   - component: {fileID: 2711609844096509331}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireballOnHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -40,6 +40,6 @@ public class FireballOnHit : OnHitEffect, IDamager
 
     private void Despawn()
     {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }

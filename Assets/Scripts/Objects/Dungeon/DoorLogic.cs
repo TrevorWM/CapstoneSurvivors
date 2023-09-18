@@ -10,15 +10,19 @@ public class DoorLogic : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!canOpen)
+        if (collision.CompareTag("Player"))
         {
-            Debug.Log("Door closed");
+            if (!canOpen)
+            {
+                Debug.Log("Door closed");
+            }
+            else
+            {
+                canOpen = false;
+                onDoorEnter.Invoke();
+            }
         }
-        else
-        {
-            canOpen = false;
-            onDoorEnter.Invoke();
-        }
+        
     }
 
     public void OnRoomComplete()

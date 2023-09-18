@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingRoom: {fileID: 5807390494452671454, guid: 04da2703b22dd7f4fa2f300504818b8b, type: 3}
-  player: {fileID: 3053937608375678795, guid: 1a5946dfdc89a8346a738e0fcb3fb469, type: 3}
+  player: {fileID: 6204503042473553551, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
   upgradeOrb: {fileID: 9000103055329027066, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
   roomPool:
   - {fileID: 5807390494452671454, guid: e156c73cb6617ea4ab04867e57366647, type: 3}
@@ -187,7 +187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5816929903169527994, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: orthographic size
-      value: 7.921875
+      value: 11.3125
       objectReference: {fileID: 0}
     - target: {fileID: 5816929903169527994, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -211,7 +211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6817480207312608784, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 6817480207312608784, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_LocalRotation.w
