@@ -38,6 +38,7 @@ public abstract class ProjectileBase : MonoBehaviour
     {
         // Uses a bitshift and bitwise and in order to see if the object being
         // hit is in the layermask that the projectile is looking at.
+        // Info from https://discussions.unity.com/t/check-if-colliding-with-a-layer/145616/2 User: Krnitheesh16
         if ((hitLayers.value & (1 << collision.gameObject.layer)) > 0)
         {
             OnTriggerEnterLogic();

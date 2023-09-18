@@ -21,7 +21,6 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     void Start()
     {
         interactHint.SetActive(false);
-
     }
 
     public void InitializeOrb(GameObject playerObject)
@@ -31,10 +30,20 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        (PassiveUpgradeBase upgrade, UpgradeRarity rolledRarity) = upgradeOrbSO.RollUpgrade();
-        Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade.PassiveUpgradeSO.UpgradeName);
-        upgrade.ModifyStat(playerStats, rolledRarity);
-        playerStats.PrintStatSheet();
+        if (IsUpgradePassive())
+        {
+            (PassiveUpgradeBase upgrade, UpgradeRarity rolledRarity) = upgradeOrbSO.RollPassiveUpgrade();
+            Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade.PassiveUpgradeSO.UpgradeName);
+            upgrade.ModifyStat(playerStats, rolledRarity);
+            playerStats.PrintStatSheet();
+        }
+        else
+        {
+            (ActiveAbilityBase upgrade, UpgradeRarity rolledRarity) = upgradeOrbSO.RollActiveUpgrade();
+            Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade.ActiveAbilitySO.AbilityName);
+            //TODO: Logic to place ability in hotbar
+        }
+        
 
         if (!testing)
         {
@@ -43,10 +52,15 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         }
     }
 
+    private bool IsUpgradePassive()
+    {
+        float roll = UnityEngine.Random.Range(0, 2);
+        return roll > 0;
+    }
+
     public void ToggleInteractUI()
     {
-        interactHint.SetActive(!interactHint.activeInHierarchy);
-        
+        interactHint.SetActive(!interactHint.activeInHierarchy);   
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -64,4 +78,5 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
             ToggleInteractUI();
         }
     }
+
 }

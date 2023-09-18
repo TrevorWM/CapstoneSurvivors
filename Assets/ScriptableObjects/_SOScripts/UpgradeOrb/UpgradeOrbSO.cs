@@ -27,6 +27,9 @@ public class UpgradeOrbSO : ScriptableObject
     [SerializeField, SerializeReference]
     private PassiveUpgradeBase[] passiveUpgradeList;
 
+    [SerializeField, SerializeReference]
+    private ActiveAbilityBase[] activeUpgradeList;
+
     public int CommonWeight 
     {
         get => commonWeight;
@@ -57,7 +60,7 @@ public class UpgradeOrbSO : ScriptableObject
         LegendaryWeight = legendaryWeight;
     }
 
-    public (PassiveUpgradeBase, UpgradeRarity) RollUpgrade()
+    public (PassiveUpgradeBase, UpgradeRarity) RollPassiveUpgrade()
     {
         if (passiveUpgradeList.Length > 0)
         {
@@ -66,7 +69,21 @@ public class UpgradeOrbSO : ScriptableObject
             return (upgrade, itemRarity);
         } else
         {
-            throw new Exception("No upgrades in list");
+            throw new Exception("No Passive Upgrades in list");
+        }
+    }
+
+    public (ActiveAbilityBase, UpgradeRarity) RollActiveUpgrade()
+    {
+        if (activeUpgradeList.Length > 0)
+        {
+            UpgradeRarity itemRarity = RollRarity();
+            ActiveAbilityBase upgrade = activeUpgradeList[UnityEngine.Random.Range(0, passiveUpgradeList.Length)];
+            return (upgrade, itemRarity);
+        }
+        else
+        {
+            throw new Exception("No Active Abilities in list");
         }
     }
 

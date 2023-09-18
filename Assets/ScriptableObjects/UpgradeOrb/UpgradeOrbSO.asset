@@ -27,3 +27,5 @@ MonoBehaviour:
   - {fileID: 5613871900788665773, guid: ef96fc3efae9b0d47bed5b6dc4c6e1af, type: 3}
   - {fileID: 4554284593772026248, guid: 0d964270a13b13c448c74eb94b5cce59, type: 3}
   - {fileID: 4496310898251710144, guid: 354ef79ac58a5d0468f61b044e3d0ace, type: 3}
+  activeUpgradeList:
+  - {fileID: 6676832995170866217, guid: 8cbbe58bec2b6744b8f5c113aae7b826, type: 3}
