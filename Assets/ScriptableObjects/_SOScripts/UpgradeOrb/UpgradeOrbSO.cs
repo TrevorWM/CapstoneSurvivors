@@ -22,8 +22,11 @@ public class UpgradeOrbSO : ScriptableObject
     [SerializeField]
     private int minimumWeight;
 
-    [Header("=== Upgrade Lists ===")]
-    //Change this to Upgrade objects once implemented
+    [Header("=== Upgrade Information ===")]
+
+    [SerializeField, Range(0,1)]
+    private float passiveChance;
+
     [SerializeField, SerializeReference]
     private PassiveUpgradeBase[] passiveUpgradeList;
 
@@ -51,6 +54,7 @@ public class UpgradeOrbSO : ScriptableObject
         get => legendaryWeight; 
         set => legendaryWeight = Mathf.Max(minimumWeight, value);
     }
+    public float PassiveChance { get => passiveChance; set => passiveChance = Mathf.Clamp01(value); }
 
     public void OnValidate()
     {
@@ -58,6 +62,8 @@ public class UpgradeOrbSO : ScriptableObject
         UncommonWeight = uncommonWeight;
         RareWeight = rareWeight;
         LegendaryWeight = legendaryWeight;
+        PassiveChance = passiveChance;
+
     }
 
     public (PassiveUpgradeBase, UpgradeRarity) RollPassiveUpgrade()
@@ -78,7 +84,7 @@ public class UpgradeOrbSO : ScriptableObject
         if (activeUpgradeList.Length > 0)
         {
             UpgradeRarity itemRarity = RollRarity();
-            ActiveAbilityBase upgrade = activeUpgradeList[UnityEngine.Random.Range(0, passiveUpgradeList.Length)];
+            ActiveAbilityBase upgrade = activeUpgradeList[UnityEngine.Random.Range(0, activeUpgradeList.Length)];
             return (upgrade, itemRarity);
         }
         else

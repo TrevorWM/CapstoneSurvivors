@@ -9,7 +9,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     private UpgradeOrbSO upgradeOrbSO;
 
     [SerializeField]
-    private CharacterStats playerStats;
+    private GameObject playerToUpgrade;
 
     [SerializeField] 
     private GameObject interactHint;
@@ -17,10 +17,15 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     [SerializeField]
     private bool testing;
 
+    private CharacterStats playerStats;
+    private PlayerControls playerControls;
+
     // Start is called before the first frame update
     void Start()
     {
         interactHint.SetActive(false);
+        playerStats = playerToUpgrade.GetComponent<CharacterStats>();
+        playerControls = playerToUpgrade.GetComponent<PlayerControls>();
     }
 
     public void InitializeOrb(GameObject playerObject)
@@ -41,7 +46,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         {
             (ActiveAbilityBase upgrade, UpgradeRarity rolledRarity) = upgradeOrbSO.RollActiveUpgrade();
             Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade.ActiveAbilitySO.AbilityName);
-            //TODO: Logic to place ability in hotbar
+            upgrade.AddAbilityToPlayer(playerControls, rolledRarity);
         }
         
 
@@ -54,8 +59,8 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
     private bool IsUpgradePassive()
     {
-        float roll = UnityEngine.Random.Range(0, 2);
-        return roll > 0;
+        float roll = UnityEngine.Random.Range(0f, 1f);
+        return roll <= upgradeOrbSO.PassiveChance;
     }
 
     public void ToggleInteractUI()

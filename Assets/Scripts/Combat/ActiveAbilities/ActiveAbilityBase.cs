@@ -37,7 +37,7 @@ public class ActiveAbilityBase : MonoBehaviour
     public void AddAbilityToPlayer(PlayerControls playerControls, UpgradeRarity rolledAbilityRarity)
     {
         InitializeDamageModifier(rolledAbilityRarity);
-
+        Debug.Log("Still need to add the ability to the player loadout! :(");
         //TODO: Add logic to place ability on the player
     }
 }
