@@ -46,6 +46,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         */
 
         HandleUI();
+        /*
         if (IsUpgradePassive())
         {
             (PassiveUpgradeBase upgrade, UpgradeRarity rolledRarity) = upgradeOrbSO.RollPassiveUpgrade();
@@ -59,6 +60,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
             Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade.ActiveAbilitySO.AbilityName);
             upgrade.AddAbilityToPlayer(playerControls, rolledRarity);
         }
+        */
         
 
         if (!testing)
@@ -81,6 +83,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         }
 
         upgradeUI.GetUpgrade(upgrades);
+    }
 
     private bool IsUpgradePassive()
     {

@@ -16,6 +16,30 @@ public interface IUpgrade
 
 }
 
+public class ActiveUpgrade : IUpgrade
+{
+
+    private ActiveAbilityBase upgradeType;
+    private UpgradeRarity rarity;
+
+    public UpgradeCategory Category => UpgradeCategory.Active;
+
+    public UpgradeRarity Rarity { get => rarity; set => rarity = value; }
+    public ActiveAbilityBase UpgradeType { get => upgradeType; set => upgradeType = value; }
+
+    public string DisplayText()
+    {
+        // add space after each capital
+        string upgradeName = Regex.Replace(upgradeType.ToString(), "([A-Z])", " $1");
+        // remove text in paranthesis
+        upgradeName = Regex.Replace(upgradeName, "\\([^()]*\\)", "");
+        // remove "Active"
+        upgradeName = Regex.Replace(upgradeName, "Active", "");
+
+        return upgradeName;
+    }
+}
+
 public class PassiveUpgrade : IUpgrade
 {
     private PassiveUpgradeBase upgradeType;

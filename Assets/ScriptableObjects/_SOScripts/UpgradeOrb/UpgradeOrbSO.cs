@@ -72,7 +72,7 @@ public class UpgradeOrbSO : ScriptableObject
 
     public IUpgrade RollUpgrade()
     {
-        if (passiveUpgradeList.Length > 0)
+        if (IsUpgradePassive())
         {
             IUpgrade upgrade = new PassiveUpgrade()
             {
@@ -80,10 +80,25 @@ public class UpgradeOrbSO : ScriptableObject
                 UpgradeType = passiveUpgradeList[UnityEngine.Random.Range(0, passiveUpgradeList.Length)]
             };
             return (upgrade);
+            
         } else
         {
-            throw new Exception("No Passive Upgrades in list");
+            
+            IUpgrade upgrade = new ActiveUpgrade()
+            {
+                Rarity = RollRarity(),
+                UpgradeType = activeUpgradeList[UnityEngine.Random.Range(0, activeUpgradeList.Length)]
+            };
+            return (upgrade);
+            
         }
+        
+    }
+
+    private bool IsUpgradePassive()
+    {
+        float roll = UnityEngine.Random.Range(0f, 1f);
+        return roll <= PassiveChance;
     }
 
     public (ActiveAbilityBase, UpgradeRarity) RollActiveUpgrade()
@@ -130,31 +145,7 @@ public class UpgradeOrbSO : ScriptableObject
     }
 }
 
-public class Upgrade
-{
-    private PassiveUpgradeBase upgradeType;
-    private UpgradeRarity rarity;
 
-    public PassiveUpgradeBase UpgradeType { get => upgradeType; set => upgradeType = value; }
-    public UpgradeRarity Rarity { get => rarity; set => rarity = value; }
-
-    public override string ToString()
-    {
-        return "Upgrade: " + upgradeType + ", Rarity: " + Rarity;
-    }
-
-    public string DisplayName()
-    {
-        // add space after each capital
-        string upgradeName = Regex.Replace(upgradeType.ToString(), "([A-Z])", " $1");
-        // remove text in paranthesis
-        upgradeName = Regex.Replace(upgradeName, "\\([^()]*\\)", "");
-        // remove "passive"
-        upgradeName = Regex.Replace(upgradeName, "Passive", "");
-
-        return upgradeName;
-    }
-}
 public enum UpgradeRarity
 {
     Common = 0,
