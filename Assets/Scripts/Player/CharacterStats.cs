@@ -18,6 +18,7 @@ public class CharacterStats : MonoBehaviour
     private float attacksPerSecond;
     private float criticalChance;
     private float criticalDamageMultiplier;
+    private ElementType characterElement;
 
     //Dodge Stats
     private float dodgeForce;
@@ -29,6 +30,15 @@ public class CharacterStats : MonoBehaviour
     private float fireAffinity;
     private float natureAffinity;
     private float cooldownReduction;
+
+    //Enemy specific
+    private float detectionRadius;
+    private float followDistance;
+    private bool rangedEnemy;
+    private float projectileSpeed;
+
+    //Visual
+    private bool rightFacingSprite;
 
     public UnityEvent updateHealth;
 
@@ -109,6 +119,36 @@ public class CharacterStats : MonoBehaviour
         get => cooldownReduction;
         set => cooldownReduction = Mathf.Max(0, value);
     }
+    public ElementType CharacterElement 
+    { 
+        get => characterElement; 
+        set => characterElement = value; 
+    }
+    public float DetectionRadius 
+    { 
+        get => detectionRadius; 
+        set => detectionRadius = value; 
+    }
+    public float FollowDistance 
+    { 
+        get => followDistance; 
+        set => followDistance = value; 
+    }
+    public bool RangedEnemy 
+    { 
+        get => rangedEnemy; 
+        set => rangedEnemy = value; 
+    }
+    public float ProjectileSpeed 
+    { 
+        get => projectileSpeed; 
+        set => projectileSpeed = value; 
+    }
+    public bool RightFacingSprite 
+    { 
+        get => rightFacingSprite; 
+        set => rightFacingSprite = value; 
+    }
     #endregion
 
     private void OnValidate()
@@ -128,6 +168,12 @@ public class CharacterStats : MonoBehaviour
         FireAffinity = fireAffinity;
         NatureAffinity = natureAffinity;
         CooldownReduction = cooldownReduction;
+        CharacterElement = characterElement;
+        DetectionRadius = detectionRadius;
+        FollowDistance = followDistance;
+        RangedEnemy = rangedEnemy;
+        ProjectileSpeed = projectileSpeed;
+        RightFacingSprite = rightFacingSprite;
     }
 
     private void Start()
@@ -147,9 +193,13 @@ public class CharacterStats : MonoBehaviour
         fireAffinity = characterStatsSO.FireAffinity;
         natureAffinity = characterStatsSO.NatureAffinity;
         cooldownReduction = characterStatsSO.CooldownReduction;
+        characterElement = characterStatsSO.CharacterElement;
+        detectionRadius = characterStatsSO.DetectionRadius;
+        followDistance = characterStatsSO.FollowDistance;
+        rangedEnemy = characterStatsSO.RangedEnemy;
+        projectileSpeed = characterStatsSO.ProjectileSpeed;
+        rightFacingSprite = characterStatsSO.RightFacingSprite;
         
-        
-        Debug.LogFormat("Spawning with {0}/{1} HP", CurrentHealth, maxHealth);
         if (testHealth) StartCoroutine(TestHP());
     }
 
@@ -218,8 +268,9 @@ public class CharacterStats : MonoBehaviour
             "Water Affinity: {6}\n" +
             "Fire Affinity {7}\n" +
             "Nature Affinity {8}\n" +
-            "Cooldown Reduction: {9}", MaxHealth, CurrentHealth, Defense, BaseDamage, CriticalChance, CriticalDamageMultiplier,
-            WaterAffinity, FireAffinity, NatureAffinity, CooldownReduction);
+            "Cooldown Reduction: {9}\n" + 
+            "Character Element: {10}", MaxHealth, CurrentHealth, Defense, BaseDamage, CriticalChance, CriticalDamageMultiplier,
+            WaterAffinity, FireAffinity, NatureAffinity, CooldownReduction, CharacterElement);
 
     }
 }

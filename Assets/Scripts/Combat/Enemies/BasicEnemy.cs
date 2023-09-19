@@ -160,7 +160,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     {
         if (!isAttacking)
         {
-            Projectile projectile = projectilePool.GetProjectile();
+            ProjectileBase projectile = projectilePool.GetProjectile();
 
             projectile.transform.position = transform.position;
             projectile.transform.rotation = transform.rotation;
@@ -213,7 +213,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         // make sure it is not an enemy projectile
         if (!payload.EnemyProjectile)
         {
-            float damage = calculator.CalculateDamage(enemyStats, payload);
+            float damage = calculator.CalculateDamage(payload, defaultOwnerStats: enemyStats);
             currentHealth -= damage;
             flashSprite.HitFlash(spriteRenderer);
         }

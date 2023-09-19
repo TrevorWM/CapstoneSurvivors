@@ -5,8 +5,22 @@ using UnityEngine;
 
 public class DamageCalculator : MonoBehaviour
 {
-    public float CalculateDamage(CharacterStatsSO ownerStats, AttackPayload payload)
+    public float CalculateDamage(AttackPayload payload, CharacterStats ownerStats = null, CharacterStatsSO defaultOwnerStats = null)
     {
+        ElementType characterElement;
+        float characterDefence;
+
+        if (ownerStats)
+        {
+            characterElement = ownerStats.CharacterElement;
+            characterDefence = ownerStats.Defense;
+        }
+        else
+        {
+            characterElement = defaultOwnerStats.CharacterElement;
+            characterDefence = defaultOwnerStats.Defense;
+        }
+
         bool isCrit = CriticalRoll(payload.CritChance);
 
         float damage = payload.Damage;
@@ -22,20 +36,25 @@ public class DamageCalculator : MonoBehaviour
         damage *= payload.ElementalAffinity;
 
         // Then check for weakness/resistance interactions
-        if (IsWeak(ownerStats.CharacterElement, payload.Element))
+        if (IsWeak(characterElement, payload.Element))
         {
             damage *= 1.25f;
         }
-        else if (IsResistant(ownerStats.CharacterElement, payload.Element)) 
+        else if (IsResistant(characterElement, payload.Element)) 
         {
             damage *= 0.75f;
         }
 
         // Then subtract reciever defence
-        damage -= ownerStats.Defense;
+        damage -= characterDefence;
 
         // Finally, take the damage multiplier into consideration
         damage *= payload.DamageMultiplier;
+
+        if (damage < 1)
+        {
+            damage = 1;
+        }
 
         Debug.Log("Damage: " + damage);
 

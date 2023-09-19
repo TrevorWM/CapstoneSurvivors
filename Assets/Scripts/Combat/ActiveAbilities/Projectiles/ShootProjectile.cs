@@ -6,8 +6,7 @@ using UnityEngine.Pool;
 
 public class ShootProjectile : MonoBehaviour
 {
-    [SerializeField]
-    private CharacterStatsSO stats;
+    private CharacterStats stats;
 
     [SerializeField]
     private AimTowardsMouseComponent aimHelper;
@@ -19,6 +18,11 @@ public class ShootProjectile : MonoBehaviour
     private float projectileSpeed;
 
     private AttackPayload payload;
+
+    private void Start()
+    {
+        stats = GetComponentInParent<CharacterStats>();
+    }
 
     /// <summary>
     /// Function that creates an AttackPayload object with the information for the attack.
@@ -38,11 +42,13 @@ public class ShootProjectile : MonoBehaviour
     /// </summary>
     public void Attack()
     {
-        Projectile projectile = projectilePool.GetProjectile();
+        ProjectileBase projectile = projectilePool.GetProjectile();
+        
         aimHelper.UpdateAimTowardsMouse();
-        projectile.transform.position = aimHelper.transform.position;
-        projectile.transform.rotation = aimHelper.transform.rotation;
-        Vector2 shootDirection = aimHelper.LookDirection;
+        projectile.transform.position = aimHelper.GetShootPosition();
+        projectile.transform.rotation = aimHelper.GetShootRotation();
+        Vector2 shootDirection = aimHelper.GetShootDirection();
+
         BuildAttackPayload();
 
         projectile.FireProjectile(shootDirection, projectileSpeed, payload);
