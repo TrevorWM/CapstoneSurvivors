@@ -34,10 +34,12 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        Upgrade upgrade = upgradeOrbSO.RollUpgrade();
+        /*
+        IUpgrade upgrade = upgradeOrbSO.RollUpgrade();
         Debug.LogFormat("UpgradeOrb rolled a {0} {1}", upgrade.Rarity, upgrade.UpgradeType);
         upgrade.UpgradeType.ModifyStat(playerStats, upgrade.Rarity);
         playerStats.PrintStatSheet();
+        */
 
         HandleUI();
 
@@ -54,7 +56,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     private void HandleUI()
     {
         upgradeUI.ShowUpgradeMenu();
-        Upgrade[] upgrades = new Upgrade[3];
+        IUpgrade[] upgrades = new IUpgrade[3];
         for (int i = 0; i < 3; i++)
         {
             upgrades[i] = upgradeOrbSO.RollUpgrade();

@@ -27,7 +27,7 @@ public class UpgradeMenu : MonoBehaviour
         
     }
 
-    public void SetUpgrades(Upgrade[] upgrades)
+    public void SetUpgrades(IUpgrade[] upgrades)
     {
         for (int i = 0; i < upgrades.Length; i++)
         {
@@ -35,26 +35,26 @@ public class UpgradeMenu : MonoBehaviour
             {
                 case UpgradeRarity.Common:
                     portals[i].GetComponent<UnityEngine.UI.Image>().sprite = purpleCommon;
-                    texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayName();
+                    texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
                     break;
                 case UpgradeRarity.Uncommon:
                     portals[i].GetComponent<UnityEngine.UI.Image>().sprite = purpleUncommon;
-                    texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayName();
+                    texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
                     break;
                 case UpgradeRarity.Rare:
                     portals[i].GetComponent<UnityEngine.UI.Image>().sprite = purpleRare;
-                    texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayName();
+                    texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
                     break;
                 case UpgradeRarity.Legendary:
                     portals[i].GetComponent<UnityEngine.UI.Image>().sprite = purpleLegendary;
-                    texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayName();
+                    texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
                     break;
 
             }
         }
     }
 
-    public Upgrade GetUpgrade(Upgrade[] upgrades)
+    public IUpgrade GetUpgrade(IUpgrade[] upgrades)
     {
         for (int i = 0; i < upgrades.Length; i++)
         {

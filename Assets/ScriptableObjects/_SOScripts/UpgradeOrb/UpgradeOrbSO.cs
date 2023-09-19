@@ -61,11 +61,11 @@ public class UpgradeOrbSO : ScriptableObject
 
     
 
-    public Upgrade RollUpgrade()
+    public IUpgrade RollUpgrade()
     {
         if (passiveUpgradeList.Length > 0)
         {
-            Upgrade upgrade = new()
+            IUpgrade upgrade = new PassiveUpgrade()
             {
                 Rarity = RollRarity(),
                 UpgradeType = passiveUpgradeList[UnityEngine.Random.Range(0, passiveUpgradeList.Length)]
