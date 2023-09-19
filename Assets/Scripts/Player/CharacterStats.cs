@@ -200,8 +200,6 @@ public class CharacterStats : MonoBehaviour
         projectileSpeed = characterStatsSO.ProjectileSpeed;
         rightFacingSprite = characterStatsSO.RightFacingSprite;
         
-        
-        Debug.LogFormat("Spawning with {0}/{1} HP", CurrentHealth, maxHealth);
         if (testHealth) StartCoroutine(TestHP());
     }
 

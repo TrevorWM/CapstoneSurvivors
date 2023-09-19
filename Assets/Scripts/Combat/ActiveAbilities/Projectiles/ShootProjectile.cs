@@ -42,12 +42,13 @@ public class ShootProjectile : MonoBehaviour
     /// </summary>
     public void Attack()
     {
-        Projectile projectile = projectilePool.GetProjectile();
+        ProjectileBase projectile = projectilePool.GetProjectile();
+        
         aimHelper.UpdateAimTowardsMouse();
-        projectile.transform.position = aimHelper.transform.position;
-        projectile.transform.rotation = aimHelper.transform.rotation;
+        projectile.transform.position = aimHelper.GetShootPosition();
+        projectile.transform.rotation = aimHelper.GetShootRotation();
+        Vector2 shootDirection = aimHelper.GetShootDirection();
 
-        Vector2 shootDirection = aimHelper.LookDirection;
         BuildAttackPayload();
 
         projectile.FireProjectile(shootDirection, projectileSpeed, payload);
