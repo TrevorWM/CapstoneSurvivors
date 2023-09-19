@@ -258,6 +258,10 @@ MonoBehaviour:
   purpleUncommon: {fileID: 21300000, guid: 3a5cc5cc0ffcd0f4e93406de2dd0a7c9, type: 3}
   purpleRare: {fileID: 21300000, guid: 2f6def96747e81846a2c31672b48927d, type: 3}
   purpleLegendary: {fileID: 21300000, guid: c79fc16d35c6f78488261ef7ce880e76, type: 3}
+  redCommon: {fileID: 21300000, guid: 710b15350ff32824daa0c14754516fa2, type: 3}
+  redUncommon: {fileID: 21300000, guid: f5d1d92457a31ec4283d7ec5b77222ff, type: 3}
+  redRare: {fileID: 21300000, guid: 1dc645aa400893e4aaf44a64cabb911d, type: 3}
+  redLegendary: {fileID: 21300000, guid: 14da8144407d77f4f8f6630885c82d49, type: 3}
   portals:
   - {fileID: 6533461086690941479}
   - {fileID: 7957941754667864877}

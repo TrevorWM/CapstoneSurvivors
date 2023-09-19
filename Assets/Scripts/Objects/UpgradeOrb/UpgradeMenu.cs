@@ -16,6 +16,14 @@ public class UpgradeMenu : MonoBehaviour
     private Sprite purpleRare;
     [SerializeField]
     private Sprite purpleLegendary;
+    [SerializeField]
+    private Sprite redCommon;
+    [SerializeField]
+    private Sprite redUncommon;
+    [SerializeField]
+    private Sprite redRare;
+    [SerializeField]
+    private Sprite redLegendary;
 
     [SerializeField]
     private GameObject[] portals = new GameObject[3];
@@ -34,19 +42,23 @@ public class UpgradeMenu : MonoBehaviour
             switch (upgrades[i].Rarity)
             {
                 case UpgradeRarity.Common:
-                    portals[i].GetComponent<UnityEngine.UI.Image>().sprite = purpleCommon;
+                    portals[i].GetComponent<UnityEngine.UI.Image>().sprite = 
+                        (upgrades[i].Category == UpgradeCategory.Active) ? redCommon : purpleCommon;
                     texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
                     break;
                 case UpgradeRarity.Uncommon:
-                    portals[i].GetComponent<UnityEngine.UI.Image>().sprite = purpleUncommon;
+                    portals[i].GetComponent<UnityEngine.UI.Image>().sprite =
+                        (upgrades[i].Category == UpgradeCategory.Active) ? redUncommon : purpleUncommon;
                     texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
                     break;
                 case UpgradeRarity.Rare:
-                    portals[i].GetComponent<UnityEngine.UI.Image>().sprite = purpleRare;
+                    portals[i].GetComponent<UnityEngine.UI.Image>().sprite =
+                        (upgrades[i].Category == UpgradeCategory.Active) ? redRare : purpleRare;
                     texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
                     break;
                 case UpgradeRarity.Legendary:
-                    portals[i].GetComponent<UnityEngine.UI.Image>().sprite = purpleLegendary;
+                    portals[i].GetComponent<UnityEngine.UI.Image>().sprite =
+                        (upgrades[i].Category == UpgradeCategory.Active) ? redLegendary : purpleLegendary;
                     texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
                     break;
 
