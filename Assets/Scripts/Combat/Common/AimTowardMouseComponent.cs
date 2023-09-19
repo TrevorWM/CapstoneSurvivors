@@ -11,6 +11,10 @@ public class AimTowardsMouseComponent : MonoBehaviour
     public Vector2 LookDirection { get => lookDirection; private set => lookDirection = value; }
 
 
+    public Vector3 GetShootPosition() => shootPosTransform.position;
+    public Vector2 GetShootDirection() => this.lookDirection;
+    public Quaternion GetShootRotation() => shootPosTransform.rotation;
+
     /// <summary>
     /// Transforms an object to face the mouse cursor position in world space
     /// used for the player to be able to shoot at the mouse
@@ -21,10 +25,10 @@ public class AimTowardsMouseComponent : MonoBehaviour
 
         // Gets the world position of the mouse
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        LookDirection = (mousePosition - currentPosition).normalized;
+        lookDirection = (mousePosition - currentPosition).normalized;
         
         // calculates the Vector2 direction between the shootPosTransform and the mouse
-        float angle = Mathf.Atan2(LookDirection.y, LookDirection.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
         shootPosTransform.rotation = Quaternion.Euler(0, 0, angle);
     }

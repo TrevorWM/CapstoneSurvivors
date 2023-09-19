@@ -5,12 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PassiveUpgradeSO", menuName = "ScriptableObjects/Upgrades/PassiveUpgrade", order = 1)]
 public class PassiveUpgradeSO : ScriptableObject
 {
+    [Header("=== General Upgrade Info ===")]
     [SerializeField]
     private string upgradeName;
 
     [SerializeField]
     private Stat statToModify;
 
+    [Header("=== Rarity Specific Info ===")]
     [SerializeField]
     private float commonUpgradeAmount;
 

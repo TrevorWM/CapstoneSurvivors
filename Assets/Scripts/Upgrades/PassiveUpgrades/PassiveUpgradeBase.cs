@@ -9,7 +9,7 @@ public class PassiveUpgradeBase : MonoBehaviour
     [SerializeField]
     private PassiveUpgradeSO passiveUpgradeSO;
 
-    private float upgradeModifyValue = 0;
+    private float upgradeModifyValue = 0f;
 
     public PassiveUpgradeSO PassiveUpgradeSO { get => passiveUpgradeSO; }
 
