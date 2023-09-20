@@ -91,12 +91,12 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         {
             if (movementInput.x > 0)
             {
-                scaleVector.x = 1;
+                scaleVector.x *= -1;
                 this.gameObject.transform.localScale = scaleVector;
             }
             else if (movementInput.x < 0)
             {
-                scaleVector.x = -1;
+                scaleVector.x *= -1;
                 this.gameObject.transform.localScale = scaleVector;
             }
         }

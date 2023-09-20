@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeOrbSO: {fileID: 11400000, guid: 247757629a92ff24cb5cbf50366eed47, type: 2}
-  playerStats: {fileID: 0}
+  playerToUpgrade: {fileID: 6204503042473553551, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
   interactHint: {fileID: 1211672428249944278}
   testing: 0
 --- !u!1001 &1562342924077318489
