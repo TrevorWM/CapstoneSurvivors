@@ -661,6 +661,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 290227738155505621, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 347341281018871235, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2421570613864861137, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5227115607054851421, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -704,6 +716,14 @@ PrefabInstance:
     - target: {fileID: 6204503042473553551, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
       propertyPath: m_Name
       value: Player Standard Loadout
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238038920053780881, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 2047
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238038920053780881, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 7795999658162438295, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1369,7 +1389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6817480207312608784, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 6817480207312608784, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_LocalRotation.w
