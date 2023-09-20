@@ -44,6 +44,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private float currentHealth;
     private bool runAway = false;
     private readonly float tooClose = 3f;
+    private Vector3 scaleVector;
 
     public CharacterStatsSO EnemyStats { get => enemyStats; private set => enemyStats = value; }
 
@@ -63,6 +64,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         InvokeRepeating("PerformDetection", 0, detectionDelay);
 
         rightFacingSprite = EnemyStats.RightFacingSprite;
+        scaleVector = new Vector3(1, 1, 1);
 
         //set starting health
         currentHealth = EnemyStats.MaxHealth;
@@ -85,11 +87,13 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         {
             if (movementInput.x > 0)
             {
-                spriteRenderer.flipX = !rightFacingSprite;
+                scaleVector.x = 1;
+                spriteRenderer.transform.localScale = scaleVector;
             }
             else if (movementInput.x < 0)
             {
-                spriteRenderer.flipX = rightFacingSprite;
+                scaleVector.x = -1;
+                spriteRenderer.transform.localScale = scaleVector;
             }
         }
         else if (aiData.GetTargetsCount() > 0)
