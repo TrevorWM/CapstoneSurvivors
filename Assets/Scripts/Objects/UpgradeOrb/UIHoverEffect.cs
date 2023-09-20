@@ -12,10 +12,19 @@ public class UIHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private UnityEngine.UI.Image image;
     private Vector2 originalSize;
     private Vector2 hoverSize;
+    private UpgradeOrb orb;
+    private IUpgrade currentUpgrade;
+
+    public IUpgrade CurrentUpgrade { get => currentUpgrade; set => currentUpgrade = value; }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        //send to orb UI handler
+        //get from name of object (Portal1)
+        //get number from name-1 for index of portal
+        //on click event 
+        orb.SetSelectedUpgrade(currentUpgrade);
+        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -34,6 +43,7 @@ public class UIHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     // Start is called before the first frame update
     void Start()
     {
+        orb = GetComponentInParent<UpgradeOrb>();
         portal = GetComponent<RectTransform>();
         image = GetComponent<UnityEngine.UI.Image>();
         originalSize = new(image.sprite.rect.width, image.sprite.rect.height);

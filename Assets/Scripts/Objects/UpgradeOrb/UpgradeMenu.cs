@@ -39,6 +39,8 @@ public class UpgradeMenu : MonoBehaviour
     {
         for (int i = 0; i < upgrades.Length; i++)
         {
+            portals[i].GetComponent<UIHoverEffect>().CurrentUpgrade = upgrades[i];
+
             switch (upgrades[i].Rarity)
             {
                 case UpgradeRarity.Common:
@@ -73,8 +75,11 @@ public class UpgradeMenu : MonoBehaviour
         } 
         SetUpgrades(upgrades);
 
+
+
         return null;
     }
+    
     public void ShowUpgradeMenu()
     {
         this.gameObject.SetActive(true);

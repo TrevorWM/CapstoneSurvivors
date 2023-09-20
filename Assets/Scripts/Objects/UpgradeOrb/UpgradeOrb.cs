@@ -22,6 +22,9 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     private CharacterStats playerStats;
     private PlayerControls playerControls;
 
+    private IUpgrade chosenUpgrade;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +86,12 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         }
 
         upgradeUI.GetUpgrade(upgrades);
+    }
+
+    public void SetSelectedUpgrade(IUpgrade selected)
+    {
+        chosenUpgrade = selected;
+        Debug.Log("Selected: " + selected);
     }
 
     private bool IsUpgradePassive()

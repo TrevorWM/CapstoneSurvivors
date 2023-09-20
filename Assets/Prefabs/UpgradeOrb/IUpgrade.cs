@@ -14,6 +14,8 @@ public interface IUpgrade
     /// <returns></returns>
     public string DisplayText();
 
+    public string getInfo();
+
 }
 
 public class ActiveUpgrade : IUpgrade
@@ -29,14 +31,21 @@ public class ActiveUpgrade : IUpgrade
 
     public string DisplayText()
     {
+        /*
         // add space after each capital
         string upgradeName = Regex.Replace(upgradeType.ToString(), "([A-Z])", " $1");
         // remove text in paranthesis
         upgradeName = Regex.Replace(upgradeName, "\\([^()]*\\)", "");
         // remove "Active"
         upgradeName = Regex.Replace(upgradeName, "Active", "");
+        */
 
-        return upgradeName;
+        return UpgradeType.ActiveAbilitySO.AbilityName;
+    }
+
+    public string getInfo()
+    {
+        return UpgradeType.ActiveAbilitySO.AbilityDescription;
     }
 }
 
@@ -51,15 +60,25 @@ public class PassiveUpgrade : IUpgrade
 
     public string DisplayText()
     {
+        /*
         // add space after each capital
         string upgradeName = Regex.Replace(upgradeType.ToString(), "([A-Z])", " $1");
         // remove text in paranthesis
         upgradeName = Regex.Replace(upgradeName, "\\([^()]*\\)", "");
         // remove "passive"
         upgradeName = Regex.Replace(upgradeName, "Passive", "");
+        */
 
-        return upgradeName;
+        
+        return UpgradeType.PassiveUpgradeSO.UpgradeName;
     }
+
+    public string getInfo()
+    {
+        throw new System.NotImplementedException();
+    }
+
+
 
     public override string ToString()
     {
