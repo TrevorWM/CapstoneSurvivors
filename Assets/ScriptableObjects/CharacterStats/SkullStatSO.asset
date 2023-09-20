@@ -15,7 +15,7 @@ MonoBehaviour:
   maxHealth: 10
   defense: 0
   moveSpeed: 2.5
-  baseDamage: 1
+  baseDamage: 5
   attacksPerSecond: 0.5
   criticalChance: 20
   criticalDamageMultiplier: 2
