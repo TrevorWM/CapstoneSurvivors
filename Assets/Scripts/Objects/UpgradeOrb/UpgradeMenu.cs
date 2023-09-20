@@ -61,7 +61,6 @@ public class UpgradeMenu : MonoBehaviour
                         (upgrades[i].Category == UpgradeCategory.Active) ? redLegendary : purpleLegendary;
                     texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
                     break;
-
             }
         }
     }
