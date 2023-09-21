@@ -46,6 +46,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private bool runAway = false;
     private readonly float tooClose = 3f;
 
+    private float meleeBuffer = 0.5f;
     private Vector3 scaleVector;
 
 
@@ -89,14 +90,14 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         // Enemy AI movement based on Target availability
         if (aiData.currentTarget != null)
         {
-            if (movementInput.x > 0)
+            if (enemyRigidbody.velocity.x > 0)
             {
-                scaleVector.x *= -1;
+                scaleVector.x = 1;
                 this.gameObject.transform.localScale = scaleVector;
             }
-            else if (movementInput.x < 0)
+            else if (enemyRigidbody.velocity.x < 0)
             {
-                scaleVector.x *= -1;
+                scaleVector.x = -1;
                 this.gameObject.transform.localScale = scaleVector;
             }
         }
@@ -107,7 +108,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
             // check if enemy has reached player
             float distance = Vector3.Distance(aiData.currentTarget.position, transform.position);
-            if(distance <= EnemyStats.FollowDistance + 0.5f)
+            if(distance <= EnemyStats.FollowDistance + meleeBuffer)
             {
                 // if they have, they can try to attack
                 if (EnemyStats.RangedEnemy)
@@ -195,6 +196,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         if (!isAttacking)
         {
             if (meleeAttack != null) meleeAttack.UseMeleeAttack();
+            isAttacking = true;
             StartCoroutine(BasicAttackCooldown());
         }
     }

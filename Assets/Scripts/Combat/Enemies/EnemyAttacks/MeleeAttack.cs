@@ -28,6 +28,7 @@ public class MeleeAttack : MonoBehaviour, IDamager
 
     public void UseMeleeAttack()
     {
+        Debug.Log("Using Melee!");
         attackCollider.enabled = true;
     }
 
@@ -45,7 +46,7 @@ public class MeleeAttack : MonoBehaviour, IDamager
         // Info from https://discussions.unity.com/t/check-if-colliding-with-a-layer/145616/2 User: Krnitheesh16
         if ((hitLayers.value & (1 << collision.gameObject.layer)) > 0)
         {
-            Debug.Log("Hit Player!");
+            
             StartCoroutine(ColliderDisableDelay());
         }
     }
