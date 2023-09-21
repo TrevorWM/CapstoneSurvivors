@@ -19,6 +19,11 @@ public class ActiveAbilityBase : MonoBehaviour
     public float DamageModifierValue { get => damageModifierValue; }
     public bool OnCooldown { get => onCooldown; }
 
+    private void Start()
+    {
+        projectileScript = GetComponent<ProjectileBase>();
+    }
+
     /// <summary>
     /// Changes the value to increase a stat by depending on the rarity of the upgrade.
     /// </summary>
