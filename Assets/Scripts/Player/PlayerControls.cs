@@ -24,10 +24,9 @@ public class PlayerControls : MonoBehaviour
 
     private bool isDodging = false;
     private bool isAttacking = false;
-
     private Vector2 moveVector = Vector2.zero;
-
     private Rigidbody2D playerRigidbody;
+
     private PlayerInputActions playerInputActions;
     private InputAction moveInput;
     private InputAction dodgeInput;
@@ -36,6 +35,7 @@ public class PlayerControls : MonoBehaviour
     private InputAction qAbilityInput;
     private InputAction eAbilityInput;
     private InputAction m2AbilityInput;
+
     private float lastDodgeTime;
     private SpriteRenderer spriteRenderer;
 
@@ -208,18 +208,21 @@ public class PlayerControls : MonoBehaviour
         {
             if (!isDodging && !isAttacking && currentAbilities[(int)keyIndex] != null)
             {
+                //Get the active ability base from the ability slotted
                 ActiveAbilityBase ability = CurrentAbilities[(int)keyIndex].GetComponent<ActiveAbilityBase>();
-                Debug.Log(ability);
 
+                //If we got the ability and it is not on cooldown get the 
                 if (ability != null && !ability.OnCooldown)
                 {
                     isAttacking = true;
+
                     float abilityCooldown = ability.ActiveAbilitySO.AbilityCooldown;
                     float cooldownReduction = abilityCooldown * runtimeStats.CooldownReduction;
-                    ability.StartCooldown(abilityCooldown - cooldownReduction);
 
                     CurrentAbilities[(int)keyIndex].Attack();
 
+                    //Start attack timer, and individual cooldown timer
+                    ability.StartCooldown(abilityCooldown - cooldownReduction);
                     StartCoroutine(BasicAttackCooldown());
                 }
             }
