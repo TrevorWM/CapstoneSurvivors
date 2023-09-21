@@ -14,6 +14,9 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     [SerializeField]
     private bool testing;
 
+    [SerializeField]
+    private GameObject playerFallback;
+
     private GameObject playerToUpgrade;
     private CharacterStats playerStats;
     private PlayerControls playerControls;
@@ -22,6 +25,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     void Start()
     {
         interactHint.SetActive(false);
+        if (testing) InitializeOrb(playerFallback);
     }
 
     public void InitializeOrb(GameObject playerObject)
