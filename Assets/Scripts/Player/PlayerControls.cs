@@ -15,6 +15,12 @@ public class PlayerControls : MonoBehaviour
 
     [SerializeField]
     private ShootProjectile[] currentAbilities;
+    private enum AbilityKeyMap
+    {
+        Q = 0,
+        E = 1,
+        M2 = 2,
+    }
 
     private bool isDodging = false;
     private bool isAttacking = false;
@@ -97,7 +103,9 @@ public class PlayerControls : MonoBehaviour
             HandleDodge();
             HandleMovement();
             HandleBasicAttack();
-            HandleAbility(qAbilityInput);
+            HandleAbility(qAbilityInput, AbilityKeyMap.Q);
+            HandleAbility(eAbilityInput, AbilityKeyMap.E);
+            HandleAbility(m2AbilityInput, AbilityKeyMap.M2);
         }
     }
 
@@ -194,21 +202,25 @@ public class PlayerControls : MonoBehaviour
         isAttacking = false;
     }
 
-    private void HandleAbility(InputAction abilityKey)
+    private void HandleAbility(InputAction abilityKey, AbilityKeyMap keyIndex)
     {
-        if (abilityKey.IsPressed() && currentAbilities[0] != null)
+        if (abilityKey.IsPressed())
         {
-            if (!isDodging && !isAttacking)
+            if (!isDodging && !isAttacking && currentAbilities[(int)keyIndex] != null)
             {
-                ActiveAbilityBase ability = CurrentAbilities[0].GetComponent<ActiveAbilityBase>();
+                ActiveAbilityBase ability = CurrentAbilities[(int)keyIndex].GetComponent<ActiveAbilityBase>();
                 Debug.Log(ability);
 
-                if (ability != null)
+                if (ability != null && !ability.OnCooldown)
                 {
                     isAttacking = true;
                     float abilityCooldown = ability.ActiveAbilitySO.AbilityCooldown;
-                    CurrentAbilities[0].Attack();
-                    StartCoroutine(ActiveAbilityCooldown(abilityCooldown));
+                    float cooldownReduction = abilityCooldown * runtimeStats.CooldownReduction;
+                    ability.StartCooldown(abilityCooldown - cooldownReduction);
+
+                    CurrentAbilities[(int)keyIndex].Attack();
+
+                    StartCoroutine(BasicAttackCooldown());
                 }
             }
         }
@@ -217,7 +229,7 @@ public class PlayerControls : MonoBehaviour
     private IEnumerator ActiveAbilityCooldown(float cooldownDuration)
     {
         float reductionAmount = cooldownDuration * runtimeStats.CooldownReduction;
-        yield return new WaitForSeconds(cooldownDuration-reductionAmount);
+        yield return new WaitForSeconds(cooldownDuration - reductionAmount);
         isAttacking = false;
     }
 
@@ -253,7 +265,5 @@ public class PlayerControls : MonoBehaviour
         qAbilityInput.Disable();
         eAbilityInput.Disable();
         m2AbilityInput.Disable();
-    }
-
-    
+    } 
 }

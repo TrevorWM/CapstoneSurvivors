@@ -13,8 +13,11 @@ public class ActiveAbilityBase : MonoBehaviour
 
     private float damageModifierValue = 0f;
 
+    private bool onCooldown = false;
+
     public ActiveAbilitySO ActiveAbilitySO { get => abilitySO; }
     public float DamageModifierValue { get => damageModifierValue; }
+    public bool OnCooldown { get => onCooldown; }
 
     /// <summary>
     /// Changes the value to increase a stat by depending on the rarity of the upgrade.
@@ -52,5 +55,17 @@ public class ActiveAbilityBase : MonoBehaviour
         abilityInstance.transform.parent = playerControls.gameObject.transform;
         abilityInstance.transform.position = playerControls.gameObject.transform.position;
         playerControls.CurrentAbilities[abilityIndex] = abilityInstance.gameObject.GetComponent<ShootProjectile>();
+    }
+
+    public void StartCooldown(float duration)
+    {
+        onCooldown = true;
+        StartCoroutine(CooldownTimer(duration));
+    }
+
+    private IEnumerator CooldownTimer(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        onCooldown = false;
     }
 }

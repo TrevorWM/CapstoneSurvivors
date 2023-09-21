@@ -49,8 +49,11 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
             
             GameObject upgrade = Instantiate(upgradePrefab);
             ActiveAbilityBase upgradeBase = upgradePrefab.GetComponent<ActiveAbilityBase>();
-            
-            upgradeBase.AddAbilityToPlayer(playerControls, rolledRarity, upgrade, 0);
+
+            //Replace Random bit with the index for the hotkey you want
+            int abilityHotkey = UnityEngine.Random.Range(0, 3);
+
+            upgradeBase.AddAbilityToPlayer(playerControls, rolledRarity, upgrade, abilityHotkey);
         }
         
 
