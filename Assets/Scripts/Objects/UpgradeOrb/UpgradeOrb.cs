@@ -8,15 +8,13 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     [SerializeField]
     private UpgradeOrbSO upgradeOrbSO;
 
-    [SerializeField]
-    private GameObject playerToUpgrade;
-
     [SerializeField] 
     private GameObject interactHint;
 
     [SerializeField]
     private bool testing;
 
+    private GameObject playerToUpgrade;
     private CharacterStats playerStats;
     private PlayerControls playerControls;
 
@@ -24,13 +22,13 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     void Start()
     {
         interactHint.SetActive(false);
-        playerStats = playerToUpgrade.GetComponent<CharacterStats>();
-        playerControls = playerToUpgrade.GetComponent<PlayerControls>();
     }
 
     public void InitializeOrb(GameObject playerObject)
     {
-        playerStats = playerObject.GetComponent<CharacterStats>();
+        playerToUpgrade = playerObject;
+        playerStats = playerToUpgrade.GetComponent<CharacterStats>();
+        playerControls = playerToUpgrade.GetComponent<PlayerControls>();
     }
 
     public void OnInteract()
@@ -48,7 +46,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
             Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgradePrefab);
             
             GameObject upgrade = Instantiate(upgradePrefab);
-            ActiveAbilityBase upgradeBase = upgradePrefab.GetComponent<ActiveAbilityBase>();
+            ActiveAbilityBase upgradeBase = upgrade.GetComponent<ActiveAbilityBase>();
 
             //Replace Random bit with the index for the hotkey you want
             int abilityHotkey = UnityEngine.Random.Range(0, 3);

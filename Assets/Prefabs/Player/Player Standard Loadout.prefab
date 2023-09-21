@@ -446,7 +446,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveEnabled: 1
   basicAttackScript: {fileID: 8728015847825181183}
-  flashSprite: {fileID: 8584410606628690092}
+  currentAbilities:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &5085457382741582204
 MonoBehaviour:
   m_ObjectHideFlags: 0
