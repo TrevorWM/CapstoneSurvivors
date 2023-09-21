@@ -71,6 +71,33 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""d65611e7-6f1f-4f73-b404-54e9c3c2fe83"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""9675f094-2fd0-4dd9-904d-a0a148880f30"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""M2Ability"",
+                    ""type"": ""Button"",
+                    ""id"": ""ac6fe03c-57ee-44d1-a33a-5a094c2ba63d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -269,6 +296,39 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4fc83a2-15ea-46d0-97b3-51b395576db2"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""QAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""044cfacf-1e92-43e2-a605-c425b1b280bc"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""EAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""72b9e938-4e9d-448d-a111-217f16b75c20"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""M2Ability"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -861,6 +921,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Gameplay_Fire = m_Gameplay.FindAction("Fire", throwIfNotFound: true);
         m_Gameplay_Dodge = m_Gameplay.FindAction("Dodge", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+        m_Gameplay_QAbility = m_Gameplay.FindAction("QAbility", throwIfNotFound: true);
+        m_Gameplay_EAbility = m_Gameplay.FindAction("EAbility", throwIfNotFound: true);
+        m_Gameplay_M2Ability = m_Gameplay.FindAction("M2Ability", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -939,6 +1002,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Fire;
     private readonly InputAction m_Gameplay_Dodge;
     private readonly InputAction m_Gameplay_Interact;
+    private readonly InputAction m_Gameplay_QAbility;
+    private readonly InputAction m_Gameplay_EAbility;
+    private readonly InputAction m_Gameplay_M2Ability;
     public struct GameplayActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -948,6 +1014,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Fire => m_Wrapper.m_Gameplay_Fire;
         public InputAction @Dodge => m_Wrapper.m_Gameplay_Dodge;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
+        public InputAction @QAbility => m_Wrapper.m_Gameplay_QAbility;
+        public InputAction @EAbility => m_Wrapper.m_Gameplay_EAbility;
+        public InputAction @M2Ability => m_Wrapper.m_Gameplay_M2Ability;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -972,6 +1041,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @QAbility.started += instance.OnQAbility;
+            @QAbility.performed += instance.OnQAbility;
+            @QAbility.canceled += instance.OnQAbility;
+            @EAbility.started += instance.OnEAbility;
+            @EAbility.performed += instance.OnEAbility;
+            @EAbility.canceled += instance.OnEAbility;
+            @M2Ability.started += instance.OnM2Ability;
+            @M2Ability.performed += instance.OnM2Ability;
+            @M2Ability.canceled += instance.OnM2Ability;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -991,6 +1069,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @QAbility.started -= instance.OnQAbility;
+            @QAbility.performed -= instance.OnQAbility;
+            @QAbility.canceled -= instance.OnQAbility;
+            @EAbility.started -= instance.OnEAbility;
+            @EAbility.performed -= instance.OnEAbility;
+            @EAbility.canceled -= instance.OnEAbility;
+            @M2Ability.started -= instance.OnM2Ability;
+            @M2Ability.performed -= instance.OnM2Ability;
+            @M2Ability.canceled -= instance.OnM2Ability;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -1178,6 +1265,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnQAbility(InputAction.CallbackContext context);
+        void OnEAbility(InputAction.CallbackContext context);
+        void OnM2Ability(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

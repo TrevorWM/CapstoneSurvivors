@@ -13,6 +13,9 @@ public class PlayerControls : MonoBehaviour
     [SerializeField]
     private ShootProjectile basicAttackScript;
 
+    [SerializeField]
+    private ShootProjectile[] currentAbilities;
+
     private bool isDodging = false;
     private bool isAttacking = false;
 
@@ -24,12 +27,17 @@ public class PlayerControls : MonoBehaviour
     private InputAction dodgeInput;
     private InputAction basicAttackInput;
     private InputAction interactInput;
+    private InputAction qAbilityInput;
+    private InputAction eAbilityInput;
+    private InputAction m2AbilityInput;
     private float lastDodgeTime;
     private SpriteRenderer spriteRenderer;
 
     private IInteractable interactableInRange;
 
     private CharacterStats runtimeStats;
+
+    public ShootProjectile[] CurrentAbilities { get => currentAbilities; set => currentAbilities = value; }
 
     private void Awake()
     {
@@ -54,20 +62,16 @@ public class PlayerControls : MonoBehaviour
         dodgeInput = playerInputActions.Gameplay.Dodge;
         basicAttackInput = playerInputActions.Gameplay.Fire;
         interactInput = playerInputActions.Gameplay.Interact;
+        qAbilityInput = playerInputActions.Gameplay.QAbility;
+        eAbilityInput = playerInputActions.Gameplay.EAbility;
+        m2AbilityInput = playerInputActions.Gameplay.M2Ability;
 
-        moveInput.Enable();
-        dodgeInput.Enable();
-        basicAttackInput.Enable();
-        interactInput.Enable();
-
+        EnableInputs();
     }
 
     private void OnDisable()
     {
-        moveInput.Disable();
-        dodgeInput.Disable();
-        basicAttackInput.Disable();
-        interactInput.Disable();
+        DisableInputs();
     }
 
     private void Update()
@@ -93,6 +97,7 @@ public class PlayerControls : MonoBehaviour
             HandleDodge();
             HandleMovement();
             HandleBasicAttack();
+            HandleAbility(qAbilityInput);
         }
     }
 
@@ -189,6 +194,33 @@ public class PlayerControls : MonoBehaviour
         isAttacking = false;
     }
 
+    private void HandleAbility(InputAction abilityKey)
+    {
+        if (abilityKey.IsPressed() && currentAbilities[0] != null)
+        {
+            if (!isDodging && !isAttacking)
+            {
+                ActiveAbilityBase ability = CurrentAbilities[0].GetComponent<ActiveAbilityBase>();
+                Debug.Log(ability);
+
+                if (ability != null)
+                {
+                    isAttacking = true;
+                    float abilityCooldown = ability.ActiveAbilitySO.AbilityCooldown;
+                    CurrentAbilities[0].Attack();
+                    StartCoroutine(ActiveAbilityCooldown(abilityCooldown));
+                }
+            }
+        }
+    }
+
+    private IEnumerator ActiveAbilityCooldown(float cooldownDuration)
+    {
+        float reductionAmount = cooldownDuration * runtimeStats.CooldownReduction;
+        yield return new WaitForSeconds(cooldownDuration-reductionAmount);
+        isAttacking = false;
+    }
+
     /// <summary>
     /// Handles the interact logic for when the player presses the interact key.
     /// </summary>
@@ -200,4 +232,28 @@ public class PlayerControls : MonoBehaviour
         }
         
     }
+
+    private void EnableInputs()
+    {
+        moveInput.Enable();
+        dodgeInput.Enable();
+        basicAttackInput.Enable();
+        interactInput.Enable();
+        qAbilityInput.Enable();
+        eAbilityInput.Enable();
+        m2AbilityInput.Enable();
+    }
+
+    private void DisableInputs()
+    {
+        moveInput.Disable();
+        dodgeInput.Disable();
+        basicAttackInput.Disable();
+        interactInput.Disable();
+        qAbilityInput.Disable();
+        eAbilityInput.Disable();
+        m2AbilityInput.Disable();
+    }
+
+    
 }

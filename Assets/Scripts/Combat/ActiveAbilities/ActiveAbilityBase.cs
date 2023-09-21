@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ActiveAbilityBase : MonoBehaviour
@@ -43,10 +44,13 @@ public class ActiveAbilityBase : MonoBehaviour
     /// </summary>
     /// <param name="playerControls"></param>
     /// <param name="rolledAbilityRarity"></param>
-    public void AddAbilityToPlayer(PlayerControls playerControls, UpgradeRarity rolledAbilityRarity)
+    public void AddAbilityToPlayer(PlayerControls playerControls, UpgradeRarity rolledAbilityRarity, GameObject abilityInstance, int abilityIndex)
     {
         InitializeDamageModifier(rolledAbilityRarity);
         Debug.Log("Still need to add the ability to the player loadout! :(");
         //TODO: Add logic to place ability on the player
+        abilityInstance.transform.parent = playerControls.gameObject.transform;
+        abilityInstance.transform.position = playerControls.gameObject.transform.position;
+        playerControls.CurrentAbilities[abilityIndex] = abilityInstance.gameObject.GetComponent<ShootProjectile>();
     }
 }

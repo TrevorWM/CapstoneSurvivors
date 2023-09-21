@@ -44,9 +44,13 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         }
         else
         {
-            (ActiveAbilityBase upgrade, UpgradeRarity rolledRarity) = upgradeOrbSO.RollActiveUpgrade();
-            Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade.ActiveAbilitySO.AbilityName);
-            upgrade.AddAbilityToPlayer(playerControls, rolledRarity);
+            (GameObject upgradePrefab, UpgradeRarity rolledRarity) = upgradeOrbSO.RollActiveUpgrade();
+            Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgradePrefab);
+            
+            GameObject upgrade = Instantiate(upgradePrefab);
+            ActiveAbilityBase upgradeBase = upgradePrefab.GetComponent<ActiveAbilityBase>();
+            
+            upgradeBase.AddAbilityToPlayer(playerControls, rolledRarity, upgrade, 0);
         }
         
 

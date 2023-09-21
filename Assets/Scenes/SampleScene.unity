@@ -725,6 +725,14 @@ PrefabInstance:
       propertyPath: m_IncludeLayers.m_Bits
       value: 2048
       objectReference: {fileID: 0}
+    - target: {fileID: 6979098555514557906, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+      propertyPath: currentAbilities.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979098555514557906, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+      propertyPath: currentAbilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7795999658162438295, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
