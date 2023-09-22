@@ -29,7 +29,6 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     void Start()
     {
         interactHint.SetActive(false);
-        Debug.Log(upgradeUI);
         playerStats = playerToUpgrade.GetComponent<CharacterStats>();
         playerControls = playerToUpgrade.GetComponent<PlayerControls>();
     }
@@ -86,6 +85,24 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         }
 
         upgradeUI.GetUpgrade(upgrades);
+    }
+
+    public void FinalizeChoice()
+    {
+        upgradeUI.HideUpgradeMenu();
+        Debug.Log("chosenUpgrade: " + chosenUpgrade);
+
+        if (chosenUpgrade.Category == UpgradeCategory.Passive)
+        {
+            PassiveUpgrade passive = chosenUpgrade as PassiveUpgrade;
+
+            passive.GetBase().ModifyStat(playerStats, chosenUpgrade.Rarity);
+            playerStats.PrintStatSheet();
+        } else
+        {
+            // handle setting active ability...
+        }
+
     }
 
     public void SetSelectedUpgrade(IUpgrade selected)

@@ -31,15 +31,6 @@ public class ActiveUpgrade : IUpgrade
 
     public string DisplayText()
     {
-        /*
-        // add space after each capital
-        string upgradeName = Regex.Replace(upgradeType.ToString(), "([A-Z])", " $1");
-        // remove text in paranthesis
-        upgradeName = Regex.Replace(upgradeName, "\\([^()]*\\)", "");
-        // remove "Active"
-        upgradeName = Regex.Replace(upgradeName, "Active", "");
-        */
-
         return UpgradeType.ActiveAbilitySO.AbilityName;
     }
 
@@ -60,16 +51,6 @@ public class PassiveUpgrade : IUpgrade
 
     public string DisplayText()
     {
-        /*
-        // add space after each capital
-        string upgradeName = Regex.Replace(upgradeType.ToString(), "([A-Z])", " $1");
-        // remove text in paranthesis
-        upgradeName = Regex.Replace(upgradeName, "\\([^()]*\\)", "");
-        // remove "passive"
-        upgradeName = Regex.Replace(upgradeName, "Passive", "");
-        */
-
-        
         return UpgradeType.PassiveUpgradeSO.UpgradeName;
     }
 
@@ -78,7 +59,9 @@ public class PassiveUpgrade : IUpgrade
         throw new System.NotImplementedException();
     }
 
+    public PassiveUpgradeBase GetBase() => upgradeType;
 
+    public UpgradeRarity GetRarity() => rarity;
 
     public override string ToString()
     {

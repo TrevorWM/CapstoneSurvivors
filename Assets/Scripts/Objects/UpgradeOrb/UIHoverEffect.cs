@@ -24,7 +24,7 @@ public class UIHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         //get number from name-1 for index of portal
         //on click event 
         orb.SetSelectedUpgrade(currentUpgrade);
-        
+        orb.FinalizeChoice();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
