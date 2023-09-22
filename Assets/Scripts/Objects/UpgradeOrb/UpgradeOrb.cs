@@ -40,30 +40,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        /*
-        IUpgrade upgrade = upgradeOrbSO.RollUpgrade();
-        Debug.LogFormat("UpgradeOrb rolled a {0} {1}", upgrade.Rarity, upgrade.UpgradeType);
-        upgrade.UpgradeType.ModifyStat(playerStats, upgrade.Rarity);
-        playerStats.PrintStatSheet();
-        */
-
         HandleUI();
-        /*
-        if (IsUpgradePassive())
-        {
-            (PassiveUpgradeBase upgrade, UpgradeRarity rolledRarity) = upgradeOrbSO.RollPassiveUpgrade();
-            Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade.PassiveUpgradeSO.UpgradeName);
-            upgrade.ModifyStat(playerStats, rolledRarity);
-            playerStats.PrintStatSheet();
-        }
-        else
-        {
-            (ActiveAbilityBase upgrade, UpgradeRarity rolledRarity) = upgradeOrbSO.RollActiveUpgrade();
-            Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade.ActiveAbilitySO.AbilityName);
-            upgrade.AddAbilityToPlayer(playerControls, rolledRarity);
-        }
-        */
-        
 
         if (!testing)
         {
@@ -77,19 +54,24 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     /// </summary>
     private void HandleUI()
     {
+        // disable player controls and stop movement while UI is open
         playerControls.enabled = false;
         playerControls.StopMovement();
 
+        // show menu get upgrades, and send it to the ui
         upgradeUI.ShowUpgradeMenu();
         IUpgrade[] upgrades = new IUpgrade[3];
         for (int i = 0; i < 3; i++)
         {
             upgrades[i] = upgradeOrbSO.RollUpgrade();
         }
-
-        upgradeUI.GetUpgrade(upgrades);
+        upgradeUI.SetUpgrades(upgrades);
     }
 
+    /// <summary>
+    /// called by UIHoverEffect when an upgrade is chosen
+    /// applies the upgrade to the player
+    /// </summary>
     public void FinalizeChoice()
     {
         upgradeUI.HideUpgradeMenu();
@@ -106,19 +88,17 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
             // handle setting active ability...
         }
         
+        //re-enable player controls
         playerControls.enabled = true;
     }
 
+    /// <summary>
+    /// called by UIHoverEffect, sets the upgade that was chosen in the UI
+    /// </summary>
+    /// <param name="selected"></param>
     public void SetSelectedUpgrade(IUpgrade selected)
     {
         chosenUpgrade = selected;
-        Debug.Log("Selected: " + selected);
-    }
-
-    private bool IsUpgradePassive()
-    {
-        float roll = UnityEngine.Random.Range(0f, 1f);
-        return roll <= upgradeOrbSO.PassiveChance;
     }
 
     public void ToggleInteractUI()

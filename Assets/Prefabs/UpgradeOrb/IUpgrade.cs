@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
+/// <summary>
+/// Allows upgrades to be dealt with as a singular type
+/// </summary>
 public interface IUpgrade
 {
     UpgradeRarity Rarity { get; }
     UpgradeCategory Category { get; }
 
-    /// <summary>
-    /// Each upgrade type needs to at the very least be able to return a string 
-    /// </summary>
-    /// <returns></returns>
     public string DisplayText();
 
     public string getInfo();
@@ -34,6 +33,7 @@ public class ActiveUpgrade : IUpgrade
         return UpgradeType.ActiveAbilitySO.AbilityName;
     }
 
+    // will be used to get the description text that appears when hovering over the upgrade
     public string getInfo()
     {
         return UpgradeType.ActiveAbilitySO.AbilityDescription;
@@ -54,6 +54,7 @@ public class PassiveUpgrade : IUpgrade
         return UpgradeType.PassiveUpgradeSO.UpgradeName;
     }
 
+    // will be used to get the description text that appears when hovering over the upgrade
     public string getInfo()
     {
         throw new System.NotImplementedException();
@@ -61,12 +62,6 @@ public class PassiveUpgrade : IUpgrade
 
     public PassiveUpgradeBase GetBase() => upgradeType;
 
-    public UpgradeRarity GetRarity() => rarity;
-
-    public override string ToString()
-    {
-        return "Upgrade: " + upgradeType + ", Rarity: " + Rarity;
-    }
 }
 
 public enum UpgradeCategory

@@ -19,17 +19,14 @@ public class UIHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //send to orb UI handler
-        //get from name of object (Portal1)
-        //get number from name-1 for index of portal
-        //on click event 
+        //send upgrade to orb
         orb.SetSelectedUpgrade(currentUpgrade);
+        //tell orb that it can finalize the upgrade process
         orb.FinalizeChoice();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //image.sprite = hoverSize;
         portal.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, hoverSize.x);
         portal.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, hoverSize.y);
     }
@@ -50,9 +47,4 @@ public class UIHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         hoverSize = new(image.sprite.rect.width * 1.2f, image.sprite.rect.height * 1.2f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

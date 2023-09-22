@@ -30,11 +30,10 @@ public class UpgradeMenu : MonoBehaviour
     [SerializeField]
     private GameObject[] texts = new GameObject[3];
 
-    private void Start()
-    {
-        
-    }
-
+    /// <summary>
+    /// Sets the upgrades to the portals in the UI
+    /// </summary>
+    /// <param name="upgrades"></param>
     public void SetUpgrades(IUpgrade[] upgrades)
     {
         for (int i = 0; i < upgrades.Length; i++)
@@ -65,19 +64,6 @@ public class UpgradeMenu : MonoBehaviour
                     break;
             }
         }
-    }
-
-    public IUpgrade GetUpgrade(IUpgrade[] upgrades)
-    {
-        for (int i = 0; i < upgrades.Length; i++)
-        {
-            Debug.Log(upgrades[i].ToString());
-        } 
-        SetUpgrades(upgrades);
-
-
-
-        return null;
     }
     
     public void ShowUpgradeMenu()
