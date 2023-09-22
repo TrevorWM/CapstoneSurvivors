@@ -77,6 +77,9 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     /// </summary>
     private void HandleUI()
     {
+        playerControls.enabled = false;
+        playerControls.StopMovement();
+
         upgradeUI.ShowUpgradeMenu();
         IUpgrade[] upgrades = new IUpgrade[3];
         for (int i = 0; i < 3; i++)
@@ -102,7 +105,8 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         {
             // handle setting active ability...
         }
-
+        
+        playerControls.enabled = true;
     }
 
     public void SetSelectedUpgrade(IUpgrade selected)

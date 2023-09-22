@@ -205,6 +205,13 @@ public class PlayerControls : MonoBehaviour, IDamageable
         
     }
 
+    public void StopMovement()
+    {
+        if (playerRigidbody)
+        {
+            playerRigidbody.velocity = Vector2.zero;
+        }
+    }
     public void TakeDamage(AttackPayload payload)
     {
         if (payload.EnemyProjectile)
