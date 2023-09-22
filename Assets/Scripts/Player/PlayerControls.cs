@@ -5,17 +5,13 @@ using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerControls : MonoBehaviour, IDamageable
+public class PlayerControls : MonoBehaviour
 {
     [SerializeField]
     private bool moveEnabled;
 
     [SerializeField]
     private ShootProjectile basicAttackScript;
-    [SerializeField]
-    private FlashSprite flashSprite;
-    [SerializeField]
-    private DamageCalculator calculator;
 
     private bool isDodging = false;
     private bool isAttacking = false;
@@ -210,15 +206,6 @@ public class PlayerControls : MonoBehaviour, IDamageable
         if (playerRigidbody)
         {
             playerRigidbody.velocity = Vector2.zero;
-        }
-    }
-    public void TakeDamage(AttackPayload payload)
-    {
-        if (payload.EnemyProjectile)
-        {
-            float damage = calculator.CalculateDamage(payload, ownerStats: runtimeStats);
-            Debug.Log("Player hit for: " + damage);
-            flashSprite.HitFlash(spriteRenderer);
         }
     }
 }

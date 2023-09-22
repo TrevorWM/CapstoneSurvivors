@@ -4,10 +4,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CharacterStats : MonoBehaviour
+public class CharacterStats : MonoBehaviour, IDamageable
 {
-    [SerializeField] private CharacterStatsSO characterStatsSO;
-    [SerializeField] private bool testHealth;
+    [SerializeField]
+    private CharacterStatsSO characterStatsSO;
+
+    [SerializeField]
+    private DamageCalculator calculator;
+
+    [SerializeField]
+    private FlashSprite flashSprite;
+
+    [SerializeField]
+    private bool testHealth;
 
     // Base Stats
     private float maxHealth;
@@ -39,6 +48,7 @@ public class CharacterStats : MonoBehaviour
 
     //Visual
     private bool rightFacingSprite;
+    private SpriteRenderer spriteRenderer;
 
     public UnityEvent updateHealth;
 
@@ -200,6 +210,8 @@ public class CharacterStats : MonoBehaviour
         projectileSpeed = characterStatsSO.ProjectileSpeed;
         rightFacingSprite = characterStatsSO.RightFacingSprite;
         
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        
         if (testHealth) StartCoroutine(TestHP());
     }
 
@@ -272,5 +284,16 @@ public class CharacterStats : MonoBehaviour
             "Character Element: {10}", MaxHealth, CurrentHealth, Defense, BaseDamage, CriticalChance, CriticalDamageMultiplier,
             WaterAffinity, FireAffinity, NatureAffinity, CooldownReduction, CharacterElement);
 
+    }
+
+    public void TakeDamage(AttackPayload payload)
+    {
+        if (payload.EnemyProjectile)
+        {
+            flashSprite.HitFlash(spriteRenderer);
+            float damage = calculator.CalculateDamage(payload, ownerStats: this);
+            RemoveHealth(damage);
+            
+        }
     }
 }
