@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -6,8 +7,6 @@ using UnityEngine.Pool;
 
 public class ShootProjectile : MonoBehaviour
 {
-    private CharacterStats stats;
-
     [SerializeField]
     private AimTowardsMouseComponent aimHelper;
 
@@ -17,11 +16,17 @@ public class ShootProjectile : MonoBehaviour
     [SerializeField]
     private float projectileSpeed;
 
+    private CharacterStats characterStats;
+    private ActiveAbilityBase activeAbility;
+    private ActiveAbilitySO abilityStats;
+
     private AttackPayload payload;
 
     private void Start()
     {
-        stats = GetComponentInParent<CharacterStats>();
+        characterStats = GetComponentInParent<CharacterStats>();
+        activeAbility = GetComponent<ActiveAbilityBase>();
+        if (activeAbility != null ) abilityStats = activeAbility.ActiveAbilitySO;
     }
 
     /// <summary>
@@ -32,7 +37,15 @@ public class ShootProjectile : MonoBehaviour
     /// </summary>
     private void BuildAttackPayload()
     {
-        payload = new AttackPayload(stats.BaseDamage, 0, ElementType.None, stats.CriticalChance, stats.CriticalDamageMultiplier);
+        if (activeAbility != null)
+        {
+            payload = new AttackPayload(characterStats.BaseDamage, abilityStats.DotTime, abilityStats.AbilityElement, characterStats.CriticalChance,
+                characterStats.CriticalDamageMultiplier, activeAbility.DamageModifierValue, GetCharacterElementalAffinity());
+        } 
+        else
+        {
+            payload = new AttackPayload(characterStats.BaseDamage, 0, ElementType.None, characterStats.CriticalChance, characterStats.CriticalDamageMultiplier);
+        }
     }
 
     /// <summary>
@@ -52,5 +65,22 @@ public class ShootProjectile : MonoBehaviour
         BuildAttackPayload();
 
         projectile.FireProjectile(shootDirection, projectileSpeed, payload);
+    }
+
+    private float GetCharacterElementalAffinity()
+    {
+        switch (abilityStats.AbilityElement)
+        {
+            case ElementType.Fire:
+                return characterStats.FireAffinity;
+            case ElementType.Nature:
+                return characterStats.NatureAffinity;
+            case ElementType.Water:
+                return characterStats.WaterAffinity;
+            case ElementType.None:
+                    return 1.0f;
+            default:
+                return 1.0f;
+        }
     }
 }

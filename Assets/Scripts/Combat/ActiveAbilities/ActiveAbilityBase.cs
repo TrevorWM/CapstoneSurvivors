@@ -55,12 +55,13 @@ public class ActiveAbilityBase : MonoBehaviour
     public void AddAbilityToPlayer(PlayerControls playerControls, UpgradeRarity rolledAbilityRarity, GameObject abilityInstance, int abilityIndex)
     {
         InitializeDamageModifier(rolledAbilityRarity);
-        Debug.Log("Still need to add the ability to the player loadout! :(");
+        
         //TODO: Add logic to place ability on the player
         if (playerControls.CurrentAbilities[abilityIndex] != null) Destroy(playerControls.CurrentAbilities[abilityIndex].gameObject);
         
         abilityInstance.transform.parent = playerControls.gameObject.transform;
         abilityInstance.transform.position = playerControls.gameObject.transform.position;
+
         playerControls.CurrentAbilities[abilityIndex] = abilityInstance.gameObject.GetComponent<ShootProjectile>();
     }
 

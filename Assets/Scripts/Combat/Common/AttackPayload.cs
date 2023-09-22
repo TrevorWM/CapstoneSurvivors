@@ -1,6 +1,8 @@
+using UnityEngine;
+
 public class AttackPayload
 {
-    private float damage;
+    //private float damage;
     private bool isCrit;
     private int dotSeconds;
 
