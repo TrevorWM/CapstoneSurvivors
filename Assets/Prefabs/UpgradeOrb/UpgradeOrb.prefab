@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 72d47309df0ba00489442189542c142b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e07cc6d024e658a489e28b2ec0240b4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeOrbSO: {fileID: 11400000, guid: 247757629a92ff24cb5cbf50366eed47, type: 2}
-  playerStats: {fileID: 0}
+  playerToUpgrade: {fileID: 6204503042473553551, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
   interactHint: {fileID: 1211672428249944278}
   testing: 0
 --- !u!1001 &1562342924077318489

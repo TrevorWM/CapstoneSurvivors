@@ -157,7 +157,7 @@ MonoBehaviour:
   upgradeOrb: {fileID: 9000103055329027066, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
   roomPool:
   - {fileID: 5807390494452671454, guid: e156c73cb6617ea4ab04867e57366647, type: 3}
-  - {fileID: 1471911003641814160, guid: c00a4bff3c7b35348b41055d90bafbe7, type: 3}
+  - {fileID: 5807390494452671454, guid: ef16ae15f0bae6a428e05341dd4cd29a, type: 3}
 --- !u!4 &277871838
 Transform:
   m_ObjectHideFlags: 0
