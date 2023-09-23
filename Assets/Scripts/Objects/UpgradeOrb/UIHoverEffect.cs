@@ -19,6 +19,9 @@ public class UIHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        //change size back
+        portal.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize.x);
+        portal.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, originalSize.y);
         //send upgrade to orb
         orb.SetSelectedUpgrade(currentUpgrade);
         //tell orb that it can finalize the upgrade process

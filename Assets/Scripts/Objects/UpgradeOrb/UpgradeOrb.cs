@@ -41,12 +41,6 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         HandleUI();
-
-        if (!testing)
-        {
-            this.gameObject.SetActive(false);
-            interactHint.SetActive(false);
-        }
     }
 
     /// <summary>
@@ -54,7 +48,8 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     /// </summary>
     private void HandleUI()
     {
-        // stop time for pause state
+        // stop time for pause state, disable controls so player cannot activate orb multiple times
+        playerControls.enabled = false;
         Time.timeScale = 0.0f;
 
         // show menu get upgrades, and send it to the ui
@@ -87,9 +82,17 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
             // handle setting active ability...
         }
 
-        //re-enable time
+
+        //re-enable time, re-enable controls
+        playerControls.enabled = true;
         Time.timeScale = 1.0f;
 
+        // delete orb
+        if (!testing)
+        {
+            this.gameObject.SetActive(false);
+            interactHint.SetActive(false);
+        }
     }
 
     /// <summary>
