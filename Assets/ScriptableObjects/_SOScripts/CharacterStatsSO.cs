@@ -122,7 +122,7 @@ public class CharacterStatsSO : ScriptableObject
     public float FollowDistance 
     { 
         get => followDistance; 
-        set => followDistance = Mathf.Max(0, value); 
+        set => followDistance = Mathf.Max(1, value); 
     }
     public global::System.Boolean RightFacingSprite 
     { 
