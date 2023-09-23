@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,12 +10,12 @@ public class PassiveUpgradeBase : MonoBehaviour
     [SerializeField]
     private PassiveUpgradeSO passiveUpgradeSO;
 
-    private float upgradeModifyValue = 0f;
+    private float upgradeModifyValue = 0;
 
     public PassiveUpgradeSO PassiveUpgradeSO { get => passiveUpgradeSO; }
 
     /// <summary>
-    /// Changes the value to increase a stat by depending on the rarity of the upgrade.
+    /// Changes the value to increase a stat by depending on the rarity of the upgradeType.
     /// </summary>
     /// <param name="rolledUpgradeRarity"></param>
     private void InitializeUpgradeValue(UpgradeRarity rolledUpgradeRarity)
@@ -38,7 +39,7 @@ public class PassiveUpgradeBase : MonoBehaviour
 
     /// <summary>
     /// Modifies the player's stats based on the stat type and rarity level of
-    /// the upgrade.
+    /// the upgradeType.
     /// </summary>
     /// <param name="playerStats"></param>
     /// <param name="rolledUpgradeRarity"></param>
@@ -83,5 +84,17 @@ public class PassiveUpgradeBase : MonoBehaviour
                 playerStats.CooldownReduction += upgradeModifyValue;
                 break;
         }
+    }
+
+    public string DisplayText()
+    {
+        // add space after each capital
+        string upgradeName = Regex.Replace(passiveUpgradeSO.UpgradeName, "([A-Z])", " $1");
+        // remove text in paranthesis
+        upgradeName = Regex.Replace(upgradeName, "\\([^()]*\\)", "");
+        // remove "passive"
+        upgradeName = Regex.Replace(upgradeName, "Passive", "");
+
+        return upgradeName;
     }
 }

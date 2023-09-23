@@ -200,4 +200,12 @@ public class PlayerControls : MonoBehaviour
         }
         
     }
+
+    public void StopMovement()
+    {
+        if (playerRigidbody)
+        {
+            playerRigidbody.velocity = Vector2.zero;
+        }
+    }
 }

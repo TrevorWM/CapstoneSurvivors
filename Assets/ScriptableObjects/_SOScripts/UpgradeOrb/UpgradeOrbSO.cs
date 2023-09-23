@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.Windows;
 
 [CreateAssetMenu(fileName = "UpgradeOrbSO", menuName = "ScriptableObjects/Upgrades/UpgradeOrb", order = 0)]
 public class UpgradeOrbSO : ScriptableObject
@@ -66,17 +68,37 @@ public class UpgradeOrbSO : ScriptableObject
 
     }
 
-    public (PassiveUpgradeBase, UpgradeRarity) RollPassiveUpgrade()
+    
+
+    public IUpgrade RollUpgrade()
     {
-        if (passiveUpgradeList.Length > 0)
+        if (IsUpgradePassive())
         {
-            UpgradeRarity itemRarity = RollRarity();
-            PassiveUpgradeBase upgrade = passiveUpgradeList[UnityEngine.Random.Range(0, passiveUpgradeList.Length)];
-            return (upgrade, itemRarity);
+            IUpgrade upgrade = new PassiveUpgrade()
+            {
+                Rarity = RollRarity(),
+                UpgradeType = passiveUpgradeList[UnityEngine.Random.Range(0, passiveUpgradeList.Length)]
+            };
+            return (upgrade);
+            
         } else
         {
-            throw new Exception("No Passive Upgrades in list");
+            
+            IUpgrade upgrade = new ActiveUpgrade()
+            {
+                Rarity = RollRarity(),
+                UpgradeType = activeUpgradeList[UnityEngine.Random.Range(0, activeUpgradeList.Length)]
+            };
+            return (upgrade);
+            
         }
+        
+    }
+
+    private bool IsUpgradePassive()
+    {
+        float roll = UnityEngine.Random.Range(0f, 1f);
+        return roll <= PassiveChance;
     }
 
     public (ActiveAbilityBase, UpgradeRarity) RollActiveUpgrade()
@@ -122,6 +144,7 @@ public class UpgradeOrbSO : ScriptableObject
         return weightArray;
     }
 }
+
 
 public enum UpgradeRarity
 {

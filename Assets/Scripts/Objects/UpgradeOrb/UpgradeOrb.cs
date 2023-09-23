@@ -17,8 +17,13 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     [SerializeField]
     private bool testing;
 
+    [SerializeField]
+    public UpgradeMenu upgradeUI;
     private CharacterStats playerStats;
     private PlayerControls playerControls;
+
+    private IUpgrade chosenUpgrade;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,20 +40,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        if (IsUpgradePassive())
-        {
-            (PassiveUpgradeBase upgrade, UpgradeRarity rolledRarity) = upgradeOrbSO.RollPassiveUpgrade();
-            Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade.PassiveUpgradeSO.UpgradeName);
-            upgrade.ModifyStat(playerStats, rolledRarity);
-            playerStats.PrintStatSheet();
-        }
-        else
-        {
-            (ActiveAbilityBase upgrade, UpgradeRarity rolledRarity) = upgradeOrbSO.RollActiveUpgrade();
-            Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade.ActiveAbilitySO.AbilityName);
-            upgrade.AddAbilityToPlayer(playerControls, rolledRarity);
-        }
-        
+        HandleUI();
 
         if (!testing)
         {
@@ -57,10 +49,56 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         }
     }
 
-    private bool IsUpgradePassive()
+    /// <summary>
+    /// Handles all the Upgrade UI elements
+    /// </summary>
+    private void HandleUI()
     {
-        float roll = UnityEngine.Random.Range(0f, 1f);
-        return roll <= upgradeOrbSO.PassiveChance;
+        // stop time for pause state
+        Time.timeScale = 0.0f;
+
+        // show menu get upgrades, and send it to the ui
+        upgradeUI.ShowUpgradeMenu();
+        IUpgrade[] upgrades = new IUpgrade[3];
+        for (int i = 0; i < 3; i++)
+        {
+            upgrades[i] = upgradeOrbSO.RollUpgrade();
+        }
+        upgradeUI.SetUpgrades(upgrades);
+    }
+
+    /// <summary>
+    /// called by UIHoverEffect when an upgrade is chosen
+    /// applies the upgrade to the player
+    /// </summary>
+    public void FinalizeChoice()
+    {
+        upgradeUI.HideUpgradeMenu();
+        Debug.Log("chosenUpgrade: " + chosenUpgrade);
+
+        if (chosenUpgrade.Category == UpgradeCategory.Passive)
+        {
+            PassiveUpgrade passive = chosenUpgrade as PassiveUpgrade;
+
+            passive.GetBase().ModifyStat(playerStats, chosenUpgrade.Rarity);
+            playerStats.PrintStatSheet();
+        } else
+        {
+            // handle setting active ability...
+        }
+
+        //re-enable time
+        Time.timeScale = 1.0f;
+
+    }
+
+    /// <summary>
+    /// called by UIHoverEffect, sets the upgade that was chosen in the UI
+    /// </summary>
+    /// <param name="selected"></param>
+    public void SetSelectedUpgrade(IUpgrade selected)
+    {
+        chosenUpgrade = selected;
     }
 
     public void ToggleInteractUI()
