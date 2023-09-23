@@ -38,7 +38,6 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
     private MeleeAttack meleeAttack;
     private AttackPayload payload;
-    private bool rightFacingSprite;
     private bool isAttacking = false;
     private Rigidbody2D enemyRigidbody;
     private SpriteRenderer spriteRenderer;
@@ -67,7 +66,6 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         // Detecting Player and Obstacles around
         InvokeRepeating("PerformDetection", 0, detectionDelay);
 
-        rightFacingSprite = EnemyStats.RightFacingSprite;
         scaleVector = new Vector3(1, 1, 1);
 
         //set starting health

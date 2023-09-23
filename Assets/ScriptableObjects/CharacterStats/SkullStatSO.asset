@@ -33,4 +33,4 @@ MonoBehaviour:
   projectileSpeed: 0
   characterSprite: {fileID: 0}
   weaponSprite: {fileID: 0}
-  rightFacingSprite: 0
+  rightFacingSprite: 1
