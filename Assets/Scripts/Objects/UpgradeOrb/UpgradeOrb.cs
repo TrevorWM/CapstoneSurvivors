@@ -54,9 +54,8 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     /// </summary>
     private void HandleUI()
     {
-        // disable player controls and stop movement while UI is open
-        playerControls.enabled = false;
-        playerControls.StopMovement();
+        // stop time for pause state
+        Time.timeScale = 0.0f;
 
         // show menu get upgrades, and send it to the ui
         upgradeUI.ShowUpgradeMenu();
@@ -87,9 +86,10 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         {
             // handle setting active ability...
         }
-        
-        //re-enable player controls
-        playerControls.enabled = true;
+
+        //re-enable time
+        Time.timeScale = 1.0f;
+
     }
 
     /// <summary>
