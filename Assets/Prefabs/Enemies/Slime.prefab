@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 1603129020892427706}
   - component: {fileID: -8845345897855512825}
   - component: {fileID: 5186207667564074165}
+  - component: {fileID: 5786242615323208527}
   m_Layer: 6
   m_Name: Slime
   m_TagString: Untagged
@@ -449,7 +450,6 @@ Transform:
   m_Children:
   - {fileID: 6989721038594002040}
   - {fileID: 6702233160293241122}
-  - {fileID: 2461501467100576586}
   - {fileID: 5631818891243155326}
   - {fileID: 5421559687791119983}
   m_Father: {fileID: 0}
@@ -486,9 +486,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0026854873, y: -0.2416954}
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.3398943
 --- !u!50 &4881513082183679108
 Rigidbody2D:
   serializedVersion: 4

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: DirtFloor
+  m_Name: Door Close 1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 94462a4e192252b428ac31ec91100fb0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 28f1984af5043ec4a989a76e32598d3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -33,4 +33,4 @@ MonoBehaviour:
     e33: 1
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
-  m_ColliderType: 0
+  m_ColliderType: 1
