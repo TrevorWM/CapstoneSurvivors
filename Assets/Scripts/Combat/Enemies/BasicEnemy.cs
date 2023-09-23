@@ -36,15 +36,18 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     [SerializeField]
     public UnityEvent enemyDeath;
 
+    private MeleeAttack meleeAttack;
     private AttackPayload payload;
-    private bool rightFacingSprite;
     private bool isAttacking = false;
     private Rigidbody2D enemyRigidbody;
     private SpriteRenderer spriteRenderer;
     private float currentHealth;
     private bool runAway = false;
     private readonly float tooClose = 3f;
+
+    private float meleeBuffer = 0.5f;
     private Vector3 scaleVector;
+
 
     public CharacterStatsSO EnemyStats { get => enemyStats; private set => enemyStats = value; }
 
@@ -63,11 +66,11 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         // Detecting Player and Obstacles around
         InvokeRepeating("PerformDetection", 0, detectionDelay);
 
-        rightFacingSprite = EnemyStats.RightFacingSprite;
         scaleVector = new Vector3(1, 1, 1);
 
         //set starting health
         currentHealth = EnemyStats.MaxHealth;
+        meleeAttack = GetComponentInChildren<MeleeAttack>();
 
         enemySpawn.Invoke();
     }
@@ -85,15 +88,15 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         // Enemy AI movement based on Target availability
         if (aiData.currentTarget != null)
         {
-            if (movementInput.x > 0)
+            if (enemyRigidbody.velocity.x > 0)
             {
                 scaleVector.x = 1;
-                spriteRenderer.transform.localScale = scaleVector;
+                this.gameObject.transform.localScale = scaleVector;
             }
-            else if (movementInput.x < 0)
+            else if (enemyRigidbody.velocity.x < 0)
             {
                 scaleVector.x = -1;
-                spriteRenderer.transform.localScale = scaleVector;
+                this.gameObject.transform.localScale = scaleVector;
             }
         }
         else if (aiData.GetTargetsCount() > 0)
@@ -103,7 +106,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
             // check if enemy has reached player
             float distance = Vector3.Distance(aiData.currentTarget.position, transform.position);
-            if(distance < EnemyStats.FollowDistance)
+            if(distance <= EnemyStats.FollowDistance + meleeBuffer)
             {
                 // if they have, they can try to attack
                 if (EnemyStats.RangedEnemy)
@@ -116,7 +119,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
                     }
                 } else
                 {
-                    // basic melee enemy attack code here
+                    HandleMeleeAttack();
                 }
             }
 
@@ -183,6 +186,16 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
             isAttacking = true;
             StartCoroutine("BasicAttackCooldown");
+        }
+    }
+
+    private void HandleMeleeAttack()
+    {
+        if (!isAttacking)
+        {
+            if (meleeAttack != null) meleeAttack.UseMeleeAttack();
+            isAttacking = true;
+            StartCoroutine(BasicAttackCooldown());
         }
     }
 
