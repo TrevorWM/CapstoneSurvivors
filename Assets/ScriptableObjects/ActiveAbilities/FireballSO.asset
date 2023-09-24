@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Fireball
   abilityDescription: Shoots a projectile that explodes dealing damage in an area!
-  abilityIcon: {fileID: 0}
+  abilityIcon: {fileID: 21300000, guid: 241f1733aa2fa6d46baa8fd0b50e8f47, type: 3}
   abilityCooldown: 2
   projectileSpeed: 5
   abilityElement: 0

@@ -269,4 +269,13 @@ public class PlayerControls : MonoBehaviour
         eAbilityInput.Disable();
         m2AbilityInput.Disable();
     } 
+
+    public void StopMovement()
+    {
+        if (playerRigidbody)
+        {
+            playerRigidbody.velocity = Vector2.zero;
+        }
+    }
 }
+
