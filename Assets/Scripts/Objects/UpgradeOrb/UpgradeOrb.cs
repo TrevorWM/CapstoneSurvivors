@@ -85,6 +85,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
         if (chosenUpgrade.Category == UpgradeCategory.Passive)
         {
+            // handle setting passive upgrade...
             PassiveUpgrade passive = chosenUpgrade as PassiveUpgrade;
 
             passive.GetBase().ModifyStat(playerStats, chosenUpgrade.Rarity);
@@ -95,15 +96,17 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         {
             // handle setting active ability...
             ActiveUpgrade active = chosenUpgrade as ActiveUpgrade;
-
+            // show prompt
             inputPrompt.SetActive(true);
 
+            // prompt user to put the ability on a specific key
             StartCoroutine(GetKey(active));
-
-
         }
     }
 
+    /// <summary>
+    /// Closes orb UI
+    /// </summary>
     private void CloseUI()
     {
         //re-enable time, re-enable controls
@@ -119,7 +122,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     }
 
     /// <summary>
-    /// Freezes the game and waits for a user input key
+    /// Freezes the game and waits for a user input key, then applies the ability to the chosen key
     /// REF: https://forum.unity.com/threads/waiting-for-input-in-a-custom-function.474387/
     /// </summary>
     /// <returns></returns>
@@ -128,30 +131,30 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         bool done = false;
         while (!done)
         {
-            Debug.Log("nothing chosen...");
+            // You can set the ability to the key in here too, we have the ability and the key so we
+            // just need the ability to bind it 
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 done = true;
                 Debug.Log("Q chosen!");
                 QAbility.GetComponent<UnityEngine.UI.Image>().sprite = active.UpgradeType.ActiveAbilitySO.AbilityIcon;
-                CloseUI();
             }
             else if (Input.GetKeyDown(KeyCode.E))
             {
                 done = true;
                 Debug.Log("E chosen!");
                 EAbility.GetComponent<UnityEngine.UI.Image>().sprite = active.UpgradeType.ActiveAbilitySO.AbilityIcon;
-                CloseUI();
             } 
-            else  if (Input.GetMouseButtonDown(1))
+            else  if (Input.GetMouseButtonDown(1)) //RMB
             {
                 done = true;
                 Debug.Log("RMB chosen!");
                 RMBAbility.GetComponent<UnityEngine.UI.Image>().sprite = active.UpgradeType.ActiveAbilitySO.AbilityIcon;
-                CloseUI();
             }
             yield return null;
         }
+        // close input prompt UI
+        CloseUI();
         inputPrompt.SetActive(false);
     }
 

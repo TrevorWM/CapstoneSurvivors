@@ -78,6 +78,9 @@ public class PlayerControls : MonoBehaviour
         pauseInput.Disable();
     }
 
+    /// <summary>
+    /// Diables all player actions, other than pausing
+    /// </summary>
     private void DisablePlayerActions()
     {
         moveInput.Disable();
@@ -85,7 +88,10 @@ public class PlayerControls : MonoBehaviour
         basicAttackInput.Disable();
         interactInput.Disable();
     }
-    
+
+    /// <summary>
+    /// Enables all player actions, after unpausing
+    /// </summary>
     private void EnablePlayerActions()
     {
         moveInput.Enable();
