@@ -7,7 +7,6 @@ public class MeleeAttack : MonoBehaviour, IDamager
     [SerializeField]
     private LayerMask hitLayers;
 
-    [SerializeField]
     private Collider2D attackCollider;
 
     private BasicEnemy ownerScript;
@@ -18,6 +17,7 @@ public class MeleeAttack : MonoBehaviour, IDamager
     private void Start()
     {
         ownerScript = GetComponentInParent<BasicEnemy>();
+        attackCollider = GetComponentInParent<Collider2D>();
 
         if (attackCollider != null) attackCollider.enabled = false;
         if (ownerScript != null) ownerStatSO = ownerScript.EnemyStats;
@@ -28,15 +28,14 @@ public class MeleeAttack : MonoBehaviour, IDamager
 
     public void UseMeleeAttack()
     {
-        Debug.Log("Using Melee!");
+        Debug.Log("Collider: " + attackCollider.enabled);
         attackCollider.enabled = true;
+        StartCoroutine(ColliderDisableDelay());
     }
 
     public AttackPayload GetAttackPayload()
     {
-        if (attackPayload != null) return this.attackPayload;
-        
-        return null;
+        return this.attackPayload;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -46,8 +45,7 @@ public class MeleeAttack : MonoBehaviour, IDamager
         // Info from https://discussions.unity.com/t/check-if-colliding-with-a-layer/145616/2 User: Krnitheesh16
         if ((hitLayers.value & (1 << collision.gameObject.layer)) > 0)
         {
-            
-            StartCoroutine(ColliderDisableDelay());
+         
         }
     }
 
