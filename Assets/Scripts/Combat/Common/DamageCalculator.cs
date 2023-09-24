@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Rendering.FilterWindow;
 
 public class DamageCalculator : MonoBehaviour
 {
@@ -56,8 +57,7 @@ public class DamageCalculator : MonoBehaviour
             damage = 1;
         }
 
-        Debug.Log("Damage: " + damage);
-
+        LogDamage(payload, damage, isCrit);
         return damage;
     }
 
@@ -119,5 +119,24 @@ public class DamageCalculator : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void LogDamage(AttackPayload payload, float calculatedDamage, bool crit)
+    {
+        Debug.LogFormat("=== Attack Payload Info ===\n" +
+            "Final Damage:\t\t{9}\n" +
+            "Critical:\t\t\t{8}\n" +
+            "------\n" +
+            "Base Damage:\t\t{0}\n" +
+            "DoT Time:\t\t{1}s\n" +
+            "Element:\t\t{2}\n" +
+            "Crit Chance:\t\t{3}%\n" +
+            "Crit Multiplier:\t\t{4}x\n" +
+            "Damage Multiplier:\t{5}x\n" +
+            "Affinity Multiplier:\t{6}x\n" +
+            "Enemy Shot:\t\t{7}\n",
+            payload.Damage, payload.DotSeconds, payload.Element,
+            payload.CritChance, payload.CritMultiplier, payload.DamageMultiplier,
+            payload.ElementalAffinity, payload.EnemyProjectile, crit, calculatedDamage);
     }
 }

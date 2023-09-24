@@ -19,13 +19,13 @@ MonoBehaviour:
   attacksPerSecond: 2
   criticalChance: 2
   criticalDamageMultiplier: 2
-  characterElement: 2
+  characterElement: 3
   dodgeForce: 8.5
   dodgeDuration: 0.2
   dodgeCooldown: 1.5
-  waterAffinity: 0
-  fireAffinity: 0
-  natureAffinity: 0
+  waterAffinity: 1
+  fireAffinity: 1
+  natureAffinity: 1
   cooldownReduction: 0
   detectionRadius: 0
   followDistance: 0

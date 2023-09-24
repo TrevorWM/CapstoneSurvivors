@@ -21,12 +21,14 @@ public class ActiveUpgrade : IUpgrade
 {
 
     private ActiveAbilityBase upgradeType;
+    private GameObject upgradePrefab;
     private UpgradeRarity rarity;
 
     public UpgradeCategory Category => UpgradeCategory.Active;
 
     public UpgradeRarity Rarity { get => rarity; set => rarity = value; }
     public ActiveAbilityBase UpgradeType { get => upgradeType; set => upgradeType = value; }
+    public GameObject UpgradePrefab { get => upgradePrefab; set => upgradePrefab = value; }
 
     public string DisplayText()
     {
