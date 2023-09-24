@@ -15,6 +15,8 @@ public class PlayerControls : MonoBehaviour
 
     [SerializeField]
     private GameObject pauseUI;
+    
+    [SerializeField]
     private ShootProjectile[] currentAbilities;
     private enum AbilityKeyMap
     {

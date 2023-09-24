@@ -103,19 +103,17 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
             // prompt user to put the ability on a specific key
             StartCoroutine(GetKey(active));
-/*
-            ActiveUpgrade active = chosenUpgrade as ActiveUpgrade;
-            GameObject abilityInstance = Instantiate(active.UpgradePrefab);
-
-            ActiveAbilityBase upgradeBase = abilityInstance.GetComponent<ActiveAbilityBase>();
-
-            //Replace Random bit with the index for the hotkey you want
-            int abilityHotkey = UnityEngine.Random.Range(0, 3);
-
-            upgradeBase.AddAbilityToPlayer(playerControls, active.Rarity, abilityInstance, abilityHotkey);
-            */
 
         }
+    }
+
+    private void AddAbilityToPlayer(ActiveUpgrade active, int key)
+    {
+        GameObject abilityInstance = Instantiate(active.UpgradePrefab);
+
+        ActiveAbilityBase upgradeBase = abilityInstance.GetComponent<ActiveAbilityBase>();
+
+        upgradeBase.AddAbilityToPlayer(playerControls, active.Rarity, abilityInstance, key);
     }
 
     /// <summary>
@@ -147,23 +145,26 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         {
             // You can set the ability to the key in here too, we have the ability and the key so we
             // just need the ability to bind it 
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q)) // key 0
             {
                 done = true;
                 Debug.Log("Q chosen!");
                 QAbility.GetComponent<UnityEngine.UI.Image>().sprite = active.UpgradeType.ActiveAbilitySO.AbilityIcon;
+                AddAbilityToPlayer(active, 0);
             }
-            else if (Input.GetKeyDown(KeyCode.E))
+            else if (Input.GetKeyDown(KeyCode.E)) // key 1
             {
                 done = true;
                 Debug.Log("E chosen!");
                 EAbility.GetComponent<UnityEngine.UI.Image>().sprite = active.UpgradeType.ActiveAbilitySO.AbilityIcon;
-            } 
-            else  if (Input.GetMouseButtonDown(1)) //RMB
+                AddAbilityToPlayer(active, 1);
+            }
+            else  if (Input.GetMouseButtonDown(1)) // 2
             {
                 done = true;
                 Debug.Log("RMB chosen!");
                 RMBAbility.GetComponent<UnityEngine.UI.Image>().sprite = active.UpgradeType.ActiveAbilitySO.AbilityIcon;
+                AddAbilityToPlayer(active, 2);
             }
             yield return null;
         }

@@ -402,17 +402,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4048436168766289364, guid: 6cc3652d311da0140b57a6e28afcbab9, type: 3}
   m_PrefabInstance: {fileID: 101525401}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &260857369 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3056093305511502917, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
-  m_PrefabInstance: {fileID: 2877130052447893318}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f870cfc01dc36a4b99dcc4f8cc959e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &605068140 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6204503042473553551, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
@@ -674,10 +663,20 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cc3652d311da0140b57a6e28afcbab9, type: 3}
+--- !u!1 &801138700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9126708795102525746, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+  m_PrefabInstance: {fileID: 1061534896}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &913408325 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7028438650709132940, guid: 6177a2f138b17f044bfcb6e0d8f0fc37, type: 3}
   m_PrefabInstance: {fileID: 8959235126121532299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &943387710 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4994514907252015179, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+  m_PrefabInstance: {fileID: 1061534896}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1061534896
 PrefabInstance:
@@ -904,6 +903,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2293014966238584519, guid: b44c5ca768a13ce44a9e58cb90ed6c31, type: 3}
   m_PrefabInstance: {fileID: 3053068876914019320}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1408910541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4292540222013369575, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+  m_PrefabInstance: {fileID: 1061534896}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1494328898
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,6 +945,11 @@ Transform:
   - {fileID: 224406919}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1514949700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3102453779195776672, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+  m_PrefabInstance: {fileID: 1061534896}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1552993397 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1310825153766437246, guid: 8ef7d4c021a5ad941b1b7a368976f4e2, type: 3}
@@ -1219,19 +1228,23 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
-      propertyPath: testing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
-      propertyPath: upgradeUI
+      propertyPath: EAbility
       value: 
-      objectReference: {fileID: 260857369}
+      objectReference: {fileID: 801138700}
+    - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+      propertyPath: QAbility
+      value: 
+      objectReference: {fileID: 943387710}
+    - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+      propertyPath: RMBAbility
+      value: 
+      objectReference: {fileID: 1408910541}
+    - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+      propertyPath: inputPrompt
+      value: 
+      objectReference: {fileID: 1514949700}
     - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
       propertyPath: playerFallback
-      value: 
-      objectReference: {fileID: 605068140}
-    - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
-      propertyPath: playerToUpgrade
       value: 
       objectReference: {fileID: 605068140}
     - target: {fileID: 9000103055329027066, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
@@ -1403,7 +1416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5816929903169527994, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: orthographic size
-      value: 8.578125
+      value: 9.40625
       objectReference: {fileID: 0}
     - target: {fileID: 6817480207312608784, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_LocalPosition.x
