@@ -196,9 +196,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeOrbSO: {fileID: 11400000, guid: 247757629a92ff24cb5cbf50366eed47, type: 2}
-  playerToUpgrade: {fileID: 0}
   interactHint: {fileID: 1211672428249944278}
-  testing: 1
+  testing: 0
+  playerFallback: {fileID: 0}
   upgradeUI: {fileID: 3056093305511502917}
 --- !u!1001 &1562342924077318489
 PrefabInstance:
