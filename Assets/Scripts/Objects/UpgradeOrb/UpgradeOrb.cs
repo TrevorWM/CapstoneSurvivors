@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Playables;
 using UnityEngine;
 
 public class UpgradeOrb : MonoBehaviour, IInteractable
@@ -19,6 +20,17 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
     [SerializeField]
     public UpgradeMenu upgradeUI;
+
+    [SerializeField]
+    private GameObject QAbility;
+    [SerializeField]
+    private GameObject RMBAbility;
+    [SerializeField]
+    private GameObject EAbility;
+    [SerializeField]
+    private GameObject inputPrompt;
+    private char inputKey;
+
     private CharacterStats playerStats;
     private PlayerControls playerControls;
 
@@ -77,12 +89,23 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
             passive.GetBase().ModifyStat(playerStats, chosenUpgrade.Rarity);
             playerStats.PrintStatSheet();
+
+            CloseUI();
         } else
         {
             // handle setting active ability...
+            ActiveUpgrade active = chosenUpgrade as ActiveUpgrade;
+
+            inputPrompt.SetActive(true);
+
+            StartCoroutine(GetKey(active));
+
+
         }
+    }
 
-
+    private void CloseUI()
+    {
         //re-enable time, re-enable controls
         playerControls.enabled = true;
         Time.timeScale = 1.0f;
@@ -96,6 +119,43 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     }
 
     /// <summary>
+    /// Freezes the game and waits for a user input key
+    /// REF: https://forum.unity.com/threads/waiting-for-input-in-a-custom-function.474387/
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator GetKey(ActiveUpgrade active)
+    {
+        bool done = false;
+        while (!done)
+        {
+            Debug.Log("nothing chosen...");
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                done = true;
+                Debug.Log("Q chosen!");
+                QAbility.GetComponent<UnityEngine.UI.Image>().sprite = active.UpgradeType.ActiveAbilitySO.AbilityIcon;
+                CloseUI();
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                done = true;
+                Debug.Log("E chosen!");
+                EAbility.GetComponent<UnityEngine.UI.Image>().sprite = active.UpgradeType.ActiveAbilitySO.AbilityIcon;
+                CloseUI();
+            } 
+            else  if (Input.GetMouseButtonDown(1))
+            {
+                done = true;
+                Debug.Log("RMB chosen!");
+                RMBAbility.GetComponent<UnityEngine.UI.Image>().sprite = active.UpgradeType.ActiveAbilitySO.AbilityIcon;
+                CloseUI();
+            }
+            yield return null;
+        }
+        inputPrompt.SetActive(false);
+    }
+
+    /// <summary>
     /// called by UIHoverEffect, sets the upgade that was chosen in the UI
     /// </summary>
     /// <param name="selected"></param>
@@ -103,6 +163,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     {
         chosenUpgrade = selected;
     }
+
 
     public void ToggleInteractUI()
     {

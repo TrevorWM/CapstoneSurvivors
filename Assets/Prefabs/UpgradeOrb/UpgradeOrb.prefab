@@ -200,6 +200,10 @@ MonoBehaviour:
   interactHint: {fileID: 1211672428249944278}
   testing: 1
   upgradeUI: {fileID: 3056093305511502917}
+  QAbility: {fileID: 0}
+  RMBAbility: {fileID: 0}
+  EAbility: {fileID: 0}
+  inputPrompt: {fileID: 0}
 --- !u!1001 &1562342924077318489
 PrefabInstance:
   m_ObjectHideFlags: 0
