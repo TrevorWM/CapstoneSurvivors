@@ -51,6 +51,33 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "QAbility",
+                    "type": "Button",
+                    "id": "d65611e7-6f1f-4f73-b404-54e9c3c2fe83",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EAbility",
+                    "type": "Button",
+                    "id": "9675f094-2fd0-4dd9-904d-a0a148880f30",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "M2Ability",
+                    "type": "Button",
+                    "id": "ac6fe03c-57ee-44d1-a33a-5a094c2ba63d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "dfebb113-4cff-4e81-9fa3-92024a5e3f23",
@@ -256,6 +283,39 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e4fc83a2-15ea-46d0-97b3-51b395576db2",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "QAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "044cfacf-1e92-43e2-a605-c425b1b280bc",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "EAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "72b9e938-4e9d-448d-a111-217f16b75c20",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "M2Ability",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

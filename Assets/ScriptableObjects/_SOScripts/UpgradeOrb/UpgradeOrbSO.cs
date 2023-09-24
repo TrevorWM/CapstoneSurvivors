@@ -33,7 +33,7 @@ public class UpgradeOrbSO : ScriptableObject
     private PassiveUpgradeBase[] passiveUpgradeList;
 
     [SerializeField, SerializeReference]
-    private ActiveAbilityBase[] activeUpgradeList;
+    private GameObject[] activeUpgradeList;
 
     public int CommonWeight 
     {
@@ -83,11 +83,14 @@ public class UpgradeOrbSO : ScriptableObject
             
         } else
         {
-            
+
+            GameObject upgradePrefab = activeUpgradeList[UnityEngine.Random.Range(0, activeUpgradeList.Length)];
+
             IUpgrade upgrade = new ActiveUpgrade()
             {
                 Rarity = RollRarity(),
-                UpgradeType = activeUpgradeList[UnityEngine.Random.Range(0, activeUpgradeList.Length)]
+                UpgradePrefab = upgradePrefab,
+                UpgradeType = upgradePrefab.GetComponent<ActiveAbilityBase>(),
             };
             return (upgrade);
             
@@ -101,13 +104,14 @@ public class UpgradeOrbSO : ScriptableObject
         return roll <= PassiveChance;
     }
 
-    public (ActiveAbilityBase, UpgradeRarity) RollActiveUpgrade()
+    public (GameObject, UpgradeRarity) RollActiveUpgrade()
     {
         if (activeUpgradeList.Length > 0)
         {
             UpgradeRarity itemRarity = RollRarity();
-            ActiveAbilityBase upgrade = activeUpgradeList[UnityEngine.Random.Range(0, activeUpgradeList.Length)];
-            return (upgrade, itemRarity);
+            GameObject upgradePrefab = Instantiate(activeUpgradeList[UnityEngine.Random.Range(0, activeUpgradeList.Length)]);
+            //ActiveAbilityBase upgrade = upgradeInstance.GetComponent<ActiveAbilityBase>();
+            return (upgradePrefab, itemRarity);
         }
         else
         {

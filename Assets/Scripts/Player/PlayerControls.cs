@@ -15,13 +15,19 @@ public class PlayerControls : MonoBehaviour
 
     [SerializeField]
     private GameObject pauseUI;
+    private ShootProjectile[] currentAbilities;
+    private enum AbilityKeyMap
+    {
+        Q = 0,
+        E = 1,
+        M2 = 2,
+    }
 
     private bool isDodging = false;
     private bool isAttacking = false;
-
     private Vector2 moveVector = Vector2.zero;
-
     private Rigidbody2D playerRigidbody;
+
     private PlayerInputActions playerInputActions;
     private InputAction moveInput;
     private InputAction dodgeInput;
@@ -29,12 +35,18 @@ public class PlayerControls : MonoBehaviour
     private InputAction interactInput;
     private InputAction pauseInput;
     private bool gamePaused = false;
+    private InputAction qAbilityInput;
+    private InputAction eAbilityInput;
+    private InputAction m2AbilityInput;
+
     private float lastDodgeTime;
     private SpriteRenderer spriteRenderer;
 
     private IInteractable interactableInRange;
 
     private CharacterStats runtimeStats;
+
+    public ShootProjectile[] CurrentAbilities { get => currentAbilities; set => currentAbilities = value; }
 
     private void Awake()
     {
@@ -60,44 +72,16 @@ public class PlayerControls : MonoBehaviour
         basicAttackInput = playerInputActions.Gameplay.Fire;
         interactInput = playerInputActions.Gameplay.Interact;
         pauseInput = playerInputActions.Gameplay.Pause;
+        qAbilityInput = playerInputActions.Gameplay.QAbility;
+        eAbilityInput = playerInputActions.Gameplay.EAbility;
+        m2AbilityInput = playerInputActions.Gameplay.M2Ability;
 
-        moveInput.Enable();
-        dodgeInput.Enable();
-        basicAttackInput.Enable();
-        interactInput.Enable();
-        pauseInput.Enable();
-
+        EnableInputs();
     }
 
     private void OnDisable()
     {
-        moveInput.Disable();
-        dodgeInput.Disable();
-        basicAttackInput.Disable();
-        interactInput.Disable();
-        pauseInput.Disable();
-    }
-
-    /// <summary>
-    /// Diables all player actions, other than pausing
-    /// </summary>
-    private void DisablePlayerActions()
-    {
-        moveInput.Disable();
-        dodgeInput.Disable();
-        basicAttackInput.Disable();
-        interactInput.Disable();
-    }
-
-    /// <summary>
-    /// Enables all player actions, after unpausing
-    /// </summary>
-    private void EnablePlayerActions()
-    {
-        moveInput.Enable();
-        dodgeInput.Enable();
-        basicAttackInput.Enable();
-        interactInput.Enable();
+        DisableInputs();
     }
 
     private void Update()
@@ -124,6 +108,9 @@ public class PlayerControls : MonoBehaviour
             HandleDodge();
             HandleMovement();
             HandleBasicAttack();
+            HandleAbility(qAbilityInput, AbilityKeyMap.Q);
+            HandleAbility(eAbilityInput, AbilityKeyMap.E);
+            HandleAbility(m2AbilityInput, AbilityKeyMap.M2);
         }
     }
 
@@ -220,6 +207,40 @@ public class PlayerControls : MonoBehaviour
         isAttacking = false;
     }
 
+    private void HandleAbility(InputAction abilityKey, AbilityKeyMap keyIndex)
+    {
+        if (abilityKey.IsPressed())
+        {
+            if (!isDodging && !isAttacking && currentAbilities[(int)keyIndex] != null)
+            {
+                //Get the active ability base from the ability slotted
+                ActiveAbilityBase ability = CurrentAbilities[(int)keyIndex].GetComponent<ActiveAbilityBase>();
+
+                //If we got the ability and it is not on cooldown get the 
+                if (ability != null && !ability.OnCooldown)
+                {
+                    isAttacking = true;
+
+                    float abilityCooldown = ability.ActiveAbilitySO.AbilityCooldown;
+                    float cooldownReduction = abilityCooldown * runtimeStats.CooldownReduction;
+
+                    CurrentAbilities[(int)keyIndex].Attack();
+
+                    //Start attack timer, and individual cooldown timer
+                    ability.StartCooldown(abilityCooldown - cooldownReduction);
+                    StartCoroutine(BasicAttackCooldown());
+                }
+            }
+        }
+    }
+
+    private IEnumerator ActiveAbilityCooldown(float cooldownDuration)
+    {
+        float reductionAmount = cooldownDuration * runtimeStats.CooldownReduction;
+        yield return new WaitForSeconds(cooldownDuration - reductionAmount);
+        isAttacking = false;
+    }
+
     /// <summary>
     /// Handles the interact logic for when the player presses the interact key.
     /// </summary>
@@ -256,6 +277,59 @@ public class PlayerControls : MonoBehaviour
 
     }
 
+    private void EnableInputs()
+    {
+        moveInput.Enable();
+        dodgeInput.Enable();
+        basicAttackInput.Enable();
+        interactInput.Enable();
+        qAbilityInput.Enable();
+        eAbilityInput.Enable();
+        m2AbilityInput.Enable();
+        pauseInput.Enable();
+    }
+
+    private void DisableInputs()
+    {
+        moveInput.Disable();
+        dodgeInput.Disable();
+        basicAttackInput.Disable();
+        interactInput.Disable();
+        qAbilityInput.Disable();
+        eAbilityInput.Disable();
+        m2AbilityInput.Disable();
+        pauseInput.Disable();
+    } 
+
+        /// <summary>
+    /// Diables all player actions, other than pausing
+    /// </summary>
+    private void DisablePlayerActions()
+    {
+        moveInput.Disable();
+        dodgeInput.Disable();
+        basicAttackInput.Disable();
+        interactInput.Disable();
+        qAbilityInput.Disable();
+        eAbilityInput.Disable();
+        m2AbilityInput.Disable();
+    }
+
+    /// <summary>
+    /// Enables all player actions, after unpausing
+    /// </summary>
+    private void EnablePlayerActions()
+    {
+        moveInput.Enable();
+        dodgeInput.Enable();
+        basicAttackInput.Enable();
+        interactInput.Enable();
+        qAbilityInput.Enable();
+        eAbilityInput.Enable();
+        m2AbilityInput.Enable();
+        
+    }
+
     public void StopMovement()
     {
         if (playerRigidbody)
@@ -264,3 +338,4 @@ public class PlayerControls : MonoBehaviour
         }
     }
 }
+

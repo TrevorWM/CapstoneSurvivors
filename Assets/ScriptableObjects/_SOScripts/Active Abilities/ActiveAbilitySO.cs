@@ -20,6 +20,9 @@ public class ActiveAbilitySO : ScriptableObject
     private float abilityCooldown;
 
     [SerializeField]
+    private int dotTime;
+
+    [SerializeField]
     private float projectileSpeed;
 
     [SerializeField]
@@ -42,6 +45,7 @@ public class ActiveAbilitySO : ScriptableObject
     public string AbilityDescription { get => abilityDescription; }
     public Sprite AbilityIcon { get => abilityIcon; }
     public float AbilityCooldown { get => abilityCooldown; }
+    public int DotTime { get => dotTime; private set => dotTime = Mathf.Max(0, value); }
     public float ProjectileSpeed { get => projectileSpeed; }
     public float CommonDamageModifier { get => commonDamageModifier; set => commonDamageModifier = Mathf.Max(0, value); }
     public float UncommonDamageModifier { get => uncommonDamageModifier; set => uncommonDamageModifier = Mathf.Max(0, value); }
@@ -51,6 +55,7 @@ public class ActiveAbilitySO : ScriptableObject
 
     private void OnValidate()
     {
+        DotTime = dotTime;
         CommonDamageModifier = commonDamageModifier;
         UncommonDamageModifier = uncommonDamageModifier;
         RareDamageModifier = rareDamageModifier;
