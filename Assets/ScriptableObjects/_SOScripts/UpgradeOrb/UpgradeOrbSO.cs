@@ -83,11 +83,14 @@ public class UpgradeOrbSO : ScriptableObject
             
         } else
         {
-            
+
+            GameObject upgradePrefab = activeUpgradeList[UnityEngine.Random.Range(0, activeUpgradeList.Length)];
+
             IUpgrade upgrade = new ActiveUpgrade()
             {
                 Rarity = RollRarity(),
-                UpgradeType = activeUpgradeList[UnityEngine.Random.Range(0, activeUpgradeList.Length)]
+                UpgradePrefab = upgradePrefab,
+                UpgradeType = upgradePrefab.GetComponent<ActiveAbilityBase>(),
             };
             return (upgrade);
             
@@ -106,8 +109,9 @@ public class UpgradeOrbSO : ScriptableObject
         if (activeUpgradeList.Length > 0)
         {
             UpgradeRarity itemRarity = RollRarity();
-            GameObject upgrade = activeUpgradeList[UnityEngine.Random.Range(0, activeUpgradeList.Length)];
-            return (upgrade, itemRarity);
+            GameObject upgradePrefab = Instantiate(activeUpgradeList[UnityEngine.Random.Range(0, activeUpgradeList.Length)]);
+            //ActiveAbilityBase upgrade = upgradeInstance.GetComponent<ActiveAbilityBase>();
+            return (upgradePrefab, itemRarity);
         }
         else
         {
