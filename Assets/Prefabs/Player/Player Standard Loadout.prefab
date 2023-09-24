@@ -1481,6 +1481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveEnabled: 1
   basicAttackScript: {fileID: 8728015847825181183}
+  pauseUI: {fileID: 5566959166037620504}
 --- !u!114 &5085457382741582204
 MonoBehaviour:
   m_ObjectHideFlags: 0

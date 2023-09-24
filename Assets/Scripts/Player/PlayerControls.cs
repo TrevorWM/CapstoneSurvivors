@@ -13,6 +13,9 @@ public class PlayerControls : MonoBehaviour
     [SerializeField]
     private ShootProjectile basicAttackScript;
 
+    [SerializeField]
+    private GameObject pauseUI;
+
     private bool isDodging = false;
     private bool isAttacking = false;
 
@@ -24,6 +27,8 @@ public class PlayerControls : MonoBehaviour
     private InputAction dodgeInput;
     private InputAction basicAttackInput;
     private InputAction interactInput;
+    private InputAction pauseInput;
+    private bool gamePaused = false;
     private float lastDodgeTime;
     private SpriteRenderer spriteRenderer;
 
@@ -54,11 +59,13 @@ public class PlayerControls : MonoBehaviour
         dodgeInput = playerInputActions.Gameplay.Dodge;
         basicAttackInput = playerInputActions.Gameplay.Fire;
         interactInput = playerInputActions.Gameplay.Interact;
+        pauseInput = playerInputActions.Gameplay.Pause;
 
         moveInput.Enable();
         dodgeInput.Enable();
         basicAttackInput.Enable();
         interactInput.Enable();
+        pauseInput.Enable();
 
     }
 
@@ -68,12 +75,30 @@ public class PlayerControls : MonoBehaviour
         dodgeInput.Disable();
         basicAttackInput.Disable();
         interactInput.Disable();
+        pauseInput.Disable();
+    }
+
+    private void DisablePlayerActions()
+    {
+        moveInput.Disable();
+        dodgeInput.Disable();
+        basicAttackInput.Disable();
+        interactInput.Disable();
+    }
+    
+    private void EnablePlayerActions()
+    {
+        moveInput.Enable();
+        dodgeInput.Enable();
+        basicAttackInput.Enable();
+        interactInput.Enable();
     }
 
     private void Update()
     {
         moveVector = moveInput.ReadValue<Vector2>().normalized;
         HandleInteract();
+        HandlePause();
 
         if (moveVector.x > 0)
         {
@@ -199,6 +224,30 @@ public class PlayerControls : MonoBehaviour
             interactableInRange.OnInteract();
         }
         
+    }
+    
+    /// <summary>
+    /// Handles the interact logic for when the player presses the interact key.
+    /// </summary>
+    private void HandlePause()
+    {
+        if (pauseInput.WasPerformedThisFrame() && !gamePaused)
+        {
+            gamePaused = true;
+            // stop time for pause state, disable controls so player cannot activate orb multiple times
+            DisablePlayerActions();
+            Time.timeScale = 0.0f;
+            pauseUI.SetActive(true);
+        } 
+        else if (pauseInput.WasPerformedThisFrame() && gamePaused)
+        {
+            gamePaused = false;
+            // stop time for pause state, disable controls so player cannot activate orb multiple times
+            EnablePlayerActions();
+            Time.timeScale = 1.0f;
+            pauseUI.SetActive(false);
+        }
+
     }
 
     public void StopMovement()

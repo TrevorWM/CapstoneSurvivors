@@ -712,14 +712,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5750662619859502814, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6204503042473553551, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
       propertyPath: m_Name
       value: Player Standard Loadout
       objectReference: {fileID: 0}
+    - target: {fileID: 6979098555514557906, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+      propertyPath: pauseUI
+      value: 
+      objectReference: {fileID: 1489188410}
     - target: {fileID: 7795999658162438295, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -872,6 +872,11 @@ BoxCollider2D:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2293014966238584519, guid: b44c5ca768a13ce44a9e58cb90ed6c31, type: 3}
   m_PrefabInstance: {fileID: 3053068876914019320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1489188410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5566959166037620504, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+  m_PrefabInstance: {fileID: 1061534896}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1494328898
 GameObject:
