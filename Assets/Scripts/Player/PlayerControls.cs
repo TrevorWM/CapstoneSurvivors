@@ -17,7 +17,7 @@ public class PlayerControls : MonoBehaviour
     private GameObject pauseUI;
     
     [SerializeField]
-    private ShootProjectile[] currentAbilities;
+    private GameObject[] currentAbilities;
     private enum AbilityKeyMap
     {
         Q = 0,
@@ -48,7 +48,7 @@ public class PlayerControls : MonoBehaviour
 
     private CharacterStats runtimeStats;
 
-    public ShootProjectile[] CurrentAbilities { get => currentAbilities; set => currentAbilities = value; }
+    public GameObject[] CurrentAbilities { get => currentAbilities; set => currentAbilities = value; }
 
     private void Awake()
     {
@@ -226,7 +226,7 @@ public class PlayerControls : MonoBehaviour
                     float abilityCooldown = ability.ActiveAbilitySO.AbilityCooldown;
                     float cooldownReduction = abilityCooldown * runtimeStats.CooldownReduction;
 
-                    CurrentAbilities[(int)keyIndex].Attack();
+                    ability.GetComponent<ShootProjectile>().Attack();
 
                     //Start attack timer, and individual cooldown timer
                     ability.StartCooldown(abilityCooldown - cooldownReduction);

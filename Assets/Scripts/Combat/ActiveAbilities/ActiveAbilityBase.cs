@@ -8,7 +8,6 @@ public class ActiveAbilityBase : MonoBehaviour
     [SerializeField]
     private ActiveAbilitySO abilitySO;
 
-    [SerializeField]
     private ProjectileBase projectileScript;
 
     private float damageModifierValue = 0f;
@@ -62,7 +61,7 @@ public class ActiveAbilityBase : MonoBehaviour
         abilityInstance.transform.parent = playerControls.gameObject.transform;
         abilityInstance.transform.position = playerControls.gameObject.transform.position;
 
-        playerControls.CurrentAbilities[abilityIndex] = abilityInstance.gameObject.GetComponent<ShootProjectile>();
+        playerControls.CurrentAbilities[abilityIndex] = abilityInstance.gameObject;
     }
 
     public void StartCooldown(float duration)
