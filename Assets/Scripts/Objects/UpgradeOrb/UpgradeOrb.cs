@@ -43,28 +43,6 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        /*
-        if (IsUpgradePassive())
-        {
-            (PassiveUpgradeBase upgrade, UpgradeRarity rolledRarity) = upgradeOrbSO.RollPassiveUpgrade();
-            Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgrade.PassiveUpgradeSO.UpgradeName);
-            upgrade.ModifyStat(playerStats, rolledRarity);
-            playerStats.PrintStatSheet();
-        }
-        else
-        {
-            (GameObject upgradePrefab, UpgradeRarity rolledRarity) = upgradeOrbSO.RollActiveUpgrade();
-            Debug.LogFormat("UpgradeOrb rolled a {0} {1}", rolledRarity, upgradePrefab);
-            
-            GameObject upgrade = Instantiate(upgradePrefab);
-            ActiveAbilityBase upgradeBase = upgrade.GetComponent<ActiveAbilityBase>();
-
-            //Replace Random bit with the index for the hotkey you want
-            int abilityHotkey = UnityEngine.Random.Range(0, 3);
-
-            upgradeBase.AddAbilityToPlayer(playerControls, rolledRarity, upgrade, abilityHotkey);
-        }
-        */
         HandleUI();
     }
 
