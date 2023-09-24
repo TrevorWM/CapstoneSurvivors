@@ -763,9 +763,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+--- !u!1 &1061534897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4932360336079133598, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+  m_PrefabInstance: {fileID: 1061534896}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1061534898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5227115607054851421, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+  m_PrefabInstance: {fileID: 1061534896}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1061534899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4183093052754754739, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+  m_PrefabInstance: {fileID: 1061534896}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1061534900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2022045400470548398, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
   m_PrefabInstance: {fileID: 1061534896}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1077363451
@@ -1240,13 +1255,41 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1408910541}
     - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+      propertyPath: EBackground
+      value: 
+      objectReference: {fileID: 1061534897}
+    - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+      propertyPath: QBackground
+      value: 
+      objectReference: {fileID: 1061534900}
+    - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
       propertyPath: inputPrompt
       value: 
       objectReference: {fileID: 1514949700}
     - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+      propertyPath: RMBBackground
+      value: 
+      objectReference: {fileID: 1061534899}
+    - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+      propertyPath: RareBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: 6e732e7bb2f10204697422f7ecc11740, type: 3}
+    - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
       propertyPath: playerFallback
       value: 
       objectReference: {fileID: 605068140}
+    - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+      propertyPath: CommonBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: a8aee94b8b76bec4c84e9c9d17112719, type: 3}
+    - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+      propertyPath: UncommonBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: 04d14ba1c13c63d47886ffd29c36d296, type: 3}
+    - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+      propertyPath: LegendaryBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: b44d82882f41014468dabc0c34f1acfc, type: 3}
     - target: {fileID: 9000103055329027066, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
       propertyPath: m_Name
       value: UpgradeOrb

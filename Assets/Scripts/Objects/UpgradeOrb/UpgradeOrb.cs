@@ -23,6 +23,22 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     public UpgradeMenu upgradeUI;
 
     [SerializeField]
+    private GameObject QBackground;
+    [SerializeField]
+    private GameObject RMBBackground;
+    [SerializeField]
+    private GameObject EBackground;
+
+    [SerializeField]
+    private Sprite CommonBackground;
+    [SerializeField]
+    private Sprite UncommonBackground;
+    [SerializeField]
+    private Sprite RareBackground;
+    [SerializeField]
+    private Sprite LegendaryBackground;
+
+    [SerializeField]
     private GameObject QAbility;
     [SerializeField]
     private GameObject RMBAbility;
@@ -30,7 +46,6 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     private GameObject EAbility;
     [SerializeField]
     private GameObject inputPrompt;
-    private char inputKey;
 
     private CharacterStats playerStats;
     private PlayerControls playerControls;
@@ -151,6 +166,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
                 Debug.Log("Q chosen!");
                 QAbility.GetComponent<UnityEngine.UI.Image>().sprite = active.UpgradeType.ActiveAbilitySO.AbilityIcon;
                 AddAbilityToPlayer(active, 0);
+                SetBackgroundRarity(active.Rarity, QBackground);
             }
             else if (Input.GetKeyDown(KeyCode.E)) // key 1
             {
@@ -158,6 +174,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
                 Debug.Log("E chosen!");
                 EAbility.GetComponent<UnityEngine.UI.Image>().sprite = active.UpgradeType.ActiveAbilitySO.AbilityIcon;
                 AddAbilityToPlayer(active, 1);
+                SetBackgroundRarity(active.Rarity, EBackground);
             }
             else  if (Input.GetMouseButtonDown(1)) // 2
             {
@@ -165,6 +182,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
                 Debug.Log("RMB chosen!");
                 RMBAbility.GetComponent<UnityEngine.UI.Image>().sprite = active.UpgradeType.ActiveAbilitySO.AbilityIcon;
                 AddAbilityToPlayer(active, 2);
+                SetBackgroundRarity(active.Rarity, RMBBackground);
             }
             yield return null;
         }
@@ -172,6 +190,27 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         CloseUI();
         inputPrompt.SetActive(false);
     }
+
+    private void SetBackgroundRarity(UpgradeRarity rarity, GameObject abilityBackground)
+    {
+        switch (rarity)
+        {
+            case UpgradeRarity.Common:
+                abilityBackground.GetComponent<UnityEngine.UI.Image>().sprite = CommonBackground;
+                break;
+            case UpgradeRarity.Uncommon:
+                abilityBackground.GetComponent<UnityEngine.UI.Image>().sprite = UncommonBackground;
+                break;
+            case UpgradeRarity.Rare:
+                abilityBackground.GetComponent<UnityEngine.UI.Image>().sprite = RareBackground;
+                break;
+            case UpgradeRarity.Legendary:
+                abilityBackground.GetComponent<UnityEngine.UI.Image>().sprite = LegendaryBackground;
+                break;
+
+        }
+    }
+
 
     /// <summary>
     /// called by UIHoverEffect, sets the upgade that was chosen in the UI
