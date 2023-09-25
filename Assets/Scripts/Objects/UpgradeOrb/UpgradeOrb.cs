@@ -31,7 +31,6 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     void Start()
     {
         interactHint.SetActive(false);
-        if (testing) InitializeOrb(playerFallback);
     }
 
     public void InitializeOrb(GameObject playerObject)
@@ -43,6 +42,8 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
+        if (playerToUpgrade == null) InitializeOrb(playerFallback);
+        
         HandleUI();
     }
 
