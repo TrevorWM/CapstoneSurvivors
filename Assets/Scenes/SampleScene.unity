@@ -630,13 +630,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1494328899}
     m_Modifications:
+    - target: {fileID: 2122655532151863065, guid: 6cc3652d311da0140b57a6e28afcbab9, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2122655532151863065, guid: 6cc3652d311da0140b57a6e28afcbab9, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2122655532151863065, guid: 6cc3652d311da0140b57a6e28afcbab9, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3574591359294871927, guid: 6cc3652d311da0140b57a6e28afcbab9, type: 3}
       propertyPath: m_Name
       value: DarkCultist
       objectReference: {fileID: 0}
     - target: {fileID: 3574591359294871927, guid: 6cc3652d311da0140b57a6e28afcbab9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4048436168766289364, guid: 6cc3652d311da0140b57a6e28afcbab9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -703,12 +715,28 @@ PrefabInstance:
       propertyPath: m_IncludeLayers.m_Bits
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1275682005404776794, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5608013407492119588, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: m_Name
       value: Slime
       objectReference: {fileID: 0}
     - target: {fileID: 5608013407492119588, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259527030535461721, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
+      propertyPath: m_Radius
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259527030535461721, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259527030535461721, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
+      propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6901095349070025305, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
@@ -771,7 +799,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 290227738155505621, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 0
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 290227738155505621, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
       propertyPath: m_IncludeLayers.m_Bits
@@ -779,7 +807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 347341281018871235, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
       propertyPath: m_Radius
-      value: 0.51
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 347341281018871235, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
       propertyPath: m_IncludeLayers.m_Bits
