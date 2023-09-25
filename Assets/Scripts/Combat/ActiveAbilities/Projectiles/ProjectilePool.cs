@@ -21,10 +21,12 @@ public class ProjectilePool : MonoBehaviour
 
     WaitForSeconds projectileTimeout;
 
+    public int DefaultPoolSize { get => defaultPoolSize; set => defaultPoolSize = Mathf.Max(0,value); }
     public int MaxPoolSize { get => maxPoolSize; set => maxPoolSize = Mathf.Max(defaultPoolSize, value); }
 
     private void OnValidate()
     {
+        DefaultPoolSize = defaultPoolSize;
         MaxPoolSize = maxPoolSize;
     }
 

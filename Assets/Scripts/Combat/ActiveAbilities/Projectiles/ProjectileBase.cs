@@ -51,7 +51,7 @@ public abstract class ProjectileBase : MonoBehaviour
         // Info from https://discussions.unity.com/t/check-if-colliding-with-a-layer/145616/2 User: Krnitheesh16
         if ((hitLayers.value & (1 << collision.gameObject.layer)) > 0)
         {
-            OnTriggerEnterLogic();
+            OnTriggerEnterLogic(collision);
             pool.ReleaseProjectileFromPool(this);
         }   
     }
@@ -61,7 +61,7 @@ public abstract class ProjectileBase : MonoBehaviour
     /// OnTriggerEnter2D function without having to re-implement the collision behavior
     /// logic.
     /// </summary>
-    protected virtual void OnTriggerEnterLogic()
+    protected virtual void OnTriggerEnterLogic(Collider2D collision)
     {
         return;
     }

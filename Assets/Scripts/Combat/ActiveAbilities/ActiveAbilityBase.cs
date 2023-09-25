@@ -8,6 +8,8 @@ public abstract class ActiveAbilityBase : MonoBehaviour
     [SerializeField]
     private ActiveAbilitySO abilitySO;
 
+    protected int dotTime = 0;
+
     private ProjectileBase projectileScript;
 
     private UpgradeRarity abilityRarity;
@@ -18,6 +20,7 @@ public abstract class ActiveAbilityBase : MonoBehaviour
 
     public ActiveAbilitySO ActiveAbilitySO { get => abilitySO; }
     public float DamageModifierValue { get => damageModifierValue; }
+    public int DotTime { get => dotTime; }
     public bool OnCooldown { get => onCooldown; }
     public UpgradeRarity AbilityRarity { get => abilityRarity; }
 
@@ -89,6 +92,11 @@ public abstract class ActiveAbilityBase : MonoBehaviour
     /// <param name="hitLocation"></param>
     public virtual void SpawnOnHitEffect(AttackPayload payload, Transform hitLocation)
     {
-        Debug.Log("No On Hit effect found.");
+        //Debug.Log("No On Hit effect found.");
+    }
+
+    public virtual void ApplyEffectToTarget(AttackPayload payload, Collider2D collision)
+    {
+        //Debug.Log("No effect to apply to target");
     }
 }
