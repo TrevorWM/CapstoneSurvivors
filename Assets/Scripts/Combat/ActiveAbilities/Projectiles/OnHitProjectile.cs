@@ -5,18 +5,16 @@ using UnityEngine;
 
 public class OnHitProjectile : ProjectileBase
 {
+
     /// <summary>
-    /// Override for the ProjectileBase virtual function. Allows us to change the
-    /// logic of OnTriggerEnter without having to override the shared collision detection
-    /// behaviour.
+    /// When the projectile is disabled it will ask the ability base
+    /// to spawn the on hit effect at the projectiles hit location.
     /// </summary>
-    protected override void OnTriggerEnterLogic()
+    protected override void OnDisableLogic()
     {
-        Debug.Log("Hit something!");
         if (abilityBase != null)
         {
-            Debug.Log("Ability Base found");
             abilityBase.SpawnOnHitEffect(attackPayload, this.transform);
-        }    
+        }
     }
 }

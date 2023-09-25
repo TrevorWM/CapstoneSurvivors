@@ -37,6 +37,13 @@ public abstract class ProjectileBase : MonoBehaviour
         transform.position += shootDirection * projectileSpeed * Time.deltaTime;
     }
 
+
+
+    private void OnDisable()
+    {
+        OnDisableLogic();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Uses a bitshift and bitwise and in order to see if the object being
@@ -55,6 +62,15 @@ public abstract class ProjectileBase : MonoBehaviour
     /// logic.
     /// </summary>
     protected virtual void OnTriggerEnterLogic()
+    {
+        return;
+    }
+
+    /// <summary>
+    /// Virtual function that allows children to override to add their logic to the
+    /// OnDisable function.
+    /// </summary>
+    protected virtual void OnDisableLogic()
     {
         return;
     }
