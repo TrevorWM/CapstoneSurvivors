@@ -15,7 +15,10 @@ public class PlayerControls : MonoBehaviour
 
     [SerializeField]
     private GameObject pauseUI;
-    
+
+    [SerializeField]
+    private SetAbilityUI setAbilityUI;
+
     [SerializeField]
     private GameObject[] currentAbilities;
     private enum AbilityKeyMap
@@ -235,6 +238,11 @@ public class PlayerControls : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SetAbility(ActiveUpgrade active)
+    {
+        setAbilityUI.SetAbility(active);
     }
 
     /// <summary>

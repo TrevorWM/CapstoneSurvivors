@@ -1726,6 +1726,7 @@ MonoBehaviour:
   moveEnabled: 1
   basicAttackScript: {fileID: 8728015847825181183}
   pauseUI: {fileID: 5566959166037620504}
+  setAbilityUI: {fileID: 272194406191917118}
   currentAbilities:
   - {fileID: 0}
   - {fileID: 0}
@@ -1811,7 +1812,7 @@ GameObject:
   - component: {fileID: 8519288247652646986}
   - component: {fileID: 5950791308713156547}
   - component: {fileID: 788248580549334956}
-  - component: {fileID: 2818203780573342735}
+  - component: {fileID: 272194406191917118}
   m_Layer: 0
   m_Name: AbilityUI
   m_TagString: Untagged
@@ -1905,7 +1906,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2818203780573342735
+--- !u!114 &272194406191917118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1914,25 +1915,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 8443454627771317789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f870cfc01dc36a4b99dcc4f8cc959e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 275404d8da8927848aaa0813fb953247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  purpleCommon: {fileID: 21300000, guid: c52eb877e5bc8d24cad9c684c28ddbce, type: 3}
-  purpleUncommon: {fileID: 21300000, guid: 3a5cc5cc0ffcd0f4e93406de2dd0a7c9, type: 3}
-  purpleRare: {fileID: 21300000, guid: 2f6def96747e81846a2c31672b48927d, type: 3}
-  purpleLegendary: {fileID: 21300000, guid: c79fc16d35c6f78488261ef7ce880e76, type: 3}
-  redCommon: {fileID: 21300000, guid: 710b15350ff32824daa0c14754516fa2, type: 3}
-  redUncommon: {fileID: 21300000, guid: f5d1d92457a31ec4283d7ec5b77222ff, type: 3}
-  redRare: {fileID: 21300000, guid: 1dc645aa400893e4aaf44a64cabb911d, type: 3}
-  redLegendary: {fileID: 21300000, guid: 14da8144407d77f4f8f6630885c82d49, type: 3}
-  portals:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  texts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  playerToUpgrade: {fileID: 6204503042473553551}
+  QBackground: {fileID: 2022045400470548398}
+  RMBBackground: {fileID: 4183093052754754739}
+  EBackground: {fileID: 4932360336079133598}
+  CommonBackground: {fileID: 21300000, guid: a8aee94b8b76bec4c84e9c9d17112719, type: 3}
+  UncommonBackground: {fileID: 21300000, guid: 04d14ba1c13c63d47886ffd29c36d296, type: 3}
+  RareBackground: {fileID: 21300000, guid: 6e732e7bb2f10204697422f7ecc11740, type: 3}
+  LegendaryBackground: {fileID: 21300000, guid: b44d82882f41014468dabc0c34f1acfc, type: 3}
+  QAbility: {fileID: 4994514907252015179}
+  RMBAbility: {fileID: 4292540222013369575}
+  EAbility: {fileID: 9126708795102525746}
+  inputPrompt: {fileID: 3102453779195776672}
 --- !u!1 &8479519061343883674
 GameObject:
   m_ObjectHideFlags: 0

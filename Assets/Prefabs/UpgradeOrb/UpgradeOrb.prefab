@@ -200,17 +200,6 @@ MonoBehaviour:
   testing: 0
   playerFallback: {fileID: 0}
   upgradeUI: {fileID: 3056093305511502917}
-  QBackground: {fileID: 0}
-  RMBBackground: {fileID: 0}
-  EBackground: {fileID: 0}
-  CommonBackground: {fileID: 21300000, guid: a8aee94b8b76bec4c84e9c9d17112719, type: 3}
-  UncommonBackground: {fileID: 21300000, guid: 04d14ba1c13c63d47886ffd29c36d296, type: 3}
-  RareBackground: {fileID: 21300000, guid: 6e732e7bb2f10204697422f7ecc11740, type: 3}
-  LegendaryBackground: {fileID: 21300000, guid: b44d82882f41014468dabc0c34f1acfc, type: 3}
-  QAbility: {fileID: 0}
-  RMBAbility: {fileID: 0}
-  EAbility: {fileID: 0}
-  inputPrompt: {fileID: 0}
 --- !u!1001 &1562342924077318489
 PrefabInstance:
   m_ObjectHideFlags: 0
