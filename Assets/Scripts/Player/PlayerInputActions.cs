@@ -98,6 +98,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""dfebb113-4cff-4e81-9fa3-92024a5e3f23"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -329,6 +338,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""M2Ability"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76ea9990-c4b7-41d7-a178-42b512f2525c"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -924,6 +944,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Gameplay_QAbility = m_Gameplay.FindAction("QAbility", throwIfNotFound: true);
         m_Gameplay_EAbility = m_Gameplay.FindAction("EAbility", throwIfNotFound: true);
         m_Gameplay_M2Ability = m_Gameplay.FindAction("M2Ability", throwIfNotFound: true);
+        m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1005,6 +1026,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_QAbility;
     private readonly InputAction m_Gameplay_EAbility;
     private readonly InputAction m_Gameplay_M2Ability;
+    private readonly InputAction m_Gameplay_Pause;
     public struct GameplayActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1017,6 +1039,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @QAbility => m_Wrapper.m_Gameplay_QAbility;
         public InputAction @EAbility => m_Wrapper.m_Gameplay_EAbility;
         public InputAction @M2Ability => m_Wrapper.m_Gameplay_M2Ability;
+        public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1050,6 +1073,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @M2Ability.started += instance.OnM2Ability;
             @M2Ability.performed += instance.OnM2Ability;
             @M2Ability.canceled += instance.OnM2Ability;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -1078,6 +1104,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @M2Ability.started -= instance.OnM2Ability;
             @M2Ability.performed -= instance.OnM2Ability;
             @M2Ability.canceled -= instance.OnM2Ability;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -1268,6 +1297,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnQAbility(InputAction.CallbackContext context);
         void OnEAbility(InputAction.CallbackContext context);
         void OnM2Ability(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

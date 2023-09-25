@@ -14,7 +14,13 @@ public class PlayerControls : MonoBehaviour
     private ShootProjectile basicAttackScript;
 
     [SerializeField]
-    private ShootProjectile[] currentAbilities;
+    private GameObject pauseUI;
+
+    [SerializeField]
+    private SetAbilityUI setAbilityUI;
+
+    [SerializeField]
+    private GameObject[] currentAbilities;
     private enum AbilityKeyMap
     {
         Q = 0,
@@ -32,6 +38,8 @@ public class PlayerControls : MonoBehaviour
     private InputAction dodgeInput;
     private InputAction basicAttackInput;
     private InputAction interactInput;
+    private InputAction pauseInput;
+    private bool gamePaused = false;
     private InputAction qAbilityInput;
     private InputAction eAbilityInput;
     private InputAction m2AbilityInput;
@@ -43,7 +51,7 @@ public class PlayerControls : MonoBehaviour
 
     private CharacterStats runtimeStats;
 
-    public ShootProjectile[] CurrentAbilities { get => currentAbilities; set => currentAbilities = value; }
+    public GameObject[] CurrentAbilities { get => currentAbilities; set => currentAbilities = value; }
 
     private void Awake()
     {
@@ -68,6 +76,7 @@ public class PlayerControls : MonoBehaviour
         dodgeInput = playerInputActions.Gameplay.Dodge;
         basicAttackInput = playerInputActions.Gameplay.Fire;
         interactInput = playerInputActions.Gameplay.Interact;
+        pauseInput = playerInputActions.Gameplay.Pause;
         qAbilityInput = playerInputActions.Gameplay.QAbility;
         eAbilityInput = playerInputActions.Gameplay.EAbility;
         m2AbilityInput = playerInputActions.Gameplay.M2Ability;
@@ -84,6 +93,7 @@ public class PlayerControls : MonoBehaviour
     {
         moveVector = moveInput.ReadValue<Vector2>().normalized;
         HandleInteract();
+        HandlePause();
 
         if (moveVector.x > 0)
         {
@@ -211,7 +221,7 @@ public class PlayerControls : MonoBehaviour
                 //Get the active ability base from the ability slotted
                 ActiveAbilityBase ability = CurrentAbilities[(int)keyIndex].GetComponent<ActiveAbilityBase>();
 
-                //If we got the ability and it is not on cooldown get the 
+                //If we got the ability and it is not on cooldown shoot it
                 if (ability != null && !ability.OnCooldown)
                 {
                     isAttacking = true;
@@ -219,9 +229,10 @@ public class PlayerControls : MonoBehaviour
                     float abilityCooldown = ability.ActiveAbilitySO.AbilityCooldown;
                     float cooldownReduction = abilityCooldown * runtimeStats.CooldownReduction;
 
-                    CurrentAbilities[(int)keyIndex].Attack();
+                    ability.GetComponent<ShootProjectile>().Attack();
 
-                    //Start attack timer, and individual cooldown timer
+                    //Start attack timer to prevent player from shooting basic attack
+                    //immediately after an ability use, and individual cooldown timer
                     ability.StartCooldown(abilityCooldown - cooldownReduction);
                     StartCoroutine(BasicAttackCooldown());
                 }
@@ -229,11 +240,9 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-    private IEnumerator ActiveAbilityCooldown(float cooldownDuration)
+    public void SetAbility(ActiveUpgrade active)
     {
-        float reductionAmount = cooldownDuration * runtimeStats.CooldownReduction;
-        yield return new WaitForSeconds(cooldownDuration - reductionAmount);
-        isAttacking = false;
+        setAbilityUI.SetAbility(active);
     }
 
     /// <summary>
@@ -247,6 +256,30 @@ public class PlayerControls : MonoBehaviour
         }
         
     }
+    
+    /// <summary>
+    /// Handles the interact logic for when the player presses the interact key.
+    /// </summary>
+    private void HandlePause()
+    {
+        if (pauseInput.WasPerformedThisFrame() && !gamePaused)
+        {
+            gamePaused = true;
+            // stop time for pause state, disable controls so player cannot activate orb multiple times
+            DisablePlayerActions();
+            Time.timeScale = 0.0f;
+            pauseUI.SetActive(true);
+        } 
+        else if (pauseInput.WasPerformedThisFrame() && gamePaused)
+        {
+            gamePaused = false;
+            // stop time for pause state, disable controls so player cannot activate orb multiple times
+            EnablePlayerActions();
+            Time.timeScale = 1.0f;
+            pauseUI.SetActive(false);
+        }
+
+    }
 
     private void EnableInputs()
     {
@@ -257,6 +290,7 @@ public class PlayerControls : MonoBehaviour
         qAbilityInput.Enable();
         eAbilityInput.Enable();
         m2AbilityInput.Enable();
+        pauseInput.Enable();
     }
 
     private void DisableInputs()
@@ -268,7 +302,37 @@ public class PlayerControls : MonoBehaviour
         qAbilityInput.Disable();
         eAbilityInput.Disable();
         m2AbilityInput.Disable();
+        pauseInput.Disable();
     } 
+
+    /// <summary>
+    /// Diables all player actions, other than pausing
+    /// </summary>
+    private void DisablePlayerActions()
+    {
+        moveInput.Disable();
+        dodgeInput.Disable();
+        basicAttackInput.Disable();
+        interactInput.Disable();
+        qAbilityInput.Disable();
+        eAbilityInput.Disable();
+        m2AbilityInput.Disable();
+    }
+
+    /// <summary>
+    /// Enables all player actions, after unpausing
+    /// </summary>
+    private void EnablePlayerActions()
+    {
+        moveInput.Enable();
+        dodgeInput.Enable();
+        basicAttackInput.Enable();
+        interactInput.Enable();
+        qAbilityInput.Enable();
+        eAbilityInput.Enable();
+        m2AbilityInput.Enable();
+        
+    }
 
     public void StopMovement()
     {

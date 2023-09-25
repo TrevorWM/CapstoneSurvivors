@@ -406,17 +406,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4048436168766289364, guid: 6cc3652d311da0140b57a6e28afcbab9, type: 3}
   m_PrefabInstance: {fileID: 101525401}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &260857369 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3056093305511502917, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
-  m_PrefabInstance: {fileID: 2877130052447893318}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f870cfc01dc36a4b99dcc4f8cc959e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &605068140 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6204503042473553551, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
@@ -872,14 +861,6 @@ PrefabInstance:
     - target: {fileID: 6204503042473553551, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
       propertyPath: m_Name
       value: Player Standard Loadout
-      objectReference: {fileID: 0}
-    - target: {fileID: 6238038920053780881, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 2047
-      objectReference: {fileID: 0}
-    - target: {fileID: 6238038920053780881, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 7795999658162438295, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1348,15 +1329,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
-      propertyPath: upgradeUI
-      value: 
-      objectReference: {fileID: 260857369}
-    - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
       propertyPath: playerFallback
-      value: 
-      objectReference: {fileID: 605068140}
-    - target: {fileID: 8784154864146370748, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
-      propertyPath: playerToUpgrade
       value: 
       objectReference: {fileID: 605068140}
     - target: {fileID: 9000103055329027066, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
