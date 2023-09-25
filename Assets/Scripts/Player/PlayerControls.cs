@@ -218,7 +218,7 @@ public class PlayerControls : MonoBehaviour
                 //Get the active ability base from the ability slotted
                 ActiveAbilityBase ability = CurrentAbilities[(int)keyIndex].GetComponent<ActiveAbilityBase>();
 
-                //If we got the ability and it is not on cooldown get the 
+                //If we got the ability and it is not on cooldown shoot it
                 if (ability != null && !ability.OnCooldown)
                 {
                     isAttacking = true;
@@ -228,19 +228,13 @@ public class PlayerControls : MonoBehaviour
 
                     ability.GetComponent<ShootProjectile>().Attack();
 
-                    //Start attack timer, and individual cooldown timer
+                    //Start attack timer to prevent player from shooting basic attack
+                    //immediately after an ability use, and individual cooldown timer
                     ability.StartCooldown(abilityCooldown - cooldownReduction);
                     StartCoroutine(BasicAttackCooldown());
                 }
             }
         }
-    }
-
-    private IEnumerator ActiveAbilityCooldown(float cooldownDuration)
-    {
-        float reductionAmount = cooldownDuration * runtimeStats.CooldownReduction;
-        yield return new WaitForSeconds(cooldownDuration - reductionAmount);
-        isAttacking = false;
     }
 
     /// <summary>
@@ -303,7 +297,7 @@ public class PlayerControls : MonoBehaviour
         pauseInput.Disable();
     } 
 
-        /// <summary>
+    /// <summary>
     /// Diables all player actions, other than pausing
     /// </summary>
     private void DisablePlayerActions()

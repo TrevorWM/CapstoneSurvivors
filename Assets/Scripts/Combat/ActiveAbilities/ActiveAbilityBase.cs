@@ -19,6 +19,7 @@ public class ActiveAbilityBase : MonoBehaviour
     public ActiveAbilitySO ActiveAbilitySO { get => abilitySO; }
     public float DamageModifierValue { get => damageModifierValue; }
     public bool OnCooldown { get => onCooldown; }
+    public UpgradeRarity AbilityRarity { get => abilityRarity; }
 
     private void Start()
     {
