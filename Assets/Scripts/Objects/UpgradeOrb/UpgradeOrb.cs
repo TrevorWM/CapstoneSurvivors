@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Playables;
 using UnityEngine;
 
 public class UpgradeOrb : MonoBehaviour, IInteractable
@@ -31,7 +32,6 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     void Start()
     {
         interactHint.SetActive(false);
-        if (testing) InitializeOrb(playerFallback);
     }
 
     public void InitializeOrb(GameObject playerObject)
@@ -43,6 +43,8 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
+        if (playerToUpgrade == null) InitializeOrb(playerFallback);
+        
         HandleUI();
     }
 
@@ -76,25 +78,36 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
         if (chosenUpgrade.Category == UpgradeCategory.Passive)
         {
+            // handle setting passive upgrade...
             PassiveUpgrade passive = chosenUpgrade as PassiveUpgrade;
 
             passive.GetBase().ModifyStat(playerStats, chosenUpgrade.Rarity);
             playerStats.PrintStatSheet();
+
+            CloseUI();
         } else
         {
+            // handle setting active ability...
             ActiveUpgrade active = chosenUpgrade as ActiveUpgrade;
-            GameObject abilityInstance = Instantiate(active.UpgradePrefab);
 
-            ActiveAbilityBase upgradeBase = abilityInstance.GetComponent<ActiveAbilityBase>();
-
-            //Replace Random bit with the index for the hotkey you want
-            int abilityHotkey = UnityEngine.Random.Range(0, 3);
-
-            upgradeBase.AddAbilityToPlayer(playerControls, active.Rarity, abilityInstance, abilityHotkey);
-
+            // get the player to create the UI and handle the rest
+            playerControls.SetAbility(active);
+            
+            // delete orb
+            if (!testing)
+            {
+                this.gameObject.SetActive(false);
+                interactHint.SetActive(false);
+            }
         }
+    }
 
 
+    /// <summary>
+    /// Closes orb UI
+    /// </summary>
+    private void CloseUI()
+    {
         //re-enable time, re-enable controls
         playerControls.enabled = true;
         Time.timeScale = 1.0f;
@@ -107,6 +120,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         }
     }
 
+
     /// <summary>
     /// called by UIHoverEffect, sets the upgade that was chosen in the UI
     /// </summary>
@@ -115,6 +129,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     {
         chosenUpgrade = selected;
     }
+
 
     public void ToggleInteractUI()
     {

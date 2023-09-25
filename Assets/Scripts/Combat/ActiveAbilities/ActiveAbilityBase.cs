@@ -8,7 +8,6 @@ public abstract class ActiveAbilityBase : MonoBehaviour
     [SerializeField]
     private ActiveAbilitySO abilitySO;
 
-    [SerializeField]
     private ProjectileBase projectileScript;
 
     private UpgradeRarity abilityRarity;
@@ -60,15 +59,18 @@ public abstract class ActiveAbilityBase : MonoBehaviour
         InitializeRarityBasedStats(rolledAbilityRarity);
         abilityRarity = rolledAbilityRarity;
 
-        //TODO: Add logic to place ability on the player
+        // This destroys the ability instance already in the hotkey if it exists
+
         if (playerControls.CurrentAbilities[abilityIndex] != null) Destroy(playerControls.CurrentAbilities[abilityIndex].gameObject);
         
+        // Set the position to the player position so that we shoot from the right spot. 
         abilityInstance.transform.parent = playerControls.gameObject.transform;
         abilityInstance.transform.position = playerControls.gameObject.transform.position;
 
-        playerControls.CurrentAbilities[abilityIndex] = abilityInstance.gameObject.GetComponent<ShootProjectile>();
+        playerControls.CurrentAbilities[abilityIndex] = abilityInstance.gameObject;
     }
 
+    // These functions allow us to have cooldowns for each ability be tied to the ability itself.
     public void StartCooldown(float duration)
     {
         onCooldown = true;
