@@ -10,6 +10,8 @@ public class ActiveAbilityBase : MonoBehaviour
 
     private ProjectileBase projectileScript;
 
+    private UpgradeRarity abilityRarity;
+
     private float damageModifierValue = 0f;
 
     private bool onCooldown = false;
@@ -54,16 +56,19 @@ public class ActiveAbilityBase : MonoBehaviour
     public void AddAbilityToPlayer(PlayerControls playerControls, UpgradeRarity rolledAbilityRarity, GameObject abilityInstance, int abilityIndex)
     {
         InitializeDamageModifier(rolledAbilityRarity);
-        
-        //TODO: Add logic to place ability on the player
+        abilityRarity = rolledAbilityRarity;
+
+        // This destroys the ability instance already in the hotkey if it exists
         if (playerControls.CurrentAbilities[abilityIndex] != null) Destroy(playerControls.CurrentAbilities[abilityIndex].gameObject);
         
+        // Set the position to the player position so that we shoot from the right spot. 
         abilityInstance.transform.parent = playerControls.gameObject.transform;
         abilityInstance.transform.position = playerControls.gameObject.transform.position;
 
         playerControls.CurrentAbilities[abilityIndex] = abilityInstance.gameObject;
     }
 
+    // These functions allow us to have cooldowns for each ability be tied to the ability itself.
     public void StartCooldown(float duration)
     {
         onCooldown = true;
