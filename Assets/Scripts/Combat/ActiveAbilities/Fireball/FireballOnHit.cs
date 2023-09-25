@@ -1,16 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class FireballOnHit : OnHitEffect, IDamager
 {
-
-    // Not used at the moment, was thinking of having the explosion lifetime here, but
-    // might be better to have it on the projectile bit, so that all the info is in one
-    // place
-    [SerializeField]
-    private float effectLifetime;
-
     private AttackPayload attackPayload;
 
     /// <summary>
@@ -24,7 +18,6 @@ public class FireballOnHit : OnHitEffect, IDamager
     {
         this.transform.position = hitLocation.position;
         this.transform.rotation = hitLocation.rotation;
-        this.transform.localScale = new Vector3(2,2,1);
         this.attackPayload = payload;
 
         this.gameObject.SetActive(true);

@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectLifetime: 0
+  activeAbilityBase: {fileID: 7240869179983322365, guid: 7f1ec9981dfcc1e4c99ae3704d447df7, type: 3}
 --- !u!50 &2031545312147860449
 Rigidbody2D:
   serializedVersion: 4
