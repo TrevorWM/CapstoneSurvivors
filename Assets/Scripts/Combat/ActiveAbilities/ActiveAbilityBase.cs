@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ActiveAbilityBase : MonoBehaviour
+public abstract class ActiveAbilityBase : MonoBehaviour
 {
     [SerializeField]
     private ActiveAbilitySO abilitySO;
@@ -30,7 +30,7 @@ public class ActiveAbilityBase : MonoBehaviour
     /// Changes the value to increase a stat by depending on the rarity of the upgrade.
     /// </summary>
     /// <param name="rolledUpgradeRarity"></param>
-    private void InitializeDamageModifier(UpgradeRarity rolledUpgradeRarity)
+    protected virtual void InitializeRarityBasedStats(UpgradeRarity rolledUpgradeRarity)
     {
         switch (rolledUpgradeRarity)
         {
@@ -56,10 +56,11 @@ public class ActiveAbilityBase : MonoBehaviour
     /// <param name="rolledAbilityRarity"></param>
     public void AddAbilityToPlayer(PlayerControls playerControls, UpgradeRarity rolledAbilityRarity, GameObject abilityInstance, int abilityIndex)
     {
-        InitializeDamageModifier(rolledAbilityRarity);
+        InitializeRarityBasedStats(rolledAbilityRarity);
         abilityRarity = rolledAbilityRarity;
 
         // This destroys the ability instance already in the hotkey if it exists
+
         if (playerControls.CurrentAbilities[abilityIndex] != null) Destroy(playerControls.CurrentAbilities[abilityIndex].gameObject);
         
         // Set the position to the player position so that we shoot from the right spot. 
@@ -80,5 +81,14 @@ public class ActiveAbilityBase : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         onCooldown = false;
+    }
+    /// <summary>
+    /// Virtual function for OnHit abilities to override with their desired effects
+    /// </summary>
+    /// <param name="payload"></param>
+    /// <param name="hitLocation"></param>
+    public virtual void SpawnOnHitEffect(AttackPayload payload, Transform hitLocation)
+    {
+        Debug.Log("No On Hit effect found.");
     }
 }

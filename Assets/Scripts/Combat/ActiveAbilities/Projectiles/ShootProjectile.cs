@@ -64,7 +64,14 @@ public class ShootProjectile : MonoBehaviour
 
         BuildAttackPayload();
 
-        projectile.FireProjectile(shootDirection, projectileSpeed, payload);
+        if (activeAbility != null)
+        {
+            projectile.FireProjectile(shootDirection, projectileSpeed, payload, activeAbility);
+        } else
+        {
+            projectile.FireProjectile(shootDirection, projectileSpeed, payload);
+        }
+        
     }
 
     private float GetCharacterElementalAffinity()

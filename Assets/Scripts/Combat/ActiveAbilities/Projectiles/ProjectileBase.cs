@@ -8,8 +8,10 @@ public abstract class ProjectileBase : MonoBehaviour
     [SerializeField]
     private LayerMask hitLayers;
 
+    
     private Vector3 shootDirection;
     private float projectileSpeed;
+    protected ActiveAbilityBase abilityBase;
     protected AttackPayload attackPayload;
     protected ProjectilePool pool;
 
@@ -22,16 +24,24 @@ public abstract class ProjectileBase : MonoBehaviour
     /// </summary>
     /// <param name="shootDirection"></param>
     /// <param name="projectileSpeed"></param>
-    public void FireProjectile(Vector2 shootDirection, float projectileSpeed, AttackPayload payload)
+    public void FireProjectile(Vector2 shootDirection, float projectileSpeed, AttackPayload payload, ActiveAbilityBase abilityBase = null)
     {
         this.shootDirection = shootDirection;
         this.projectileSpeed = projectileSpeed;
         this.attackPayload = payload;
+        this.abilityBase = abilityBase;
     }
 
     private void Update()
     {
         transform.position += shootDirection * projectileSpeed * Time.deltaTime;
+    }
+
+
+
+    private void OnDisable()
+    {
+        OnDisableLogic();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -52,6 +62,15 @@ public abstract class ProjectileBase : MonoBehaviour
     /// logic.
     /// </summary>
     protected virtual void OnTriggerEnterLogic()
+    {
+        return;
+    }
+
+    /// <summary>
+    /// Virtual function that allows children to override to add their logic to the
+    /// OnDisable function.
+    /// </summary>
+    protected virtual void OnDisableLogic()
     {
         return;
     }
