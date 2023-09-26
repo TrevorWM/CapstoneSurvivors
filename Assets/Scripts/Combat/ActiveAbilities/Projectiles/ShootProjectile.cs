@@ -39,7 +39,7 @@ public class ShootProjectile : MonoBehaviour
     {
         if (activeAbility != null)
         {
-            payload = new AttackPayload(characterStats.BaseDamage, abilityStats.DotTime, abilityStats.AbilityElement, characterStats.CriticalChance,
+            payload = new AttackPayload(characterStats.BaseDamage, activeAbility.DotTime, abilityStats.AbilityElement, characterStats.CriticalChance,
                 characterStats.CriticalDamageMultiplier, activeAbility.DamageModifierValue, GetCharacterElementalAffinity());
         } 
         else
@@ -64,7 +64,14 @@ public class ShootProjectile : MonoBehaviour
 
         BuildAttackPayload();
 
-        projectile.FireProjectile(shootDirection, projectileSpeed, payload);
+        if (activeAbility != null)
+        {
+            projectile.FireProjectile(shootDirection, projectileSpeed, payload, activeAbility);
+        } else
+        {
+            projectile.FireProjectile(shootDirection, projectileSpeed, payload);
+        }
+        
     }
 
     private float GetCharacterElementalAffinity()

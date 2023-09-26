@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Rendering.FilterWindow;
+
 
 public class DamageCalculator : MonoBehaviour
 {
@@ -27,6 +24,7 @@ public class DamageCalculator : MonoBehaviour
         bool isCrit = CriticalRoll(payload.CritChance);
 
         float damage = payload.Damage;
+         
 
         // Multiply by critical modifier if critical, will be in the format x.x rather than percentage
         if (isCrit)

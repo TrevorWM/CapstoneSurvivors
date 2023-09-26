@@ -8,8 +8,10 @@ public abstract class ProjectileBase : MonoBehaviour
     [SerializeField]
     private LayerMask hitLayers;
 
+    
     private Vector3 shootDirection;
     private float projectileSpeed;
+    protected ActiveAbilityBase abilityBase;
     protected AttackPayload attackPayload;
     protected ProjectilePool pool;
 
@@ -22,16 +24,24 @@ public abstract class ProjectileBase : MonoBehaviour
     /// </summary>
     /// <param name="shootDirection"></param>
     /// <param name="projectileSpeed"></param>
-    public void FireProjectile(Vector2 shootDirection, float projectileSpeed, AttackPayload payload)
+    public void FireProjectile(Vector2 shootDirection, float projectileSpeed, AttackPayload payload, ActiveAbilityBase abilityBase = null)
     {
         this.shootDirection = shootDirection;
         this.projectileSpeed = projectileSpeed;
         this.attackPayload = payload;
+        this.abilityBase = abilityBase;
     }
 
     private void Update()
     {
         transform.position += shootDirection * projectileSpeed * Time.deltaTime;
+    }
+
+
+
+    private void OnDisable()
+    {
+        OnDisableLogic();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -41,7 +51,7 @@ public abstract class ProjectileBase : MonoBehaviour
         // Info from https://discussions.unity.com/t/check-if-colliding-with-a-layer/145616/2 User: Krnitheesh16
         if ((hitLayers.value & (1 << collision.gameObject.layer)) > 0)
         {
-            OnTriggerEnterLogic();
+            OnTriggerEnterLogic(collision);
             pool.ReleaseProjectileFromPool(this);
         }   
     }
@@ -51,7 +61,16 @@ public abstract class ProjectileBase : MonoBehaviour
     /// OnTriggerEnter2D function without having to re-implement the collision behavior
     /// logic.
     /// </summary>
-    protected virtual void OnTriggerEnterLogic()
+    protected virtual void OnTriggerEnterLogic(Collider2D collision)
+    {
+        return;
+    }
+
+    /// <summary>
+    /// Virtual function that allows children to override to add their logic to the
+    /// OnDisable function.
+    /// </summary>
+    protected virtual void OnDisableLogic()
     {
         return;
     }

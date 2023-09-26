@@ -28,6 +28,8 @@ public class AttackPayload
         this.ElementalAffinity = elementalAffinity;
         this.EnemyProjectile = enemyProjectile;
     }
+
+
 }
 
 public enum ElementType
