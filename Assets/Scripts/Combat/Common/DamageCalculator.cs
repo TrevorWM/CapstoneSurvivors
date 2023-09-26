@@ -6,6 +6,8 @@ using static UnityEditor.Rendering.FilterWindow;
 
 public class DamageCalculator : MonoBehaviour
 {
+    [SerializeField]
+    private FloatingDamageSpawner floatingDamageSpawner;
     public float CalculateDamage(AttackPayload payload, CharacterStats ownerStats = null, CharacterStatsSO defaultOwnerStats = null)
     {
         ElementType characterElement;
@@ -58,6 +60,7 @@ public class DamageCalculator : MonoBehaviour
         }
 
         LogDamage(payload, damage, isCrit);
+        if (floatingDamageSpawner != null) floatingDamageSpawner.SpawnText(damage, payload.Element);
         return damage;
     }
 

@@ -505,6 +505,7 @@ GameObject:
   - component: {fileID: 661508548}
   - component: {fileID: 661508550}
   - component: {fileID: 661508551}
+  - component: {fileID: 661508552}
   m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
@@ -606,6 +607,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58c7418162d43249b66dd2980c54061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingDamageSpawner: {fileID: 661508552}
+--- !u!114 &661508552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661508547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adfcb6e490b8ba4ea4e61ff8294db5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingDamagePrefab: {fileID: 5765215981924090144, guid: 0f63be08d2b820c49b1f51513c5ea9d8, type: 3}
+  elementInfo: {fileID: 11400000, guid: 424812d20161c0d49b233ce520a77d3a, type: 2}
+  displayDuration: 1
+  textPoolSize: 5
+  testSpawner: 1
+  testDamageAmount: 10
 --- !u!4 &753599960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6901095349070025305, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
@@ -722,7 +742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5608013407492119588, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6259527030535461721, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: m_Radius
@@ -1276,6 +1296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58c7418162d43249b66dd2980c54061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingDamageSpawner: {fileID: 0}
 --- !u!1001 &2877130052447893318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1416,7 +1437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5816929903169527994, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: orthographic size
-      value: 9.40625
+      value: 8.4375
       objectReference: {fileID: 0}
     - target: {fileID: 6817480207312608784, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_LocalPosition.x
