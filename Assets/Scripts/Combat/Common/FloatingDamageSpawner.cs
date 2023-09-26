@@ -15,7 +15,7 @@ public class FloatingDamageSpawner : MonoBehaviour
     private float displayDuration;
 
     [SerializeField]
-    private int textPoolSize;
+    private int textPoolSize = 5;
 
     [SerializeField]
     private bool testSpawner = false;
@@ -72,7 +72,7 @@ public class FloatingDamageSpawner : MonoBehaviour
             TextMeshProUGUI text = currentTextInstance.GetComponentInChildren<TextMeshProUGUI>();
             if (text != null)
             {
-                text.text = testDamageAmount.ToString();
+                text.text = damageToDisplay.ToString("F0");
                 text.color = textColor;
                 currentTextInstance.transform.position = RandomizeSpawnPosition();
                 currentTextInstance.SetActive(true);

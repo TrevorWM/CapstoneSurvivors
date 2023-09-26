@@ -624,7 +624,7 @@ MonoBehaviour:
   elementInfo: {fileID: 11400000, guid: 424812d20161c0d49b233ce520a77d3a, type: 2}
   displayDuration: 1
   textPoolSize: 5
-  testSpawner: 1
+  testSpawner: 0
   testDamageAmount: 10
 --- !u!4 &753599960 stripped
 Transform:
@@ -742,7 +742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5608013407492119588, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6259527030535461721, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: m_Radius
@@ -1449,7 +1449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6817480207312608784, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 6817480207312608784, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_LocalRotation.w
