@@ -17,4 +17,12 @@ public class OnHitProjectile : ProjectileBase
             abilityBase.SpawnOnHitEffect(attackPayload, this.transform);
         }
     }
+
+    protected override void OnTriggerEnterLogic(Collider2D collision)
+    {
+        if (abilityBase != null)
+        {
+            abilityBase.ApplyEffectToTarget(attackPayload, collision);
+        }
+    }
 }

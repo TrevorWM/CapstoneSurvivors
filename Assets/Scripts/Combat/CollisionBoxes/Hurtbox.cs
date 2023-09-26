@@ -40,8 +40,28 @@ public class Hurtbox : MonoBehaviour
         IDamageable ownerComponent = owner.GetComponent<IDamageable>();
 
         if (ownerComponent != null)
+        { 
+            if(attackPayload.DotSeconds > 0)
+            {
+                StartCoroutine(DotTicks(attackPayload, ownerComponent));
+            }
+            else
+            {
+                ownerComponent.TakeDamage(attackPayload);
+            }
+            
+        }
+    }
+
+    private IEnumerator DotTicks(AttackPayload payload, IDamageable target)
+    {
+        int ticks = payload.DotSeconds;
+
+        while (ticks > 0)
         {
-            ownerComponent.TakeDamage(attackPayload);
+            yield return new WaitForSeconds(1f);
+            target.TakeDamage(payload);
+            ticks--;
         }
     }
 }
