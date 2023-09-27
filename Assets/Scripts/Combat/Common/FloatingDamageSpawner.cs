@@ -51,7 +51,6 @@ public class FloatingDamageSpawner : MonoBehaviour
         {
             GameObject textInstance = Instantiate(floatingDamagePrefab);
             textInstance.SetActive(false);
-            textInstance.transform.SetParent(transform, false);
             prefabInstances[i] = textInstance;
         }
     }
