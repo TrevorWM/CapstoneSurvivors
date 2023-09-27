@@ -42,16 +42,38 @@ public class FloatingDamageSpawner : MonoBehaviour
         if (testSpawner) StartCoroutine(TestText());
 
     }
+
+    private void OnDestroy()
+    {
+        DestroyPool();
+    }
+
+    private void OnDisable()
+    {
+        DestroyPool();
+    }
+
     /// <summary>
     /// Creates text objects to display the floating damage numbers.
     /// </summary>
     private void CreatePool()
     {
+        if (prefabInstances != null)
+        {
+            for (int i = 0; i < prefabInstances.Length; i++)
+            {
+                GameObject textInstance = Instantiate(floatingDamagePrefab);
+                textInstance.SetActive(false);
+                prefabInstances[i] = textInstance;
+            }
+        }  
+    }
+
+    private void DestroyPool()
+    {
         for (int i = 0; i < prefabInstances.Length; i++)
         {
-            GameObject textInstance = Instantiate(floatingDamagePrefab);
-            textInstance.SetActive(false);
-            prefabInstances[i] = textInstance;
+            Destroy(prefabInstances[i]);
         }
     }
 
