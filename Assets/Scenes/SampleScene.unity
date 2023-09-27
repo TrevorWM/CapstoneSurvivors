@@ -406,6 +406,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4048436168766289364, guid: 6cc3652d311da0140b57a6e28afcbab9, type: 3}
   m_PrefabInstance: {fileID: 101525401}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &557805977 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 147103729419837047, guid: f2a89244b76e0d24d9bcd53ebdc04dbb, type: 3}
+  m_PrefabInstance: {fileID: 935794794992026776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adfcb6e490b8ba4ea4e61ff8294db5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &605068140 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6204503042473553551, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
@@ -505,7 +516,6 @@ GameObject:
   - component: {fileID: 661508548}
   - component: {fileID: 661508550}
   - component: {fileID: 661508551}
-  - component: {fileID: 661508552}
   m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
@@ -607,25 +617,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58c7418162d43249b66dd2980c54061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingDamageSpawner: {fileID: 661508552}
---- !u!114 &661508552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 661508547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2adfcb6e490b8ba4ea4e61ff8294db5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floatingDamagePrefab: {fileID: 5765215981924090144, guid: 0f63be08d2b820c49b1f51513c5ea9d8, type: 3}
-  elementInfo: {fileID: 11400000, guid: 424812d20161c0d49b233ce520a77d3a, type: 2}
-  displayDuration: 1
-  textPoolSize: 5
-  testSpawner: 0
-  testDamageAmount: 10
+  showDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 557805977}
+        m_TargetAssemblyTypeName: FloatingDamageSpawner, Assembly-CSharp
+        m_MethodName: SpawnText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &753599960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6901095349070025305, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
@@ -1296,7 +1302,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58c7418162d43249b66dd2980c54061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingDamageSpawner: {fileID: 0}
+  showDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 557805977}
+        m_TargetAssemblyTypeName: FloatingDamageSpawner, Assembly-CSharp
+        m_MethodName: SpawnText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1001 &935794794992026776
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4979250934723723472, guid: f2a89244b76e0d24d9bcd53ebdc04dbb, type: 3}
+      propertyPath: m_Name
+      value: Floating Damage Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095076453925843773, guid: f2a89244b76e0d24d9bcd53ebdc04dbb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01241133
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095076453925843773, guid: f2a89244b76e0d24d9bcd53ebdc04dbb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.074665
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095076453925843773, guid: f2a89244b76e0d24d9bcd53ebdc04dbb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.9184268
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095076453925843773, guid: f2a89244b76e0d24d9bcd53ebdc04dbb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095076453925843773, guid: f2a89244b76e0d24d9bcd53ebdc04dbb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095076453925843773, guid: f2a89244b76e0d24d9bcd53ebdc04dbb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095076453925843773, guid: f2a89244b76e0d24d9bcd53ebdc04dbb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095076453925843773, guid: f2a89244b76e0d24d9bcd53ebdc04dbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095076453925843773, guid: f2a89244b76e0d24d9bcd53ebdc04dbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095076453925843773, guid: f2a89244b76e0d24d9bcd53ebdc04dbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f2a89244b76e0d24d9bcd53ebdc04dbb, type: 3}
 --- !u!1001 &2877130052447893318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1557,6 +1634,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1494328899}
     m_Modifications:
+    - target: {fileID: -3325749578843443305, guid: 6177a2f138b17f044bfcb6e0d8f0fc37, type: 3}
+      propertyPath: showDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3325749578843443305, guid: 6177a2f138b17f044bfcb6e0d8f0fc37, type: 3}
+      propertyPath: showDamage.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1273105804648034894, guid: 6177a2f138b17f044bfcb6e0d8f0fc37, type: 3}
       propertyPath: m_Name
       value: Skull Enemy
@@ -1649,7 +1734,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3650980241917920813, guid: 6177a2f138b17f044bfcb6e0d8f0fc37, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1666,3 +1752,4 @@ SceneRoots:
   - {fileID: 1494328899}
   - {fileID: 2023638439}
   - {fileID: 1061534896}
+  - {fileID: 935794794992026776}

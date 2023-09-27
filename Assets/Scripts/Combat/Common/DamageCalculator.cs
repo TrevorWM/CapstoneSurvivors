@@ -1,10 +1,9 @@
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public class DamageCalculator : MonoBehaviour
 {
-    [SerializeField]
-    private FloatingDamageSpawner floatingDamageSpawner;
+    public UnityEvent<float, ElementType, Transform> showDamage;
     public float CalculateDamage(AttackPayload payload, CharacterStats ownerStats = null, CharacterStatsSO defaultOwnerStats = null)
     {
         ElementType characterElement;
@@ -58,7 +57,7 @@ public class DamageCalculator : MonoBehaviour
         }
 
         LogDamage(payload, damage, isCrit);
-        if (floatingDamageSpawner != null) floatingDamageSpawner.SpawnText(damage, payload.Element);
+        showDamage.Invoke(damage, payload.Element, this.transform);
         return damage;
     }
 

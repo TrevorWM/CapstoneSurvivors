@@ -83,7 +83,7 @@ public class FloatingDamageSpawner : MonoBehaviour
     /// </summary>
     /// <param name="damageToDisplay"></param>
     /// <param name="damageElementColor"></param>
-    public void SpawnText(float damageToDisplay, ElementType element)
+    public void SpawnText(float damageToDisplay, ElementType element, Transform spawnTransform)
     {
         GameObject currentTextInstance = prefabInstances[textIndex];
         Color textColor = GetElementColor(element);
@@ -95,7 +95,7 @@ public class FloatingDamageSpawner : MonoBehaviour
             {
                 text.text = damageToDisplay.ToString("F0");
                 text.color = textColor;
-                currentTextInstance.transform.position = RandomizeSpawnPosition();
+                currentTextInstance.transform.position = RandomizeSpawnPosition(spawnTransform);
                 currentTextInstance.SetActive(true);
                 textIndex = (textIndex + 1) % textPoolSize;
 
@@ -103,13 +103,13 @@ public class FloatingDamageSpawner : MonoBehaviour
             }
         }
     }
-    private Vector3 RandomizeSpawnPosition()
+    private Vector3 RandomizeSpawnPosition(Transform baseTransform)
     {
         float xPos = Random.Range(-.2f, .2f);
         float yPos = Random.Range(.5f, .7f);
 
-        Vector3 spawnPos = new Vector3(transform.position.x + xPos,
-            transform.position.y + yPos, transform.position.z);
+        Vector3 spawnPos = new Vector3(baseTransform.position.x + xPos,
+            baseTransform.position.y + yPos, baseTransform.position.z);
         
         return spawnPos;
     }
@@ -136,7 +136,7 @@ public class FloatingDamageSpawner : MonoBehaviour
     {
         for (int i = 0; i < prefabInstances.Length; i++)
         {
-            SpawnText(testDamageAmount, ElementType.None);
+            SpawnText(testDamageAmount, ElementType.None, this.transform);
             yield return new WaitForSeconds(.5f);
         }  
     }

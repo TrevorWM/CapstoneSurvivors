@@ -240,7 +240,6 @@ GameObject:
   - component: {fileID: 2297329171065489121}
   - component: {fileID: 7486733568991457024}
   - component: {fileID: 5618651921968512767}
-  - component: {fileID: 1840396536591286004}
   m_Layer: 6
   m_Name: Slime
   m_TagString: Untagged
@@ -401,25 +400,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58c7418162d43249b66dd2980c54061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingDamageSpawner: {fileID: 1840396536591286004}
---- !u!114 &1840396536591286004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5608013407492119588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2adfcb6e490b8ba4ea4e61ff8294db5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floatingDamagePrefab: {fileID: 5765215981924090144, guid: 0f63be08d2b820c49b1f51513c5ea9d8, type: 3}
-  elementInfo: {fileID: 11400000, guid: 424812d20161c0d49b233ce520a77d3a, type: 2}
-  displayDuration: 1
-  textPoolSize: 5
-  testSpawner: 0
-  testDamageAmount: 5
+  showDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5775572526865493681
 GameObject:
   m_ObjectHideFlags: 0
