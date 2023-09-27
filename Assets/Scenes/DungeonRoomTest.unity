@@ -158,6 +158,7 @@ MonoBehaviour:
   roomPool:
   - {fileID: 5807390494452671454, guid: e156c73cb6617ea4ab04867e57366647, type: 3}
   - {fileID: 5807390494452671454, guid: ef16ae15f0bae6a428e05341dd4cd29a, type: 3}
+  - {fileID: 3465491303893691916, guid: 3f2ada1541b0fa94d8cd28882776c8fd, type: 3}
 --- !u!4 &277871838
 Transform:
   m_ObjectHideFlags: 0
