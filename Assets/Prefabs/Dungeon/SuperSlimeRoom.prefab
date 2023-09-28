@@ -57,6 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5003399758364378635}
   - component: {fileID: 885749640449109385}
+  - component: {fileID: 3521948401731003379}
   m_Layer: 0
   m_Name: SuperSlimeRoom
   m_TagString: Untagged
@@ -99,6 +100,25 @@ MonoBehaviour:
   upgradeOrbPosition: {fileID: 997746809799882941}
   doorTilemap: {fileID: 215962262971734357}
   openDoorTile: {fileID: 11400000, guid: 8645427688e15f4478b25037044235d2, type: 2}
+  floatingDamageSpawner: {fileID: 3521948401731003379}
+--- !u!114 &3521948401731003379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070881198079620770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adfcb6e490b8ba4ea4e61ff8294db5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingDamagePrefab: {fileID: 5765215981924090144, guid: 0f63be08d2b820c49b1f51513c5ea9d8, type: 3}
+  elementInfo: {fileID: 11400000, guid: 424812d20161c0d49b233ce520a77d3a, type: 2}
+  displayDuration: 1
+  textPoolSize: 5
+  testSpawner: 0
+  testDamageAmount: 5
 --- !u!1 &1295480539825449222
 GameObject:
   m_ObjectHideFlags: 0
@@ -4353,11 +4373,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327940077762967139, guid: 0db8be307e11e4b4a9fd37cabe8f496c, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327940077762967139, guid: 0db8be307e11e4b4a9fd37cabe8f496c, type: 3}
       propertyPath: enemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327940077762967139, guid: 0db8be307e11e4b4a9fd37cabe8f496c, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target

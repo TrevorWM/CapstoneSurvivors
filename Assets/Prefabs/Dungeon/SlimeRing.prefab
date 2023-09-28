@@ -3158,6 +3158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5340215204855214756}
   - component: {fileID: 7193848785096476341}
+  - component: {fileID: 5591630554587021598}
   m_Layer: 0
   m_Name: SlimeRing
   m_TagString: Untagged
@@ -3208,6 +3209,25 @@ MonoBehaviour:
   upgradeOrbPosition: {fileID: 171417754796390798}
   doorTilemap: {fileID: 5115390035113057396}
   openDoorTile: {fileID: 11400000, guid: 8645427688e15f4478b25037044235d2, type: 2}
+  floatingDamageSpawner: {fileID: 5591630554587021598}
+--- !u!114 &5591630554587021598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5997049228780987960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adfcb6e490b8ba4ea4e61ff8294db5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingDamagePrefab: {fileID: 5765215981924090144, guid: 0f63be08d2b820c49b1f51513c5ea9d8, type: 3}
+  elementInfo: {fileID: 11400000, guid: 424812d20161c0d49b233ce520a77d3a, type: 2}
+  displayDuration: 1
+  textPoolSize: 5
+  testSpawner: 0
+  testDamageAmount: 5
 --- !u!1 &8273404635707611103
 GameObject:
   m_ObjectHideFlags: 0
@@ -3257,11 +3277,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3375,11 +3395,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3493,11 +3513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3611,11 +3631,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3729,11 +3749,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3847,11 +3867,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3965,11 +3985,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4083,11 +4103,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4201,11 +4221,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297329171065489121, guid: 51442326470cae14183eb5f8f06a8126, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
