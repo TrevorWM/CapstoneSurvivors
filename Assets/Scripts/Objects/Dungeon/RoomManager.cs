@@ -16,7 +16,13 @@ public class RoomManager : MonoBehaviour
     private GameObject upgradeOrb;
 
     [SerializeField, SerializeReference]
+    private GameObject[] tutorialRoomPool;
+
+    [SerializeField, SerializeReference]
     private GameObject[] roomPool;
+
+    [SerializeField, SerializeReference]
+    private GameObject[] bossRoomPool;
 
     private GameObject currentRoom;
     private IDungeonRoom currentRoomLogic;
@@ -68,8 +74,8 @@ public class RoomManager : MonoBehaviour
     {
         Debug.Log("Room Complete!");
         roomCount++;
-        int roomIndex = UnityEngine.Random.Range(0, roomPool.Length);
-        nextRoom = roomPool[roomIndex];
+
+        nextRoom = ChooseNextRoom(roomCount);
 
         Vector3 upgradeOrbPosition = currentRoomLogic.GetUpgradeOrbPosition();
 
@@ -94,5 +100,28 @@ public class RoomManager : MonoBehaviour
     {
         StartRoom(nextRoom);
         currentUpgradeOrb?.SetActive(false);
+    }
+
+    private GameObject ChooseNextRoom(int roomCount)
+    {
+        GameObject nextRoom = null;
+        int roomIndex;
+
+        if (roomCount > 2)
+        {
+            roomIndex = UnityEngine.Random.Range(0, roomPool.Length);
+            nextRoom = roomPool[roomIndex];
+        }
+        else if (roomCount % 10 == 0)
+        {
+            roomIndex = UnityEngine.Random.Range(0, bossRoomPool.Length);
+            nextRoom = bossRoomPool[roomIndex];
+        }
+        else
+        {
+            if (tutorialRoomPool != null) nextRoom = tutorialRoomPool[roomCount - 1];
+        }
+
+        return nextRoom;
     }
 }

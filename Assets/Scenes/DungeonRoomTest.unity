@@ -155,13 +155,15 @@ MonoBehaviour:
   startingRoom: {fileID: 5807390494452671454, guid: 04da2703b22dd7f4fa2f300504818b8b, type: 3}
   player: {fileID: 6204503042473553551, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
   upgradeOrb: {fileID: 9000103055329027066, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
-  roomPool:
+  tutorialRoomPool:
   - {fileID: 5807390494452671454, guid: e156c73cb6617ea4ab04867e57366647, type: 3}
   - {fileID: 5807390494452671454, guid: ef16ae15f0bae6a428e05341dd4cd29a, type: 3}
+  roomPool:
   - {fileID: 3465491303893691916, guid: 3f2ada1541b0fa94d8cd28882776c8fd, type: 3}
   - {fileID: 4531826459207782342, guid: 4dc4d5af892d194478470b4650ec601e, type: 3}
   - {fileID: 5997049228780987960, guid: f5ff49a45ff9a4644b042de7389c40dc, type: 3}
   - {fileID: 2600549069899687713, guid: 112d54c6098c7f14da8772b806929a12, type: 3}
+  bossRoomPool:
   - {fileID: 1070881198079620770, guid: 90d0b5c8069efda4abcd5a67e907c0a2, type: 3}
 --- !u!4 &277871838
 Transform:
