@@ -3372,6 +3372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7704642296204355761}
   - component: {fileID: 7407015867529360960}
+  - component: {fileID: 307477617971882611}
   m_Layer: 0
   m_Name: DungeonRoomEasy1
   m_TagString: Untagged
@@ -3414,6 +3415,25 @@ MonoBehaviour:
   upgradeOrbPosition: {fileID: 7944507706352285511}
   doorTilemap: {fileID: 2042972826601767363}
   openDoorTile: {fileID: 11400000, guid: 8645427688e15f4478b25037044235d2, type: 2}
+  floatingDamageSpawner: {fileID: 307477617971882611}
+--- !u!114 &307477617971882611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807390494452671454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adfcb6e490b8ba4ea4e61ff8294db5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingDamagePrefab: {fileID: 5765215981924090144, guid: 0f63be08d2b820c49b1f51513c5ea9d8, type: 3}
+  elementInfo: {fileID: 11400000, guid: 424812d20161c0d49b233ce520a77d3a, type: 2}
+  displayDuration: 1
+  textPoolSize: 5
+  testSpawner: 0
+  testDamageAmount: 5
 --- !u!1 &8012451277022166626
 GameObject:
   m_ObjectHideFlags: 0
@@ -3469,6 +3489,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7704642296204355761}
     m_Modifications:
+    - target: {fileID: -3325749578843443305, guid: 6177a2f138b17f044bfcb6e0d8f0fc37, type: 3}
+      propertyPath: showDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3325749578843443305, guid: 6177a2f138b17f044bfcb6e0d8f0fc37, type: 3}
+      propertyPath: showDamage.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3325749578843443305, guid: 6177a2f138b17f044bfcb6e0d8f0fc37, type: 3}
+      propertyPath: showDamage.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpawnText
+      objectReference: {fileID: 0}
+    - target: {fileID: -3325749578843443305, guid: 6177a2f138b17f044bfcb6e0d8f0fc37, type: 3}
+      propertyPath: showDamage.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FloatingDamageSpawner, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -3325749578843443305, guid: 6177a2f138b17f044bfcb6e0d8f0fc37, type: 3}
+      propertyPath: showDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1273105804648034894, guid: 6177a2f138b17f044bfcb6e0d8f0fc37, type: 3}
       propertyPath: m_Name
       value: Skull Enemy
@@ -3487,11 +3527,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6190118244469720244, guid: 6177a2f138b17f044bfcb6e0d8f0fc37, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6190118244469720244, guid: 6177a2f138b17f044bfcb6e0d8f0fc37, type: 3}
       propertyPath: enemySpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6190118244469720244, guid: 6177a2f138b17f044bfcb6e0d8f0fc37, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
