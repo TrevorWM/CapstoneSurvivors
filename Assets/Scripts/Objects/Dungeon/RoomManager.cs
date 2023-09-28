@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class RoomManager : MonoBehaviour
@@ -58,6 +59,9 @@ public class RoomManager : MonoBehaviour
         if (currentPlayer == null)
         {
             currentPlayer = Instantiate(player, playerPosition, Quaternion.identity);
+            CharacterStats playerStats = currentPlayer.GetComponent<CharacterStats>();
+            playerStats.playerDied.AddListener(RestartGame);
+
         } else
         {
             currentPlayer.transform.position = playerPosition;
@@ -102,20 +106,26 @@ public class RoomManager : MonoBehaviour
         currentUpgradeOrb?.SetActive(false);
     }
 
+    private void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     private GameObject ChooseNextRoom(int roomCount)
     {
         GameObject nextRoom = null;
         int roomIndex;
 
-        if (roomCount > 2)
-        {
-            roomIndex = UnityEngine.Random.Range(0, roomPool.Length);
-            nextRoom = roomPool[roomIndex];
-        }
-        else if (roomCount % 10 == 0)
+
+        if (roomCount % 10 == 0)
         {
             roomIndex = UnityEngine.Random.Range(0, bossRoomPool.Length);
             nextRoom = bossRoomPool[roomIndex];
+        }
+        else if (roomCount > 2)
+        {
+            roomIndex = UnityEngine.Random.Range(0, roomPool.Length);
+            nextRoom = roomPool[roomIndex];
         }
         else
         {
