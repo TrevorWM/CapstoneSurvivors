@@ -41,16 +41,8 @@ public class Hurtbox : MonoBehaviour
 
         if (ownerComponent != null)
         { 
-            if(attackPayload.DotSeconds > 0)
-            {
-                StartCoroutine(DotTicks(attackPayload, ownerComponent));
-                ownerComponent.TakeDamage(attackPayload);
-            }
-            else
-            {
-                ownerComponent.TakeDamage(attackPayload);
-            }
-            
+            if(attackPayload.DotSeconds > 0) StartCoroutine(DotTicks(attackPayload, ownerComponent));
+            ownerComponent.TakeDamage(attackPayload);
         }
     }
 
