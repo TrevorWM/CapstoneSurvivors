@@ -1,8 +1,14 @@
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public class DamageCalculator : MonoBehaviour
 {
+    public UnityEvent<float, ElementType, Transform> showDamage;
+
+    private void OnDestroy()
+    {
+        showDamage.RemoveAllListeners();
+    }
     public float CalculateDamage(AttackPayload payload, CharacterStats ownerStats = null, CharacterStatsSO defaultOwnerStats = null)
     {
         ElementType characterElement;
@@ -56,6 +62,7 @@ public class DamageCalculator : MonoBehaviour
         }
 
         LogDamage(payload, damage, isCrit);
+        showDamage.Invoke(damage, payload.Element, this.transform);
         return damage;
     }
 
