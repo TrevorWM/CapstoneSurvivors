@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class RoomManager : MonoBehaviour
@@ -52,6 +53,8 @@ public class RoomManager : MonoBehaviour
         if (currentPlayer == null)
         {
             currentPlayer = Instantiate(player, playerPosition, Quaternion.identity);
+            CharacterStats playerStats = currentPlayer.GetComponent<CharacterStats>();
+            playerStats.playerDied.AddListener(RestartGame);
         } else
         {
             currentPlayer.transform.position = playerPosition;
@@ -94,5 +97,10 @@ public class RoomManager : MonoBehaviour
     {
         StartRoom(nextRoom);
         currentUpgradeOrb?.SetActive(false);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

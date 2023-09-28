@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class CharacterStats : MonoBehaviour, IDamageable
 {
@@ -50,6 +51,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
     private bool rightFacingSprite;
     private SpriteRenderer spriteRenderer;
 
+    public UnityEvent playerDied;
     public UnityEvent updateHealth;
 
     #region Getters and Setters
@@ -251,6 +253,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
 
         // replace with death logic once animations, sfx, vfx, and other things are in
         this.gameObject.SetActive(false);
+        if (this.gameObject.layer == LayerMask.NameToLayer("Player")) playerDied.Invoke();
     }
 
     /// <summary>
