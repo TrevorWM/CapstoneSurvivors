@@ -31,10 +31,10 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private FlashSprite flashSprite;
     [SerializeField]
     private DamageCalculator calculator;
-    [SerializeField]
-    public UnityEvent enemySpawn;
-    [SerializeField]
-    public UnityEvent enemyDeath;
+    
+    public UnityEvent<DamageCalculator> enemySpawn;
+
+    public UnityEvent<DamageCalculator> enemyDeath;
 
     private MeleeAttack meleeAttack;
     private AttackPayload payload;
@@ -72,7 +72,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         currentHealth = EnemyStats.MaxHealth;
         meleeAttack = GetComponentInChildren<MeleeAttack>();
 
-        enemySpawn.Invoke();
+        enemySpawn.Invoke(calculator);
     }
 
     private void PerformDetection()
@@ -245,7 +245,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private void OnDeath()
     {
         CancelInvoke();
-        enemyDeath.Invoke();
+        enemyDeath.Invoke(calculator);
         gameObject.SetActive(false);
     }
     

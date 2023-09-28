@@ -3604,6 +3604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7704642296204355761}
   - component: {fileID: 7407015867529360960}
+  - component: {fileID: 3569564706794638998}
   m_Layer: 0
   m_Name: DungeonStartRoom
   m_TagString: Untagged
@@ -3647,6 +3648,25 @@ MonoBehaviour:
   upgradeOrbPosition: {fileID: 8977023014944003390}
   doorTilemap: {fileID: 2042972826601767363}
   openDoorTile: {fileID: 11400000, guid: 8645427688e15f4478b25037044235d2, type: 2}
+  floatingDamageSpawner: {fileID: 3569564706794638998}
+--- !u!114 &3569564706794638998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807390494452671454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adfcb6e490b8ba4ea4e61ff8294db5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingDamagePrefab: {fileID: 5765215981924090144, guid: 0f63be08d2b820c49b1f51513c5ea9d8, type: 3}
+  elementInfo: {fileID: 11400000, guid: 424812d20161c0d49b233ce520a77d3a, type: 2}
+  displayDuration: 1
+  textPoolSize: 5
+  testSpawner: 0
+  testDamageAmount: 5
 --- !u!1 &6828701080083820461
 GameObject:
   m_ObjectHideFlags: 0
@@ -3658,6 +3678,7 @@ GameObject:
   - component: {fileID: 8398001578201906983}
   - component: {fileID: 71356339378420319}
   - component: {fileID: 70616571628868070}
+  - component: {fileID: 208387484743855995}
   m_Layer: 0
   m_Name: CompleteRoomTrigger
   m_TagString: Untagged
@@ -3743,15 +3764,30 @@ MonoBehaviour:
       - m_Target: {fileID: 7407015867529360960}
         m_TargetAssemblyTypeName: RoomLogic, Assembly-CSharp
         m_MethodName: EnemyRemoved
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 208387484743855995}
+          m_ObjectArgumentAssemblyTypeName: DamageCalculator, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &208387484743855995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6828701080083820461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58c7418162d43249b66dd2980c54061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7877885126675374743
 GameObject:
   m_ObjectHideFlags: 0

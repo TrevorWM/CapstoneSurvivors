@@ -18,6 +18,9 @@ public class RoomLogic : MonoBehaviour, IDungeonRoom
     [SerializeField]
     private TileBase openDoorTile;
 
+    [SerializeField]
+    private FloatingDamageSpawner floatingDamageSpawner;
+
     private List<TileBase> doorTiles = new List<TileBase>();
 
     private int enemiesInRoom = 0;
@@ -81,15 +84,17 @@ public class RoomLogic : MonoBehaviour, IDungeonRoom
         roomManager.GoToNextRoom();
     }
 
-    public void EnemyAdded()
+    public void EnemyAdded(DamageCalculator enemyDamageCalculator)
     {
         enemiesInRoom++;
+        enemyDamageCalculator.showDamage.AddListener(floatingDamageSpawner.SpawnText);
     }
 
-    public void EnemyRemoved()
+    public void EnemyRemoved(DamageCalculator enemyDamageCalculator)
     {
         enemiesInRoom--;
-
         if (enemiesInRoom <= 0) OpenDoor();
+        if (enemyDamageCalculator != null) enemyDamageCalculator.showDamage.RemoveListener(floatingDamageSpawner.SpawnText);
+        
     }
 }

@@ -71,9 +71,9 @@ public class FloatingDamageSpawner : MonoBehaviour
 
     private void DestroyPool()
     {
-        for (int i = 0; i < prefabInstances.Length; i++)
+        for (int i = prefabInstances.Length - 1; i > 0; i--)
         {
-            Destroy(prefabInstances[i]);
+            if (prefabInstances[i] != null) Destroy(prefabInstances[i]);
         }
     }
 
