@@ -293,7 +293,7 @@ public class PlayerControls : MonoBehaviour
         pauseInput.Enable();
     }
 
-    private void DisableInputs()
+    public void DisableInputs()
     {
         moveInput.Disable();
         dodgeInput.Disable();

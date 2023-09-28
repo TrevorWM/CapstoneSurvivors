@@ -15,6 +15,11 @@ public class HealthBar : MonoBehaviour
     public void UpdateHealthBarValue()
     {
         healthBarSlider.value = playerStats.CurrentHealth / playerStats.MaxHealth;
+        
+        if (healthBarSlider.value <= 0)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     private void Awake()
