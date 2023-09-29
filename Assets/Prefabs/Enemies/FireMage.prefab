@@ -486,7 +486,7 @@ MonoBehaviour:
   detectionDelay: 0.05
   movementInput: {x: 0, y: 0}
   movementDirectionSolver: {fileID: 4742228905648544628}
-  enemyStats: {fileID: 11400000, guid: 921e55709eba3164d8e44f5fa4d63f9e, type: 2}
+  enemyStats: {fileID: 11400000, guid: 2d79e0776b3184e44aac89310869ef2a, type: 2}
   projectilePool: {fileID: 3620829023892470323}
   flashSprite: {fileID: 936542112781181270}
   calculator: {fileID: 1721900736155384653}
@@ -536,6 +536,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58c7418162d43249b66dd2980c54061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6822517259706011320
 GameObject:
   m_ObjectHideFlags: 0

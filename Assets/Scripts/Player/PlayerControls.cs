@@ -229,8 +229,7 @@ public class PlayerControls : MonoBehaviour
                 //If we got the ability and it is not on cooldown shoot it
                 if (ability != null && !ability.OnCooldown)
                 {
-                    isAttacking = true;
-
+                    
                     float abilityCooldown = ability.ActiveAbilitySO.AbilityCooldown;
                     float cooldownReduction = abilityCooldown * runtimeStats.CooldownReduction;
 
@@ -239,7 +238,6 @@ public class PlayerControls : MonoBehaviour
                     //Start attack timer to prevent player from shooting basic attack
                     //immediately after an ability use, and individual cooldown timer
                     ability.StartCooldown(abilityCooldown - cooldownReduction);
-                    StartCoroutine(BasicAttackCooldown());
                 }
             }
         }

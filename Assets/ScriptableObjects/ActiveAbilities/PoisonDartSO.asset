@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: Poison Dart
   abilityDescription: Shoots a dart that poisons the enemy dealing damage over time
   abilityIcon: {fileID: 21300000, guid: d9f40760793883748adc12a69306dbca, type: 3}
-  abilityCooldown: 1
+  abilityCooldown: 5
   dotTime: 5
   projectileSpeed: 5
   abilityElement: 1
