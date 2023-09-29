@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5631680595898565508}
   - component: {fileID: 4457685313302554558}
   - component: {fileID: 4222175458200282325}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2406,7 +2406,7 @@ GameObject:
   - component: {fileID: 8073943781284745243}
   - component: {fileID: 5504782944759545441}
   - component: {fileID: 8978255393360702331}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Shoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3823,7 +3823,7 @@ GameObject:
   - component: {fileID: 5342504861195940690}
   - component: {fileID: 1117759590097445704}
   - component: {fileID: 4038428180922033381}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Dodge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4005,7 +4005,7 @@ GameObject:
   - component: {fileID: 8417903196833963088}
   - component: {fileID: 7032313058190242140}
   - component: {fileID: 4707551851162095701}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Controls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4020,7 +4020,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8783523401218303490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

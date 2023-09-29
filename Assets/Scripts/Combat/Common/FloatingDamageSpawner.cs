@@ -12,9 +12,6 @@ public class FloatingDamageSpawner : MonoBehaviour
     private ElementInfoSO elementInfo;
 
     [SerializeField]
-    private float displayDuration;
-
-    [SerializeField]
     private int textPoolSize = 5;
 
     [SerializeField]
@@ -32,7 +29,6 @@ public class FloatingDamageSpawner : MonoBehaviour
     private void OnValidate()
     {
         textPoolSize = Mathf.Max(1, textPoolSize);
-        displayDuration = Mathf.Max(1, displayDuration);
     }
     private void Start()
     {
@@ -98,8 +94,6 @@ public class FloatingDamageSpawner : MonoBehaviour
                 currentTextInstance.transform.position = RandomizeSpawnPosition(spawnTransform);
                 currentTextInstance.SetActive(true);
                 textIndex = (textIndex + 1) % textPoolSize;
-
-                StartCoroutine(DespawnText(currentTextInstance, displayDuration)); 
             }
         }
     }
@@ -124,12 +118,6 @@ public class FloatingDamageSpawner : MonoBehaviour
             case ElementType.None: return elementInfo.NoneColor;
             default: return elementInfo.NoneColor;
         }
-    }
-
-    private IEnumerator DespawnText(GameObject textInstance, float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        textInstance.SetActive(false);
     }
 
     private IEnumerator TestText()

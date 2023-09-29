@@ -41,15 +41,8 @@ public class Hurtbox : MonoBehaviour
 
         if (ownerComponent != null)
         { 
-            if(attackPayload.DotSeconds > 0)
-            {
-                StartCoroutine(DotTicks(attackPayload, ownerComponent));
-            }
-            else
-            {
-                ownerComponent.TakeDamage(attackPayload);
-            }
-            
+            if(attackPayload.DotSeconds > 0) StartCoroutine(DotTicks(attackPayload, ownerComponent));
+            ownerComponent.TakeDamage(attackPayload);
         }
     }
 
@@ -57,7 +50,9 @@ public class Hurtbox : MonoBehaviour
     {
         int ticks = payload.DotSeconds;
 
-        while (ticks > 0)
+        // We use >1 so that we can have a damage instance when the projectile hits
+        // Then the dot ticks for the rest of the time.
+        while (ticks > 1)
         {
             yield return new WaitForSeconds(1f);
             target.TakeDamage(payload);
