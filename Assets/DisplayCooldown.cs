@@ -25,7 +25,7 @@ public class DisplayCooldown : MonoBehaviour
         while (timeSinceAbilityStart < duration)
         {
             timeSinceAbilityStart += Time.deltaTime;
-            if (cooldownBar) cooldownBar.value = Mathf.Lerp(0f, 1f, timeSinceAbilityStart / duration);
+            if (cooldownBar) cooldownBar.value = Mathf.Lerp(1f, 0f, timeSinceAbilityStart / duration);
             yield return null;
         }      
     }
