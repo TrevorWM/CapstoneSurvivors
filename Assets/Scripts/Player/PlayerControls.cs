@@ -70,6 +70,11 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        MusicPlayer.Instance.PlayLevel1Music();
+    }
+
     private void OnEnable()
     {
         moveInput = playerInputActions.Gameplay.Move;
