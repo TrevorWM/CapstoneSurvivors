@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 
 // Much of this code is adapted from: https://github.com/SunnyValleyStudio/Unity-2D-Context-steering-AI
@@ -46,7 +47,8 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private readonly float tooClose = 3f;
 
     private float meleeBuffer = 0.5f;
-    private Vector3 scaleVector = new Vector3(1, 1, 1);
+
+    private Vector3 flipXScale = new Vector3(-1f, 1f, 1f);
 
 
     public CharacterStatsSO EnemyStats { get => enemyStats; private set => enemyStats = value; }
@@ -90,15 +92,19 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
             if (enemyRigidbody.velocity.x > 0)
             {
-                scaleVector.x = 1;
-                scale = Vector3.Scale(this.gameObject.transform.localScale, scaleVector);
-                this.gameObject.transform.localScale = scale; 
+                if (this.gameObject.transform.localScale.x < 0)
+                {
+                    scale = Vector3.Scale(this.gameObject.transform.localScale, flipXScale);
+                    this.gameObject.transform.localScale = scale;
+                }
             }
             else if (enemyRigidbody.velocity.x < 0)
             {
-                scaleVector.x = -1;
-                scale = Vector3.Scale(this.gameObject.transform.localScale, scaleVector);
-                this.gameObject.transform.localScale = scale;
+                if (this.gameObject.transform.localScale.x > 0)
+                {
+                    scale = Vector3.Scale(this.gameObject.transform.localScale, flipXScale);
+                    this.gameObject.transform.localScale = scale;
+                } 
             }
             
         }
