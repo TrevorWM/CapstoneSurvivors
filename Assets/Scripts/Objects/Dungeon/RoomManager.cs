@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -15,6 +16,9 @@ public class RoomManager : MonoBehaviour
 
     [SerializeField]
     private GameObject upgradeOrb;
+
+    [SerializeField]
+    private int roomsBeforeBoss;
 
     [SerializeField, SerializeReference]
     private GameObject[] tutorialRoomPool;
@@ -33,6 +37,12 @@ public class RoomManager : MonoBehaviour
     private GameObject currentUpgradeOrb;
 
     private int roomCount;
+
+
+    private void OnValidate()
+    {
+        roomsBeforeBoss = Mathf.Max(1, roomsBeforeBoss);
+    }
 
     public void Awake()
     {
@@ -117,7 +127,7 @@ public class RoomManager : MonoBehaviour
         int roomIndex;
 
 
-        if (roomCount % 10 == 0)
+        if (roomCount % roomsBeforeBoss == 0)
         {
             roomIndex = UnityEngine.Random.Range(0, bossRoomPool.Length);
             nextRoom = bossRoomPool[roomIndex];

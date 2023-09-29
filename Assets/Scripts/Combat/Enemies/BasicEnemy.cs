@@ -46,7 +46,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private readonly float tooClose = 3f;
 
     private float meleeBuffer = 0.5f;
-    private Vector3 scaleVector;
+    private Vector3 scaleVector = new Vector3(1, 1, 1);
 
 
     public CharacterStatsSO EnemyStats { get => enemyStats; private set => enemyStats = value; }
@@ -65,8 +65,6 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     {
         // Detecting Player and Obstacles around
         InvokeRepeating("PerformDetection", 0, detectionDelay);
-
-        scaleVector = new Vector3(1, 1, 1);
 
         //set starting health
         currentHealth = EnemyStats.MaxHealth;
@@ -88,16 +86,21 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         // Enemy AI movement based on Target availability
         if (aiData.currentTarget != null)
         {
+            Vector3 scale;
+
             if (enemyRigidbody.velocity.x > 0)
             {
                 scaleVector.x = 1;
-                this.gameObject.transform.localScale = scaleVector;
+                scale = Vector3.Scale(this.gameObject.transform.localScale, scaleVector);
+                this.gameObject.transform.localScale = scale; 
             }
             else if (enemyRigidbody.velocity.x < 0)
             {
                 scaleVector.x = -1;
-                this.gameObject.transform.localScale = scaleVector;
+                scale = Vector3.Scale(this.gameObject.transform.localScale, scaleVector);
+                this.gameObject.transform.localScale = scale;
             }
+            
         }
         else if (aiData.GetTargetsCount() > 0)
         {

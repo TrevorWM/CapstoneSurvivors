@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 2
-  agentColliderSize: 0.6
+  agentColliderSize: 0.35
   showGizmo: 1
 --- !u!1 &7692124882187087839
 GameObject:
@@ -286,7 +286,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.8278084, y: -4.64922, z: -0.18619174}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2940005114983313753}
@@ -328,9 +328,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0026854873, y: -0.2416954}
+  m_Offset: {x: -0.0026854873, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3398943
+  m_Radius: 0.35
 --- !u!50 &1433961239893793914
 Rigidbody2D:
   serializedVersion: 4
@@ -429,6 +429,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58c7418162d43249b66dd2980c54061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8135108629216202780
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,51 +736,8 @@ PrefabInstance:
     - {fileID: 8372293985279831060, guid: fe10963103b157340912515c58735b66, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7979575963436343856, guid: fe10963103b157340912515c58735b66, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 334119228763796928}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe10963103b157340912515c58735b66, type: 3}
---- !u!1 &18677508688967492 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7979575963436343856, guid: fe10963103b157340912515c58735b66, type: 3}
-  m_PrefabInstance: {fileID: 7998249005139072372}
-  m_PrefabAsset: {fileID: 0}
---- !u!58 &334119228763796928
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18677508688967492}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.6
 --- !u!4 &2703272328945340581 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5439379455330059729, guid: fe10963103b157340912515c58735b66, type: 3}
