@@ -20,6 +20,9 @@ public class PlayerControls : MonoBehaviour
     private SetAbilityUI setAbilityUI;
 
     [SerializeField]
+    private DisplayCooldown[] abilityCooldownVisuals;
+
+    [SerializeField]
     private GameObject[] currentAbilities;
     private enum AbilityKeyMap
     {
@@ -238,6 +241,7 @@ public class PlayerControls : MonoBehaviour
                     //Start attack timer to prevent player from shooting basic attack
                     //immediately after an ability use, and individual cooldown timer
                     ability.StartCooldown(abilityCooldown - cooldownReduction);
+                    abilityCooldownVisuals[(int)keyIndex].StartShowCooldown(abilityCooldown-cooldownReduction);
                 }
             }
         }
