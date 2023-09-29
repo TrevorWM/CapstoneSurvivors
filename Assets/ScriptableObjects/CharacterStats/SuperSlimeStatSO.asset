@@ -28,7 +28,7 @@ MonoBehaviour:
   natureAffinity: 0
   cooldownReduction: 0
   detectionRadius: 50
-  followDistance: 1
+  followDistance: 1.5
   rangedEnemy: 0
   projectileSpeed: 0
   characterSprite: {fileID: 21300000, guid: 7c6371b991edbb244baed7cae2bb9f22, type: 3}

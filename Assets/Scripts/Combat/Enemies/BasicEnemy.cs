@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 
 // Much of this code is adapted from: https://github.com/SunnyValleyStudio/Unity-2D-Context-steering-AI
@@ -46,7 +47,8 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private readonly float tooClose = 3f;
 
     private float meleeBuffer = 0.5f;
-    private Vector3 scaleVector;
+
+    private Vector3 flipXScale = new Vector3(-1f, 1f, 1f);
 
 
     public CharacterStatsSO EnemyStats { get => enemyStats; private set => enemyStats = value; }
@@ -65,8 +67,6 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     {
         // Detecting Player and Obstacles around
         InvokeRepeating("PerformDetection", 0, detectionDelay);
-
-        scaleVector = new Vector3(1, 1, 1);
 
         //set starting health
         currentHealth = EnemyStats.MaxHealth;
@@ -88,16 +88,25 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         // Enemy AI movement based on Target availability
         if (aiData.currentTarget != null)
         {
+            Vector3 scale;
+
             if (enemyRigidbody.velocity.x > 0)
             {
-                scaleVector.x = 1;
-                this.gameObject.transform.localScale = scaleVector;
+                if (this.gameObject.transform.localScale.x < 0)
+                {
+                    scale = Vector3.Scale(this.gameObject.transform.localScale, flipXScale);
+                    this.gameObject.transform.localScale = scale;
+                }
             }
             else if (enemyRigidbody.velocity.x < 0)
             {
-                scaleVector.x = -1;
-                this.gameObject.transform.localScale = scaleVector;
+                if (this.gameObject.transform.localScale.x > 0)
+                {
+                    scale = Vector3.Scale(this.gameObject.transform.localScale, flipXScale);
+                    this.gameObject.transform.localScale = scale;
+                } 
             }
+            
         }
         else if (aiData.GetTargetsCount() > 0)
         {
