@@ -14,6 +14,8 @@ public class DamageCalculator : MonoBehaviour
         ElementType characterElement;
         float characterDefence;
 
+        SoundEffectPlayer.Instance.BasicHitSound();
+
         if (ownerStats)
         {
             characterElement = ownerStats.CharacterElement;
