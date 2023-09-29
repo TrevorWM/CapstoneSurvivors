@@ -245,6 +245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4911380535965239944}
+  - component: {fileID: 373720997233289202}
   m_Layer: 0
   m_Name: Floating Damage
   m_TagString: Untagged
@@ -268,3 +269,16 @@ Transform:
   - {fileID: 6467265084405266981}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &373720997233289202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5765215981924090144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37eeccc624af4f14782f3b9902674ac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectLifetime: 0.5
