@@ -42,6 +42,8 @@ public class TooltipUI : MonoBehaviour
     public void ShowTooltip(string text)
     {
         gameObject.SetActive(true);
+        Vector3 mousePadding = new(-1f, -1f, 0f);
+        textRect.anchoredPosition = Input.mousePosition + mousePadding;
         SetText(text);
     }
     public void HideTooltip()

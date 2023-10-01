@@ -38,7 +38,39 @@ public class ActiveUpgrade : IUpgrade
     // will be used to get the description text that appears when hovering over the upgrade
     public string GetDescription()
     {
-        throw new System.NotImplementedException();
+        string description = rarity + " ";
+        description += upgradeType.ActiveAbilitySO.AbilityName + ": ";
+        description += upgradeType.ActiveAbilitySO.AbilityElement + " type ability\n";
+        description += upgradeType.ActiveAbilitySO.Description + "\n";
+
+        description += "Deals ";
+
+        switch (rarity) {
+
+            case UpgradeRarity.Common:
+                description += upgradeType.ActiveAbilitySO.CommonDamageModifier * 100;
+                break;
+            case UpgradeRarity.Uncommon:
+                description += upgradeType.ActiveAbilitySO.UncommonDamageModifier * 100;
+                break;
+            case UpgradeRarity.Rare:
+                description += upgradeType.ActiveAbilitySO.RareDamageModifier * 100;
+                break;
+            case UpgradeRarity.Legendary:
+                description += upgradeType.ActiveAbilitySO.LegendaryDamageModifier * 100;
+                break;
+        }
+
+        description += "% of base damage";
+
+        if (upgradeType.ActiveAbilitySO.DotTime > 0)
+        {
+            description += " per second for " + upgradeType.ActiveAbilitySO.DotTime + " seconds";
+        }
+
+        description += "\nCooldown: " + upgradeType.ActiveAbilitySO.AbilityCooldown + " seconds";
+
+        return description;
     }
 
 }
