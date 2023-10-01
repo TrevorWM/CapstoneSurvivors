@@ -406,17 +406,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4048436168766289364, guid: 6cc3652d311da0140b57a6e28afcbab9, type: 3}
   m_PrefabInstance: {fileID: 101525401}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &478220421 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4180119183858516305, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
-  m_PrefabInstance: {fileID: 2877130052447893318}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 572d997ab90e72042ada82768a7f1d78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &557805977 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 147103729419837047, guid: f2a89244b76e0d24d9bcd53ebdc04dbb, type: 3}
@@ -1181,6 +1170,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1310825153766437246, guid: 8ef7d4c021a5ad941b1b7a368976f4e2, type: 3}
   m_PrefabInstance: {fileID: 8481369954606943651}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1595031710 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3452274685876556926, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+  m_PrefabInstance: {fileID: 2877130052447893318}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1614303520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1489,18 +1483,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 862958446769112916, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
-      propertyPath: tooltip
+    - target: {fileID: 4180119183858516305, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+      propertyPath: canvas
       value: 
-      objectReference: {fileID: 478220421}
-    - target: {fileID: 2936622530536710054, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
-      propertyPath: tooltip
-      value: 
-      objectReference: {fileID: 478220421}
-    - target: {fileID: 3702266794069928953, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
-      propertyPath: tooltip
-      value: 
-      objectReference: {fileID: 478220421}
+      objectReference: {fileID: 1595031710}
     - target: {fileID: 8428933337430597685, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

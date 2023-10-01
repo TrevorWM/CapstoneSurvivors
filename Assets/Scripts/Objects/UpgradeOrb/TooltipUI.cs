@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 
 public class TooltipUI : MonoBehaviour
 {
+    [SerializeField]
+    private RectTransform canvas;
 
     private RectTransform backgroundRect;
     private TextMeshProUGUI textMesh;
@@ -35,7 +37,18 @@ public class TooltipUI : MonoBehaviour
     private void Update()
     {
         Vector3 mousePadding = new(-1f, -1f, 0f);
-        textRect.anchoredPosition = Input.mousePosition + mousePadding;
+        Vector2 position = Input.mousePosition + mousePadding;
+
+        if (position.x + backgroundRect.rect.width > canvas.rect.width)
+        {
+            position.x = canvas.rect.width - backgroundRect.rect.width;
+        }
+        if (position.y + backgroundRect.rect.height > canvas.rect.height)
+        {
+            position.y = canvas.rect.height - backgroundRect.rect.height;
+        }
+
+        textRect.anchoredPosition = position;
 
     }
 
