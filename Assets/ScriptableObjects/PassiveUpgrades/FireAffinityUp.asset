@@ -18,3 +18,4 @@ MonoBehaviour:
   uncommonUpgradeAmount: 0.05
   rareUpgradeAmount: 0.1
   legendaryUpgradeAmount: 0.2
+  description: Increases damage of fire abilities

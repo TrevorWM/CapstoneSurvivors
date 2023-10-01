@@ -18,3 +18,4 @@ MonoBehaviour:
   uncommonUpgradeAmount: 2
   rareUpgradeAmount: 3
   legendaryUpgradeAmount: 5
+  description: Increases damage of all abilities

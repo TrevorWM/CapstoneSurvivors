@@ -18,3 +18,4 @@ MonoBehaviour:
   uncommonUpgradeAmount: 5
   rareUpgradeAmount: 10
   legendaryUpgradeAmount: 15
+  description: Increases chance of hit being a crit

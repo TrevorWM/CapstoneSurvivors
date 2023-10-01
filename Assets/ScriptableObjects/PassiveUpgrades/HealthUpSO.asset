@@ -18,3 +18,4 @@ MonoBehaviour:
   uncommonUpgradeAmount: 15
   rareUpgradeAmount: 25
   legendaryUpgradeAmount: 50
+  description: Increases max health
