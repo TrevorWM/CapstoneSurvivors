@@ -13,7 +13,7 @@ public interface IUpgrade
 
     public string DisplayText();
 
-    public string getInfo();
+    public string GetDescription();
 
 }
 
@@ -36,10 +36,11 @@ public class ActiveUpgrade : IUpgrade
     }
 
     // will be used to get the description text that appears when hovering over the upgrade
-    public string getInfo()
+    public string GetDescription()
     {
-        return UpgradeType.ActiveAbilitySO.AbilityDescription;
+        throw new System.NotImplementedException();
     }
+
 }
 
 public class PassiveUpgrade : IUpgrade
@@ -50,20 +51,44 @@ public class PassiveUpgrade : IUpgrade
     public PassiveUpgradeBase UpgradeType { get => upgradeType; set => upgradeType = value; }
     public UpgradeRarity Rarity { get => rarity; set => rarity = value; }
     UpgradeCategory IUpgrade.Category => UpgradeCategory.Passive;
+    public PassiveUpgradeBase GetBase() => upgradeType;
 
     public string DisplayText()
     {
         return UpgradeType.PassiveUpgradeSO.UpgradeName;
     }
 
+    
     // will be used to get the description text that appears when hovering over the upgrade
-    public string getInfo()
+    public string GetDescription()
     {
-        throw new System.NotImplementedException();
+        string description = rarity + " ";
+        description += upgradeType.PassiveUpgradeSO.UpgradeName + ":\n";
+        description += upgradeType.PassiveUpgradeSO.Description;
+        float amount;
+
+        switch (rarity)
+        {
+            case UpgradeRarity.Common:
+                amount = upgradeType.PassiveUpgradeSO.CommonUpgradeAmount;
+                description += " by " + (amount < 1 ? amount * 100 + "%" : amount);
+                break;
+            case UpgradeRarity.Uncommon:
+                amount = upgradeType.PassiveUpgradeSO.UncommonUpgradeAmount;
+                description += " by " + (amount < 1 ? amount * 100 + "%" : amount);
+                break;
+            case UpgradeRarity.Rare:
+                amount = upgradeType.PassiveUpgradeSO.RareUpgradeAmount;
+                description += " by " + (amount < 1 ? amount * 100 + "%" : amount);
+                break;
+            case UpgradeRarity.Legendary:
+                amount = upgradeType.PassiveUpgradeSO.LegendaryUpgradeAmount;
+                description += " by " + (amount < 1 ? amount * 100 + "%" : amount);
+                break;
+        }
+
+        return description;
     }
-
-    public PassiveUpgradeBase GetBase() => upgradeType;
-
 }
 
 public enum UpgradeCategory

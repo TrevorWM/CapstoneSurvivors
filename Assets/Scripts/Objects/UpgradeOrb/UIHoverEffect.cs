@@ -12,10 +12,14 @@ public class UIHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private UpgradeOrb orb;
     private IUpgrade currentUpgrade;
 
+    [SerializeField]
+    private TooltipUI tooltip;
+
     public IUpgrade CurrentUpgrade { get => currentUpgrade; set => currentUpgrade = value; }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        tooltip.HideTooltip();
         //change size back
         portal.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize.x);
         portal.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, originalSize.y);
@@ -29,12 +33,14 @@ public class UIHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         portal.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, hoverSize.x);
         portal.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, hoverSize.y);
+        tooltip.ShowTooltip(currentUpgrade.GetDescription());
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         portal.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize.x);
         portal.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, originalSize.y);
+        tooltip.HideTooltip();
     }
 
     // Start is called before the first frame update
