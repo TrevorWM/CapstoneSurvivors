@@ -18,3 +18,5 @@ MonoBehaviour:
   uncommonUpgradeAmount: 2
   rareUpgradeAmount: 3
   legendaryUpgradeAmount: 5
+  description: Decreases damage taken
+  sprite: {fileID: 21300000, guid: ec30e33b022b92d43b8263ce61b85db5, type: 3}

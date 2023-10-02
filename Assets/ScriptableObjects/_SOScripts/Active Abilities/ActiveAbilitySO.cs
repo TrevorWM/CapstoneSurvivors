@@ -41,6 +41,9 @@ public class ActiveAbilitySO : ScriptableObject
     [SerializeField]
     private float legendaryDamageModifier;
 
+    [SerializeField]
+    private string description;
+
     public string AbilityName { get => abilityName; }
     public string AbilityDescription { get => abilityDescription; }
     public Sprite AbilityIcon { get => abilityIcon; }
@@ -52,6 +55,7 @@ public class ActiveAbilitySO : ScriptableObject
     public float RareDamageModifier { get => rareDamageModifier; set => rareDamageModifier = Mathf.Max(0, value); }
     public float LegendaryDamageModifier { get => legendaryDamageModifier; set => legendaryDamageModifier = Mathf.Max(0, value); }
     public ElementType AbilityElement { get => abilityElement; }
+    public string Description { get => description; set => description = value; }
 
     private void OnValidate()
     {

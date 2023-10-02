@@ -216,7 +216,10 @@ public class PlayerControls : MonoBehaviour
 
     IEnumerator BasicAttackCooldown()
     {
-        yield return new WaitForSeconds(1 / runtimeStats.AttacksPerSecond);
+        float cooldown = 1 / runtimeStats.AttacksPerSecond;
+        cooldown -= cooldown * runtimeStats.CooldownReduction;
+        Debug.Log("shot cooldown: " + cooldown);
+        yield return new WaitForSeconds(cooldown);
         isAttacking = false;
     }
 

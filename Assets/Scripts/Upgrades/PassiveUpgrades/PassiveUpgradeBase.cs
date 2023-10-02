@@ -86,15 +86,5 @@ public class PassiveUpgradeBase : MonoBehaviour
         }
     }
 
-    public string DisplayText()
-    {
-        // add space after each capital
-        string upgradeName = Regex.Replace(passiveUpgradeSO.UpgradeName, "([A-Z])", " $1");
-        // remove text in paranthesis
-        upgradeName = Regex.Replace(upgradeName, "\\([^()]*\\)", "");
-        // remove "passive"
-        upgradeName = Regex.Replace(upgradeName, "Passive", "");
-
-        return upgradeName;
-    }
+    
 }
