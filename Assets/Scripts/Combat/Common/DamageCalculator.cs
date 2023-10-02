@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class DamageCalculator : MonoBehaviour
 {
-    public UnityEvent<float, ElementType, Transform> showDamage;
+    public UnityEvent<float, ElementType, bool, Transform> showDamage;
 
     private void OnDestroy()
     {
@@ -64,7 +64,7 @@ public class DamageCalculator : MonoBehaviour
         }
 
         LogDamage(payload, damage, isCrit);
-        showDamage.Invoke(damage, payload.Element, this.transform);
+        showDamage.Invoke(damage, payload.Element, isCrit, this.transform);
         return damage;
     }
 
