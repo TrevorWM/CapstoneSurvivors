@@ -48,19 +48,19 @@ public class UpgradeMenu : MonoBehaviour
                 case UpgradeRarity.Common:
                     portals[i].GetComponent<UnityEngine.UI.Image>().sprite = 
                         (upgrades[i].Category == UpgradeCategory.Active) ? redCommon : purpleCommon;
-                    //texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
+                    texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
                     SetUpgradeSprite(statImages[i], upgrades[i]);
                     break;
                 case UpgradeRarity.Uncommon:
                     portals[i].GetComponent<UnityEngine.UI.Image>().sprite =
                         (upgrades[i].Category == UpgradeCategory.Active) ? redUncommon : purpleUncommon;
-                    //texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
+                    texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
                     SetUpgradeSprite(statImages[i], upgrades[i]);
                     break;
                 case UpgradeRarity.Rare:
                     portals[i].GetComponent<UnityEngine.UI.Image>().sprite =
                         (upgrades[i].Category == UpgradeCategory.Active) ? redRare : purpleRare;
-                    //texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
+                    texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
                     SetUpgradeSprite(statImages[i], upgrades[i]);
                     break;
                 case UpgradeRarity.Legendary:
@@ -79,11 +79,13 @@ public class UpgradeMenu : MonoBehaviour
         {
             ActiveUpgrade active = upgrade as ActiveUpgrade;
             statImage.GetComponent<UnityEngine.UI.Image>().sprite = active.UpgradeType.ActiveAbilitySO.AbilityIcon;
+            statImage.transform.localScale = Vector3.one;
         }
         else
         {
             PassiveUpgrade passive = upgrade as PassiveUpgrade;
             statImage.GetComponent<UnityEngine.UI.Image>().sprite = passive.UpgradeType.PassiveUpgradeSO.Sprite;
+            statImage.transform.localScale = new Vector3(.75f, .75f, 1);
         }
     }
 
