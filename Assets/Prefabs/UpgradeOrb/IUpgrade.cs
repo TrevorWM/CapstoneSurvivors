@@ -118,6 +118,12 @@ public class PassiveUpgrade : IUpgrade
                 description += " by " + (amount < 1 ? amount * 100 + "%" : amount);
                 break;
         }
+        
+        if (upgradeType.PassiveUpgradeSO.UpgradeName == "Critical Rate Up")
+        {
+            // for some reason critical rate is the only one where the SO is in percent rather than decimal
+            description += "%";
+        }
 
         return description;
     }

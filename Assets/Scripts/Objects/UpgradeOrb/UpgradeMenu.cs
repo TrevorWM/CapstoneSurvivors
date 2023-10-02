@@ -66,7 +66,7 @@ public class UpgradeMenu : MonoBehaviour
                 case UpgradeRarity.Legendary:
                     portals[i].GetComponent<UnityEngine.UI.Image>().sprite =
                         (upgrades[i].Category == UpgradeCategory.Active) ? redLegendary : purpleLegendary;
-                    //texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
+                    texts[i].GetComponent<TextMeshProUGUI>().text = upgrades[i].DisplayText();
                     SetUpgradeSprite(statImages[i], upgrades[i]);
                     break;
             }
@@ -79,6 +79,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             ActiveUpgrade active = upgrade as ActiveUpgrade;
             statImage.GetComponent<UnityEngine.UI.Image>().sprite = active.UpgradeType.ActiveAbilitySO.AbilityIcon;
+            // make it a lil bigger cause active abilities kinda smol
             statImage.transform.localScale = Vector3.one;
         }
         else
