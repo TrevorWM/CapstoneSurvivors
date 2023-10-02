@@ -89,7 +89,7 @@ public class FloatingDamageSpawner : MonoBehaviour
             TextMeshProUGUI text = currentTextInstance.GetComponentInChildren<TextMeshProUGUI>();
             if (text != null)
             {
-                text.text = damageToDisplay.ToString("F0");
+                text.text = Mathf.Floor(damageToDisplay).ToString();
                 text.color = textColor;
                 currentTextInstance.transform.position = RandomizeSpawnPosition(spawnTransform);
                 currentTextInstance.SetActive(true);
