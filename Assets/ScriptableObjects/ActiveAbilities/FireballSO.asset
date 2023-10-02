@@ -23,3 +23,4 @@ MonoBehaviour:
   uncommonDamageModifier: 0.6
   rareDamageModifier: 0.8
   legendaryDamageModifier: 1.1
+  description: Shoots a fireball which explodes on impact

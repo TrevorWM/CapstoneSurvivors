@@ -18,3 +18,5 @@ MonoBehaviour:
   uncommonUpgradeAmount: 0.02
   rareUpgradeAmount: 0.03
   legendaryUpgradeAmount: 0.05
+  description: Reduces the cooldown of attack and active abilities
+  sprite: {fileID: 21300000, guid: 869055b61d3cebd43bdfa140e83e0b13, type: 3}
