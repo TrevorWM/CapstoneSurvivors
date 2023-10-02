@@ -19,3 +19,4 @@ MonoBehaviour:
   rareUpgradeAmount: 3
   legendaryUpgradeAmount: 5
   description: Increases damage of all abilities
+  sprite: {fileID: 21300000, guid: 9b2483ebfd9458443a6516bf4edbbbae, type: 3}

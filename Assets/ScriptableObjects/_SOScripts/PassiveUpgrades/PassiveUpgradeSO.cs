@@ -28,6 +28,9 @@ public class PassiveUpgradeSO : ScriptableObject
     [SerializeField]
     private string description;
 
+    [SerializeField]
+    private Sprite sprite;
+
 
     public float CommonUpgradeAmount { get => commonUpgradeAmount; set => commonUpgradeAmount = Mathf.Max(0, value); }
     public float UncommonUpgradeAmount { get => uncommonUpgradeAmount; set => uncommonUpgradeAmount = Mathf.Max(0, value); }
@@ -36,6 +39,7 @@ public class PassiveUpgradeSO : ScriptableObject
     public Stat StatToModify { get => statToModify; set => statToModify = value; }
     public string UpgradeName { get => upgradeName; }
     public string Description { get => description; set => description = value; }
+    public Sprite Sprite { get => sprite; set => sprite = value; }
 
     private void OnValidate()
     {

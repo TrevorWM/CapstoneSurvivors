@@ -19,3 +19,4 @@ MonoBehaviour:
   rareUpgradeAmount: 0.1
   legendaryUpgradeAmount: 0.2
   description: Increases damage of nature abilities
+  sprite: {fileID: 21300000, guid: b977657c66fb1f441b0b46c860635f04, type: 3}
