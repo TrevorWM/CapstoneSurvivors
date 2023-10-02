@@ -63,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimHelper: {fileID: 3798112852087967528}
   projectilePool: {fileID: 3142306519447561756}
-  projectileSpeed: 5
+  projectileSpeed: 10
 --- !u!114 &3142306519447561756
 MonoBehaviour:
   m_ObjectHideFlags: 0

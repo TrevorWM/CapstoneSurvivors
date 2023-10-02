@@ -64,7 +64,11 @@ public class CharacterStats : MonoBehaviour, IDamageable
     public float CurrentHealth
     {
         get => currentHealth;
-        set => currentHealth = Mathf.Max(0, Mathf.Min(value, MaxHealth));
+        set
+        {
+            currentHealth = Mathf.Max(0, Mathf.Min(value, MaxHealth));
+            updateHealth?.Invoke();
+        }
     }
     public float Defense
     {
@@ -213,7 +217,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
         rightFacingSprite = characterStatsSO.RightFacingSprite;
         
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        
+        updateHealth?.Invoke();
         if (testHealth) StartCoroutine(TestHP());
     }
 
