@@ -62,7 +62,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilitySO: {fileID: 11400000, guid: d336a88457d07324db96fbcf042acec7, type: 2}
-  projectileScript: {fileID: 7000009239317955858, guid: 8cbbe58bec2b6744b8f5c113aae7b826, type: 3}
   hitEffects:
   - {fileID: 71437639456968865, guid: f28587150c91e20428c4b8880566981f, type: 3}
   hitEffectLifetime: 0.2
@@ -96,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimHelper: {fileID: 1482346924109989491}
   projectilePool: {fileID: 7188904731177502793}
-  projectileSpeed: 5
+  projectileSpeed: 10
 --- !u!1 &9198123974561297358
 GameObject:
   m_ObjectHideFlags: 0
