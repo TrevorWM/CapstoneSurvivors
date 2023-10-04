@@ -15,8 +15,8 @@ MonoBehaviour:
   maxHealth: 50
   defense: 0
   moveSpeed: 1.5
-  baseDamage: 5
-  attacksPerSecond: 1
+  baseDamage: 10
+  attacksPerSecond: 1.2
   criticalChance: 25
   criticalDamageMultiplier: 2
   characterElement: 3
@@ -27,7 +27,7 @@ MonoBehaviour:
   fireAffinity: 0
   natureAffinity: 0
   cooldownReduction: 0
-  detectionRadius: 15
+  detectionRadius: 1000
   followDistance: 4
   rangedEnemy: 1
   projectileSpeed: 3
