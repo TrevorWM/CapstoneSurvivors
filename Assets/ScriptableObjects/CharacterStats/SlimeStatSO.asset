@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 25
   defense: 0
-  moveSpeed: 1.5
-  baseDamage: 1
-  attacksPerSecond: 0.5
+  moveSpeed: 1.3
+  baseDamage: 10
+  attacksPerSecond: 1
   criticalChance: 0
   criticalDamageMultiplier: 0
-  characterElement: 0
+  characterElement: 1
   dodgeForce: 1
   dodgeDuration: 0.1
   dodgeCooldown: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
   fireAffinity: 0
   natureAffinity: 0
   cooldownReduction: 0
-  detectionRadius: 8
+  detectionRadius: 1000
   followDistance: 1
   rangedEnemy: 0
   projectileSpeed: 0
