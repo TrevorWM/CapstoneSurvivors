@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Windows;
 
@@ -34,6 +35,9 @@ public class UpgradeOrbSO : ScriptableObject
 
     [SerializeField, SerializeReference]
     private GameObject[] activeUpgradeList;
+
+    private int lastActiveIndex;
+    private int lastPassiveIndex;
 
     public int CommonWeight 
     {
@@ -72,17 +76,23 @@ public class UpgradeOrbSO : ScriptableObject
 
     public IUpgrade RollUpgrade()
     {
+        int randomIndex;
+
         if (IsUpgradePassive())
         {
+            randomIndex = RollIndexWithProtection(lastPassiveIndex, passiveUpgradeList.Length);
+
             IUpgrade upgrade = new PassiveUpgrade()
             {
                 Rarity = RollRarity(),
-                UpgradeType = passiveUpgradeList[UnityEngine.Random.Range(0, passiveUpgradeList.Length)]
+                UpgradeType = passiveUpgradeList[randomIndex]
             };
+            lastPassiveIndex = randomIndex;
             return (upgrade);
             
         } else
         {
+            randomIndex = RollIndexWithProtection(lastActiveIndex, activeUpgradeList.Length);
 
             GameObject upgradePrefab = activeUpgradeList[UnityEngine.Random.Range(0, activeUpgradeList.Length)];
 
@@ -92,6 +102,7 @@ public class UpgradeOrbSO : ScriptableObject
                 UpgradePrefab = upgradePrefab,
                 UpgradeType = upgradePrefab.GetComponent<ActiveAbilityBase>(),
             };
+            lastActiveIndex = randomIndex;
             return (upgrade);
             
         }
@@ -110,7 +121,6 @@ public class UpgradeOrbSO : ScriptableObject
         {
             UpgradeRarity itemRarity = RollRarity();
             GameObject upgradePrefab = Instantiate(activeUpgradeList[UnityEngine.Random.Range(0, activeUpgradeList.Length)]);
-            //ActiveAbilityBase upgrade = upgradeInstance.GetComponent<ActiveAbilityBase>();
             return (upgradePrefab, itemRarity);
         }
         else
@@ -146,6 +156,18 @@ public class UpgradeOrbSO : ScriptableObject
     {
         int[] weightArray = { commonWeight, uncommonWeight, rareWeight, legendaryWeight };
         return weightArray;
+    }
+
+    private int RollIndexWithProtection(int lastIndex, int arrayLength)
+    {
+        int randomIndex = UnityEngine.Random.Range(0, arrayLength);
+
+        while (randomIndex == lastIndex)
+        {
+            randomIndex = UnityEngine.Random.Range(0, passiveUpgradeList.Length);
+        }
+
+        return randomIndex;
     }
 }
 

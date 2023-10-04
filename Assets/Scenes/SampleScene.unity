@@ -980,6 +980,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Standard Loadout
       objectReference: {fileID: 0}
+    - target: {fileID: 6403651425266404550, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+      propertyPath: m_FillAmount
+      value: NaN
+      objectReference: {fileID: 0}
     - target: {fileID: 6900647751556061690, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -997,7 +1001,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1572852100547661121, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+    - {fileID: 8259734692476352582, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+    - {fileID: 2465987374081047447, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
@@ -1530,6 +1537,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 2877130052447893319}
+    - target: {fileID: 4458143351066682222, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6469181612612225802, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
       propertyPath: m_text
       value: test
@@ -1766,7 +1777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5816929903169527994, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: orthographic size
-      value: 7.3359375
+      value: 8.479167
       objectReference: {fileID: 0}
     - target: {fileID: 6817480207312608784, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_LocalPosition.x
