@@ -19,11 +19,11 @@ public class FireballBase : ActiveAbilityBase
     {
         if (rarity == UpgradeRarity.Rare || rarity == UpgradeRarity.Legendary)
         {
-            aoeScale = new Vector3 (4, 4, 0);
+            aoeScale = new Vector3(3,3,1);
         }
         else
         {
-            aoeScale = new Vector3(2, 2, 0);
+            aoeScale = new Vector3(2,2,1);
         }
     }
 
@@ -41,7 +41,7 @@ public class FireballBase : ActiveAbilityBase
             {
                 OnHitEffect effectInstance = Instantiate(effect);
                 
-                effectInstance.transform.localScale = aoeScale;
+                effectInstance.transform.localScale = Vector3.Scale(effectInstance.transform.localScale, aoeScale);
                 effectInstance.ActivateEffect(payload, hitLocation, hitEffectLifetime);
             }
         }
