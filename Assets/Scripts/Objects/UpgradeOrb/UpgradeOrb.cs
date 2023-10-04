@@ -98,6 +98,20 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         }
     }
 
+    public void SkipUpgrade()
+    {
+        upgradeUI.HideUpgradeMenu();
+
+        CloseUI();
+
+        // delete orb
+        if (!testing)
+        {
+            this.gameObject.SetActive(false);
+            interactHint.SetActive(false);
+        }
+    }
+
 
     /// <summary>
     /// Closes orb UI
