@@ -21,7 +21,7 @@ public class FireballOnHit : OnHitEffect, IDamager
         this.attackPayload = payload;
 
         this.gameObject.SetActive(true);
-        StartCoroutine(DespawnTimer(effectDuration));
+        //StartCoroutine(DespawnTimer(effectDuration));
     }
 
     public AttackPayload GetAttackPayload()
