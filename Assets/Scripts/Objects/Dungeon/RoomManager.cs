@@ -35,6 +35,7 @@ public class RoomManager : MonoBehaviour
 
     private GameObject currentPlayer;
     private GameObject currentUpgradeOrb;
+    private UpgradeOrb upgradeOrbLogic;
 
     private int roomCount;
 
@@ -96,13 +97,16 @@ public class RoomManager : MonoBehaviour
         if (currentUpgradeOrb == null)
         {
             currentUpgradeOrb = Instantiate(upgradeOrb, upgradeOrbPosition, Quaternion.identity);
-            currentUpgradeOrb.GetComponent<UpgradeOrb>().InitializeOrb(currentPlayer);
+            upgradeOrbLogic = currentUpgradeOrb.GetComponent<UpgradeOrb>();
+            upgradeOrbLogic.InitializeOrb(currentPlayer);
+            
         }
         else
         {
             currentUpgradeOrb.transform.position = upgradeOrbPosition;
-            currentUpgradeOrb.SetActive(true);
+            currentUpgradeOrb.SetActive(true);   
         }
+        upgradeOrbLogic.orbUsed.AddListener(currentRoomLogic.OpenDoor);
     }
 
     /// <summary>
@@ -112,6 +116,7 @@ public class RoomManager : MonoBehaviour
     /// </summary>
     public void GoToNextRoom()
     {
+        upgradeOrbLogic.orbUsed.RemoveListener(currentRoomLogic.OpenDoor);
         StartRoom(nextRoom);
         currentUpgradeOrb?.SetActive(false);
     }

@@ -64,11 +64,8 @@ public class RoomLogic : MonoBehaviour, IDungeonRoom
     /// </summary>
     public void OpenDoor()
     {
-        if (!roomComplete)
+        if (roomComplete)
         {
-            roomComplete = true;
-
-            roomManager.OnRoomComplete();
             doorTilemapLogic.OnRoomComplete();
 
             foreach (TileBase door in doorTiles)
@@ -93,7 +90,13 @@ public class RoomLogic : MonoBehaviour, IDungeonRoom
     public void EnemyRemoved(DamageCalculator enemyDamageCalculator)
     {
         enemiesInRoom--;
-        if (enemiesInRoom <= 0) OpenDoor();
+
+        if (enemiesInRoom <= 0)
+        {
+            roomComplete = true;
+            roomManager.OnRoomComplete();
+        }
+
         if (enemyDamageCalculator != null) enemyDamageCalculator.showDamage.RemoveListener(floatingDamageSpawner.SpawnText);
         
     }

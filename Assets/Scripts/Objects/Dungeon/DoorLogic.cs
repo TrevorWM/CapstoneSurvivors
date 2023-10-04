@@ -21,8 +21,7 @@ public class DoorLogic : MonoBehaviour
                 canOpen = false;
                 onDoorEnter.Invoke();
             }
-        }
-        
+        }   
     }
 
     public void OnRoomComplete()

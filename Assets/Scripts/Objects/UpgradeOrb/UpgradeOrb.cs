@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UpgradeOrb : MonoBehaviour, IInteractable
 {
@@ -23,6 +24,8 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
     private IUpgrade chosenUpgrade;
 
+    public UnityEvent orbUsed;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +44,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     {
         if (playerToUpgrade == null) InitializeOrb(playerFallback);
         
+        orbUsed?.Invoke();
         HandleUI();
     }
 
