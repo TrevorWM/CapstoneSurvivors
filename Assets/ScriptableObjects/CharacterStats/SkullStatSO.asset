@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   defense: 0
-  moveSpeed: 2.5
-  baseDamage: 5
+  moveSpeed: 3
+  baseDamage: 10
   attacksPerSecond: 0.5
   criticalChance: 20
   criticalDamageMultiplier: 2
@@ -27,7 +27,7 @@ MonoBehaviour:
   fireAffinity: 0
   natureAffinity: 0
   cooldownReduction: 0
-  detectionRadius: 5
+  detectionRadius: 1000
   followDistance: 1
   rangedEnemy: 0
   projectileSpeed: 0

@@ -968,6 +968,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5794672744738387817, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794672744738387817, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6204503042473553551, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
       propertyPath: m_Name
       value: Player Standard Loadout
@@ -1518,6 +1526,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3769227581552855739, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 2877130052447893319}
     - target: {fileID: 6469181612612225802, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
       propertyPath: m_text
       value: test
@@ -1611,6 +1623,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+--- !u!114 &2877130052447893319 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 335773121740784046, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
+  m_PrefabInstance: {fileID: 2877130052447893318}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572d997ab90e72042ada82768a7f1d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5491769431988751378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1743,7 +1766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5816929903169527994, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: orthographic size
-      value: 8.666667
+      value: 7.3359375
       objectReference: {fileID: 0}
     - target: {fileID: 6817480207312608784, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_LocalPosition.x
