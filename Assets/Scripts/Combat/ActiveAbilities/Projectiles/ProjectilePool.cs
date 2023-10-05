@@ -18,6 +18,7 @@ public class ProjectilePool : MonoBehaviour
     private int projectileLifeTime;
 
     private ObjectPool<ProjectileBase> projectilePool;
+    
 
     WaitForSeconds projectileTimeout;
 
@@ -67,7 +68,7 @@ public class ProjectilePool : MonoBehaviour
     {
         if (projectile)
         {
-            Destroy(projectile.gameObject);
+            Destroy(projectile.gameObject);       
         }
     }
 
@@ -82,5 +83,10 @@ public class ProjectilePool : MonoBehaviour
     public ProjectileBase GetProjectile()
     {
        return projectilePool.Get();
+    }
+
+    public void ClearPool()
+    {
+        projectilePool.Clear();
     }
 }

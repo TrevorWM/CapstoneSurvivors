@@ -76,6 +76,7 @@ public class RoomManager : MonoBehaviour
         } else
         {
             currentPlayer.transform.position = playerPosition;
+            currentPlayer.GetComponent<PlayerControls>().ReleaseAllProjectiles();
         }
     }
 
