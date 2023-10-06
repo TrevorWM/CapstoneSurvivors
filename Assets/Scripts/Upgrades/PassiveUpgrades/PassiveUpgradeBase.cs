@@ -57,6 +57,9 @@ public class PassiveUpgradeBase : MonoBehaviour
                 playerStats.MaxHealth += upgradeModifyValue;
                 playerStats.CurrentHealth += upgradeModifyValue;
                 break;
+            case Stat.CurrentHealth:
+                playerStats.CurrentHealth += upgradeModifyValue;
+                break;
             case Stat.Defense:
                 playerStats.Defense += upgradeModifyValue;
                 break;

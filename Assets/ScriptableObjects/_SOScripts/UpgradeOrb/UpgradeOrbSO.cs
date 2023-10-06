@@ -36,6 +36,9 @@ public class UpgradeOrbSO : ScriptableObject
     [SerializeField, SerializeReference]
     private GameObject[] activeUpgradeList;
 
+    [SerializeField]
+    private PassiveUpgradeBase healthPotion;
+
     private int lastActiveIndex;
     private int lastPassiveIndex;
 
@@ -80,7 +83,7 @@ public class UpgradeOrbSO : ScriptableObject
 
         if (IsUpgradePassive())
         {
-            randomIndex = RollIndexWithProtection(lastPassiveIndex, passiveUpgradeList.Length);
+            randomIndex = RollIndexWithProtection(lastPassiveIndex, passiveUpgradeList.Length - 1);
 
             IUpgrade upgrade = new PassiveUpgrade()
             {
@@ -107,6 +110,24 @@ public class UpgradeOrbSO : ScriptableObject
             
         }
         
+    }
+
+    public IUpgrade RollHealthPotion(float healthPercent)
+    {
+        int healthRoll = UnityEngine.Random.Range(0, 101);
+        Debug.Log("Roll: " + healthRoll + " Player Health%: " + healthPercent);
+
+        if (healthRoll > healthPercent)
+        {
+            IUpgrade upgrade = new PassiveUpgrade()
+            {
+                Rarity = RollRarity(),
+                UpgradeType = healthPotion,
+            };
+            return (upgrade);
+        }
+
+        return null;
     }
 
     private bool IsUpgradePassive()
@@ -164,7 +185,7 @@ public class UpgradeOrbSO : ScriptableObject
 
         while (randomIndex == lastIndex)
         {
-            randomIndex = UnityEngine.Random.Range(0, passiveUpgradeList.Length);
+            randomIndex = UnityEngine.Random.Range(0, arrayLength);
         }
 
         return randomIndex;
