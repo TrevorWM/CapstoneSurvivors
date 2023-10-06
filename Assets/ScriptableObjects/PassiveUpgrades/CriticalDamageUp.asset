@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Critical Damage Up
   statToModify: 6
-  commonUpgradeAmount: 0.02
-  uncommonUpgradeAmount: 0.05
-  rareUpgradeAmount: 0.1
-  legendaryUpgradeAmount: 0.2
+  commonUpgradeAmount: 0.05
+  uncommonUpgradeAmount: 0.1
+  rareUpgradeAmount: 0.2
+  legendaryUpgradeAmount: 0.35
   description: Increases damage of critical hits
   sprite: {fileID: 21300000, guid: 8da99a3e928cc5749bfa594c478140d9, type: 3}

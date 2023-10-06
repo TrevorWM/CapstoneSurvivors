@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Spell Recharge Up
   statToModify: 10
-  commonUpgradeAmount: 0.02
-  uncommonUpgradeAmount: 0.04
+  commonUpgradeAmount: 0.03
+  uncommonUpgradeAmount: 0.05
   rareUpgradeAmount: 0.07
   legendaryUpgradeAmount: 0.1
   description: Reduces the cooldown of attack and active abilities
