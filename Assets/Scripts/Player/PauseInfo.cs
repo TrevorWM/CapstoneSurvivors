@@ -43,11 +43,11 @@ public class PauseInfo : MonoBehaviour
 
         speedText.GetComponent<TextMeshProUGUI>().text = "Speed: ";// + playerStats.Speed + "% increase";
 
-        fireText.GetComponent<TextMeshProUGUI>().text = "Fire Affinity: Increase all Fire damage by " + playerStats.FireAffinity * 100f + "%";
+        fireText.GetComponent<TextMeshProUGUI>().text = "Fire Affinity: Fire abilities deal " + playerStats.FireAffinity * 100f + "% of base damage";
 
-        waterText.GetComponent<TextMeshProUGUI>().text = "Water Affinity: Increase all Water damage by " + playerStats.WaterAffinity * 100f + "%";
+        waterText.GetComponent<TextMeshProUGUI>().text = "Water Affinity: Water abilities deal " + playerStats.WaterAffinity * 100f + "% of base damage";
 
-        natureText.GetComponent<TextMeshProUGUI>().text = "Nature Affinity: Increase all Nature damage by " + playerStats.NatureAffinity * 100f + "%";
+        natureText.GetComponent<TextMeshProUGUI>().text = "Nature Affinity: Nature abilities deal " + playerStats.NatureAffinity * 100f + "% of base damage";
 
         critDamText.GetComponent<TextMeshProUGUI>().text = "Critical Damage Multiplier: " + playerStats.CriticalDamageMultiplier * 100f + "% base damage";
 
