@@ -20,7 +20,7 @@ public class PassiveUpgradeBase : MonoBehaviour
     /// <param name="rolledUpgradeRarity"></param>
     public void InitializeUpgradeValue(UpgradeRarity rolledUpgradeRarity)
     {
-        
+        if (passiveUpgradeSO.SpriteArray.Length > 0) passiveUpgradeSO.Sprite = passiveUpgradeSO.SpriteArray[0];
         switch (rolledUpgradeRarity)
         {
             case UpgradeRarity.Common:
@@ -64,7 +64,6 @@ public class PassiveUpgradeBase : MonoBehaviour
                 playerStats.Defense += upgradeModifyValue;
                 break;
             case Stat.MoveSpeed:
-                // Don't have a modifier stat for MoveSpeed so this one is weird
                 playerStats.MoveSpeedModifier += upgradeModifyValue;
                 break;
             case Stat.BaseDamage:

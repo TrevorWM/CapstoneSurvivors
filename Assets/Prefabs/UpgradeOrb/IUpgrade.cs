@@ -15,6 +15,8 @@ public interface IUpgrade
 
     public string GetDescription();
 
+    public void InitializeRarityInformation();
+
 }
 
 public class ActiveUpgrade : IUpgrade
@@ -73,6 +75,10 @@ public class ActiveUpgrade : IUpgrade
         return description;
     }
 
+    public void InitializeRarityInformation()
+    {
+        upgradeType.InitializeRarityBasedStats(Rarity);
+    }
 }
 
 public class PassiveUpgrade : IUpgrade
@@ -87,10 +93,8 @@ public class PassiveUpgrade : IUpgrade
 
     public string DisplayText()
     {
-        UpgradeType.InitializeUpgradeValue(Rarity);
         return UpgradeType.PassiveUpgradeSO.UpgradeName;
     }
-
     
     // will be used to get the description text that appears when hovering over the upgrade
     public string GetDescription()
@@ -127,6 +131,11 @@ public class PassiveUpgrade : IUpgrade
         }
 
         return description;
+    }
+
+    public void InitializeRarityInformation()
+    {
+        upgradeType.InitializeUpgradeValue(Rarity);
     }
 }
 

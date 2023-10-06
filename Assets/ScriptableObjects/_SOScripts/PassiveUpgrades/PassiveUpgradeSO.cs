@@ -41,7 +41,16 @@ public class PassiveUpgradeSO : ScriptableObject
     public Stat StatToModify { get => statToModify; set => statToModify = value; }
     public string UpgradeName { get => upgradeName; }
     public string Description { get => description; set => description = value; }
-    public Sprite[] SpriteArray { get => spriteArray; }
+    public Sprite[] SpriteArray
+    {
+        get => spriteArray;
+
+        private set
+        {
+            spriteArray = value;
+            if (spriteArray.Length > 0) currentSprite = spriteArray[0];
+        }
+    }
     public Sprite Sprite { get => currentSprite; set => currentSprite = value; }
 
     private void OnValidate()
@@ -50,6 +59,7 @@ public class PassiveUpgradeSO : ScriptableObject
         UncommonUpgradeAmount = uncommonUpgradeAmount;
         RareUpgradeAmount = rareUpgradeAmount;
         LegendaryUpgradeAmount = legendaryUpgradeAmount;
+        SpriteArray = spriteArray;
         if (currentSprite == null) currentSprite = spriteArray[0];
     }
 }

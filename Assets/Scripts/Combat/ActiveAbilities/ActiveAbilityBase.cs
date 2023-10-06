@@ -33,7 +33,7 @@ public abstract class ActiveAbilityBase : MonoBehaviour
     /// Changes the value to increase a stat by depending on the rarity of the upgrade.
     /// </summary>
     /// <param name="rolledUpgradeRarity"></param>
-    protected virtual void InitializeRarityBasedStats(UpgradeRarity rolledUpgradeRarity)
+    public virtual void InitializeRarityBasedStats(UpgradeRarity rolledUpgradeRarity)
     {
         switch (rolledUpgradeRarity)
         {

@@ -91,6 +91,7 @@ public class UpgradeOrbSO : ScriptableObject
                 UpgradeType = passiveUpgradeList[randomIndex]
             };
             lastPassiveIndex = randomIndex;
+            upgrade.InitializeRarityInformation();
             return (upgrade);
             
         } else
@@ -105,6 +106,7 @@ public class UpgradeOrbSO : ScriptableObject
                 UpgradePrefab = upgradePrefab,
                 UpgradeType = upgradePrefab.GetComponent<ActiveAbilityBase>(),
             };
+            upgrade.InitializeRarityInformation();
             lastActiveIndex = randomIndex;
             return (upgrade);
             
@@ -124,6 +126,7 @@ public class UpgradeOrbSO : ScriptableObject
                 Rarity = RollRarity(),
                 UpgradeType = healthPotion,
             };
+            upgrade.InitializeRarityInformation();
             return (upgrade);
         }
 
