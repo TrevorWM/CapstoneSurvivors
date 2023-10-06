@@ -224,7 +224,6 @@ public class CharacterStats : MonoBehaviour, IDamageable
     #region Health Functions
     private void RemoveHealth(float damageTaken)
     {
-        // TODO: implement defense value into this calculation once StatSO is added
         CurrentHealth -= damageTaken;
         updateHealth?.Invoke();
         Debug.LogFormat("Took {0} damage, now at {1} HP", damageTaken, CurrentHealth);

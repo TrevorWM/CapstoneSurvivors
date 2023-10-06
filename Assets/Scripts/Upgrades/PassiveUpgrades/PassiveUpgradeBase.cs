@@ -57,7 +57,8 @@ public class PassiveUpgradeBase : MonoBehaviour
                 playerStats.Defense += upgradeModifyValue;
                 break;
             case Stat.MoveSpeed:
-                playerStats.MoveSpeed += upgradeModifyValue;
+                // Don't have a modifier stat for MoveSpeed so this one is weird
+                playerStats.MoveSpeed *= (1f + upgradeModifyValue);
                 break;
             case Stat.BaseDamage:
                 playerStats.BaseDamage += upgradeModifyValue;
