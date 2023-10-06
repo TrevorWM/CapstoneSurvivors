@@ -36,7 +36,8 @@ public class ProjectilePool : MonoBehaviour
     {
         projectilePool = new ObjectPool<ProjectileBase>(CreateProjectile, GetProjectileFromPool, ReleaseProjectileFromPool, DestroyPoolObject, true, defaultPoolSize, MaxPoolSize);
         projectileTimeout = new WaitForSeconds(projectileLifeTime);
-        roomManager = FindObjectOfType<RoomManager>().GetComponent<RoomManager>();
+        roomManager = FindObjectOfType<RoomManager>();
+        if (roomManager != null) roomManager.GetComponent<RoomManager>();
     }
 
     // Creation of a new projectile when the pool is full
