@@ -87,6 +87,7 @@ public class PassiveUpgrade : IUpgrade
 
     public string DisplayText()
     {
+        UpgradeType.InitializeUpgradeValue(Rarity);
         return UpgradeType.PassiveUpgradeSO.UpgradeName;
     }
 

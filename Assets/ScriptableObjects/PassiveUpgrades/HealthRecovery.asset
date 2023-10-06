@@ -19,4 +19,8 @@ MonoBehaviour:
   rareUpgradeAmount: 30
   legendaryUpgradeAmount: 50
   description: Restores health
-  sprite: {fileID: 1191177304, guid: ef0112d27d6e80e4392f6a9cf94f3df7, type: 3}
+  spriteArray:
+  - {fileID: 1191177304, guid: ef0112d27d6e80e4392f6a9cf94f3df7, type: 3}
+  - {fileID: -1426789869, guid: ef0112d27d6e80e4392f6a9cf94f3df7, type: 3}
+  - {fileID: -1361719486, guid: ef0112d27d6e80e4392f6a9cf94f3df7, type: 3}
+  - {fileID: 194127581, guid: ef0112d27d6e80e4392f6a9cf94f3df7, type: 3}

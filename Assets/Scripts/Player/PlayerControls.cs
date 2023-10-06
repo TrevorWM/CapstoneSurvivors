@@ -155,7 +155,7 @@ public class PlayerControls : MonoBehaviour
     {
         if (playerRigidbody)
         {
-            playerRigidbody.velocity = moveVector * runtimeStats.MoveSpeed;
+            playerRigidbody.velocity = moveVector * (runtimeStats.MoveSpeed * runtimeStats.MoveSpeedModifier);
         }
     }
 
@@ -169,10 +169,13 @@ public class PlayerControls : MonoBehaviour
         {
             if (moveVector != Vector2.zero && Time.time - lastDodgeTime >= runtimeStats.DodgeCooldown)
             {
+                float tempMoveSpeed;
+
                 isDodging = true;
                 lastDodgeTime = Time.time;
                 StartCoroutine("DodgeDuration");
-                runtimeStats.MoveSpeed += runtimeStats.DodgeForce;
+                tempMoveSpeed = (runtimeStats.MoveSpeed * runtimeStats.MoveSpeedModifier) + runtimeStats.DodgeForce;
+                runtimeStats.MoveSpeed = tempMoveSpeed;
                 spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
                 //this is where we could disable the player hitbox so they have i-frames
             }
@@ -186,10 +189,14 @@ public class PlayerControls : MonoBehaviour
     /// </summary>
     IEnumerator DodgeDuration()
     {
+        float tempMoveSpeed;
+
         yield return new WaitForSeconds(runtimeStats.DodgeDuration);
         isDodging = false;
         spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
-        runtimeStats.MoveSpeed -= runtimeStats.DodgeForce;
+        tempMoveSpeed = runtimeStats.MoveSpeed - runtimeStats.DodgeForce;
+        tempMoveSpeed = tempMoveSpeed / runtimeStats.MoveSpeedModifier;
+        runtimeStats.MoveSpeed = tempMoveSpeed;
         //and then re-enable the hitbox here
 
     }
