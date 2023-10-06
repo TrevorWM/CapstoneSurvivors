@@ -17,13 +17,21 @@ public class FireballBase : ActiveAbilityBase
 
     private void InitializeRarityAoEScale(UpgradeRarity rarity)
     {
-        if (rarity == UpgradeRarity.Rare || rarity == UpgradeRarity.Legendary)
+        if (rarity == UpgradeRarity.Legendary || rarity == UpgradeRarity.Legendary)
         {
-            aoeScale = new Vector3(3,3,1);
+            aoeScale = new Vector3(2.5f,2.5f,1);
+        }
+        else if (rarity == UpgradeRarity.Rare || rarity == UpgradeRarity.Legendary)
+        {
+            aoeScale = new Vector3(2f, 2f, 1);
+        }
+        else if (rarity == UpgradeRarity.Uncommon || rarity == UpgradeRarity.Legendary)
+        {
+            aoeScale = new Vector3(1.5f, 1.5f, 1);
         }
         else
         {
-            aoeScale = new Vector3(2,2,1);
+            aoeScale = new Vector3(1,1,1);
         }
     }
 
