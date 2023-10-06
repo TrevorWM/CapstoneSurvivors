@@ -83,7 +83,7 @@ public class UpgradeOrbSO : ScriptableObject
 
         if (IsUpgradePassive())
         {
-            randomIndex = RollIndexWithProtection(lastPassiveIndex, passiveUpgradeList.Length - 1);
+            randomIndex = RollIndexWithProtection(lastPassiveIndex, passiveUpgradeList.Length);
 
             IUpgrade upgrade = new PassiveUpgrade()
             {
