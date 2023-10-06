@@ -34,6 +34,8 @@ public class SetAbilityUI : MonoBehaviour
     private GameObject EAbility;
     [SerializeField]
     private GameObject inputPrompt;
+    [SerializeField]
+    private GameObject healthBar;
 
     private CharacterStats playerStats;
     private PlayerControls playerControls;
@@ -51,6 +53,7 @@ public class SetAbilityUI : MonoBehaviour
 
     public void SetAbility(ActiveUpgrade active)
     {
+        healthBar.SetActive(false);
         inputPrompt.SetActive(true);
         StartCoroutine(GetKey(active));
     }
@@ -134,6 +137,7 @@ public class SetAbilityUI : MonoBehaviour
 
     private void CloseUI()
     {
+        healthBar.SetActive(true);
         inputPrompt.SetActive(false);
         //re-enable time, re-enable controls
         playerControls.enabled = true;
