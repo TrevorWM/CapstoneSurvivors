@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpellRechargeUp
   m_EditorClassIdentifier: 
   upgradeName: Spell Recharge Up
-  statToModify: 10
+  statToModify: 11
   commonUpgradeAmount: 0.02
   uncommonUpgradeAmount: 0.04
   rareUpgradeAmount: 0.07

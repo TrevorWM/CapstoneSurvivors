@@ -352,5 +352,15 @@ public class PlayerControls : MonoBehaviour
             playerRigidbody.velocity = Vector2.zero;
         }
     }
+
+    public void ReleaseAllProjectiles()
+    {
+        ProjectilePool[] pools = GetComponentsInChildren<ProjectilePool>();
+
+        foreach (ProjectilePool pool in pools)
+        {
+            pool.ClearPool();
+        }
+    }
 }
 

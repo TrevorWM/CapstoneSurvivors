@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireAffinityUp
   m_EditorClassIdentifier: 
   upgradeName: Fire Affinity Up
-  statToModify: 8
+  statToModify: 9
   commonUpgradeAmount: 0.02
   uncommonUpgradeAmount: 0.05
   rareUpgradeAmount: 0.1
