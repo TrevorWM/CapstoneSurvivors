@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7953c98e57f4ef24898613fee9644f18
-      internalID: 1191177304
+      spriteID: 5383eb48391f66e42b61ff744bf339e4
+      internalID: 1311166812
       vertices: []
       indices: 
       edges: []
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdb201120a6656643a2639f402f45576
-      internalID: -1426789869
+      spriteID: 29894cb9e1b88c74f8c0c94951197e40
+      internalID: 1991803130
       vertices: []
       indices: 
       edges: []
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36443a78f05944549bd60302fd77ab3c
-      internalID: -1361719486
+      spriteID: c65623a3b934d394ba6d622c705044b4
+      internalID: 1897112407
       vertices: []
       indices: 
       edges: []
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a1158e3c91267e4f972c168aab92976
-      internalID: 194127581
+      spriteID: 4af704ae2cd487949b1d0b5e9da068cd
+      internalID: 82778018
       vertices: []
       indices: 
       edges: []
@@ -217,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Health Potions_0: 1191177304
-      Health Potions_1: -1426789869
-      Health Potions_2: -1361719486
-      Health Potions_3: 194127581
+      Health Potions_0: 1311166812
+      Health Potions_1: 1991803130
+      Health Potions_2: 1897112407
+      Health Potions_3: 82778018
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
