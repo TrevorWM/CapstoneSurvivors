@@ -39,6 +39,7 @@ public class RoomManager : MonoBehaviour
 
     private int roomCount;
 
+    public GameObject CurrentRoom { get => currentRoom; }
 
     private void OnValidate()
     {

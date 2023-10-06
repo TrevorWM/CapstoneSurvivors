@@ -53,6 +53,7 @@ public class PassiveUpgradeSO : ScriptableObject
 public enum Stat
 {
     MaxHealth,
+    CurrentHealth,
     Defense,
     MoveSpeed,
     BaseDamage,

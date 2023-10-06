@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaterAffinityUp
   m_EditorClassIdentifier: 
   upgradeName: Water Affinity Up
-  statToModify: 7
+  statToModify: 8
   commonUpgradeAmount: 0.02
   uncommonUpgradeAmount: 0.05
   rareUpgradeAmount: 0.1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BaseDamageUp
   m_EditorClassIdentifier: 
   upgradeName: Base Damage Up
-  statToModify: 3
+  statToModify: 4
   commonUpgradeAmount: 1
   uncommonUpgradeAmount: 2
   rareUpgradeAmount: 3

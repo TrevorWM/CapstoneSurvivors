@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CriticalRateUp
   m_EditorClassIdentifier: 
   upgradeName: Critical Rate Up
-  statToModify: 5
+  statToModify: 6
   commonUpgradeAmount: 1
   uncommonUpgradeAmount: 2
   rareUpgradeAmount: 3
