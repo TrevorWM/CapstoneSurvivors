@@ -1000,6 +1000,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8711453656134922334, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1572852100547661121, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
