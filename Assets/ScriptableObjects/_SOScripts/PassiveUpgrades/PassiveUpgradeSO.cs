@@ -60,7 +60,6 @@ public class PassiveUpgradeSO : ScriptableObject
         RareUpgradeAmount = rareUpgradeAmount;
         LegendaryUpgradeAmount = legendaryUpgradeAmount;
         SpriteArray = spriteArray;
-        if (currentSprite == null) currentSprite = spriteArray[0];
     }
 }
 
