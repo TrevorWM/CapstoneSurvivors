@@ -295,8 +295,10 @@ public class CharacterStats : MonoBehaviour, IDamageable
             "Fire Affinity {7}\n" +
             "Nature Affinity {8}\n" +
             "Cooldown Reduction: {9}\n" + 
-            "Character Element: {10}", MaxHealth, CurrentHealth, Defense, BaseDamage, CriticalChance, CriticalDamageMultiplier,
-            WaterAffinity, FireAffinity, NatureAffinity, CooldownReduction, CharacterElement);
+            "Character Element: {10}\n" +
+            "Character Speed: {11}\n" + 
+            "Move Speed Modifier: {12}", MaxHealth, CurrentHealth, Defense, BaseDamage, CriticalChance, CriticalDamageMultiplier,
+            WaterAffinity, FireAffinity, NatureAffinity, CooldownReduction, CharacterElement, MoveSpeed, MoveSpeedModifier);
 
     }
 
