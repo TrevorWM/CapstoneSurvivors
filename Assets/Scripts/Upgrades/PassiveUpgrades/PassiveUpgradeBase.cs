@@ -18,21 +18,25 @@ public class PassiveUpgradeBase : MonoBehaviour
     /// Changes the value to increase a stat by depending on the rarity of the upgradeType.
     /// </summary>
     /// <param name="rolledUpgradeRarity"></param>
-    private void InitializeUpgradeValue(UpgradeRarity rolledUpgradeRarity)
+    public void InitializeUpgradeValue(UpgradeRarity rolledUpgradeRarity)
     {
-        switch(rolledUpgradeRarity)
+        if (passiveUpgradeSO.SpriteArray.Length > 0) passiveUpgradeSO.Sprite = passiveUpgradeSO.SpriteArray[0];
+        switch (rolledUpgradeRarity)
         {
             case UpgradeRarity.Common:
                 upgradeModifyValue = PassiveUpgradeSO.CommonUpgradeAmount;
                 break;
             case UpgradeRarity.Uncommon:
                 upgradeModifyValue = PassiveUpgradeSO.UncommonUpgradeAmount;
+                if (PassiveUpgradeSO.SpriteArray.Length > 1) PassiveUpgradeSO.Sprite = PassiveUpgradeSO.SpriteArray[1];
                 break;
             case UpgradeRarity.Rare:
                 upgradeModifyValue = PassiveUpgradeSO.RareUpgradeAmount;
+                if (PassiveUpgradeSO.SpriteArray.Length > 2) PassiveUpgradeSO.Sprite = PassiveUpgradeSO.SpriteArray[2];
                 break;
             case UpgradeRarity.Legendary:
                 upgradeModifyValue = PassiveUpgradeSO.LegendaryUpgradeAmount;
+                if (PassiveUpgradeSO.SpriteArray.Length > 3) PassiveUpgradeSO.Sprite = PassiveUpgradeSO.SpriteArray[3];
                 break;
         }
     }
@@ -53,11 +57,14 @@ public class PassiveUpgradeBase : MonoBehaviour
                 playerStats.MaxHealth += upgradeModifyValue;
                 playerStats.CurrentHealth += upgradeModifyValue;
                 break;
+            case Stat.CurrentHealth:
+                playerStats.CurrentHealth += upgradeModifyValue;
+                break;
             case Stat.Defense:
                 playerStats.Defense += upgradeModifyValue;
                 break;
             case Stat.MoveSpeed:
-                playerStats.MoveSpeed += upgradeModifyValue;
+                playerStats.MoveSpeedModifier += upgradeModifyValue;
                 break;
             case Stat.BaseDamage:
                 playerStats.BaseDamage += upgradeModifyValue;

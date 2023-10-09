@@ -24,6 +24,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
     private float currentHealth;
     private float defense;
     private float moveSpeed;
+    private float moveSpeedModifier;
     private float baseDamage;
     private float attacksPerSecond;
     private float criticalChance;
@@ -79,6 +80,11 @@ public class CharacterStats : MonoBehaviour, IDamageable
     {
         get => moveSpeed;
         set => moveSpeed = Mathf.Max(0, value);
+    }
+    public float MoveSpeedModifier
+    {
+        get => moveSpeedModifier;
+        set => moveSpeedModifier = Mathf.Max(1, value);
     }
     public float BaseDamage
     {
@@ -173,6 +179,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
         CurrentHealth = currentHealth;
         Defense = defense;
         MoveSpeed = moveSpeed;
+        MoveSpeedModifier = moveSpeedModifier;
         BaseDamage = baseDamage;
         AttacksPerSecond = attacksPerSecond;
         CriticalChance = criticalChance;
@@ -198,6 +205,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
         defense = characterStatsSO.Defense;
         moveSpeed = characterStatsSO.MoveSpeed;
+        moveSpeedModifier = 1f;
         baseDamage = characterStatsSO.BaseDamage;
         attacksPerSecond = characterStatsSO.AttacksPerSecond;
         criticalChance = characterStatsSO.CriticalChance;
@@ -224,7 +232,6 @@ public class CharacterStats : MonoBehaviour, IDamageable
     #region Health Functions
     private void RemoveHealth(float damageTaken)
     {
-        // TODO: implement defense value into this calculation once StatSO is added
         CurrentHealth -= damageTaken;
         updateHealth?.Invoke();
         Debug.LogFormat("Took {0} damage, now at {1} HP", damageTaken, CurrentHealth);

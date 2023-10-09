@@ -39,6 +39,7 @@ public class RoomManager : MonoBehaviour
 
     private int roomCount;
 
+    public GameObject CurrentRoom { get => currentRoom; }
 
     private void OnValidate()
     {
@@ -76,6 +77,7 @@ public class RoomManager : MonoBehaviour
         } else
         {
             currentPlayer.transform.position = playerPosition;
+            currentPlayer.GetComponent<PlayerControls>().ReleaseAllProjectiles();
         }
     }
 
