@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class DamageCalculator : MonoBehaviour
 {
-    public UnityEvent<float, ElementType, bool, Transform> showDamage;
+    public UnityEvent<float, ElementType, DamageData, Transform> showDamage;
 
     private void OnDestroy()
     {
@@ -13,6 +13,8 @@ public class DamageCalculator : MonoBehaviour
     {
         ElementType characterElement;
         float characterDefence;
+        bool resistant = false;
+        bool strong = false;
 
         SoundEffectPlayer.Instance.BasicHitSound();
 
@@ -45,11 +47,13 @@ public class DamageCalculator : MonoBehaviour
         // Then check for weakness/resistance interactions
         if (IsWeak(characterElement, payload.Element))
         {
-            damage *= 1.25f;
+            damage *= 1.5f;
+            strong = true;
         }
         else if (IsResistant(characterElement, payload.Element)) 
         {
-            damage *= 0.75f;
+            damage *= 0.5f;
+            resistant = true;
         }
 
         // Then subtract reciever defence
@@ -63,8 +67,13 @@ public class DamageCalculator : MonoBehaviour
             damage = 1;
         }
 
+        DamageData data = new DamageData();
+        data.isCrit = isCrit;
+        data.isStrong = strong;
+        data.isResistant = resistant;
+
         LogDamage(payload, damage, isCrit);
-        showDamage.Invoke(damage, payload.Element, isCrit, this.transform);
+        showDamage.Invoke(damage, payload.Element, data, this.transform);
         return damage;
     }
 
@@ -146,4 +155,11 @@ public class DamageCalculator : MonoBehaviour
             payload.CritChance, payload.CritMultiplier, payload.DamageMultiplier,
             payload.ElementalAffinity, payload.EnemyProjectile, crit, calculatedDamage);
     }
+
+}
+public class DamageData
+{
+    public bool isCrit;
+    public bool isStrong;
+    public bool isResistant;
 }

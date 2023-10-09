@@ -79,7 +79,7 @@ public class FloatingDamageSpawner : MonoBehaviour
     /// </summary>
     /// <param name="damageToDisplay"></param>
     /// <param name="damageElementColor"></param>
-    public void SpawnText(float damageToDisplay, ElementType element, bool isCrit, Transform spawnTransform)
+    public void SpawnText(float damageToDisplay, ElementType element, DamageData data, Transform spawnTransform)
     {
         GameObject currentTextInstance = prefabInstances[textIndex];
         Color textColor = GetElementColor(element);
@@ -91,7 +91,11 @@ public class FloatingDamageSpawner : MonoBehaviour
             if (text != null)
             {
                 text.color = textColor;
-                if (isCrit) damageText = damageText + "<color=\"red\">!";
+
+                if (data.isStrong) damageText += "+";
+                if (data.isResistant) damageText += "-";
+
+                if (data.isCrit) damageText = damageText + "<color=\"red\">!";
                 text.text = damageText;
                 
                 currentTextInstance.transform.position = RandomizeSpawnPosition(spawnTransform);
@@ -125,10 +129,11 @@ public class FloatingDamageSpawner : MonoBehaviour
 
     private IEnumerator TestText()
     {
+        DamageData data = new DamageData();
         for (int i = 0; i < prefabInstances.Length; i++)
         {
-            SpawnText(testDamageAmount, ElementType.None, false, this.transform);
-            SpawnText(testDamageAmount, ElementType.None, true, this.transform);
+            SpawnText(testDamageAmount, ElementType.None, data, this.transform);
+            SpawnText(testDamageAmount, ElementType.None, data, this.transform);
             yield return new WaitForSeconds(.5f);
         }  
     }
