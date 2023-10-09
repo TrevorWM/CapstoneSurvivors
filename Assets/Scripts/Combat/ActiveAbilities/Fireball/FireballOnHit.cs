@@ -16,17 +16,23 @@ public class FireballOnHit : OnHitEffect, IDamager
     /// <param name="effectDuration"></param>
     public override void ActivateEffect(AttackPayload payload, Transform hitLocation, float effectDuration)
     {
-        this.transform.parent = hitLocation.parent;
         this.transform.position = hitLocation.position;
         this.transform.rotation = hitLocation.rotation;
         this.attackPayload = payload;
 
         this.gameObject.SetActive(true);
+        //StartCoroutine(DespawnTimer(effectDuration));
     }
 
     public AttackPayload GetAttackPayload()
     {
         return this.attackPayload;
+    }
+
+    private IEnumerator DespawnTimer(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        Despawn();
     }
 
     private void Despawn()

@@ -18,8 +18,6 @@ public class ProjectilePool : MonoBehaviour
     private int projectileLifeTime;
 
     private ObjectPool<ProjectileBase> projectilePool;
-    private RoomManager roomManager;
-    
 
     WaitForSeconds projectileTimeout;
 
@@ -36,24 +34,12 @@ public class ProjectilePool : MonoBehaviour
     {
         projectilePool = new ObjectPool<ProjectileBase>(CreateProjectile, GetProjectileFromPool, ReleaseProjectileFromPool, DestroyPoolObject, true, defaultPoolSize, MaxPoolSize);
         projectileTimeout = new WaitForSeconds(projectileLifeTime);
-        roomManager = FindObjectOfType<RoomManager>();
-        if (roomManager != null) roomManager.GetComponent<RoomManager>();
     }
 
     // Creation of a new projectile when the pool is full
     private ProjectileBase CreateProjectile()
     {
-        ProjectileBase projectile;
-
-        if (roomManager != null)
-        {
-            projectile = Instantiate(projectilePrefab, this.transform.position, this.transform.rotation, roomManager.CurrentRoom.transform);
-        }
-        else
-        {
-            projectile = Instantiate(projectilePrefab);
-        }
-        
+        ProjectileBase projectile = Instantiate(projectilePrefab);
         return projectile;
     }
 
@@ -81,7 +67,7 @@ public class ProjectilePool : MonoBehaviour
     {
         if (projectile)
         {
-            Destroy(projectile.gameObject);       
+            Destroy(projectile.gameObject);
         }
     }
 
@@ -96,10 +82,5 @@ public class ProjectilePool : MonoBehaviour
     public ProjectileBase GetProjectile()
     {
        return projectilePool.Get();
-    }
-
-    public void ClearPool()
-    {
-        projectilePool.Clear();
     }
 }

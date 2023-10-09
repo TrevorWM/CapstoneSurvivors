@@ -25,7 +25,7 @@ public class PoisonDartBase : ActiveAbilityBase
         }
     }
 
-    public override void InitializeRarityBasedStats(UpgradeRarity rolledUpgradeRarity)
+    protected override void InitializeRarityBasedStats(UpgradeRarity rolledUpgradeRarity)
     {
         base.InitializeRarityBasedStats(rolledUpgradeRarity);
         InitializeRarityDotTimeScale(rolledUpgradeRarity);

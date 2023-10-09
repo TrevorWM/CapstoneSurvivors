@@ -52,6 +52,7 @@ public abstract class ProjectileBase : MonoBehaviour
         if ((hitLayers.value & (1 << collision.gameObject.layer)) > 0)
         {
             OnTriggerEnterLogic(collision);
+            pool.ReleaseProjectileFromPool(this);
         }   
     }
 
@@ -62,7 +63,7 @@ public abstract class ProjectileBase : MonoBehaviour
     /// </summary>
     protected virtual void OnTriggerEnterLogic(Collider2D collision)
     {
-        pool.ReleaseProjectileFromPool(this);
+        return;
     }
 
     /// <summary>
@@ -73,5 +74,4 @@ public abstract class ProjectileBase : MonoBehaviour
     {
         return;
     }
-
 }

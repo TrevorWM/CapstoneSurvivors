@@ -155,7 +155,7 @@ public class PlayerControls : MonoBehaviour
     {
         if (playerRigidbody)
         {
-            playerRigidbody.velocity = moveVector * (runtimeStats.MoveSpeed * runtimeStats.MoveSpeedModifier);
+            playerRigidbody.velocity = moveVector * runtimeStats.MoveSpeed;
         }
     }
 
@@ -169,13 +169,10 @@ public class PlayerControls : MonoBehaviour
         {
             if (moveVector != Vector2.zero && Time.time - lastDodgeTime >= runtimeStats.DodgeCooldown)
             {
-                float tempMoveSpeed;
-
                 isDodging = true;
                 lastDodgeTime = Time.time;
                 StartCoroutine("DodgeDuration");
-                tempMoveSpeed = (runtimeStats.MoveSpeed * runtimeStats.MoveSpeedModifier) + runtimeStats.DodgeForce;
-                runtimeStats.MoveSpeed = tempMoveSpeed;
+                runtimeStats.MoveSpeed += runtimeStats.DodgeForce;
                 spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
                 //this is where we could disable the player hitbox so they have i-frames
             }
@@ -189,14 +186,10 @@ public class PlayerControls : MonoBehaviour
     /// </summary>
     IEnumerator DodgeDuration()
     {
-        float tempMoveSpeed;
-
         yield return new WaitForSeconds(runtimeStats.DodgeDuration);
         isDodging = false;
         spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
-        tempMoveSpeed = runtimeStats.MoveSpeed - runtimeStats.DodgeForce;
-        tempMoveSpeed = tempMoveSpeed / runtimeStats.MoveSpeedModifier;
-        runtimeStats.MoveSpeed = tempMoveSpeed;
+        runtimeStats.MoveSpeed -= runtimeStats.DodgeForce;
         //and then re-enable the hitbox here
 
     }
@@ -245,14 +238,13 @@ public class PlayerControls : MonoBehaviour
                     
                     float abilityCooldown = ability.ActiveAbilitySO.AbilityCooldown;
                     float cooldownReduction = abilityCooldown * runtimeStats.CooldownReduction;
-                    float clampedCooldown = Mathf.Max(0.01f, (abilityCooldown - cooldownReduction));
 
                     ability.GetComponent<ShootProjectile>().Attack();
 
                     //Start attack timer to prevent player from shooting basic attack
                     //immediately after an ability use, and individual cooldown timer
-                    ability.StartCooldown(clampedCooldown);
-                    abilityCooldownVisuals[(int)keyIndex].StartShowCooldown(clampedCooldown);
+                    ability.StartCooldown(abilityCooldown - cooldownReduction);
+                    abilityCooldownVisuals[(int)keyIndex].StartShowCooldown(abilityCooldown-cooldownReduction);
                 }
             }
         }
@@ -357,16 +349,6 @@ public class PlayerControls : MonoBehaviour
         if (playerRigidbody)
         {
             playerRigidbody.velocity = Vector2.zero;
-        }
-    }
-
-    public void ReleaseAllProjectiles()
-    {
-        ProjectilePool[] pools = GetComponentsInChildren<ProjectilePool>();
-
-        foreach (ProjectilePool pool in pools)
-        {
-            pool.ClearPool();
         }
     }
 }

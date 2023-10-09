@@ -29,9 +29,7 @@ public class PassiveUpgradeSO : ScriptableObject
     private string description;
 
     [SerializeField]
-    private Sprite[] spriteArray;
-
-    private Sprite currentSprite;
+    private Sprite sprite;
 
 
     public float CommonUpgradeAmount { get => commonUpgradeAmount; set => commonUpgradeAmount = Mathf.Max(0, value); }
@@ -41,8 +39,7 @@ public class PassiveUpgradeSO : ScriptableObject
     public Stat StatToModify { get => statToModify; set => statToModify = value; }
     public string UpgradeName { get => upgradeName; }
     public string Description { get => description; set => description = value; }
-    public Sprite[] SpriteArray { get => spriteArray; set => spriteArray = value;  }
-    public Sprite Sprite { get => currentSprite; set => currentSprite = value; }
+    public Sprite Sprite { get => sprite; set => sprite = value; }
 
     private void OnValidate()
     {
@@ -50,14 +47,12 @@ public class PassiveUpgradeSO : ScriptableObject
         UncommonUpgradeAmount = uncommonUpgradeAmount;
         RareUpgradeAmount = rareUpgradeAmount;
         LegendaryUpgradeAmount = legendaryUpgradeAmount;
-        SpriteArray = spriteArray;
     }
 }
 
 public enum Stat
 {
     MaxHealth,
-    CurrentHealth,
     Defense,
     MoveSpeed,
     BaseDamage,
