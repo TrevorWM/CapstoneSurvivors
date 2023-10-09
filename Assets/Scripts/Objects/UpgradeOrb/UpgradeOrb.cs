@@ -57,12 +57,26 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         playerControls.enabled = false;
         Time.timeScale = 0.0f;
 
+        float playerHealthPercent = (playerStats.CurrentHealth / playerStats.MaxHealth) * 100;
+        bool rolledForPotion = false;
+
         // show menu get upgrades, and send it to the ui
         upgradeUI.ShowUpgradeMenu();
+        
         IUpgrade[] upgrades = new IUpgrade[3];
         for (int i = 0; i < 3; i++)
         {
-            upgrades[i] = upgradeOrbSO.RollUpgrade();
+            if (playerHealthPercent < 95f && !rolledForPotion)
+            {
+                IUpgrade potionRoll = upgradeOrbSO.RollHealthPotion(playerHealthPercent);
+
+                if (potionRoll != null)  upgrades[i] = potionRoll;
+
+                rolledForPotion = true;
+            }
+
+            if (upgrades[i] == null) upgrades[i] = upgradeOrbSO.RollUpgrade();
+            
         }
         upgradeUI.SetUpgrades(upgrades);
     }
