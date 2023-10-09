@@ -245,13 +245,14 @@ public class PlayerControls : MonoBehaviour
                     
                     float abilityCooldown = ability.ActiveAbilitySO.AbilityCooldown;
                     float cooldownReduction = abilityCooldown * runtimeStats.CooldownReduction;
+                    float clampedCooldown = Mathf.Max(0.01f, (abilityCooldown - cooldownReduction));
 
                     ability.GetComponent<ShootProjectile>().Attack();
 
                     //Start attack timer to prevent player from shooting basic attack
                     //immediately after an ability use, and individual cooldown timer
-                    ability.StartCooldown(abilityCooldown - cooldownReduction);
-                    abilityCooldownVisuals[(int)keyIndex].StartShowCooldown(abilityCooldown-cooldownReduction);
+                    ability.StartCooldown(clampedCooldown);
+                    abilityCooldownVisuals[(int)keyIndex].StartShowCooldown(clampedCooldown);
                 }
             }
         }
