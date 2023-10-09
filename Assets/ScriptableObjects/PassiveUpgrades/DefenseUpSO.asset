@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: DefenseUpSO
   m_EditorClassIdentifier: 
   upgradeName: Defense Up
-  statToModify: 1
+  statToModify: 2
   commonUpgradeAmount: 1
   uncommonUpgradeAmount: 1.5
   rareUpgradeAmount: 2
   legendaryUpgradeAmount: 3
   description: Decreases damage taken
-  sprite: {fileID: 21300000, guid: ec30e33b022b92d43b8263ce61b85db5, type: 3}
+  spriteArray:
+  - {fileID: 21300000, guid: ec30e33b022b92d43b8263ce61b85db5, type: 3}

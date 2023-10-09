@@ -24,5 +24,7 @@ public class OnHitProjectile : ProjectileBase
         {
             abilityBase.ApplyEffectToTarget(attackPayload, collision);
         }
+
+        pool.ReleaseProjectileFromPool(this);
     }
 }
