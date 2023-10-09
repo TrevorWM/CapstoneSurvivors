@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: NatureAffinityUp
   m_EditorClassIdentifier: 
   upgradeName: Nature Affinity Up
-  statToModify: 9
+  statToModify: 10
   commonUpgradeAmount: 0.05
   uncommonUpgradeAmount: 0.1
   rareUpgradeAmount: 0.15
   legendaryUpgradeAmount: 0.25
   description: Increases damage of nature abilities
-  sprite: {fileID: 21300000, guid: b977657c66fb1f441b0b46c860635f04, type: 3}
+  spriteArray: []

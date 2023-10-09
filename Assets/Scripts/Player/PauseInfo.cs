@@ -41,7 +41,7 @@ public class PauseInfo : MonoBehaviour
 
         defenseText.GetComponent<TextMeshProUGUI>().text = "Defense: Reduce all damage taken by " + playerStats.Defense + " damage";
 
-        speedText.GetComponent<TextMeshProUGUI>().text = "Speed: ";// + playerStats.Speed + "% increase";
+        speedText.GetComponent<TextMeshProUGUI>().text = "Move Speed: " + playerStats.MoveSpeedModifier * 100f + "%";
 
         fireText.GetComponent<TextMeshProUGUI>().text = "Fire Affinity: Fire abilities deal " + playerStats.FireAffinity * 100f + "% of base damage";
 
