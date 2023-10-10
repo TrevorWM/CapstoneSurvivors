@@ -200,6 +200,9 @@ MonoBehaviour:
   testing: 0
   playerFallback: {fileID: 0}
   upgradeUI: {fileID: 3056093305511502917}
+  orbUsed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1562342924077318489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -367,6 +370,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -9
       objectReference: {fileID: 0}
+    - target: {fileID: 2147969621962193510, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -30
+      objectReference: {fileID: 0}
     - target: {fileID: 2354566299581063183, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -431,9 +438,25 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 335773121740784046}
+    - target: {fileID: 5310024225573498521, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5310024225573498521, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5378619257249263851, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450787683234886346, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450787683234886346, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 36.5
       objectReference: {fileID: 0}
     - target: {fileID: 6002557045273600868, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
       propertyPath: m_LocalScale.x
@@ -470,6 +493,14 @@ PrefabInstance:
     - target: {fileID: 7752270514503128604, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
       propertyPath: m_fontSizeBase
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274797077156027065, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274797077156027065, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8401916519444978595, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
       propertyPath: m_text
