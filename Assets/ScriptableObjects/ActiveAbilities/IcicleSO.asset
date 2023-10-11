@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Icicle
   abilityDescription: Shoot an icicle which pierces through multiple enemies
-  abilityIcon: {fileID: 21300000, guid: c695b926e7516e4458ea24e2ebce2de5, type: 3}
+  abilityIcon: {fileID: 21300000, guid: fe2bcc1d04e4afb4aa573b66c0da2574, type: 3}
   abilityCooldown: 3
   dotTime: 0
   projectileSpeed: 8
