@@ -32,4 +32,5 @@ MonoBehaviour:
   activeUpgradeList:
   - {fileID: 8797331646011887251, guid: 7f1ec9981dfcc1e4c99ae3704d447df7, type: 3}
   - {fileID: 1286399037019628021, guid: 430a64174ebdab44891f7b548e6aa19d, type: 3}
+  - {fileID: 1286399037019628021, guid: f4673217eca39564a856d37c5f8cde46, type: 3}
   healthPotion: {fileID: 2656812543762864619, guid: 534f0017183478b45ad59638d48b2882, type: 3}
