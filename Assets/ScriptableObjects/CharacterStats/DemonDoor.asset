@@ -30,7 +30,7 @@ MonoBehaviour:
   detectionRadius: 10000
   followDistance: 1
   rangedEnemy: 1
-  projectileSpeed: 0
+  projectileSpeed: 10
   characterSprite: {fileID: 21300000, guid: 5b2fc2f3b7b944045a7d50fa3cfb1295, type: 3}
   weaponSprite: {fileID: 0}
   rightFacingSprite: 0
