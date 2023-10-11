@@ -165,7 +165,6 @@ MonoBehaviour:
   - {fileID: 5997049228780987960, guid: f5ff49a45ff9a4644b042de7389c40dc, type: 3}
   - {fileID: 2600549069899687713, guid: 112d54c6098c7f14da8772b806929a12, type: 3}
   bossRoomPool:
-  - {fileID: 1070881198079620770, guid: 90d0b5c8069efda4abcd5a67e907c0a2, type: 3}
   - {fileID: 509820833389698090, guid: 1e9257e0246540d419f346e1c8b91c06, type: 3}
 --- !u!4 &277871838
 Transform:

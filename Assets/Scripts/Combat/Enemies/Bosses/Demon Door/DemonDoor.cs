@@ -14,4 +14,13 @@ public class DemonDoor : MonoBehaviour
     private Transform[] bossShootPositions;
 
 
+    private void Start()
+    {
+        targetPosition = Physics2D.OverlapCircle(transform.position, bossStats.DetectionRadius, LayerMask.NameToLayer("Player")).transform;
+    }
+
+    private void Update()
+    {
+        
+    }
 }
