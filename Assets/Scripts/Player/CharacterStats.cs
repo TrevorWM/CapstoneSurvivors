@@ -53,7 +53,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
     private SpriteRenderer spriteRenderer;
 
     public UnityEvent playerDied;
-    public UnityEvent updateHealth;
+    public UnityEvent<float, float> updateHealth;
 
     #region Getters and Setters
     public float MaxHealth
@@ -68,7 +68,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
         set
         {
             currentHealth = Mathf.Max(0, Mathf.Min(value, MaxHealth));
-            updateHealth?.Invoke();
+            updateHealth?.Invoke(currentHealth, maxHealth);
         }
     }
     public float Defense
@@ -225,7 +225,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
         rightFacingSprite = characterStatsSO.RightFacingSprite;
         
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        updateHealth?.Invoke();
+        updateHealth?.Invoke(currentHealth, maxHealth);
         if (testHealth) StartCoroutine(TestHP());
     }
 
@@ -233,7 +233,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
     private void RemoveHealth(float damageTaken)
     {
         CurrentHealth -= damageTaken;
-        updateHealth?.Invoke();
+        updateHealth?.Invoke(currentHealth, maxHealth);
         Debug.LogFormat("Took {0} damage, now at {1} HP", damageTaken, CurrentHealth);
 
         if (CurrentHealth == 0)
@@ -250,7 +250,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
     private void AddHealth(float damageHealed)
     {
         CurrentHealth += damageHealed;
-        updateHealth?.Invoke();
+        updateHealth?.Invoke(currentHealth, maxHealth);
         Debug.LogFormat("I healed for {0} and am now at {1} HP!", damageHealed, CurrentHealth);
     }
 
