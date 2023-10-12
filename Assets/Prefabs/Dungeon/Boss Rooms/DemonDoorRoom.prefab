@@ -7630,6 +7630,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4465953957188517623}
+  - component: {fileID: 4230281543360454904}
   - component: {fileID: 4785033947412120727}
   - component: {fileID: 6063775735759623337}
   m_Layer: 0
@@ -7659,6 +7660,22 @@ Transform:
   - {fileID: 572557837977607521}
   m_Father: {fileID: 7919959238058024159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4230281543360454904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5207760467155618198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5d5bf3d782b674fa2e61b354f99084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 5710632682410789928, guid: 51c111ed6f2642244bd35f9a73317ea4, type: 3}
+  defaultPoolSize: 10
+  maxPoolSize: 50
+  projectileLifeTime: 10
 --- !u!114 &4785033947412120727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7672,7 +7689,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossStats: {fileID: 11400000, guid: 2b835f69407913f46b9a16da791a9854, type: 2}
-  targetPosition: {fileID: 0}
+  targetPosition: {fileID: 868093969051311367}
+  projectilePool: {fileID: 4230281543360454904}
   bossShootPositions:
   - {fileID: 4797169949376028879}
   - {fileID: 4690421889421568735}
@@ -7963,7 +7981,7 @@ GameObject:
   - component: {fileID: 2550991320153252280}
   - component: {fileID: 2814275691969402513}
   - component: {fileID: 4162752307030125330}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}

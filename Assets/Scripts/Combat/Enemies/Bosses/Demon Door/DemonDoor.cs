@@ -13,6 +13,9 @@ public class DemonDoor : MonoBehaviour, IDamageable
     private Transform targetPosition;
 
     [SerializeField]
+    private ProjectilePool projectilePool;
+
+    [SerializeField]
     private Transform[] bossShootPositions;
 
     [SerializeField]
@@ -39,16 +42,44 @@ public class DemonDoor : MonoBehaviour, IDamageable
         runtimeHP = bossStats.MaxHealth;
         bossHealthBar.UpdateHealthBarValue(runtimeHP, bossStats.MaxHealth);
         bossSpawned?.Invoke();
-    }
-
-    private void Update()
-    {
-        
+        StartPhaseOne();
     }
 
     private void HandleDeath()
     {
         bossDeath?.Invoke();
         this.gameObject.SetActive(false);
+    }
+
+    private void ShootProjectiles(Transform shootPosition, Transform target)
+    {
+        ProjectileBase projectile = projectilePool.GetProjectile();
+
+        projectile.transform.position = transform.position;
+        projectile.transform.rotation = transform.rotation;
+
+        // This parents the projectiles to the room rather than the enemy
+        // if we change where the enemies shoot we will need to change how this parents
+        // Easiest would be to grab a reference to the dungeon room object.
+        projectile.transform.parent = gameObject.transform.parent;
+
+        Vector2 shootDirection = (shootPosition.position - target.position).normalized;
+        int dotSeconds = 0;
+        bool enemyAttack = true;
+        AttackPayload payload = new AttackPayload(bossStats.BaseDamage, dotSeconds, bossStats.CharacterElement, bossStats.CriticalChance, bossStats.CriticalDamageMultiplier, enemyProjectile: enemyAttack);
+
+        projectile.FireProjectile(shootDirection, bossStats.ProjectileSpeed, payload);
+
+    }
+
+    private void StartPhaseOne()
+    {
+        while (runtimeHP > 290)
+        {
+            foreach (Transform shootPosition in bossShootPositions)
+            {
+                ShootProjectiles(shootPosition, targetPosition);
+            }
+        }         
     }
 }
