@@ -32,9 +32,12 @@ public class DemonDoor : MonoBehaviour, IDamageable
 
     public void TakeDamage(AttackPayload payload)
     {
-        runtimeHP -= damageCalculator.CalculateDamage(payload, defaultOwnerStats: bossStats);
-        bossHealthBar.UpdateHealthBarValue(runtimeHP, bossStats.MaxHealth);
-        if (runtimeHP <= 0) HandleDeath();
+        if (payload.EnemyProjectile == false)
+        {
+            runtimeHP -= damageCalculator.CalculateDamage(payload, defaultOwnerStats: bossStats);
+            bossHealthBar.UpdateHealthBarValue(runtimeHP, bossStats.MaxHealth);
+            if (runtimeHP <= 0) HandleDeath();
+        }  
     }
 
     private void Start()
@@ -55,15 +58,15 @@ public class DemonDoor : MonoBehaviour, IDamageable
     {
         ProjectileBase projectile = projectilePool.GetProjectile();
 
-        projectile.transform.position = transform.position;
-        projectile.transform.rotation = transform.rotation;
+        projectile.transform.position = shootPosition.position;
+        projectile.transform.rotation = shootPosition.rotation;
 
         // This parents the projectiles to the room rather than the enemy
         // if we change where the enemies shoot we will need to change how this parents
         // Easiest would be to grab a reference to the dungeon room object.
         projectile.transform.parent = gameObject.transform.parent;
 
-        Vector2 shootDirection = (shootPosition.position - target.position).normalized;
+        Vector2 shootDirection = (target.position - shootPosition.position).normalized;
         int dotSeconds = 0;
         bool enemyAttack = true;
         AttackPayload payload = new AttackPayload(bossStats.BaseDamage, dotSeconds, bossStats.CharacterElement, bossStats.CriticalChance, bossStats.CriticalDamageMultiplier, enemyProjectile: enemyAttack);
@@ -74,12 +77,23 @@ public class DemonDoor : MonoBehaviour, IDamageable
 
     private void StartPhaseOne()
     {
-        while (runtimeHP > 290)
+        Debug.Log("Phase One Start");
+        StartCoroutine(PhaseOneFirst());
+        
+               
+    }
+
+    private IEnumerator PhaseOneFirst()
+    {
+        foreach (Transform shootPosition in bossShootPositions)
         {
-            foreach (Transform shootPosition in bossShootPositions)
-            {
-                ShootProjectiles(shootPosition, targetPosition);
-            }
-        }         
+            ShootProjectiles(shootPosition, targetPosition);
+        }
+        yield return new WaitForSeconds(3f);
+
+        if (runtimeHP > 250)
+        {
+            StartCoroutine(PhaseOneFirst());
+        }
     }
 }
