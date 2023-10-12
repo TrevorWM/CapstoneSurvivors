@@ -155,13 +155,14 @@ public class DemonDoor : MonoBehaviour, IDamageable
 
     private IEnumerator PhaseTwo()
     {
+        //Shoot in a wave around the pillar
         foreach (Transform shootPosition in bossShootPositions)
         {
             StartCoroutine(ShootRotation(shootPosition, 5f, 360f, 0.2f));
         }
         yield return new WaitForSeconds(1f);
 
-
+        //Shoot a full circle pulse from opposite corners
         StartCoroutine(ShootRotation(bossShootPositions[0], 20f, 360f));
         StartCoroutine(ShootRotation(bossShootPositions[2], 20f, 360f));
         yield return new WaitForSeconds(1f);
