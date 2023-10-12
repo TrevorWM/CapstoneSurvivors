@@ -162,5 +162,13 @@ public class DemonDoor : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(1f);
 
 
+        StartCoroutine(ShootRotation(bossShootPositions[0], 20f, 360f));
+        StartCoroutine(ShootRotation(bossShootPositions[2], 20f, 360f));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(ShootRotation(bossShootPositions[1], 20f, 360f));
+        StartCoroutine(ShootRotation(bossShootPositions[3], 20f, 360f));
+        yield return new WaitForSeconds(3f);
+        
+        if (runtimeHP > 0) StartCoroutine(PhaseTwo());
     }
 }
