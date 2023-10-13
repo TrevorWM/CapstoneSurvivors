@@ -77,7 +77,7 @@ public class PlayerControls : MonoBehaviour
 
     private void Start()
     {
-        //MusicPlayer.Instance.PlayLevel1Music();
+        MusicPlayer.Instance.PlayLevel1Music();
         playerHurtbox = GetComponentInChildren<Hurtbox>();
     }
 
