@@ -16,8 +16,10 @@ public class AttackPayload
     public float DamageMultiplier { get; }
     public float ElementalAffinity { get; }
     public bool EnemyProjectile { get; }
+    public Hinderance Hinderance { get; }
+    public float EffectTime { get; }
 
-    public AttackPayload(float damage, int dotSeconds, ElementType element, float critChance, float critMultiplier, float damageMultiplier = 1f, float elementalAffinity = 1f, bool enemyProjectile = false)
+    public AttackPayload(float damage, int dotSeconds, ElementType element, float critChance, float critMultiplier, float damageMultiplier = 1f, float elementalAffinity = 1f, bool enemyProjectile = false, Hinderance hinderance = Hinderance.None, float effectTime = 0f)
     {
         this.Damage = damage;
         this.DotSeconds = dotSeconds;
@@ -27,6 +29,8 @@ public class AttackPayload
         this.DamageMultiplier = damageMultiplier;
         this.ElementalAffinity = elementalAffinity;
         this.EnemyProjectile = enemyProjectile;
+        this.Hinderance = hinderance;
+        this.EffectTime = effectTime;
     }
 
 

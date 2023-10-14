@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeOrbSO: {fileID: 11400000, guid: 247757629a92ff24cb5cbf50366eed47, type: 2}
   interactHint: {fileID: 1211672428249944278}
-  testing: 0
+  testing: 1
   playerFallback: {fileID: 0}
   upgradeUI: {fileID: 3056093305511502917}
   orbUsed:

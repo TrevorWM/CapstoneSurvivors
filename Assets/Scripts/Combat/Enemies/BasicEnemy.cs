@@ -45,6 +45,8 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private float currentHealth;
     private bool runAway = false;
     private readonly float tooClose = 3f;
+    private bool slowed = false;
+    private Vector2 slowVector = new (0.3f, 0.3f);
 
     private float meleeBuffer = 0.5f;
 
@@ -156,6 +158,9 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         if (enemyRigidbody && movementInput != null)
         {
             enemyRigidbody.velocity = movementInput * EnemyStats.MoveSpeed;
+            if (slowed)
+                enemyRigidbody.velocity = movementInput * EnemyStats.MoveSpeed * slowVector;
+
         }
     }
 
@@ -242,6 +247,11 @@ public class BasicEnemy : MonoBehaviour, IDamageable
             float damage = calculator.CalculateDamage(payload, defaultOwnerStats: enemyStats);
             currentHealth -= damage;
             flashSprite.HitFlash(spriteRenderer);
+            if (payload.Hinderance == Hinderance.Slow)
+            {
+                slowed = true;
+                StartCoroutine(SlowTimer(payload.EffectTime));
+            }
         }
 
         //check if enemy died from the attack
@@ -249,6 +259,13 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         {
             OnDeath();
         }
+    }
+
+    IEnumerator SlowTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        slowed = false;
+
     }
 
     private void OnDeath()
