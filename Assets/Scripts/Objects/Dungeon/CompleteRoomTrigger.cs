@@ -12,6 +12,7 @@ public class CompleteRoomTrigger : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             completeRoom.Invoke();
+            this.gameObject.SetActive(false);
         }
     }
 }

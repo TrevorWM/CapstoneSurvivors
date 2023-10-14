@@ -165,7 +165,7 @@ MonoBehaviour:
   - {fileID: 5997049228780987960, guid: f5ff49a45ff9a4644b042de7389c40dc, type: 3}
   - {fileID: 2600549069899687713, guid: 112d54c6098c7f14da8772b806929a12, type: 3}
   bossRoomPool:
-  - {fileID: 1070881198079620770, guid: 90d0b5c8069efda4abcd5a67e907c0a2, type: 3}
+  - {fileID: 509820833389698090, guid: 1e9257e0246540d419f346e1c8b91c06, type: 3}
 --- !u!4 &277871838
 Transform:
   m_ObjectHideFlags: 0
@@ -192,6 +192,14 @@ PrefabInstance:
     - target: {fileID: 311187456167225846, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_GridSnapping
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 311187456167225846, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
+      propertyPath: m_RefResolutionX
+      value: 640
+      objectReference: {fileID: 0}
+    - target: {fileID: 311187456167225846, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
+      propertyPath: m_RefResolutionY
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 3076822655540029441, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_Name
@@ -457,7 +465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483174633954749817, guid: 45bc037964e57304991015525eba1116, type: 3}
       propertyPath: m_Volume
-      value: 0.25
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6777469715867609405, guid: 45bc037964e57304991015525eba1116, type: 3}
       propertyPath: m_Name

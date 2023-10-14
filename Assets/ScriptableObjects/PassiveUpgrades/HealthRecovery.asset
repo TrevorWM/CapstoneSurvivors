@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Health Recovery
   statToModify: 1
-  commonUpgradeAmount: 10
-  uncommonUpgradeAmount: 20
-  rareUpgradeAmount: 30
-  legendaryUpgradeAmount: 50
+  commonUpgradeAmount: 25
+  uncommonUpgradeAmount: 50
+  rareUpgradeAmount: 75
+  legendaryUpgradeAmount: 100
   description: Restores health
   spriteArray:
   - {fileID: -1685671492, guid: ef0112d27d6e80e4392f6a9cf94f3df7, type: 3}

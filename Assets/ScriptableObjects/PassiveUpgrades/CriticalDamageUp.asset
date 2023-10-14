@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CriticalDamageUp
   m_EditorClassIdentifier: 
   upgradeName: Critical Damage Up
-  statToModify: 6
+  statToModify: 7
   commonUpgradeAmount: 0.05
   uncommonUpgradeAmount: 0.1
   rareUpgradeAmount: 0.2

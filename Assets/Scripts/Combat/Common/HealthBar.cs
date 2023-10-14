@@ -7,21 +7,16 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     [SerializeField]
-    private CharacterStats playerStats;
-
-    [SerializeField]
     private Slider healthBarSlider;
 
     [SerializeField]
     private TextMeshProUGUI healthText;
  
-    
 
-
-    public void UpdateHealthBarValue()
+    public void UpdateHealthBarValue(float currentHP, float maxHP)
     {
-        healthBarSlider.value = playerStats.CurrentHealth/playerStats.MaxHealth;
-        healthText.text = (playerStats.CurrentHealth.ToString() + "/" + playerStats.MaxHealth.ToString());
+        healthBarSlider.value = currentHP/maxHP;
+        healthText.text = (currentHP.ToString("F0") + "/" + maxHP.ToString());
 
         if (healthBarSlider.value <= 0)
         {

@@ -56,6 +56,8 @@ public class PlayerControls : MonoBehaviour
 
     public GameObject[] CurrentAbilities { get => currentAbilities; set => currentAbilities = value; }
 
+    private Hurtbox playerHurtbox;
+
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
@@ -75,7 +77,8 @@ public class PlayerControls : MonoBehaviour
 
     private void Start()
     {
-        //MusicPlayer.Instance.PlayLevel1Music();
+        MusicPlayer.Instance.PlayLevel1Music();
+        playerHurtbox = GetComponentInChildren<Hurtbox>();
     }
 
     private void OnEnable()
@@ -178,6 +181,7 @@ public class PlayerControls : MonoBehaviour
                 runtimeStats.MoveSpeed = tempMoveSpeed;
                 spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
                 //this is where we could disable the player hitbox so they have i-frames
+                playerHurtbox.gameObject.SetActive(false);
             }
         }
         
@@ -198,7 +202,7 @@ public class PlayerControls : MonoBehaviour
         tempMoveSpeed = tempMoveSpeed / runtimeStats.MoveSpeedModifier;
         runtimeStats.MoveSpeed = tempMoveSpeed;
         //and then re-enable the hitbox here
-
+        playerHurtbox.gameObject.SetActive(true);
     }
 
     /// <summary>
