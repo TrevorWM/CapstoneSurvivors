@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3798112852087967528}
   - component: {fileID: 3715905999489973301}
   - component: {fileID: 3142306519447561756}
-  - component: {fileID: 1290903430671170589}
+  - component: {fileID: 635814894277453202}
   m_Layer: 0
   m_Name: Icicle Ability
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MonoBehaviour:
   defaultPoolSize: 5
   maxPoolSize: 5
   projectileLifeTime: 2
---- !u!114 &1290903430671170589
+--- !u!114 &635814894277453202
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
