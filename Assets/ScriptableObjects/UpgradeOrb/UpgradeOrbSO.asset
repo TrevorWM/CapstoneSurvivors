@@ -17,7 +17,7 @@ MonoBehaviour:
   rareWeight: 6
   legendaryWeight: 1
   minimumWeight: 1
-  passiveChance: 0.75
+  passiveChance: 0.327
   passiveUpgradeList:
   - {fileID: 6245891642149629093, guid: 06ca424f405ed3b4fa22c610749c3bbd, type: 3}
   - {fileID: 529743361393889229, guid: 207fcae2932676848bb9e975754fb578, type: 3}
@@ -34,4 +34,5 @@ MonoBehaviour:
   - {fileID: 1286399037019628021, guid: 430a64174ebdab44891f7b548e6aa19d, type: 3}
   - {fileID: 1286399037019628021, guid: f4673217eca39564a856d37c5f8cde46, type: 3}
   - {fileID: 1286399037019628021, guid: d0acbf105f1ec6849b0d378e37b3f38f, type: 3}
+  - {fileID: 8797331646011887251, guid: 146c5f0128b6eeb4e97651ed4aef11c3, type: 3}
   healthPotion: {fileID: 2656812543762864619, guid: 534f0017183478b45ad59638d48b2882, type: 3}
