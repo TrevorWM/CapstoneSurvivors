@@ -162,16 +162,13 @@ public class BasicEnemy : MonoBehaviour, IDamageable
             if (slowed)
             {
                 enemyRigidbody.velocity = movementInput * EnemyStats.MoveSpeed * slowVector;
-                Debug.Log("velocity: " + enemyRigidbody.velocity);
             } else if (stopped)
             {
                 enemyRigidbody.velocity = movementInput * EnemyStats.MoveSpeed * stopVector;
-                Debug.Log("velocity: " + enemyRigidbody.velocity);
             }
             else
             {
                 enemyRigidbody.velocity = movementInput * EnemyStats.MoveSpeed;
-                Debug.Log("velocity: " + enemyRigidbody.velocity);
             }
 
         }
@@ -267,7 +264,6 @@ public class BasicEnemy : MonoBehaviour, IDamageable
                 StartCoroutine(SlowTimer(payload.EffectTime));
             } else if (payload.Hinderance == Hinderance.Stop)
             {
-                Debug.Log("stopped!!!!!");
                 stopped = true;
                 spriteRenderer.color = new Color(.61f,.46f,29f,1f);
                 StartCoroutine(StopTimer(payload.EffectTime));
