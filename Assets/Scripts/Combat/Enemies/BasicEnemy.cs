@@ -246,11 +246,15 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         {
             float damage = calculator.CalculateDamage(payload, defaultOwnerStats: enemyStats);
             currentHealth -= damage;
-            flashSprite.HitFlash(spriteRenderer);
-            if (payload.Hinderance == Hinderance.Slow)
+            
+            if (payload.Hinderance == Hinderance.Slow) // deal with specific hinderance
             {
                 slowed = true;
+                spriteRenderer.color = Color.blue;
                 StartCoroutine(SlowTimer(payload.EffectTime));
+            } else // else just do normal hurt stuff
+            {
+                flashSprite.HitFlash(spriteRenderer);
             }
         }
 
@@ -265,7 +269,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     {
         yield return new WaitForSeconds(time);
         slowed = false;
-
+        spriteRenderer.color = Color.white;
     }
 
     private void OnDeath()
