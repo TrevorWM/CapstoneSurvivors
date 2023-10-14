@@ -20,10 +20,10 @@ MonoBehaviour:
   dotTime: 0
   projectileSpeed: 7.5
   abilityElement: 0
-  commonDamageModifier: 0.3
-  uncommonDamageModifier: 0.3
-  rareDamageModifier: 0.4
-  legendaryDamageModifier: 0.6
+  commonDamageModifier: 0.35
+  uncommonDamageModifier: 0.45
+  rareDamageModifier: 0.55
+  legendaryDamageModifier: 0.8
   hinderanceType: 0
   effectTime: 0
   description: Shoots a short-range stream of fire as you hold down the ability input

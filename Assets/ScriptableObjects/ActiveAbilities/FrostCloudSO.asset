@@ -20,10 +20,10 @@ MonoBehaviour:
   dotTime: 0
   projectileSpeed: 1
   abilityElement: 2
-  commonDamageModifier: 0.2
-  uncommonDamageModifier: 0.5
-  rareDamageModifier: 0.7
-  legendaryDamageModifier: 1.1
+  commonDamageModifier: 1
+  uncommonDamageModifier: 1.2
+  rareDamageModifier: 1.4
+  legendaryDamageModifier: 1.8
   hinderanceType: 1
   effectTime: 5
   description: Shoots a slow moving cloud of frost that slows enemies that pass through

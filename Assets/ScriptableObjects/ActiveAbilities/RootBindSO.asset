@@ -20,10 +20,10 @@ MonoBehaviour:
   dotTime: 0
   projectileSpeed: 0
   abilityElement: 1
-  commonDamageModifier: 0.5
-  uncommonDamageModifier: 1
-  rareDamageModifier: 1.5
-  legendaryDamageModifier: 2
+  commonDamageModifier: 0.1
+  uncommonDamageModifier: 0.2
+  rareDamageModifier: 0.3
+  legendaryDamageModifier: 0.4
   hinderanceType: 2
   effectTime: 5
   description: Leave a mess of roots in front of you, stopping any enemy who walks
