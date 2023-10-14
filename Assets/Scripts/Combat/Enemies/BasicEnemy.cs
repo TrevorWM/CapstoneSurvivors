@@ -46,6 +46,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private bool runAway = false;
     private readonly float tooClose = 3f;
     private bool slowed = false;
+    private bool stopped = false;
     private Vector2 slowVector = new (0.3f, 0.3f);
 
     private float meleeBuffer = 0.5f;
@@ -148,8 +149,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
             // make them run a bit faster cause the speed is wonky
             movementInput = -getDirectionFromTarget() * 1.75f;
             StartCoroutine(StopRunning());
-        }
-        else
+        } else
         {
             // getting movement direction
             movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aiData);
@@ -159,7 +159,12 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         {
             enemyRigidbody.velocity = movementInput * EnemyStats.MoveSpeed;
             if (slowed)
+            {
                 enemyRigidbody.velocity = movementInput * EnemyStats.MoveSpeed * slowVector;
+            } else if (stopped)
+            {
+                enemyRigidbody.velocity = Vector2.zero;
+            }
 
         }
     }
@@ -252,6 +257,11 @@ public class BasicEnemy : MonoBehaviour, IDamageable
                 slowed = true;
                 spriteRenderer.color = Color.blue;
                 StartCoroutine(SlowTimer(payload.EffectTime));
+            } else if (payload.Hinderance == Hinderance.Stop)
+            {
+                stopped = true;
+                spriteRenderer.color = new Color(.5f,.25f,0f,1f);
+                StartCoroutine(StopTimer(payload.EffectTime));
             } else // else just do normal hurt stuff
             {
                 flashSprite.HitFlash(spriteRenderer);
@@ -266,6 +276,13 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     }
 
     IEnumerator SlowTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        slowed = false;
+        spriteRenderer.color = Color.white;
+    }
+    
+    IEnumerator StopTimer(float time)
     {
         yield return new WaitForSeconds(time);
         slowed = false;

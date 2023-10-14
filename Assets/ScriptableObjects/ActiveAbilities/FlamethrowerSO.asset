@@ -20,7 +20,7 @@ MonoBehaviour:
   dotTime: 0
   projectileSpeed: 7.5
   abilityElement: 0
-  commonDamageModifier: 0.2
+  commonDamageModifier: 0.3
   uncommonDamageModifier: 0.3
   rareDamageModifier: 0.4
   legendaryDamageModifier: 0.6
