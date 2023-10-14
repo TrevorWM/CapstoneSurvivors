@@ -10,6 +10,7 @@ public class RootBindBase : ActiveAbilityBase
     public override void InitializeRarityBasedStats(UpgradeRarity rolledUpgradeRarity)
     {
         base.InitializeRarityBasedStats(rolledUpgradeRarity);
+        EffectTime = this.ActiveAbilitySO.EffectTime;
     }
 
 

@@ -46,8 +46,9 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private bool runAway = false;
     private readonly float tooClose = 3f;
     private bool slowed = false;
-    private bool stopped = false;
     private Vector2 slowVector = new (0.3f, 0.3f);
+    private bool stopped = false;
+    private Vector2 stopVector = new (0.01f, 0.01f);
 
     private float meleeBuffer = 0.5f;
 
@@ -157,13 +158,20 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
         if (enemyRigidbody && movementInput != null)
         {
-            enemyRigidbody.velocity = movementInput * EnemyStats.MoveSpeed;
+            
             if (slowed)
             {
                 enemyRigidbody.velocity = movementInput * EnemyStats.MoveSpeed * slowVector;
+                Debug.Log("velocity: " + enemyRigidbody.velocity);
             } else if (stopped)
             {
-                enemyRigidbody.velocity = Vector2.zero;
+                enemyRigidbody.velocity = movementInput * EnemyStats.MoveSpeed * stopVector;
+                Debug.Log("velocity: " + enemyRigidbody.velocity);
+            }
+            else
+            {
+                enemyRigidbody.velocity = movementInput * EnemyStats.MoveSpeed;
+                Debug.Log("velocity: " + enemyRigidbody.velocity);
             }
 
         }
@@ -259,8 +267,9 @@ public class BasicEnemy : MonoBehaviour, IDamageable
                 StartCoroutine(SlowTimer(payload.EffectTime));
             } else if (payload.Hinderance == Hinderance.Stop)
             {
+                Debug.Log("stopped!!!!!");
                 stopped = true;
-                spriteRenderer.color = new Color(.5f,.25f,0f,1f);
+                spriteRenderer.color = new Color(.61f,.46f,29f,1f);
                 StartCoroutine(StopTimer(payload.EffectTime));
             } else // else just do normal hurt stuff
             {
@@ -285,7 +294,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     IEnumerator StopTimer(float time)
     {
         yield return new WaitForSeconds(time);
-        slowed = false;
+        stopped = false;
         spriteRenderer.color = Color.white;
     }
 

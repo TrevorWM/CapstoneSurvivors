@@ -10,7 +10,7 @@ public abstract class ActiveAbilityBase : MonoBehaviour
 
     protected int dotTime = 0;
 
-    private int effectTime = 0;
+    private float effectTime = 0;
 
     private ProjectileBase projectileScript;
 
@@ -25,7 +25,7 @@ public abstract class ActiveAbilityBase : MonoBehaviour
     public int DotTime { get => dotTime; }
     public bool OnCooldown { get => onCooldown; }
     public UpgradeRarity AbilityRarity { get => abilityRarity; }
-    public int EffectTime { get => effectTime; set => effectTime = value; }
+    public float EffectTime { get => effectTime; set => effectTime = value; }
 
     private void Start()
     {

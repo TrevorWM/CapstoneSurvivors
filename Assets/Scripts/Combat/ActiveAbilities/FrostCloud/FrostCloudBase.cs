@@ -11,16 +11,16 @@ public class FrostCloudBase : ActiveAbilityBase
         switch (rarity)
         {
             case UpgradeRarity.Common:
-                EffectTime = 3;
+                EffectTime = 3f;
                 break;
             case UpgradeRarity.Uncommon:
-                EffectTime = 5;
+                EffectTime = 5f;
                 break;
             case UpgradeRarity.Rare:
-                EffectTime = 7;
+                EffectTime = 7f;
                 break;
             case UpgradeRarity.Legendary:
-                EffectTime = 10;
+                EffectTime = 10f;
                 break;
         }
     }
