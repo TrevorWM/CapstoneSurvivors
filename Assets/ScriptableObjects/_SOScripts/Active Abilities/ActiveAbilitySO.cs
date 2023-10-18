@@ -42,6 +42,12 @@ public class ActiveAbilitySO : ScriptableObject
     private float legendaryDamageModifier;
 
     [SerializeField]
+    private Hinderance hinderanceType;
+
+    [SerializeField]
+    private float effectTime;
+
+    [SerializeField]
     private string description;
 
     public string AbilityName { get => abilityName; }
@@ -56,6 +62,8 @@ public class ActiveAbilitySO : ScriptableObject
     public float LegendaryDamageModifier { get => legendaryDamageModifier; set => legendaryDamageModifier = Mathf.Max(0, value); }
     public ElementType AbilityElement { get => abilityElement; }
     public string Description { get => description; set => description = value; }
+    public Hinderance HinderanceType { get => hinderanceType; set => hinderanceType = value; }
+    public float EffectTime { get => effectTime; set => effectTime = value; }
 
     private void OnValidate()
     {
@@ -67,4 +75,11 @@ public class ActiveAbilitySO : ScriptableObject
     }
 
 
+}
+
+public enum Hinderance
+{
+    None = 0,
+    Slow = 1,
+    Stop = 2,
 }

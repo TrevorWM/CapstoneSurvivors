@@ -15,7 +15,7 @@ public class ProjectilePool : MonoBehaviour
     private int maxPoolSize;
 
     [SerializeField]
-    private int projectileLifeTime;
+    private float projectileLifeTime;
 
     private ObjectPool<ProjectileBase> projectilePool;
     private RoomManager roomManager;
