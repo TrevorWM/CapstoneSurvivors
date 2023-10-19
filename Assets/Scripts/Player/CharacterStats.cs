@@ -264,7 +264,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
 
         // replace with death logic once animations, sfx, vfx, and other things are in
         this.gameObject.SetActive(false);
-        if (this.gameObject.layer == LayerMask.NameToLayer("Player")) playerDied.Invoke();
+        if (this.gameObject.layer == LayerMask.NameToLayer("Player")) SceneManager.LoadScene("MainMenu");
     }
 
     /// <summary>
