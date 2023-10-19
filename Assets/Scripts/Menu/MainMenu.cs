@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartButtonPressed()
     {
+        SoundEffectPlayer.Instance.MenuSelectSound();
         SceneManager.LoadScene(gameSceneName);
     }
 }

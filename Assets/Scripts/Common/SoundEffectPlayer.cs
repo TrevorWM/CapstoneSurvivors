@@ -9,7 +9,7 @@ public class SoundEffectPlayer : MonoBehaviour
     [SerializeField]
     private AudioSource source;
     [SerializeField]
-    private AudioClip basicHit, fireballHit, fireballShoot;
+    private AudioClip basicHit, fireballHit, fireballShoot, menuSelect, menuHighlight;
 
     /// <summary>
     /// REF: https://gamedev.stackexchange.com/a/34879
@@ -41,5 +41,16 @@ public class SoundEffectPlayer : MonoBehaviour
         source.Play();
     }
 
+    public void MenuSelectSound()
+    {
+        source.clip = menuSelect;
+        source.Play();
+    }
+
+    public void MenuHighlightSound()
+    {
+        source.clip = menuHighlight;
+        source.Play();
+    }
 
 }
