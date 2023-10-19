@@ -118,6 +118,7 @@ public class RoomManager : MonoBehaviour
     /// </summary>
     public void GoToNextRoom()
     {
+        SoundEffectPlayer.Instance.EnterDoorSound();
         upgradeOrbLogic.orbUsed.RemoveListener(currentRoomLogic.OpenDoor);
         StartRoom(nextRoom);
         currentUpgradeOrb?.SetActive(false);
