@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Level 2 Walls_4
+  m_Name: Level 2 DoorOpen
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1442468159, guid: 9fceda400bcd7cb4bacc8e4c570f804b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc09b61e00d92bd40bbdf807c2ddc3ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
