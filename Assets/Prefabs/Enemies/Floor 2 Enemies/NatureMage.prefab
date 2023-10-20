@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 5031060647642474146}
   - component: {fileID: 1959251935498101480}
   m_Layer: 0
-  m_Name: FireMage
+  m_Name: NatureMage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -249,7 +249,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 593f9d608c7127f4da353d8b3e226016, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f0d9fefa47e6f0e4a9c1b18e0497d902, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 936542112781181270}
   - component: {fileID: 1721900736155384653}
   m_Layer: 6
-  m_Name: FireMage
+  m_Name: NatureMage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -570,10 +570,10 @@ MonoBehaviour:
   detectionDelay: 0.05
   movementInput: {x: 0, y: 0}
   movementDirectionSolver: {fileID: 4742228905648544628}
-  enemyStats: {fileID: 11400000, guid: 2d79e0776b3184e44aac89310869ef2a, type: 2}
+  enemyStats: {fileID: 11400000, guid: 08ec9223308ebda43afc221dce0f201e, type: 2}
   flashSprite: {fileID: 936542112781181270}
   calculator: {fileID: 1721900736155384653}
-  attack: {fileID: 8797331646011887251, guid: 08fb35e51c6a8a44aba7e12ea3e03c23, type: 3}
+  attack: {fileID: 3683436185833363422, guid: 8d3d61f84e5bdc5458c7638a60a62282, type: 3}
   enemySpawn:
     m_PersistentCalls:
       m_Calls: []
