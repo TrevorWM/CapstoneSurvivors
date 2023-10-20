@@ -145,3 +145,6 @@ MonoBehaviour:
   basicHit: {fileID: 8300000, guid: 27665ade041a3cf4c8fc810f6a13b1ea, type: 3}
   fireballHit: {fileID: 8300000, guid: 9b210116ab0fa9b4db902cc72c093739, type: 3}
   fireballShoot: {fileID: 8300000, guid: 5173b232f0c194f4f9ce89624e534a10, type: 3}
+  menuSelect: {fileID: 8300000, guid: aede9cc7f7b3c1c4c95c82cbcf2bda2b, type: 3}
+  menuHighlight: {fileID: 8300000, guid: 63aa2820a58db624e8865e7136441f8e, type: 3}
+  enterDoor: {fileID: 8300000, guid: 3c55a395f79663145a759a6daa807a3a, type: 3}

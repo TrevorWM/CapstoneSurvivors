@@ -158,7 +158,7 @@ public class DemonDoor : MonoBehaviour, IDamageable
         //Shoot in a wave around the pillar
         foreach (Transform shootPosition in bossShootPositions)
         {
-            StartCoroutine(ShootRotation(shootPosition, 5f, 360f, 0.2f));
+            StartCoroutine(ShootRotation(shootPosition, 15f, 360f, 0.2f));
         }
         yield return new WaitForSeconds(1f);
 
