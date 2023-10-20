@@ -276,6 +276,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
     private void OnDeath()
     {
+        if (enemyAttack != null) enemyAttack.AbilityCleanup();
         CancelInvoke();
         enemyDeath.Invoke(calculator);
         gameObject.SetActive(false);

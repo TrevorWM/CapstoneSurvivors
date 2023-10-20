@@ -48,4 +48,8 @@ public class EnemyMeleeAttack : MonoBehaviour, IEnemyAttack, IDamager
         attackCollider.enabled = false;
     }
 
+    public void AbilityCleanup()
+    {
+        return;
+    }
 }

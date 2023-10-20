@@ -36,4 +36,8 @@ public class BasicRangedAttack : MonoBehaviour, IEnemyAttack
             stats.CriticalChance, stats.CriticalDamageMultiplier, enemyProjectile: true);
     }
 
+    public void AbilityCleanup()
+    {
+        projectilePool.ClearPool();
+    }
 }

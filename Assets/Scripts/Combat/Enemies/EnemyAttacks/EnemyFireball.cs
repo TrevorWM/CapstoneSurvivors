@@ -83,4 +83,9 @@ public class EnemyFireball : ActiveAbilityBase, IEnemyAttack
         projectilePool = GetComponent<ProjectilePool>();
         attackPayload = new AttackPayload(stats.BaseDamage, 0, ElementType.Fire, stats.CriticalChance, stats.CriticalDamageMultiplier, DamageModifierValue, enemyProjectile: true);
     }
+
+    public void AbilityCleanup()
+    {
+        projectilePool.ClearPool();
+    }
 }
