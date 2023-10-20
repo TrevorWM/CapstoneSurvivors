@@ -12,6 +12,9 @@ public class FireballBase : ActiveAbilityBase
 
     private Vector3 aoeScale;
 
+    private AttackPayload attackPayload;
+    private ProjectilePool projectilePool;
+
     public Vector3 AoeScale { get => aoeScale; }
     public float HitEffectLifetime { get => hitEffectLifetime; set => hitEffectLifetime = Mathf.Max(0,value); }
 
