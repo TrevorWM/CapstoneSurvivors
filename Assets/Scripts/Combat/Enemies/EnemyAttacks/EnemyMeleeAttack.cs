@@ -20,7 +20,7 @@ public class EnemyMeleeAttack : MonoBehaviour, IEnemyAttack, IDamager
         UseMeleeAttack();
     }
 
-    public void Initialize(CharacterStatsSO stats)
+    public void Initialize(CharacterStatsSO stats, UpgradeRarity rarity = UpgradeRarity.Common)
     {
         Debug.Log("EnemyMeleeAttack");
 

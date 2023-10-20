@@ -30,7 +30,7 @@ public class BasicRangedAttack : MonoBehaviour, IEnemyAttack
 
     }
 
-    public void Initialize(CharacterStatsSO stats)
+    public void Initialize(CharacterStatsSO stats, UpgradeRarity rarity = UpgradeRarity.Common)
     {
         payload = new AttackPayload(stats.BaseDamage, 0, stats.CharacterElement,
             stats.CriticalChance, stats.CriticalDamageMultiplier, enemyProjectile: true);
