@@ -32,6 +32,8 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private FlashSprite flashSprite;
     [SerializeField]
     private DamageCalculator calculator;
+    [SerializeField]
+    private IEnemyAttack attack;
     
     public UnityEvent<DamageCalculator> enemySpawn;
 
@@ -124,7 +126,11 @@ public class BasicEnemy : MonoBehaviour, IDamageable
                 // if they have, they can try to attack
                 if (EnemyStats.RangedEnemy)
                 {
-                    HandleRangedAttack();
+                    if (!isAttacking)
+                    {
+                        HandleRangedAttack();
+                        StartCoroutine(BasicAttackCooldown());
+                    }
                     // if a ranged enemy gets too close we want them to run away
                     if (distance < tooClose)
                     {
@@ -132,7 +138,11 @@ public class BasicEnemy : MonoBehaviour, IDamageable
                     }
                 } else
                 {
-                    HandleMeleeAttack();
+                    if (!isAttacking)
+                    {
+                        HandleMeleeAttack();
+                        StartCoroutine(BasicAttackCooldown());
+                    }
                 }
             }
 
@@ -189,38 +199,31 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
     private void HandleRangedAttack()
     {
-        if (!isAttacking)
-        {
-            ProjectileBase projectile = projectilePool.GetProjectile();
+        ProjectileBase projectile = projectilePool.GetProjectile();
 
-            projectile.transform.position = transform.position;
-            projectile.transform.rotation = transform.rotation;
+        projectile.transform.position = transform.position;
+        projectile.transform.rotation = transform.rotation;
 
-            // This parents the projectiles to the room rather than the enemy
-            // if we change where the enemies shoot we will need to change how this parents
-            // Easiest would be to grab a reference to the dungeon room object.
-            projectile.transform.parent = gameObject.transform.parent;
+        // This parents the projectiles to the room rather than the enemy
+        // if we change where the enemies shoot we will need to change how this parents
+        // Easiest would be to grab a reference to the dungeon room object.
+        projectile.transform.parent = gameObject.transform.parent;
 
-            Vector2 shootDirection = getDirectionFromTarget();
-            int dotSeconds = 0;
-            bool enemyAttack = true;
-            payload = new AttackPayload(EnemyStats.BaseDamage, dotSeconds, EnemyStats.CharacterElement, EnemyStats.CriticalChance, EnemyStats.CriticalDamageMultiplier, enemyProjectile: enemyAttack);
+        Vector2 shootDirection = getDirectionFromTarget();
+        int dotSeconds = 0;
+        bool enemyAttack = true;
+        payload = new AttackPayload(EnemyStats.BaseDamage, dotSeconds, EnemyStats.CharacterElement, EnemyStats.CriticalChance, EnemyStats.CriticalDamageMultiplier, enemyProjectile: enemyAttack);
 
-            projectile.FireProjectile(shootDirection, EnemyStats.ProjectileSpeed, payload);
+        projectile.FireProjectile(shootDirection, EnemyStats.ProjectileSpeed, payload);
 
-            isAttacking = true;
-            StartCoroutine("BasicAttackCooldown");
-        }
+        isAttacking = true;
     }
 
     private void HandleMeleeAttack()
     {
-        if (!isAttacking)
-        {
-            if (meleeAttack != null) meleeAttack.UseMeleeAttack();
-            isAttacking = true;
-            StartCoroutine(BasicAttackCooldown());
-        }
+        if (meleeAttack != null) meleeAttack.UseMeleeAttack();
+        isAttacking = true;
+        
     }
 
     IEnumerator BasicAttackCooldown()
