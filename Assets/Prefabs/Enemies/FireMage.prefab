@@ -443,7 +443,6 @@ GameObject:
   - component: {fileID: 6996943753897319369}
   - component: {fileID: 5234646199516632397}
   - component: {fileID: 1433461670688151630}
-  - component: {fileID: 3620829023892470323}
   - component: {fileID: 936542112781181270}
   - component: {fileID: 1721900736155384653}
   m_Layer: 6
@@ -572,31 +571,15 @@ MonoBehaviour:
   movementInput: {x: 0, y: 0}
   movementDirectionSolver: {fileID: 4742228905648544628}
   enemyStats: {fileID: 11400000, guid: 2d79e0776b3184e44aac89310869ef2a, type: 2}
-  projectilePool: {fileID: 3620829023892470323}
   flashSprite: {fileID: 936542112781181270}
   calculator: {fileID: 1721900736155384653}
+  attack: {fileID: 3683436185833363422, guid: 8d3d61f84e5bdc5458c7638a60a62282, type: 3}
   enemySpawn:
     m_PersistentCalls:
       m_Calls: []
   enemyDeath:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3620829023892470323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6508978941447238353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c5d5bf3d782b674fa2e61b354f99084, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 5710632682410789928, guid: 51c111ed6f2642244bd35f9a73317ea4, type: 3}
-  defaultPoolSize: 5
-  maxPoolSize: 5
-  projectileLifeTime: 5
 --- !u!114 &936542112781181270
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -292,7 +292,6 @@ Transform:
   - {fileID: 2940005114983313753}
   - {fileID: 68948693590940900}
   - {fileID: 4019991673622631045}
-  - {fileID: 2703272328945340581}
   - {fileID: 6042419743470243455}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -396,9 +395,9 @@ MonoBehaviour:
   movementInput: {x: 0, y: 0}
   movementDirectionSolver: {fileID: 5698897514147364769}
   enemyStats: {fileID: 11400000, guid: 7f9451e8331bdd94f9f47051119f17a1, type: 2}
-  projectilePool: {fileID: 0}
   flashSprite: {fileID: 6422025227624983864}
   calculator: {fileID: 7212467805060940882}
+  attack: {fileID: 3436708496837645202, guid: c825287aedd21d249adcb7dd12c5f479, type: 3}
   enemySpawn:
     m_PersistentCalls:
       m_Calls: []
@@ -659,87 +658,4 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1310825153766437246, guid: 8ef7d4c021a5ad941b1b7a368976f4e2, type: 3}
   m_PrefabInstance: {fileID: 2736250858658014203}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &7998249005139072372
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6054879730252398673}
-    m_Modifications:
-    - target: {fileID: 501099357982324919, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_BodyType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439379455330059729, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439379455330059729, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439379455330059729, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439379455330059729, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439379455330059729, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439379455330059729, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439379455330059729, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439379455330059729, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439379455330059729, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439379455330059729, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7979575963436343856, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_Name
-      value: MeleeAttack
-      objectReference: {fileID: 0}
-    - target: {fileID: 8372293985279831060, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_Size.x
-      value: 0.6005037
-      objectReference: {fileID: 0}
-    - target: {fileID: 8372293985279831060, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_Size.y
-      value: 0.6452112
-      objectReference: {fileID: 0}
-    - target: {fileID: 8372293985279831060, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.05025184
-      objectReference: {fileID: 0}
-    - target: {fileID: 8372293985279831060, guid: fe10963103b157340912515c58735b66, type: 3}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8372293985279831060, guid: fe10963103b157340912515c58735b66, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fe10963103b157340912515c58735b66, type: 3}
---- !u!4 &2703272328945340581 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5439379455330059729, guid: fe10963103b157340912515c58735b66, type: 3}
-  m_PrefabInstance: {fileID: 7998249005139072372}
   m_PrefabAsset: {fileID: 0}

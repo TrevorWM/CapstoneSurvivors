@@ -27,20 +27,17 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     [SerializeField]
     private CharacterStatsSO enemyStats;
     [SerializeField]
-    private ProjectilePool projectilePool;
-    [SerializeField]
     private FlashSprite flashSprite;
     [SerializeField]
     private DamageCalculator calculator;
-    [SerializeField]
-    private IEnemyAttack attack;
-    
+    [SerializeReference]
+    private GameObject attack;
+    private IEnemyAttack enemyAttack;
+
     public UnityEvent<DamageCalculator> enemySpawn;
 
     public UnityEvent<DamageCalculator> enemyDeath;
 
-    private MeleeAttack meleeAttack;
-    private AttackPayload payload;
     private bool isAttacking = false;
     private Rigidbody2D enemyRigidbody;
     private SpriteRenderer spriteRenderer;
@@ -76,9 +73,11 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
         //set starting health
         currentHealth = EnemyStats.MaxHealth;
-        meleeAttack = GetComponentInChildren<MeleeAttack>();
 
         enemySpawn.Invoke(calculator);
+
+        enemyAttack = attack.GetComponent<IEnemyAttack>();
+        Debug.Log("enemyAttack " + enemyAttack);
     }
 
     private void PerformDetection()
@@ -128,7 +127,8 @@ public class BasicEnemy : MonoBehaviour, IDamageable
                 {
                     if (!isAttacking)
                     {
-                        HandleRangedAttack();
+                        isAttacking = true;
+                        enemyAttack.DoAttack(EnemyStats, getDirectionFromTarget());
                         StartCoroutine(BasicAttackCooldown());
                     }
                     // if a ranged enemy gets too close we want them to run away
@@ -140,7 +140,8 @@ public class BasicEnemy : MonoBehaviour, IDamageable
                 {
                     if (!isAttacking)
                     {
-                        HandleMeleeAttack();
+                        isAttacking = true;
+                        enemyAttack.DoAttack();
                         StartCoroutine(BasicAttackCooldown());
                     }
                 }
@@ -197,34 +198,8 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
     }
 
-    private void HandleRangedAttack()
-    {
-        ProjectileBase projectile = projectilePool.GetProjectile();
 
-        projectile.transform.position = transform.position;
-        projectile.transform.rotation = transform.rotation;
-
-        // This parents the projectiles to the room rather than the enemy
-        // if we change where the enemies shoot we will need to change how this parents
-        // Easiest would be to grab a reference to the dungeon room object.
-        projectile.transform.parent = gameObject.transform.parent;
-
-        Vector2 shootDirection = getDirectionFromTarget();
-        int dotSeconds = 0;
-        bool enemyAttack = true;
-        payload = new AttackPayload(EnemyStats.BaseDamage, dotSeconds, EnemyStats.CharacterElement, EnemyStats.CriticalChance, EnemyStats.CriticalDamageMultiplier, enemyProjectile: enemyAttack);
-
-        projectile.FireProjectile(shootDirection, EnemyStats.ProjectileSpeed, payload);
-
-        isAttacking = true;
-    }
-
-    private void HandleMeleeAttack()
-    {
-        if (meleeAttack != null) meleeAttack.UseMeleeAttack();
-        isAttacking = true;
-        
-    }
+    
 
     IEnumerator BasicAttackCooldown()
     {
