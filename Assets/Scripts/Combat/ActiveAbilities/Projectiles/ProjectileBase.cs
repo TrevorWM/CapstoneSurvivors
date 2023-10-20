@@ -38,12 +38,6 @@ public abstract class ProjectileBase : MonoBehaviour
     }
 
 
-
-    private void OnDisable()
-    {
-        OnDisableLogic();
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Uses a bitshift and bitwise and in order to see if the object being
@@ -69,9 +63,13 @@ public abstract class ProjectileBase : MonoBehaviour
     /// Virtual function that allows children to override to add their logic to the
     /// OnDisable function.
     /// </summary>
-    protected virtual void OnDisableLogic()
+    protected virtual void EndOfLifetimeLogic()
     {
         return;
     }
 
+    public void EndOfLifetime()
+    {
+        EndOfLifetimeLogic();
+    }
 }
