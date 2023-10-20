@@ -6,7 +6,7 @@ public class FlashSprite : MonoBehaviour
 {
     public void HitFlash(SpriteRenderer spriteRenderer)
     {
-        if (spriteRenderer) StartCoroutine(DamageFlash(spriteRenderer));
+        if (spriteRenderer.gameObject.activeInHierarchy) StartCoroutine(DamageFlash(spriteRenderer));
     }
 
     IEnumerator DamageFlash(SpriteRenderer spriteRenderer)

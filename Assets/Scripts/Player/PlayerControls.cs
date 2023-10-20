@@ -123,10 +123,10 @@ public class PlayerControls : MonoBehaviour
         {
             HandleDodge();
             HandleMovement();
-            HandleBasicAttack();
             HandleAbility(qAbilityInput, AbilityKeyMap.Q);
             HandleAbility(eAbilityInput, AbilityKeyMap.E);
             HandleAbility(m2AbilityInput, AbilityKeyMap.M2);
+            HandleBasicAttack();
         }
     }
 
