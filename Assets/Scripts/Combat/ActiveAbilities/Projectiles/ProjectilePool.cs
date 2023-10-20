@@ -72,6 +72,7 @@ public class ProjectilePool : MonoBehaviour
     {
         if (projectile)
         {
+            if (projectile.isActiveAndEnabled) projectile.EndOfLifetime();
             projectile.gameObject.SetActive(false);
         }
     }
@@ -91,6 +92,7 @@ public class ProjectilePool : MonoBehaviour
         yield return projectileTimeout;
 
         if (projectile != null) projectilePool.Release(projectile);
+        
     }
 
     public ProjectileBase GetProjectile()
