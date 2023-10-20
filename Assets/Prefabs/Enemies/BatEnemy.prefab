@@ -757,6 +757,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeAttackBase
       objectReference: {fileID: 0}
+    - target: {fileID: 5619054110982018869, guid: c825287aedd21d249adcb7dd12c5f479, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7350517512126731276, guid: c825287aedd21d249adcb7dd12c5f479, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0076327324
