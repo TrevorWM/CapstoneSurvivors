@@ -76,7 +76,8 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
         enemySpawn.Invoke(calculator);
 
-        enemyAttack = attack.GetComponent<IEnemyAttack>();
+        enemyAttack = Instantiate(attack,gameObject.transform).GetComponent<IEnemyAttack>();
+        enemyAttack.Initialize(enemyStats);
         Debug.Log("enemyAttack " + enemyAttack);
     }
 
@@ -128,7 +129,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
                     if (!isAttacking)
                     {
                         isAttacking = true;
-                        enemyAttack.DoAttack(EnemyStats, getDirectionFromTarget());
+                        enemyAttack.DoAttack(enemyStats, getDirectionFromTarget());
                         StartCoroutine(BasicAttackCooldown());
                     }
                     // if a ranged enemy gets too close we want them to run away

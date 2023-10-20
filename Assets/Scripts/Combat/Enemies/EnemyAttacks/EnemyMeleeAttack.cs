@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMeleeAttack : MonoBehaviour, IEnemyAttack
+public class EnemyMeleeAttack : MonoBehaviour, IEnemyAttack, IDamager
 {
 
     [SerializeField]
@@ -20,23 +20,20 @@ public class EnemyMeleeAttack : MonoBehaviour, IEnemyAttack
         UseMeleeAttack();
     }
 
-    private void Awake()
+    public void Initialize(CharacterStatsSO stats)
     {
-        ownerScript = GetComponentInParent<BasicEnemy>();
-
         Debug.Log("EnemyMeleeAttack");
 
         if (attackCollider != null) attackCollider.enabled = false;
-        if (ownerScript != null) ownerStatSO = ownerScript.EnemyStats;
 
-        attackPayload = new AttackPayload(ownerStatSO.BaseDamage, 0, ownerStatSO.CharacterElement,
-            ownerStatSO.CriticalChance, ownerStatSO.CriticalDamageMultiplier, enemyProjectile: true);
+        attackPayload = new AttackPayload(stats.BaseDamage, 0, stats.CharacterElement,
+            stats.CriticalChance, stats.CriticalDamageMultiplier, enemyProjectile: true);
     }
 
     public void UseMeleeAttack()
-    {
-        Debug.Log("Collider: " + attackCollider.enabled);
+    {    
         attackCollider.enabled = true;
+        Debug.Log("Collider: " + attackCollider.enabled);
         StartCoroutine(ColliderDisableDelay());
     }
 

@@ -1,37 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class BasicRangedAttack : MonoBehaviour, IEnemyAttack
 {
     [SerializeField]
     ProjectilePool projectilePool;
-    
-    GameObject parent;
 
     private AttackPayload payload;
 
-    public void DoAttack(CharacterStatsSO stats = null, Vector2 aimDirection = default)
+    public void DoAttack(CharacterStatsSO stats, Vector2 aimDirection = default(Vector2))
     {
-        parent = GetComponentInParent<GameObject>();
+        Transform parentTransform = this.gameObject.transform.parent;
         ProjectileBase projectile = projectilePool.GetProjectile();
 
-        projectile.transform.position = parent.transform.position;
-        projectile.transform.rotation = parent.transform.rotation;
+        projectile.transform.position = parentTransform.position;
+        projectile.transform.rotation = parentTransform.rotation;
 
         // This parents the projectiles to the room rather than the enemy
         // if we change where the enemies shoot we will need to change how this parents
         // Easiest would be to grab a reference to the dungeon room object.
-        projectile.transform.parent = parent.transform.parent;
+        projectile.transform.parent = parentTransform.parent;
 
-        Vector2 shootDirection = aimDirection;
-        int dotSeconds = 0;
-        bool enemyAttack = true;
-        payload = new AttackPayload(stats.BaseDamage, dotSeconds, stats.CharacterElement, stats.CriticalChance, stats.CriticalDamageMultiplier, enemyProjectile: enemyAttack);
+        //Vector2 shootDirection = aimDirection;
+        
+        //payload = new AttackPayload(stats.BaseDamage, dotSeconds, stats.CharacterElement, stats.CriticalChance, stats.CriticalDamageMultiplier, enemyProjectile: enemyAttack);
 
-        projectile.FireProjectile(shootDirection, stats.ProjectileSpeed, payload);
+        projectile.FireProjectile(aimDirection, stats.ProjectileSpeed, payload);
 
+    }
+
+    public void Initialize(CharacterStatsSO stats)
+    {
+        payload = new AttackPayload(stats.BaseDamage, 0, stats.CharacterElement,
+            stats.CriticalChance, stats.CriticalDamageMultiplier, enemyProjectile: true);
     }
 
 }
