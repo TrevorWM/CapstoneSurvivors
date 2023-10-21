@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class OnHitProjectile : ProjectileBase
 {
-
     /// <summary>
     /// When the projectile is disabled it will ask the ability base
     /// to spawn the on hit effect at the projectiles hit location.
@@ -18,13 +17,11 @@ public class OnHitProjectile : ProjectileBase
         }
     }
 
-    protected override void OnTriggerEnterLogic(Collider2D collision)
+    protected override void DamageColliderLogic(Collider2D collision)
     {
         if (abilityBase != null)
         {
-            abilityBase.ApplyEffectToTarget(attackPayload, collision);
+            abilityBase.ApplyEffectToTarget(attackPayload, collision);  
         }
-
-        pool.ReleaseProjectileFromPool(this);
     }
 }
