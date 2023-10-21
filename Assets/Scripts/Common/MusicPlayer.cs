@@ -9,7 +9,7 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField]
     private AudioSource source;
     [SerializeField]
-    private AudioClip level1Music;
+    private AudioClip mainMenuMusic, level1Music;
 
     /// <summary>
     /// REF: https://gamedev.stackexchange.com/a/34879
@@ -28,6 +28,12 @@ public class MusicPlayer : MonoBehaviour
     public void PlayLevel1Music()
     {
         source.clip = level1Music;
+        source.Play();
+    }
+    
+    public void PlayMainMenuMusic()
+    {
+        source.clip = mainMenuMusic;
         source.Play();
     }
 }
