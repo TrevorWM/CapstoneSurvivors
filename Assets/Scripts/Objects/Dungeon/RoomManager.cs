@@ -51,7 +51,7 @@ public class RoomManager : MonoBehaviour
 
     public void Awake()
     {
-        roomCount = 8;
+        roomCount = 0;
         StartRoom(startingRoom);
     }
 
