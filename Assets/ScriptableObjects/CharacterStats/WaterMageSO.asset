@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
-  m_Name: FireMageSO
+  m_Name: WaterMageSO
   m_EditorClassIdentifier: 
   maxHealth: 100
   defense: 0
   moveSpeed: 3
   baseDamage: 30
-  attacksPerSecond: 1
+  attacksPerSecond: 2
   criticalChance: 25
   criticalDamageMultiplier: 2
-  characterElement: 0
+  characterElement: 2
   dodgeForce: 1
   dodgeDuration: 0.1
   dodgeCooldown: 0
