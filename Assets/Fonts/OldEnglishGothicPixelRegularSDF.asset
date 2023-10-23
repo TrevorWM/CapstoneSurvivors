@@ -58,11 +58,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: OldEnglishGothicPixelRegular-ow2Bo SDF
+  m_Name: OldEnglishGothicPixelRegularSDF
   m_EditorClassIdentifier: 
-  hashCode: 1167784706
+  hashCode: -218811672
   material: {fileID: 4843030839520913076}
-  materialHashCode: 924974690
+  materialHashCode: 422718536
   m_Version: 1.1.0
   m_SourceFontFileGUID: 3a0de1f9e9405914f90ca8bce6c7cbf3
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 3a0de1f9e9405914f90ca8bce6c7cbf3, type: 3}
@@ -547,5 +547,5 @@ Material:
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UnderlayColor: {r: 0.49056602, g: 0.46511212, b: 0.46511212, a: 1}
+    - _UnderlayColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 1}
   m_BuildTextureStacks: []
