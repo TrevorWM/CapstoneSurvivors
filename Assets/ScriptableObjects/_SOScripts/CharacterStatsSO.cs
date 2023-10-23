@@ -30,7 +30,7 @@ public class CharacterStatsSO : ScriptableObject
     [Header ("Enemy Specific Stats")]
     [SerializeField] private float detectionRadius;
     [SerializeField] private float followDistance;
-    [SerializeField] private bool rangedEnemy;
+    [SerializeField] private EnemyType aiType;
     [SerializeField] private float projectileSpeed;
 
     [Header("Visual Elements")]
@@ -129,11 +129,6 @@ public class CharacterStatsSO : ScriptableObject
         get => rightFacingSprite; 
         set => rightFacingSprite = value; 
     }
-    public global::System.Boolean RangedEnemy 
-    { 
-        get => rangedEnemy; 
-        set => rangedEnemy = value; 
-    }
     public float ProjectileSpeed 
     { 
         get => projectileSpeed; 
@@ -144,6 +139,7 @@ public class CharacterStatsSO : ScriptableObject
         get => characterElement; 
         set => characterElement = value; 
     }
+    public EnemyType AiType { get => aiType; set => aiType = value; }
 
 
     /// <summary>

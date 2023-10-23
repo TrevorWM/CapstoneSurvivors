@@ -47,6 +47,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private bool slowed = false;
     private Vector2 slowVector = new (0.3f, 0.3f);
     private bool stopped = false;
+    private bool stopMoving = false;
     private Vector2 stopVector = new (0.01f, 0.01f);
 
     private float meleeBuffer = 0.5f;
@@ -55,6 +56,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
 
     public CharacterStatsSO EnemyStats { get => enemyStats; private set => enemyStats = value; }
+    public bool StopMoving { get => stopMoving; set => stopMoving = value; }
 
     private void Awake()
     {
@@ -125,9 +127,9 @@ public class BasicEnemy : MonoBehaviour, IDamageable
             if(distance <= EnemyStats.FollowDistance + meleeBuffer)
             {
                 // if they have, they can try to attack
-                if (EnemyStats.RangedEnemy)
+                if (EnemyStats.AiType != EnemyType.Melee)
                 {
-                    if (!isAttacking)
+                    if (!isAttacking && !StopMoving)
                     {
                         isAttacking = true;
                         enemyAttack.DoAttack(enemyStats, getDirectionFromTarget());
@@ -138,7 +140,12 @@ public class BasicEnemy : MonoBehaviour, IDamageable
                     {
                         runAway = true;
                     }
-                } else
+                    if (EnemyStats.AiType == EnemyType.Charger)
+                    {
+                        StopMoving = true;
+                    }
+                }
+                else
                 {
                     if (!isAttacking)
                     {
@@ -150,8 +157,12 @@ public class BasicEnemy : MonoBehaviour, IDamageable
             }
 
         }
-        // Moving the enemy
-        HandleMovement();
+
+        if (!StopMoving)
+        {
+            // Moving the enemy
+            HandleMovement();
+        }
 
     }
 
@@ -282,4 +293,12 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         gameObject.SetActive(false);
     }
     
+}
+
+
+public enum EnemyType
+{
+    Melee = 1,
+    Ranged = 2,
+    Charger = 3,
 }
