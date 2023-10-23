@@ -50,7 +50,6 @@ public class EnemyFireball : FireballBase, IEnemyAttack
     public void Initialize(CharacterStatsSO stats, UpgradeRarity rarity = UpgradeRarity.Common)
     {
         InitializeRarityBasedStats(rarity);
-        projectilePool = GetComponent<ProjectilePool>();
         attackPayload = new AttackPayload(stats.BaseDamage, 0, ElementType.Fire, stats.CriticalChance, stats.CriticalDamageMultiplier, DamageModifierValue, enemyProjectile: true);
     }
 
