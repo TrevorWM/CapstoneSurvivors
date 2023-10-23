@@ -67,7 +67,6 @@ public class ShootProjectile : MonoBehaviour
         if (activeAbility != null)
         {
             projectileSpeed = activeAbility.ActiveAbilitySO.ProjectileSpeed;
-            Debug.Log(activeAbility);
             projectile.FireProjectile(shootDirection, projectileSpeed, payload, activeAbility);
         } else
         {
