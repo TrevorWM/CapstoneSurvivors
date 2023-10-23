@@ -14,13 +14,12 @@ public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
     private BasicEnemy ownerScript;
     private AttackPayload attackPayload;
     private Rigidbody2D enemyRigidbody;
-    private Vector2 otherDirection;
+    private Vector2 direction;
     private CharacterStatsSO enemyStats;
 
 
     public void DoAttack(CharacterStatsSO stats = null, Vector2 aimDirection = default)
     {
-        otherDirection = aimDirection;
         StartCoroutine(ChargeUp());
     }
 
@@ -34,8 +33,12 @@ public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
 
     private IEnumerator Charge()
     {
-        
-        enemyRigidbody.velocity = otherDirection * enemyStats.MoveSpeed * 6.0f;
+        //get player location
+        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, enemyStats.DetectionRadius, hitLayers);
+        direction = (playerCollider.transform.position - transform.position).normalized;
+
+        //charge at player
+        enemyRigidbody.velocity = direction * enemyStats.MoveSpeed * 6.0f;
         attackCollider.enabled = true;
         
         yield return new WaitForSeconds(0.75f);
