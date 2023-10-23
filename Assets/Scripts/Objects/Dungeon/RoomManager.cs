@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
@@ -32,6 +33,9 @@ public class RoomManager : MonoBehaviour
     [SerializeField, SerializeReference]
     private GameObject[] bossRoomPool;
 
+    [SerializeField, SerializeReference]
+    private GameObject[] BonusRoomPool;
+
     private GameObject currentRoom;
     private IDungeonRoom currentRoomLogic;
     private GameObject nextRoom;
@@ -41,12 +45,12 @@ public class RoomManager : MonoBehaviour
     private UpgradeOrb upgradeOrbLogic;
 
     private int roomCount;
-
+    private int floorCount;
     public GameObject CurrentRoom { get => currentRoom; }
 
     private void OnValidate()
     {
-        roomsBeforeBoss = Mathf.Max(1, roomsBeforeBoss);
+        roomsBeforeBoss = Mathf.Max(3, roomsBeforeBoss);
     }
 
     public void Awake()
@@ -109,7 +113,24 @@ public class RoomManager : MonoBehaviour
         else
         {
             currentUpgradeOrb.transform.position = upgradeOrbPosition;
-            currentUpgradeOrb.SetActive(true);   
+            currentUpgradeOrb.SetActive(true);
+            
+            if (roomCount == (roomsBeforeBoss + 1))
+            {
+                Debug.Log("Initializing other orbs in " + nextRoom.name);
+                foreach (Transform child in nextRoom.transform)
+                {
+                    child.gameObject.TryGetComponent<UpgradeOrb>(out UpgradeOrb orb);
+                    
+                    if (orb != null)
+                    {
+                        Debug.Log("Initializing: " + orb.name);
+                        orb.InitializeOrb(currentPlayer);
+                    }
+
+                }
+                Debug.Log("Orbs initialized");
+            }
         }
         upgradeOrbLogic.orbUsed.AddListener(currentRoomLogic.OpenDoor);
     }
@@ -137,18 +158,24 @@ public class RoomManager : MonoBehaviour
         GameObject nextRoom = null;
         int roomIndex;
 
-
-        if (roomCount % roomsBeforeBoss == 0)
+        if (roomCount % (roomsBeforeBoss + 1) == 0)
         {
-            roomIndex = UnityEngine.Random.Range(0, bossRoomPool.Length);
+            roomIndex = 0;
+            nextRoom = BonusRoomPool[roomIndex];
+            floorCount = 0;
+            roomCount = 0;
+        }
+        else if (roomCount % roomsBeforeBoss == 0)
+        {
+            roomIndex = floorCount;
             nextRoom = bossRoomPool[roomIndex];
         }
-        else if (roomCount > 2 && roomCount < 10)
+        else if (roomCount > 2 && floorCount == 0)
         {
             roomIndex = UnityEngine.Random.Range(0, roomPool.Length);
             nextRoom = roomPool[roomIndex];
         }
-        else if (roomCount > 10)// && roomCount < 20)
+        else if (floorCount == 1)
         {
             roomIndex = UnityEngine.Random.Range(0, level2RoomPool.Length);
             nextRoom = level2RoomPool[roomIndex];
