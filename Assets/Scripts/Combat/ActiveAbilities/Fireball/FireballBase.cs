@@ -5,12 +5,12 @@ using UnityEngine;
 public class FireballBase : ActiveAbilityBase
 {
     [SerializeField]
-    private OnHitEffect[] hitEffects;
+    protected OnHitEffect[] hitEffects;
 
     [SerializeField]
-    private float hitEffectLifetime;
+    protected float hitEffectLifetime;
 
-    private Vector3 aoeScale;
+    protected Vector3 aoeScale;
 
     private AttackPayload attackPayload;
     private ProjectilePool projectilePool;
@@ -18,7 +18,7 @@ public class FireballBase : ActiveAbilityBase
     public Vector3 AoeScale { get => aoeScale; }
     public float HitEffectLifetime { get => hitEffectLifetime; set => hitEffectLifetime = Mathf.Max(0,value); }
 
-    private void InitializeRarityAoEScale(UpgradeRarity rarity)
+    protected void InitializeRarityAoEScale(UpgradeRarity rarity)
     {
         if (rarity == UpgradeRarity.Legendary || rarity == UpgradeRarity.Legendary)
         {
