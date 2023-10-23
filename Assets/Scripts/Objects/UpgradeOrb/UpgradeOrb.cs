@@ -42,7 +42,10 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        if (playerToUpgrade == null) InitializeOrb(playerFallback);
+        if (playerToUpgrade == null)
+        {
+
+        }
         
         orbUsed?.Invoke();
         HandleUI();

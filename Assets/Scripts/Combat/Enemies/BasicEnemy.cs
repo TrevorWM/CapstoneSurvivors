@@ -81,7 +81,6 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         enemyAttack = Instantiate(attack, gameObject.transform).GetComponent<IEnemyAttack>();
         enemyAttack.Initialize(enemyStats);
 
-        Debug.Log("enemyAttack " + enemyAttack);
     }
 
     private void PerformDetection()
