@@ -15,7 +15,7 @@ MonoBehaviour:
   maxHealth: 100
   defense: 0
   moveSpeed: 5.05
-  baseDamage: 50
+  baseDamage: 10
   attacksPerSecond: 2
   criticalChance: 2
   criticalDamageMultiplier: 2
@@ -29,7 +29,7 @@ MonoBehaviour:
   cooldownReduction: 0
   detectionRadius: 0
   followDistance: 1
-  rangedEnemy: 0
+  aiType: 0
   projectileSpeed: 0
   characterSprite: {fileID: 21300000, guid: 143a9a9eb39f06b439a83d40a992559c, type: 3}
   weaponSprite: {fileID: 0}
