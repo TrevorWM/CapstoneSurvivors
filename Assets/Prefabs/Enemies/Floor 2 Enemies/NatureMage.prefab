@@ -185,6 +185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5031060647642474146}
   - component: {fileID: 1959251935498101480}
+  - component: {fileID: 312626443595390884}
   m_Layer: 0
   m_Name: NatureMage
   m_TagString: Untagged
@@ -260,6 +261,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &312626443595390884
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078582503079774586}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6a9325498e0bcb14592fb657074671c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3168829528003512622
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,7 +595,7 @@ MonoBehaviour:
   enemyStats: {fileID: 11400000, guid: 08ec9223308ebda43afc221dce0f201e, type: 2}
   flashSprite: {fileID: 936542112781181270}
   calculator: {fileID: 1721900736155384653}
-  attack: {fileID: 3683436185833363422, guid: 8d3d61f84e5bdc5458c7638a60a62282, type: 3}
+  attack: {fileID: 1286399037019628021, guid: 3a6569496be1fc340a7639fa42800250, type: 3}
   enemySpawn:
     m_PersistentCalls:
       m_Calls: []

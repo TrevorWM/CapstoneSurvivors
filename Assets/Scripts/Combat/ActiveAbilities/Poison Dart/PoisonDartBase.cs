@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class PoisonDartBase : ActiveAbilityBase
 {
-    
-    private void InitializeRarityDotTimeScale(UpgradeRarity rarity)
+    protected void InitializeRarityDotTimeScale(UpgradeRarity rarity)
     {
         switch (rarity)
         {
