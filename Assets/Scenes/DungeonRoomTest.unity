@@ -381,6 +381,10 @@ PrefabInstance:
       value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5048935863120973158, guid: 0c5fb936e7edc47489b862bcff4b0b5a, type: 3}
+      propertyPath: orbSpawn
+      value: 
+      objectReference: {fileID: 8300000, guid: 7645666b30ea7c242ab57cde8bfa2773, type: 3}
+    - target: {fileID: 5048935863120973158, guid: 0c5fb936e7edc47489b862bcff4b0b5a, type: 3}
       propertyPath: enterDoor
       value: 
       objectReference: {fileID: 8300000, guid: 3c55a395f79663145a759a6daa807a3a, type: 3}

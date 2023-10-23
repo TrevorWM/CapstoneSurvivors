@@ -9,7 +9,7 @@ public class SoundEffectPlayer : MonoBehaviour
     [SerializeField]
     private AudioSource source;
     [SerializeField]
-    private AudioClip basicHit, fireballHit, fireballShoot, menuSelect, menuHighlight, enterDoor;
+    private AudioClip basicHit, fireballHit, fireballShoot, menuSelect, menuHighlight, enterDoor, orbSpawn;
 
     /// <summary>
     /// REF: https://gamedev.stackexchange.com/a/34879
@@ -56,6 +56,12 @@ public class SoundEffectPlayer : MonoBehaviour
     public void EnterDoorSound()
     {
         source.clip = enterDoor;
+        source.Play();
+    }
+    
+    public void OrbSpawnSound()
+    {
+        source.clip = orbSpawn;
         source.Play();
     }
 }
