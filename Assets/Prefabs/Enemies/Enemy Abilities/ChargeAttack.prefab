@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -8128371795395899831}
   - component: {fileID: 5619054110982018869}
   m_Layer: 8
-  m_Name: GolemChargeAttack
+  m_Name: ChargeAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

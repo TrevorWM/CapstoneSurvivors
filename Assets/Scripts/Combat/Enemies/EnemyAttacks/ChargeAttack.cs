@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
@@ -14,6 +15,7 @@ public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
     private AttackPayload attackPayload;
     private Rigidbody2D enemyRigidbody;
     private Vector2 otherDirection;
+    private CharacterStatsSO enemyStats;
 
 
     public void DoAttack(CharacterStatsSO stats = null, Vector2 aimDirection = default)
@@ -33,19 +35,18 @@ public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
     private IEnumerator Charge()
     {
         
-        enemyRigidbody.velocity = otherDirection * 6.0f;
+        enemyRigidbody.velocity = otherDirection * enemyStats.MoveSpeed * 6.0f;
         attackCollider.enabled = true;
-        Debug.Log("Collider: " + attackCollider.enabled);
+        
         yield return new WaitForSeconds(0.75f);
         attackCollider.enabled = false;
-        Debug.Log("Collider: " + attackCollider.enabled);
-
-        //UseMeleeAttack();
+        
         ownerScript.StopMoving = false;
     }
 
     public void Initialize(CharacterStatsSO stats, UpgradeRarity rarity = UpgradeRarity.Common)
     {
+        enemyStats = stats;
 
         ownerScript = GetComponentInParent<BasicEnemy>();
 
