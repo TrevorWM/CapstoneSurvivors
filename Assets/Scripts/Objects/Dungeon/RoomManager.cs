@@ -155,7 +155,7 @@ public class RoomManager : MonoBehaviour
             roomIndex = floorCount;
             nextRoom = bossRoomPool[Mathf.Min(0, roomIndex)];
         }
-        else if (roomCount > 2 && floorCount % 2 == 1)
+        else if (roomCount > 2 && floorCount % 2 == 0)
         {
             roomIndex = UnityEngine.Random.Range(0, roomPool.Length);
             nextRoom = roomPool[roomIndex];
@@ -167,7 +167,8 @@ public class RoomManager : MonoBehaviour
         }
         else
         {
-            if (tutorialRoomPool != null) nextRoom = tutorialRoomPool[roomCount - 1];
+            if (roomCount == 1) nextRoom = tutorialRoomPool[0];
+            else if (roomCount == 2) nextRoom = tutorialRoomPool[1];
         }
 
         return nextRoom;

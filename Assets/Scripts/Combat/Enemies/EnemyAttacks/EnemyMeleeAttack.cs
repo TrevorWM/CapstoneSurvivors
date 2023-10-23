@@ -22,7 +22,6 @@ public class EnemyMeleeAttack : MonoBehaviour, IEnemyAttack, IDamager
 
     public void Initialize(CharacterStatsSO stats, UpgradeRarity rarity = UpgradeRarity.Common)
     {
-        Debug.Log("EnemyMeleeAttack");
 
         if (attackCollider != null) attackCollider.enabled = false;
 
