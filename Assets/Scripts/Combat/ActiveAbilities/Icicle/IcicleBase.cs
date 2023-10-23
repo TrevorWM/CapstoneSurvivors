@@ -9,6 +9,5 @@ public class IcicleBase : ActiveAbilityBase
     public override void InitializeRarityBasedStats(UpgradeRarity rolledUpgradeRarity)
     {
         base.InitializeRarityBasedStats(rolledUpgradeRarity);
-        //
     }
 }

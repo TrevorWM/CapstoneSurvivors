@@ -1,33 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class EnemyFireball : FireballBase, IEnemyAttack
+public class EnemyPoisonDart : PoisonDartBase, IEnemyAttack
 {
     [SerializeField]
     private ProjectilePool projectilePool;
 
     private AttackPayload attackPayload;
 
-    public override void InitializeRarityBasedStats(UpgradeRarity rarity)
+    public void AbilityCleanup()
     {
-        base.InitializeRarityBasedStats(rarity);
-        base.InitializeRarityAoEScale(rarity);
-    }
-
-    public override void SpawnOnHitEffect(AttackPayload payload, Transform hitLocation)
-    {
-        if (hitEffects.Length > 0)
-        {
-            foreach (OnHitEffect effect in hitEffects)
-            {
-                OnHitEffect effectInstance = Instantiate(effect);
-
-                effectInstance.transform.localScale = Vector3.Scale(effectInstance.transform.localScale, aoeScale);
-                effectInstance.ActivateEffect(payload, hitLocation, hitEffectLifetime);
-            }
-        }
+        projectilePool.ClearPool();
     }
 
     public void DoAttack(CharacterStatsSO stats = null, Vector2 aimDirection = default)
@@ -49,13 +33,10 @@ public class EnemyFireball : FireballBase, IEnemyAttack
 
     public void Initialize(CharacterStatsSO stats, UpgradeRarity rarity = UpgradeRarity.Common)
     {
-        InitializeRarityBasedStats(rarity);
+        base.InitializeRarityBasedStats(rarity);
+        InitializeRarityDotTimeScale(rarity);
         projectilePool = GetComponent<ProjectilePool>();
-        attackPayload = new AttackPayload(stats.BaseDamage, 0, ElementType.Fire, stats.CriticalChance, stats.CriticalDamageMultiplier, DamageModifierValue, enemyProjectile: true);
-    }
-
-    public void AbilityCleanup()
-    {
-        projectilePool.ClearPool();
+        attackPayload = new AttackPayload(stats.BaseDamage, dotTime, ElementType.Nature,
+            stats.CriticalChance, stats.CriticalDamageMultiplier, DamageModifierValue, enemyProjectile: true);
     }
 }
