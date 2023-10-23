@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 7262775752156142786}
   - component: {fileID: 5442042487240499199}
   m_Layer: 6
-  m_Name: DarkCultist
+  m_Name: DarkMage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -399,6 +399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6196008713951542956}
   - component: {fileID: 1688025725318253799}
+  - component: {fileID: 3911165578006600146}
   m_Layer: 0
   m_Name: DarkMage
   m_TagString: Untagged
@@ -474,6 +475,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3911165578006600146
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8796421102461161273}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c51200e42909b91429849b059105fe7c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8846290119742178157
 GameObject:
   m_ObjectHideFlags: 0
