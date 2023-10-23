@@ -9,7 +9,7 @@ public class OnHitProjectile : ProjectileBase
     /// When the projectile is disabled it will ask the ability base
     /// to spawn the on hit effect at the projectiles hit location.
     /// </summary>
-    protected override void OnDisableLogic()
+    protected override void EndOfLifetimeLogic()
     {
         if (abilityBase != null)
         {

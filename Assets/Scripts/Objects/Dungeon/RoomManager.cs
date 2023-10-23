@@ -27,6 +27,9 @@ public class RoomManager : MonoBehaviour
     private GameObject[] roomPool;
 
     [SerializeField, SerializeReference]
+    private GameObject[] level2RoomPool;
+
+    [SerializeField, SerializeReference]
     private GameObject[] bossRoomPool;
 
     private GameObject currentRoom;
@@ -140,10 +143,15 @@ public class RoomManager : MonoBehaviour
             roomIndex = UnityEngine.Random.Range(0, bossRoomPool.Length);
             nextRoom = bossRoomPool[roomIndex];
         }
-        else if (roomCount > 2)
+        else if (roomCount > 2 && roomCount < 10)
         {
             roomIndex = UnityEngine.Random.Range(0, roomPool.Length);
             nextRoom = roomPool[roomIndex];
+        }
+        else if (roomCount > 10)// && roomCount < 20)
+        {
+            roomIndex = UnityEngine.Random.Range(0, level2RoomPool.Length);
+            nextRoom = level2RoomPool[roomIndex];
         }
         else
         {
