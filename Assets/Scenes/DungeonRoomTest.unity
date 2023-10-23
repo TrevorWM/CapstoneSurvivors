@@ -180,6 +180,8 @@ MonoBehaviour:
   - {fileID: 796854714157457264, guid: 7e7d51a52f5fb8c4f8e62ffddaf01406, type: 3}
   bossRoomPool:
   - {fileID: 509820833389698090, guid: 1e9257e0246540d419f346e1c8b91c06, type: 3}
+  BonusRoomPool:
+  - {fileID: 5807390494452671454, guid: 2fa1fcf20c7010145a3c81967a7e7208, type: 3}
 --- !u!4 &277871838
 Transform:
   m_ObjectHideFlags: 0
