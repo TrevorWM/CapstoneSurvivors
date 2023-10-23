@@ -1228,6 +1228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterMage
       objectReference: {fileID: 0}
+    - target: {fileID: 6508978941447238353, guid: 248e970cb4fded64eb416dbc1607cb69, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1274,6 +1278,7 @@ Transform:
   - {fileID: 224406919}
   - {fileID: 753599960}
   - {fileID: 1461998534}
+  - {fileID: 1860563676}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1552993397 stripped
@@ -1358,6 +1363,72 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1310825153766437246, guid: 8ef7d4c021a5ad941b1b7a368976f4e2, type: 3}
   m_PrefabInstance: {fileID: 1614303520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1860563675
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1494328899}
+    m_Modifications:
+    - target: {fileID: 697586330563739718, guid: adda201f183a3994d8ef0060e4c16977, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.871876
+      objectReference: {fileID: 0}
+    - target: {fileID: 697586330563739718, guid: adda201f183a3994d8ef0060e4c16977, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.022435725
+      objectReference: {fileID: 0}
+    - target: {fileID: 697586330563739718, guid: adda201f183a3994d8ef0060e4c16977, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 697586330563739718, guid: adda201f183a3994d8ef0060e4c16977, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 697586330563739718, guid: adda201f183a3994d8ef0060e4c16977, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 697586330563739718, guid: adda201f183a3994d8ef0060e4c16977, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 697586330563739718, guid: adda201f183a3994d8ef0060e4c16977, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 697586330563739718, guid: adda201f183a3994d8ef0060e4c16977, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 697586330563739718, guid: adda201f183a3994d8ef0060e4c16977, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 697586330563739718, guid: adda201f183a3994d8ef0060e4c16977, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508978941447238353, guid: adda201f183a3994d8ef0060e4c16977, type: 3}
+      propertyPath: m_Name
+      value: NatureMage
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508978941447238353, guid: adda201f183a3994d8ef0060e4c16977, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: adda201f183a3994d8ef0060e4c16977, type: 3}
+--- !u!4 &1860563676 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 697586330563739718, guid: adda201f183a3994d8ef0060e4c16977, type: 3}
+  m_PrefabInstance: {fileID: 1860563675}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2023638438
 GameObject:
@@ -1885,7 +1956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6817480207312608784, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 6817480207312608784, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_LocalRotation.w

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyIcicle : IcicleBase, IEnemyAttack
+public class EnemyPoisonDart : PoisonDartBase, IEnemyAttack
 {
     [SerializeField]
     private ProjectilePool projectilePool;
@@ -33,9 +33,10 @@ public class EnemyIcicle : IcicleBase, IEnemyAttack
 
     public void Initialize(CharacterStatsSO stats, UpgradeRarity rarity = UpgradeRarity.Common)
     {
-        InitializeRarityBasedStats(rarity);
+        base.InitializeRarityBasedStats(rarity);
+        InitializeRarityDotTimeScale(rarity);
         projectilePool = GetComponent<ProjectilePool>();
-        attackPayload = new AttackPayload(stats.BaseDamage, 0, ElementType.Water, 
+        attackPayload = new AttackPayload(stats.BaseDamage, dotTime, ElementType.Nature,
             stats.CriticalChance, stats.CriticalDamageMultiplier, DamageModifierValue, enemyProjectile: true);
     }
 }

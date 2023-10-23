@@ -3,47 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class EnemyFireball : ActiveAbilityBase, IEnemyAttack
+public class EnemyFireball : FireballBase, IEnemyAttack
 {
-    [SerializeField]
-    private OnHitEffect[] hitEffects;
-
     [SerializeField]
     private ProjectilePool projectilePool;
 
-    [SerializeField]
-    private float hitEffectLifetime;
-
-    private Vector3 aoeScale;
     private AttackPayload attackPayload;
 
-    public Vector3 AoeScale { get => aoeScale; }
-    public float HitEffectLifetime { get => hitEffectLifetime; set => hitEffectLifetime = Mathf.Max(0, value); }
-
-    private void InitializeRarityAoEScale(UpgradeRarity rarity)
+    public override void InitializeRarityBasedStats(UpgradeRarity rarity)
     {
-        if (rarity == UpgradeRarity.Legendary || rarity == UpgradeRarity.Legendary)
-        {
-            aoeScale = new Vector3(2.5f, 2.5f, 1);
-        }
-        else if (rarity == UpgradeRarity.Rare || rarity == UpgradeRarity.Legendary)
-        {
-            aoeScale = new Vector3(2f, 2f, 1);
-        }
-        else if (rarity == UpgradeRarity.Uncommon || rarity == UpgradeRarity.Legendary)
-        {
-            aoeScale = new Vector3(1.5f, 1.5f, 1);
-        }
-        else
-        {
-            aoeScale = new Vector3(1, 1, 1);
-        }
-    }
-
-    public override void InitializeRarityBasedStats(UpgradeRarity rolledUpgradeRarity)
-    {
-        base.InitializeRarityBasedStats(rolledUpgradeRarity);
-        InitializeRarityAoEScale(rolledUpgradeRarity);
+        base.InitializeRarityBasedStats(rarity);
+        base.InitializeRarityAoEScale(rarity);
     }
 
     public override void SpawnOnHitEffect(AttackPayload payload, Transform hitLocation)

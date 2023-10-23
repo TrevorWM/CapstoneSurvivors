@@ -573,7 +573,7 @@ MonoBehaviour:
   enemyStats: {fileID: 11400000, guid: bddbd604a31e37543bbb0e3ec23d1482, type: 2}
   flashSprite: {fileID: 936542112781181270}
   calculator: {fileID: 1721900736155384653}
-  attack: {fileID: 3683436185833363422, guid: 8d3d61f84e5bdc5458c7638a60a62282, type: 3}
+  attack: {fileID: 8837593031322042684, guid: 63e57be74d89af74197cb3c26dcdd3d9, type: 3}
   enemySpawn:
     m_PersistentCalls:
       m_Calls: []
