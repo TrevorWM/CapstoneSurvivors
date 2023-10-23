@@ -46,6 +46,7 @@ public class RoomManager : MonoBehaviour
 
     private int roomCount;
     private int floorCount;
+    private int treasureRoomCount;
     public GameObject CurrentRoom { get => currentRoom; }
 
     private void OnValidate()
@@ -56,6 +57,8 @@ public class RoomManager : MonoBehaviour
     public void Awake()
     {
         roomCount = 0;
+        floorCount = 0;
+        treasureRoomCount = roomsBeforeBoss + 1;
         StartRoom(startingRoom);
     }
 
@@ -85,6 +88,7 @@ public class RoomManager : MonoBehaviour
         {
             currentPlayer.transform.position = playerPosition;
             currentPlayer.GetComponent<PlayerControls>().ReleaseAllProjectiles();
+            TreasureRoomLogic();
         }
     }
 
@@ -99,7 +103,7 @@ public class RoomManager : MonoBehaviour
         Debug.Log("Room Complete!");
         roomCount++;
 
-        nextRoom = ChooseNextRoom(roomCount);
+        nextRoom = ChooseNextRoom();
 
         Vector3 upgradeOrbPosition = currentRoomLogic.GetUpgradeOrbPosition();
 
@@ -114,23 +118,6 @@ public class RoomManager : MonoBehaviour
         {
             currentUpgradeOrb.transform.position = upgradeOrbPosition;
             currentUpgradeOrb.SetActive(true);
-            
-            if (roomCount == (roomsBeforeBoss + 1))
-            {
-                Debug.Log("Initializing other orbs in " + nextRoom.name);
-                foreach (Transform child in nextRoom.transform)
-                {
-                    child.gameObject.TryGetComponent<UpgradeOrb>(out UpgradeOrb orb);
-                    
-                    if (orb != null)
-                    {
-                        Debug.Log("Initializing: " + orb.name);
-                        orb.InitializeOrb(currentPlayer);
-                    }
-
-                }
-                Debug.Log("Orbs initialized");
-            }
         }
         upgradeOrbLogic.orbUsed.AddListener(currentRoomLogic.OpenDoor);
     }
@@ -153,29 +140,27 @@ public class RoomManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private GameObject ChooseNextRoom(int roomCount)
+    private GameObject ChooseNextRoom()
     {
         GameObject nextRoom = null;
         int roomIndex;
 
-        if (roomCount % (roomsBeforeBoss + 1) == 0)
+        if (roomCount % (treasureRoomCount) == 0)
         {
             roomIndex = 0;
             nextRoom = BonusRoomPool[roomIndex];
-            floorCount = 0;
-            roomCount = 0;
         }
         else if (roomCount % roomsBeforeBoss == 0)
         {
             roomIndex = floorCount;
-            nextRoom = bossRoomPool[roomIndex];
+            nextRoom = bossRoomPool[Mathf.Min(0, roomIndex)];
         }
-        else if (roomCount > 2 && floorCount == 0)
+        else if (roomCount > 2 && floorCount % 2 == 1)
         {
             roomIndex = UnityEngine.Random.Range(0, roomPool.Length);
             nextRoom = roomPool[roomIndex];
         }
-        else if (floorCount == 1)
+        else if (floorCount % 2 == 1)
         {
             roomIndex = UnityEngine.Random.Range(0, level2RoomPool.Length);
             nextRoom = level2RoomPool[roomIndex];
@@ -186,5 +171,29 @@ public class RoomManager : MonoBehaviour
         }
 
         return nextRoom;
+    }
+
+    /// <summary>
+    /// Handles the logic for initializing extra upgrade orbs in a room as well as
+    /// setting the dungeon to the next floor, and resetting the room count.
+    /// </summary>
+    private void TreasureRoomLogic()
+    {
+        if (roomCount == (treasureRoomCount))
+        {
+            roomCount = 0;
+            floorCount++;
+
+            foreach (Transform child in currentRoom.transform)
+            {
+                child.gameObject.TryGetComponent<UpgradeOrb>(out UpgradeOrb orb);
+
+                if (orb != null)
+                {
+                    Debug.Log("Initializing: " + orb.name);
+                    orb.InitializeOrb(currentPlayer);
+                }
+            }
+        }
     }
 }

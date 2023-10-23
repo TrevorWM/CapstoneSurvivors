@@ -442,10 +442,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
-      propertyPath: roomsBeforeBoss
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7800590222984004608, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.3659093
