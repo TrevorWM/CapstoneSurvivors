@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
+using UnityEditor.UI;
 using UnityEngine;
 
 public abstract class ProjectileBase : MonoBehaviour
 {
     [SerializeField]
-    private LayerMask hitLayers;
+    private LayerMask damageLayers, collisionLayers;
 
+    [SerializeField]
+    private Collider2D damageCollider;
+
+    [SerializeField]
+    private Collider2D collisionCollider;
     
     private Vector3 shootDirection;
     private float projectileSpeed;
@@ -43,20 +49,34 @@ public abstract class ProjectileBase : MonoBehaviour
         // Uses a bitshift and bitwise and in order to see if the object being
         // hit is in the layermask that the projectile is looking at.
         // Info from https://discussions.unity.com/t/check-if-colliding-with-a-layer/145616/2 User: Krnitheesh16
-        if ((hitLayers.value & (1 << collision.gameObject.layer)) > 0)
+        if (collisionCollider.IsTouchingLayers(collisionLayers))
         {
-            OnTriggerEnterLogic(collision);
-        }   
+            CollisionColliderLogic(collision);
+
+        }
+
+        if (damageCollider.IsTouchingLayers(damageLayers))
+        {
+            DamageColliderLogic(collision);
+        }
+
+        
     }
 
     /// <summary>
     /// Virtual function that allows children to override to add their logic to the
-    /// OnTriggerEnter2D function without having to re-implement the collision behavior
+    /// OnTriggerEnter2D function for the collision collider without having to
+    /// re-implement the collision behavior
     /// logic.
     /// </summary>
-    protected virtual void OnTriggerEnterLogic(Collider2D collision)
+    protected virtual void CollisionColliderLogic(Collider2D collision)
     {
-        pool.ReleaseProjectileFromPool(this);
+       if (pool != null) pool.ReleaseProjectileFromPool(this);
+    }
+
+    protected virtual void DamageColliderLogic(Collider2D collision)
+    {
+        return;
     }
 
     /// <summary>

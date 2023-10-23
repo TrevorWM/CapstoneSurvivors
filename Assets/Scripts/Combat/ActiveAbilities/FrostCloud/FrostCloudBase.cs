@@ -43,7 +43,8 @@ public class FrostCloudBase : ActiveAbilityBase
             SpriteRenderer targetSprite = target.GetComponentInChildren<SpriteRenderer>();
             if (targetSprite != null) targetSprite.color = Color.blue;
 
-            
+            IDamageable enemy = collision.gameObject.GetComponentInParent<IDamageable>();
+            if (enemy != null) enemy.TakeDamage(payload);
         }
     }
     

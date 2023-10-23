@@ -142,4 +142,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 6483174633954749817}
+  mainMenuMusic: {fileID: 8300000, guid: 2b96f986eed8eda4aae139685d5e70f9, type: 3}
   level1Music: {fileID: 8300000, guid: 20c5b1a508fc30c43bb124f5270cd29e, type: 3}

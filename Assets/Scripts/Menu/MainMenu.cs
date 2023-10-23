@@ -8,6 +8,11 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private string gameSceneName;
 
+    private void Start()
+    {
+        MusicPlayer.Instance.PlayMainMenuMusic();
+    }
+
     public void StartButtonPressed()
     {
         SoundEffectPlayer.Instance.MenuSelectSound();

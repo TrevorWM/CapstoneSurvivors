@@ -49,6 +49,7 @@ public class PlayerControls : MonoBehaviour
 
     private float lastDodgeTime;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
     private IInteractable interactableInRange;
 
@@ -62,6 +63,7 @@ public class PlayerControls : MonoBehaviour
     {
         playerInputActions = new PlayerInputActions();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
 
 
         if (TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidbody))
@@ -105,6 +107,15 @@ public class PlayerControls : MonoBehaviour
         moveVector = moveInput.ReadValue<Vector2>().normalized;
         HandleInteract();
         HandlePause();
+
+        if (moveVector == Vector2.zero)
+        {
+            animator.Play("Still");
+        }
+        else
+        {
+            animator.Play("Walk");
+        }
 
         if (moveVector.x > 0)
         {

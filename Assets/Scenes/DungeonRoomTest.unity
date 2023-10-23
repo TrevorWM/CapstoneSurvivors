@@ -376,7 +376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2755840656039535174, guid: 0c5fb936e7edc47489b862bcff4b0b5a, type: 3}
       propertyPath: m_Volume
-      value: 0.75
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5048935863120973158, guid: 0c5fb936e7edc47489b862bcff4b0b5a, type: 3}
       propertyPath: enterDoor
@@ -485,7 +485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483174633954749817, guid: 45bc037964e57304991015525eba1116, type: 3}
       propertyPath: m_Volume
-      value: 0.05
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 6777469715867609405, guid: 45bc037964e57304991015525eba1116, type: 3}
       propertyPath: m_Name
