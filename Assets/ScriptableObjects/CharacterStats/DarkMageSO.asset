@@ -29,7 +29,7 @@ MonoBehaviour:
   cooldownReduction: 0
   detectionRadius: 1000
   followDistance: 5
-  rangedEnemy: 1
+  aiType: 2
   projectileSpeed: 3
   characterSprite: {fileID: 0}
   weaponSprite: {fileID: 0}

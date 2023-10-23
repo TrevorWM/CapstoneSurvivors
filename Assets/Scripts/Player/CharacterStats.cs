@@ -45,7 +45,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
     //Enemy specific
     private float detectionRadius;
     private float followDistance;
-    private bool rangedEnemy;
+    private EnemyType aiType;
     private float projectileSpeed;
 
     //Visual
@@ -156,11 +156,6 @@ public class CharacterStats : MonoBehaviour, IDamageable
         get => followDistance; 
         set => followDistance = value; 
     }
-    public bool RangedEnemy 
-    { 
-        get => rangedEnemy; 
-        set => rangedEnemy = value; 
-    }
     public float ProjectileSpeed 
     { 
         get => projectileSpeed; 
@@ -171,6 +166,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
         get => rightFacingSprite; 
         set => rightFacingSprite = value; 
     }
+    public EnemyType AiType { get => aiType; set => aiType = value; }
     #endregion
 
     private void OnValidate()
@@ -194,7 +190,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
         CharacterElement = characterElement;
         DetectionRadius = detectionRadius;
         FollowDistance = followDistance;
-        RangedEnemy = rangedEnemy;
+        AiType = AiType;
         ProjectileSpeed = projectileSpeed;
         RightFacingSprite = rightFacingSprite;
     }
@@ -220,7 +216,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
         characterElement = characterStatsSO.CharacterElement;
         detectionRadius = characterStatsSO.DetectionRadius;
         followDistance = characterStatsSO.FollowDistance;
-        rangedEnemy = characterStatsSO.RangedEnemy;
+        aiType = characterStatsSO.AiType;
         projectileSpeed = characterStatsSO.ProjectileSpeed;
         rightFacingSprite = characterStatsSO.RightFacingSprite;
         
