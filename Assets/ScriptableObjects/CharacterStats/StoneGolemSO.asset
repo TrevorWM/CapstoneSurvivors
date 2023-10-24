@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: StoneGolemSO
   m_EditorClassIdentifier: 
   maxHealth: 200
-  defense: 3
-  moveSpeed: 1
+  defense: 5
+  moveSpeed: 1.5
   baseDamage: 50
   attacksPerSecond: 1
   criticalChance: 20
