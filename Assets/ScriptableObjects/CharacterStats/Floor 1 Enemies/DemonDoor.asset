@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DemonDoor
   m_EditorClassIdentifier: 
   maxHealth: 1000
-  defense: 5
+  defense: 0
   moveSpeed: 0
   baseDamage: 5
   attacksPerSecond: 1
