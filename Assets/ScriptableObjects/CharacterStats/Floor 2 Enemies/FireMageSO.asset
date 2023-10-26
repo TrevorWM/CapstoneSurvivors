@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
   m_Name: FireMageSO
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  defense: 3
-  moveSpeed: 3
-  baseDamage: 30
-  attacksPerSecond: 0.7
+  maxHealth: 35
+  defense: 0
+  moveSpeed: 2
+  baseDamage: 35
+  attacksPerSecond: 1
   criticalChance: 25
   criticalDamageMultiplier: 2
   characterElement: 0
