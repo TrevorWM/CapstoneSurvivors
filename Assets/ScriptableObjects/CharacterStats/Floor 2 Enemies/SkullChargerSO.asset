@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
-  m_Name: DarkMageSO
+  m_Name: SkullChargerSO
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 30
   defense: 0
   moveSpeed: 3
-  baseDamage: 15
-  attacksPerSecond: 2
-  criticalChance: 25
+  baseDamage: 25
+  attacksPerSecond: 1
+  criticalChance: 5
   criticalDamageMultiplier: 2
   characterElement: 3
   dodgeForce: 1
@@ -28,8 +28,8 @@ MonoBehaviour:
   natureAffinity: 0
   cooldownReduction: 0
   detectionRadius: 1000
-  followDistance: 5
-  aiType: 2
+  followDistance: 4
+  aiType: 3
   projectileSpeed: 3
   characterSprite: {fileID: 0}
   weaponSprite: {fileID: 0}

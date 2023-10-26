@@ -133,7 +133,7 @@ public class DemonDoor : MonoBehaviour, IDamageable
             ShootAtPosition(shootPosition, player);
             yield return new WaitForSeconds(0.5f);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
 
         //Random pillar shoots a circle
@@ -160,12 +160,12 @@ public class DemonDoor : MonoBehaviour, IDamageable
         {
             StartCoroutine(ShootRotation(shootPosition, 15f, 360f, 0.2f));
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         //Shoot a full circle pulse from opposite corners
         StartCoroutine(ShootRotation(bossShootPositions[0], 20f, 360f));
         StartCoroutine(ShootRotation(bossShootPositions[2], 20f, 360f));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         StartCoroutine(ShootRotation(bossShootPositions[1], 20f, 360f));
         StartCoroutine(ShootRotation(bossShootPositions[3], 20f, 360f));
         yield return new WaitForSeconds(3f);

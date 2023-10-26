@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
-  m_Name: SlimeStatSO
+  m_Name: BatSO
   m_EditorClassIdentifier: 
-  maxHealth: 25
+  maxHealth: 20
   defense: 0
-  moveSpeed: 1.3
-  baseDamage: 10
+  moveSpeed: 3
+  baseDamage: 15
   attacksPerSecond: 1
-  criticalChance: 0
-  criticalDamageMultiplier: 0
+  criticalChance: 5
+  criticalDamageMultiplier: 2
   characterElement: 3
   dodgeForce: 1
   dodgeDuration: 0.1
@@ -28,9 +28,9 @@ MonoBehaviour:
   natureAffinity: 0
   cooldownReduction: 0
   detectionRadius: 1000
-  followDistance: 1
+  followDistance: 1.5
   aiType: 1
   projectileSpeed: 0
-  characterSprite: {fileID: 21300000, guid: 7c6371b991edbb244baed7cae2bb9f22, type: 3}
+  characterSprite: {fileID: 0}
   weaponSprite: {fileID: 0}
   rightFacingSprite: 1

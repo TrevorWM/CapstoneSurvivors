@@ -21,6 +21,12 @@ public class RoomManager : MonoBehaviour
     [SerializeField]
     private int roomsBeforeBoss;
 
+    [SerializeField]
+    private int roomCount;
+
+    [SerializeField]
+    private int floorCount;
+
     [SerializeField, SerializeReference]
     private GameObject[] tutorialRoomPool;
 
@@ -44,8 +50,8 @@ public class RoomManager : MonoBehaviour
     private GameObject currentUpgradeOrb;
     private UpgradeOrb upgradeOrbLogic;
 
-    private int roomCount;
-    private int floorCount;
+    
+    
     private int treasureRoomCount;
     public GameObject CurrentRoom { get => currentRoom; }
 
@@ -56,8 +62,8 @@ public class RoomManager : MonoBehaviour
 
     public void Awake()
     {
-        roomCount = 0;
-        floorCount = 0;
+        //roomCount = 0;
+        //floorCount = 0;
         treasureRoomCount = roomsBeforeBoss + 1;
         StartRoom(startingRoom);
     }
