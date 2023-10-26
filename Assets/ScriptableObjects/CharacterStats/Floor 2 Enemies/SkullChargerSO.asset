@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
-  m_Name: StoneGolemSO
+  m_Name: SkullChargerSO
   m_EditorClassIdentifier: 
-  maxHealth: 200
-  defense: 3
-  moveSpeed: 1
-  baseDamage: 50
-  attacksPerSecond: 1
-  criticalChance: 20
+  maxHealth: 95
+  defense: 0
+  moveSpeed: 4
+  baseDamage: 20
+  attacksPerSecond: 1.5
+  criticalChance: 25
   criticalDamageMultiplier: 2
   characterElement: 3
   dodgeForce: 1
@@ -28,9 +28,9 @@ MonoBehaviour:
   natureAffinity: 0
   cooldownReduction: 0
   detectionRadius: 1000
-  followDistance: 1
-  aiType: 1
-  projectileSpeed: 0
+  followDistance: 4
+  aiType: 3
+  projectileSpeed: 3
   characterSprite: {fileID: 0}
   weaponSprite: {fileID: 0}
   rightFacingSprite: 1
