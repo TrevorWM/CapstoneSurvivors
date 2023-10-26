@@ -39,7 +39,7 @@ public class Hurtbox : MonoBehaviour
     {
         IDamageable ownerComponent = owner.GetComponent<IDamageable>();
 
-        if (ownerComponent != null)
+        if (ownerComponent != null && owner.activeInHierarchy == true)
         { 
             if(attackPayload.DotSeconds > 0) StartCoroutine(DotTicks(attackPayload, ownerComponent));
             ownerComponent.TakeDamage(attackPayload);
