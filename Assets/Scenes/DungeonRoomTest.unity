@@ -313,6 +313,10 @@ PrefabInstance:
       value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5048935863120973158, guid: 0c5fb936e7edc47489b862bcff4b0b5a, type: 3}
+      propertyPath: orbSpawn
+      value: 
+      objectReference: {fileID: 8300000, guid: 7645666b30ea7c242ab57cde8bfa2773, type: 3}
+    - target: {fileID: 5048935863120973158, guid: 0c5fb936e7edc47489b862bcff4b0b5a, type: 3}
       propertyPath: enterDoor
       value: 
       objectReference: {fileID: 8300000, guid: 3c55a395f79663145a759a6daa807a3a, type: 3}
@@ -430,7 +434,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45bc037964e57304991015525eba1116, type: 3}
---- !u!1001 &8336263464753586130
+--- !u!1001 &4147174671468071984
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -493,6 +497,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 690159272}
   - {fileID: 1046025609}
-  - {fileID: 8336263464753586130}
+  - {fileID: 4147174671468071984}
   - {fileID: 1782526715}
   - {fileID: 4000301365777702611}

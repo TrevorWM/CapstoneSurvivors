@@ -15,7 +15,7 @@ public class EnemyMeleeAttack : MonoBehaviour, IEnemyAttack, IDamager
     private AttackPayload attackPayload;
 
 
-    public void DoAttack(CharacterStatsSO stats = null, Vector2 aimDirection = default)
+    public void DoAttack(CharacterStatsSO stats = null, Vector2 aimDirection = default, Hinderance hinderance = Hinderance.None)
     {
         UseMeleeAttack();
     }

@@ -93,6 +93,8 @@ public class RoomLogic : MonoBehaviour, IDungeonRoom
 
         if (enemiesInRoom <= 0)
         {
+            SoundEffectPlayer.Instance.OrbSpawnSound();
+
             roomComplete = true;
             roomManager.OnRoomComplete();
         }

@@ -54,6 +54,8 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
     private Vector3 flipXScale = new Vector3(-1f, 1f, 1f);
 
+    private Hinderance currentHinderance;
+
 
     public CharacterStatsSO EnemyStats { get => enemyStats; private set => enemyStats = value; }
     public bool StopMoving { get => stopMoving; set => stopMoving = value; }
@@ -131,7 +133,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
                     if (!isAttacking && !StopMoving)
                     {
                         isAttacking = true;
-                        enemyAttack.DoAttack(enemyStats, getDirectionFromTarget());
+                        enemyAttack.DoAttack(enemyStats, getDirectionFromTarget(), currentHinderance);
                         StartCoroutine(BasicAttackCooldown());
                     }
                     // if a ranged enemy gets too close we want them to run away
@@ -246,7 +248,9 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         {
             float damage = calculator.CalculateDamage(payload, defaultOwnerStats: enemyStats);
             currentHealth -= damage;
-            
+            currentHinderance = payload.Hinderance;
+
+
             if (payload.Hinderance == Hinderance.Slow) // deal with specific hinderance
             {
                 slowed = true;
@@ -275,6 +279,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(time);
         slowed = false;
         spriteRenderer.color = Color.white;
+        currentHinderance = Hinderance.None;
     }
     
     IEnumerator StopTimer(float time)
@@ -282,6 +287,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(time);
         stopped = false;
         spriteRenderer.color = Color.white;
+        currentHinderance = Hinderance.None;
     }
 
     private void OnDeath()

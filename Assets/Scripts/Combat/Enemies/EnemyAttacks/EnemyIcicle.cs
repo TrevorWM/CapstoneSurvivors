@@ -14,7 +14,7 @@ public class EnemyIcicle : IcicleBase, IEnemyAttack
         projectilePool.ClearPool();
     }
 
-    public void DoAttack(CharacterStatsSO stats = null, Vector2 aimDirection = default)
+    public void DoAttack(CharacterStatsSO stats = null, Vector2 aimDirection = default, Hinderance hinderance = Hinderance.None)
     {
         Transform parentTransform = this.gameObject.transform.parent;
         ProjectileBase projectile = projectilePool.GetProjectile();
