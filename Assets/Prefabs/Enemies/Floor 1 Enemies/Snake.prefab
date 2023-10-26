@@ -269,7 +269,7 @@ MonoBehaviour:
   detectionDelay: 0.05
   movementInput: {x: 0, y: 0}
   movementDirectionSolver: {fileID: 2635953697194223028}
-  enemyStats: {fileID: 11400000, guid: 921e55709eba3164d8e44f5fa4d63f9e, type: 2}
+  enemyStats: {fileID: 11400000, guid: cf1050232a875a04aa7e07c322ccc220, type: 2}
   flashSprite: {fileID: 7262775752156142786}
   calculator: {fileID: 5442042487240499199}
   attack: {fileID: 7435097734811003162}

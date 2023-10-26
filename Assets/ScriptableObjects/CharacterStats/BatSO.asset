@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
   m_Name: BatSO
   m_EditorClassIdentifier: 
-  maxHealth: 12
+  maxHealth: 45
   defense: 0
   moveSpeed: 3
-  baseDamage: 5
+  baseDamage: 10
   attacksPerSecond: 0.5
-  criticalChance: 5
-  criticalDamageMultiplier: 2
+  criticalChance: 0
+  criticalDamageMultiplier: 0
   characterElement: 3
   dodgeForce: 1
   dodgeDuration: 0.1
