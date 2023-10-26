@@ -30,7 +30,7 @@ public class EnemyFireball : FireballBase, IEnemyAttack
         }
     }
 
-    public void DoAttack(CharacterStatsSO stats = null, Vector2 aimDirection = default)
+    public void DoAttack(CharacterStatsSO stats = null, Vector2 aimDirection = default, Hinderance hinderance = Hinderance.None)
     {
         Transform parentTransform = this.gameObject.transform.parent;
         ProjectileBase projectile = projectilePool.GetProjectile();
@@ -50,7 +50,6 @@ public class EnemyFireball : FireballBase, IEnemyAttack
     public void Initialize(CharacterStatsSO stats, UpgradeRarity rarity = UpgradeRarity.Common)
     {
         InitializeRarityBasedStats(rarity);
-        projectilePool = GetComponent<ProjectilePool>();
         attackPayload = new AttackPayload(stats.BaseDamage, 0, ElementType.Fire, stats.CriticalChance, stats.CriticalDamageMultiplier, DamageModifierValue, enemyProjectile: true);
     }
 

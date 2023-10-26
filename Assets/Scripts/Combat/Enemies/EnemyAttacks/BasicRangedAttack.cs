@@ -9,7 +9,7 @@ public class BasicRangedAttack : MonoBehaviour, IEnemyAttack
 
     private AttackPayload payload;
 
-    public void DoAttack(CharacterStatsSO stats, Vector2 aimDirection = default(Vector2))
+    public void DoAttack(CharacterStatsSO stats, Vector2 aimDirection = default(Vector2), Hinderance hinderance = Hinderance.None)
     {
         Transform parentTransform = this.gameObject.transform.parent;
         ProjectileBase projectile = projectilePool.GetProjectile();

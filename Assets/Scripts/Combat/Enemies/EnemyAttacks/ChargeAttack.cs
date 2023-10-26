@@ -14,14 +14,16 @@ public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
     private BasicEnemy ownerScript;
     private AttackPayload attackPayload;
     private Rigidbody2D enemyRigidbody;
-    private Vector2 otherDirection;
+    private Vector2 direction;
     private CharacterStatsSO enemyStats;
+    private Hinderance h;
+    private float speedReduction = 1f;
 
 
-    public void DoAttack(CharacterStatsSO stats = null, Vector2 aimDirection = default)
+    public void DoAttack(CharacterStatsSO stats = null, Vector2 aimDirection = default, Hinderance hinderance = Hinderance.None)
     {
-        otherDirection = aimDirection;
         StartCoroutine(ChargeUp());
+        h = hinderance;
     }
 
     private IEnumerator ChargeUp()
@@ -34,8 +36,22 @@ public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
 
     private IEnumerator Charge()
     {
-        
-        enemyRigidbody.velocity = otherDirection * enemyStats.MoveSpeed * 6.0f;
+        //get player location
+        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, enemyStats.DetectionRadius, hitLayers);
+        direction = (playerCollider.transform.position - transform.position).normalized;
+
+        if (h == Hinderance.Slow)
+        {
+            speedReduction = 0.3f;
+        } else if (h == Hinderance.Stop)
+        {
+            speedReduction = 0.01f;
+        } else
+        {
+            speedReduction = 1f;
+        }
+        //charge at player
+        enemyRigidbody.velocity = direction * enemyStats.MoveSpeed * 6.0f * speedReduction;
         attackCollider.enabled = true;
         
         yield return new WaitForSeconds(0.75f);
