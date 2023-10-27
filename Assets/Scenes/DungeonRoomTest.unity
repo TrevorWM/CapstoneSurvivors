@@ -447,29 +447,9 @@ PrefabInstance:
       value: RoomManager
       objectReference: {fileID: 0}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
-      propertyPath: roomCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: floorCount
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
-      propertyPath: roomsBeforeBoss
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
-      propertyPath: bossRoomPool.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
-      propertyPath: bossRoomPool.Array.data[0]
-      value: 
-      objectReference: {fileID: 509820833389698090, guid: 1e9257e0246540d419f346e1c8b91c06, type: 3}
-    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
-      propertyPath: bossRoomPool.Array.data[1]
-      value: 
-      objectReference: {fileID: 796854714157457264, guid: e79bf95b19eda874198d0fa3dd3f3d1f, type: 3}
     - target: {fileID: 7800590222984004608, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.3659093
