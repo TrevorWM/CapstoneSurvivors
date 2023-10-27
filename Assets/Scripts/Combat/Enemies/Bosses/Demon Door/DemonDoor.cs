@@ -138,7 +138,7 @@ public class DemonDoor : MonoBehaviour, IDamageable
 
         //Random pillar shoots a circle
         int randomPosition = Random.Range(0, bossShootPositions.Length);
-        StartCoroutine(ShootRotation(bossShootPositions[randomPosition], 10f, 360f));
+        StartCoroutine(ShootRotation(bossShootPositions[randomPosition], 20f, 360f));
         yield return new WaitForSeconds(1f);
         
 
@@ -158,16 +158,16 @@ public class DemonDoor : MonoBehaviour, IDamageable
         //Shoot in a wave around the pillar
         foreach (Transform shootPosition in bossShootPositions)
         {
-            StartCoroutine(ShootRotation(shootPosition, 15f, 360f, 0.2f));
+            StartCoroutine(ShootRotation(shootPosition, 15f, 360f, 0.3f));
         }
         yield return new WaitForSeconds(2f);
 
         //Shoot a full circle pulse from opposite corners
-        StartCoroutine(ShootRotation(bossShootPositions[0], 20f, 360f));
-        StartCoroutine(ShootRotation(bossShootPositions[2], 20f, 360f));
+        StartCoroutine(ShootRotation(bossShootPositions[0], 30f, 360f));
+        StartCoroutine(ShootRotation(bossShootPositions[2], 30f, 360f));
         yield return new WaitForSeconds(3f);
-        StartCoroutine(ShootRotation(bossShootPositions[1], 20f, 360f));
-        StartCoroutine(ShootRotation(bossShootPositions[3], 20f, 360f));
+        StartCoroutine(ShootRotation(bossShootPositions[1], 30f, 360f));
+        StartCoroutine(ShootRotation(bossShootPositions[3], 30f, 360f));
         yield return new WaitForSeconds(3f);
         
         if (runtimeHP > 0) StartCoroutine(PhaseTwo());

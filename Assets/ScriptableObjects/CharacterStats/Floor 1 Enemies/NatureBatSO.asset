@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
-  m_Name: DemonDoor
+  m_Name: NatureBatSO
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  maxHealth: 20
   defense: 0
-  moveSpeed: 0
+  moveSpeed: 3
   baseDamage: 15
   attacksPerSecond: 1
   criticalChance: 5
   criticalDamageMultiplier: 2
-  characterElement: 3
+  characterElement: 1
   dodgeForce: 1
   dodgeDuration: 0.1
   dodgeCooldown: 0
@@ -27,10 +27,10 @@ MonoBehaviour:
   fireAffinity: 0
   natureAffinity: 0
   cooldownReduction: 0
-  detectionRadius: 10000
+  detectionRadius: 1000
   followDistance: 1
-  aiType: 2
-  projectileSpeed: 5
-  characterSprite: {fileID: 21300000, guid: 5b2fc2f3b7b944045a7d50fa3cfb1295, type: 3}
+  aiType: 1
+  projectileSpeed: 0
+  characterSprite: {fileID: 0}
   weaponSprite: {fileID: 0}
-  rightFacingSprite: 0
+  rightFacingSprite: 1
