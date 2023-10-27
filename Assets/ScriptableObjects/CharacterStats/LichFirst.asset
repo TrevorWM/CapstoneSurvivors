@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
-  m_Name: PlayerStatSO
+  m_Name: LichFirst
   m_EditorClassIdentifier: 
-  maxHealth: 1000
-  defense: 0
-  moveSpeed: 5.05
-  baseDamage: 100
-  attacksPerSecond: 2
-  criticalChance: 2
+  maxHealth: 1500
+  defense: 5
+  moveSpeed: 0
+  baseDamage: 5
+  attacksPerSecond: 1
+  criticalChance: 5
   criticalDamageMultiplier: 2
   characterElement: 3
-  dodgeForce: 8.5
-  dodgeDuration: 0.2
-  dodgeCooldown: 1.5
-  waterAffinity: 1
-  fireAffinity: 1
-  natureAffinity: 1
+  dodgeForce: 1
+  dodgeDuration: 0.1
+  dodgeCooldown: 0
+  waterAffinity: 0
+  fireAffinity: 0
+  natureAffinity: 0
   cooldownReduction: 0
-  detectionRadius: 0
+  detectionRadius: 10000
   followDistance: 1
-  aiType: 0
-  projectileSpeed: 0
-  characterSprite: {fileID: 21300000, guid: 143a9a9eb39f06b439a83d40a992559c, type: 3}
+  aiType: 2
+  projectileSpeed: 5
+  characterSprite: {fileID: 21300000, guid: 09cfa7b02c6f76f4a9324563b63903a0, type: 3}
   weaponSprite: {fileID: 0}
-  rightFacingSprite: 0
+  rightFacingSprite: 1
