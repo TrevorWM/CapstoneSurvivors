@@ -90,6 +90,8 @@ public class FloatingDamageSpawner : MonoBehaviour
             TextMeshProUGUI text = currentTextInstance.GetComponentInChildren<TextMeshProUGUI>();
             if (text != null)
             {
+                Debug.Log("damage data: " + data);
+
                 text.color = textColor;
 
                 if (data.isStrong) damageText += "+";

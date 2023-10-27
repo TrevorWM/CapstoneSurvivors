@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
-  m_Name: BatSO
+  m_Name: FireBatSO
   m_EditorClassIdentifier: 
   maxHealth: 20
   defense: 0
@@ -19,7 +19,7 @@ MonoBehaviour:
   attacksPerSecond: 1
   criticalChance: 5
   criticalDamageMultiplier: 2
-  characterElement: 3
+  characterElement: 0
   dodgeForce: 1
   dodgeDuration: 0.1
   dodgeCooldown: 0
