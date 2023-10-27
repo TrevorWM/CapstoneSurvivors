@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public abstract class ProjectileBase : MonoBehaviour
@@ -48,11 +49,11 @@ public abstract class ProjectileBase : MonoBehaviour
         if (collisionCollider.IsTouchingLayers(collisionLayers))
         {
             CollisionColliderLogic(collision);
-
         }
 
         if (damageCollider.IsTouchingLayers(damageLayers))
         {
+            Debug.Log("Damage Collider hit: " + collision.name);
             DamageColliderLogic(collision);
         }
 
