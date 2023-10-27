@@ -448,7 +448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: roomsBeforeBoss
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: bossRoomPool.Array.size
