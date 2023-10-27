@@ -96,9 +96,10 @@ public class FirstLich : MonoBehaviour, IDamageable
         foreach (IEnemyAttack attack in enemyAttacks)
         {
             attack.DoAttack(bossStats, GetDirectionToPlayer());
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
         }
         this.transform.position = teleportPositions[UnityEngine.Random.Range(0, teleportPositions.Length)].position;
+
 
         if (runtimeHP < (bossStats.MaxHealth * 0.80f) && !phaseOneSpawn)
         {
