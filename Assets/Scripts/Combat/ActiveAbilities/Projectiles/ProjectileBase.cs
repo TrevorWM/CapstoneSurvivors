@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
-using UnityEditor.UI;
+
 using UnityEngine;
 
 public abstract class ProjectileBase : MonoBehaviour
@@ -52,11 +49,11 @@ public abstract class ProjectileBase : MonoBehaviour
         if (collisionCollider.IsTouchingLayers(collisionLayers))
         {
             CollisionColliderLogic(collision);
-
         }
 
         if (damageCollider.IsTouchingLayers(damageLayers))
         {
+            Debug.Log("Damage Collider hit: " + collision.name);
             DamageColliderLogic(collision);
         }
 

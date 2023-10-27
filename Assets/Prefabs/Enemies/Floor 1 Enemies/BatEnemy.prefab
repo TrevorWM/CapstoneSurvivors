@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4078162536348510903}
   - component: {fileID: 9106133311853511345}
   - component: {fileID: 5555660181231462055}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6192125951767191508}
   - component: {fileID: 7640022948632092150}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ObstacleDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5922019993256820658}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: SteeringBehaviours
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6097966377075520731}
   - component: {fileID: 1840071827422918451}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ObstacleAvoidance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3764513290945454878}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Detectors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2112787682509373930}
   - component: {fileID: 2138656496465894200}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6003891281869259603}
   - component: {fileID: 3582766852017725171}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SeekBehaviour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -588,7 +588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7418576889442896934}
   - component: {fileID: 3041650903282988849}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TargetDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8943942172777330123}
   - component: {fileID: 3044210647164936741}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: ContextSolver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,6 +756,10 @@ PrefabInstance:
     - target: {fileID: 3436708496837645202, guid: c825287aedd21d249adcb7dd12c5f479, type: 3}
       propertyPath: m_Name
       value: MeleeAttackBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436708496837645202, guid: c825287aedd21d249adcb7dd12c5f479, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5619054110982018869, guid: c825287aedd21d249adcb7dd12c5f479, type: 3}
       propertyPath: m_Radius

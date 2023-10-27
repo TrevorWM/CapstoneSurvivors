@@ -159,7 +159,8 @@ public class RoomManager : MonoBehaviour
         else if (roomCount % roomsBeforeBoss == 0)
         {
             roomIndex = floorCount;
-            nextRoom = bossRoomPool[Mathf.Min(0, roomIndex)];
+            if (floorCount >= bossRoomPool.Length) roomIndex = 0;
+            nextRoom = bossRoomPool[roomIndex];
         }
         else if (roomCount > 2 && floorCount % 2 == 0)
         {

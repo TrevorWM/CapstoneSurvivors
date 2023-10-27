@@ -49,7 +49,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7386496904110500103, guid: 0c13cd01a0f0a584b87df3bb5ff45206, type: 3}
   defaultPoolSize: 5
   maxPoolSize: 5
-  projectileLifeTime: 2
+  projectileLifeTime: 5
 --- !u!114 &8162447387968819599
 MonoBehaviour:
   m_ObjectHideFlags: 0
