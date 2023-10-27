@@ -37,14 +37,13 @@ public class FrostCloudBase : ActiveAbilityBase
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            // Logic to show poison effect wil go here
             Transform target = collision.gameObject.transform;
             
             SpriteRenderer targetSprite = target.GetComponentInChildren<SpriteRenderer>();
             if (targetSprite != null) targetSprite.color = Color.blue;
 
-            IDamageable enemy = collision.gameObject.GetComponentInParent<IDamageable>();
-            if (enemy != null) enemy.TakeDamage(payload);
+            //IDamageable enemy = collision.gameObject.GetComponentInParent<IDamageable>();
+            //if (enemy != null) enemy.TakeDamage(payload);
         }
     }
     

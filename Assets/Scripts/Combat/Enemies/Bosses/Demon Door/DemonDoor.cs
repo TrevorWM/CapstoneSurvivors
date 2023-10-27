@@ -42,10 +42,10 @@ public class DemonDoor : MonoBehaviour, IDamageable
     public void StartFight(Transform playerTransform)
     {
         player = playerTransform;
-        fightStarted = true;
         bossHealthBar.gameObject.SetActive(true);
         bossHealthBar.UpdateHealthBarValue(runtimeHP, bossStats.MaxHealth);
-        StartPhaseOne();
+        if (!fightStarted) StartPhaseOne();
+        fightStarted = true;
     }
 
     public void TakeDamage(AttackPayload payload)

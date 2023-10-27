@@ -31,7 +31,7 @@ public class RoomLogic : MonoBehaviour, IDungeonRoom
 
     public void Start()
     {
-        roomManager = FindObjectOfType<RoomManager>().GetComponent<RoomManager>();
+        roomManager = FindObjectOfType<RoomManager>()?.GetComponent<RoomManager>();
         GetDoorsInLevel();
     }
 

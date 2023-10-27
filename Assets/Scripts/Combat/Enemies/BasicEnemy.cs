@@ -70,6 +70,12 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         }
     }
 
+    public void OnSpawn()
+    {
+        enemySpawn.AddListener(FindObjectOfType<RoomLogic>().EnemyAdded);
+        enemyDeath.AddListener(FindObjectOfType<RoomLogic>().EnemyRemoved);
+    }
+
     private void Start()
     {
         // Detecting Player and Obstacles around
