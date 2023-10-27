@@ -107,7 +107,7 @@ public class FirstLich : MonoBehaviour, IDamageable
             phaseOneSpawn = true;
         }
 
-        if (runtimeHP < bossStats.MaxHealth / 2)
+        if (runtimeHP < bossStats.MaxHealth * 0.70f)
         {
             StartCoroutine(PhaseTwo()); 
         }
@@ -121,22 +121,37 @@ public class FirstLich : MonoBehaviour, IDamageable
     {
         Debug.Log("Phase Two Start!");
         StopCoroutine(PhaseOne());
-        
-        this.transform.position = teleportPositions[0].position;
+
+        int newPosition = UnityEngine.Random.Range(0, teleportPositions.Length);
+        int lastPosition;
+
+        this.transform.position = teleportPositions[newPosition].position;
+        lastPosition = newPosition;
         ShootThreeTowardsPlayer(0);
         yield return new WaitForSeconds(1f);
 
-        this.transform.position = teleportPositions[1].position;
+        while (newPosition == lastPosition) newPosition = UnityEngine.Random.Range(0, teleportPositions.Length);
+
+        this.transform.position = teleportPositions[newPosition].position;
+        lastPosition = newPosition;
         ShootThreeTowardsPlayer(1);
         yield return new WaitForSeconds(1f);
+        
+        while (newPosition == lastPosition) newPosition = UnityEngine.Random.Range(0, teleportPositions.Length);
 
-        this.transform.position = teleportPositions[2].position;
+        this.transform.position = teleportPositions[newPosition].position;
+        lastPosition = newPosition;
         ShootThreeTowardsPlayer(2);
 
         if (runtimeHP < (bossStats.MaxHealth * 0.33f) && !phaseTwoSpawn)
         {
             spawnMonster?.Invoke(phaseTwoAdd);
             phaseTwoSpawn = true;
+            yield return new WaitForSeconds(3f);
+        }
+        else
+        {
+            phaseTwoSpawn = false;
         }
         yield return new WaitForSeconds(3f);
 
