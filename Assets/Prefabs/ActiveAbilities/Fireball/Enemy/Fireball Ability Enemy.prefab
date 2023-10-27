@@ -65,8 +65,8 @@ MonoBehaviour:
   abilitySO: {fileID: 11400000, guid: d336a88457d07324db96fbcf042acec7, type: 2}
   hitEffects:
   - {fileID: 71437639456968865, guid: f28587150c91e20428c4b8880566981f, type: 3}
-  projectilePool: {fileID: 7188904731177502793}
   hitEffectLifetime: 0.2
+  projectilePool: {fileID: 7188904731177502793}
 --- !u!1 &9198123974561297358
 GameObject:
   m_ObjectHideFlags: 0
