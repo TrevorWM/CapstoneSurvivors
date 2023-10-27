@@ -166,8 +166,8 @@ Transform:
   - {fileID: 6300282147316968094}
   - {fileID: 3207073667352611006}
   - {fileID: 8388452836328224713}
-  - {fileID: 4508292820204821609}
   - {fileID: 5984398541649588255}
+  - {fileID: 4508292820204821609}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &4319722624366292277
@@ -269,7 +269,7 @@ MonoBehaviour:
   detectionDelay: 0.05
   movementInput: {x: 0, y: 0}
   movementDirectionSolver: {fileID: 2635953697194223028}
-  enemyStats: {fileID: 11400000, guid: cf1050232a875a04aa7e07c322ccc220, type: 2}
+  enemyStats: {fileID: 11400000, guid: 1c5a7107a78ad5c4aac186cf8b7c4d2a, type: 2}
   flashSprite: {fileID: 7262775752156142786}
   calculator: {fileID: 5442042487240499199}
   attack: {fileID: 7435097734811003162}
