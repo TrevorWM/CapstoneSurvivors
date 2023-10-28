@@ -19,6 +19,8 @@ public class CharacterStats : MonoBehaviour, IDamageable
     [SerializeField]
     private bool testHealth;
 
+    private bool invincibleAfterHit = false;
+
     // Base Stats
     private float maxHealth;
     private float currentHealth;
@@ -305,7 +307,17 @@ public class CharacterStats : MonoBehaviour, IDamageable
             flashSprite.HitFlash(spriteRenderer);
             float damage = calculator.CalculateDamage(payload, ownerStats: this);
             RemoveHealth(damage);
-            
+            if (this.gameObject.layer == LayerMask.NameToLayer("Player") && !invincibleAfterHit)
+            {
+                invincibleAfterHit = true;
+                StartCoroutine(DisableInvincibility(0.5f));
+            }
         }
+    }
+
+    private IEnumerator DisableInvincibility(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        invincibleAfterHit = false;
     }
 }

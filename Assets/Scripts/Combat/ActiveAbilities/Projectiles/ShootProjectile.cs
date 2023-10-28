@@ -19,12 +19,14 @@ public class ShootProjectile : MonoBehaviour
     private CharacterStats characterStats;
     private ActiveAbilityBase activeAbility;
     private ActiveAbilitySO abilityStats;
+    private Rigidbody2D ownerRigidbody;
 
     private AttackPayload payload;
 
     private void Start()
     {
         characterStats = GetComponentInParent<CharacterStats>();
+        ownerRigidbody = characterStats.gameObject.GetComponent<Rigidbody2D>();
         activeAbility = GetComponent<ActiveAbilityBase>();
         if (activeAbility != null ) abilityStats = activeAbility.ActiveAbilitySO;
     }
@@ -63,10 +65,13 @@ public class ShootProjectile : MonoBehaviour
         Vector2 shootDirection = aimHelper.GetShootDirection();
 
         BuildAttackPayload();
+        Debug.Log("Velocity: " + ownerRigidbody.velocity);
 
         if (activeAbility != null)
         {
             projectileSpeed = activeAbility.ActiveAbilitySO.ProjectileSpeed;
+            if (activeAbility.ActiveAbilitySO.ProjectileSpeed >= characterStats.MoveSpeed) projectileSpeed += characterStats.MoveSpeed;
+
             projectile.FireProjectile(shootDirection, projectileSpeed, payload, activeAbility);
         } else
         {
