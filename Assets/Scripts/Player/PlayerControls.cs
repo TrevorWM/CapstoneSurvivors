@@ -58,6 +58,7 @@ public class PlayerControls : MonoBehaviour
     public GameObject[] CurrentAbilities { get => currentAbilities; set => currentAbilities = value; }
 
     private Hurtbox playerHurtbox;
+    private Collider2D playerCollider;
 
     private void Awake()
     {
@@ -81,6 +82,7 @@ public class PlayerControls : MonoBehaviour
     {
         MusicPlayer.Instance.PlayLevel1Music();
         playerHurtbox = GetComponentInChildren<Hurtbox>();
+        playerCollider = GetComponent<CircleCollider2D>();
     }
 
     private void OnEnable()
@@ -193,6 +195,7 @@ public class PlayerControls : MonoBehaviour
                 spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
                 //this is where we could disable the player hitbox so they have i-frames
                 playerHurtbox.gameObject.SetActive(false);
+                playerCollider.excludeLayers = LayerMask.GetMask("Hitbox", "Interactable", "Enemy");
             }
         }
         
@@ -214,6 +217,7 @@ public class PlayerControls : MonoBehaviour
         runtimeStats.MoveSpeed = tempMoveSpeed;
         //and then re-enable the hitbox here
         playerHurtbox.gameObject.SetActive(true);
+        playerCollider.excludeLayers = LayerMask.GetMask("Hitbox", "Interactable");
     }
 
     /// <summary>
