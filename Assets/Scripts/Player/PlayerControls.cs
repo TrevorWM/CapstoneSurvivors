@@ -248,7 +248,7 @@ public class PlayerControls : MonoBehaviour
     {
         if (abilityKey.IsPressed())
         {
-            if (!isDodging && !isAttacking && currentAbilities[(int)keyIndex] != null)
+            if (!isDodging && currentAbilities[(int)keyIndex] != null)
             {
                 //Get the active ability base from the ability slotted
                 ActiveAbilityBase ability = CurrentAbilities[(int)keyIndex].GetComponent<ActiveAbilityBase>();
