@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Kenney Mini Square SDF Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_Parent: {fileID: 2100000, guid: 6ab9ad7f742431d4f9fe46b8b8833f01, type: 2}
+  m_Parent: {fileID: 2100000, guid: ca84f0234621f1249a6da4b663250a47, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - UNDERLAY_ON
@@ -25,8 +25,12 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
-    m_Colors: []
+    m_Floats:
+    - _OutlineWidth: 0.025
+    - _ScaleRatioC: 0.39828432
+    - _UnderlaySoftness: 0.2
+    m_Colors:
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!28 &-4752688164734688672
 Texture2D:
