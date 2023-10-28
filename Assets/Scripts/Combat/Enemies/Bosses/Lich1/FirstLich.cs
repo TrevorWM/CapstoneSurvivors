@@ -127,6 +127,7 @@ public class FirstLich : MonoBehaviour, IDamageable
 
         this.transform.position = teleportPositions[newPosition].position;
         lastPosition = newPosition;
+        yield return new WaitForSeconds(1.5f);
         ShootThreeTowardsPlayer(0);
         yield return new WaitForSeconds(1f);
 
@@ -134,6 +135,7 @@ public class FirstLich : MonoBehaviour, IDamageable
 
         this.transform.position = teleportPositions[newPosition].position;
         lastPosition = newPosition;
+        yield return new WaitForSeconds(1.5f);
         ShootThreeTowardsPlayer(1);
         yield return new WaitForSeconds(1f);
         
@@ -141,13 +143,14 @@ public class FirstLich : MonoBehaviour, IDamageable
 
         this.transform.position = teleportPositions[newPosition].position;
         lastPosition = newPosition;
+        yield return new WaitForSeconds(1.5f);
         ShootThreeTowardsPlayer(2);
 
         if (runtimeHP < (bossStats.MaxHealth * 0.33f) && !phaseTwoSpawn)
         {
             spawnMonster?.Invoke(phaseTwoAdd);
             phaseTwoSpawn = true;
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(5f);
         }
         else
         {
