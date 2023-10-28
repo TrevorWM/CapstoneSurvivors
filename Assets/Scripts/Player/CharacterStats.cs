@@ -261,8 +261,20 @@ public class CharacterStats : MonoBehaviour, IDamageable
         Debug.LogFormat("I died!");
 
         // replace with death logic once animations, sfx, vfx, and other things are in
-        this.gameObject.SetActive(false);
-        if (this.gameObject.layer == LayerMask.NameToLayer("Player")) SceneManager.LoadScene("MainMenu");
+        
+        if (this.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            this.gameObject.GetComponentInChildren<Hurtbox>().enabled = false;
+            this.gameObject.GetComponent<Collider2D>().enabled = false;
+            this.gameObject.GetComponent<PlayerControls>().enabled = false;
+            this.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            spriteRenderer.gameObject.SetActive(false);
+            StartCoroutine(MainMenuAfterDelay(5f));
+        }
+        else
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -302,7 +314,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
 
     public void TakeDamage(AttackPayload payload)
     {
-        if (payload.EnemyProjectile)
+        if (payload.EnemyProjectile && CurrentHealth > 0)
         {
             flashSprite.HitFlash(spriteRenderer);
             float damage = calculator.CalculateDamage(payload, ownerStats: this);
@@ -319,5 +331,11 @@ public class CharacterStats : MonoBehaviour, IDamageable
     {
         yield return new WaitForSeconds(duration);
         invincibleAfterHit = false;
+    }
+
+    private IEnumerator MainMenuAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene("MainMenu");
     }
 }
