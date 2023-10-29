@@ -65,7 +65,6 @@ public class ShootProjectile : MonoBehaviour
         Vector2 shootDirection = aimHelper.GetShootDirection();
 
         BuildAttackPayload();
-        Debug.Log("Velocity: " + ownerRigidbody.velocity);
 
         if (activeAbility != null)
         {

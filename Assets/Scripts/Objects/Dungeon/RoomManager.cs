@@ -45,6 +45,8 @@ public class RoomManager : MonoBehaviour
     private GameObject currentRoom;
     private IDungeonRoom currentRoomLogic;
     private GameObject nextRoom;
+    private int previousRoomIndex;
+    private bool tutorialComplete = false;
 
     private GameObject currentPlayer;
     private GameObject currentUpgradeOrb;
@@ -151,6 +153,18 @@ public class RoomManager : MonoBehaviour
         GameObject nextRoom = null;
         int roomIndex;
 
+        if (!tutorialComplete)
+        {
+            if (roomCount == 1) nextRoom = tutorialRoomPool[0];
+            else if (roomCount == 2)
+            {
+                nextRoom = tutorialRoomPool[1];
+                tutorialComplete = true;
+            }
+            return nextRoom;
+        }
+
+
         if (roomCount % (treasureRoomCount) == 0)
         {
             roomIndex = 0;
@@ -159,25 +173,24 @@ public class RoomManager : MonoBehaviour
         else if (roomCount % roomsBeforeBoss == 0)
         {
             roomIndex = floorCount;
-            if (floorCount >= bossRoomPool.Length) roomIndex = 0;
+            if (floorCount >= bossRoomPool.Length) roomIndex = floorCount % bossRoomPool.Length;
             nextRoom = bossRoomPool[roomIndex];
         }
-        else if (roomCount > 2 && floorCount % 2 == 0)
+        else if (floorCount % 2 == 0)
         {
-            roomIndex = UnityEngine.Random.Range(0, roomPool.Length);
+            roomIndex = RollRoomWithDuplicateProtection(roomPool);
             nextRoom = roomPool[roomIndex];
         }
         else if (floorCount % 2 == 1)
         {
-            roomIndex = UnityEngine.Random.Range(0, level2RoomPool.Length);
+            roomIndex = RollRoomWithDuplicateProtection(level2RoomPool);
             nextRoom = level2RoomPool[roomIndex];
         }
         else
         {
-            if (roomCount == 1) nextRoom = tutorialRoomPool[0];
-            else if (roomCount == 2) nextRoom = tutorialRoomPool[1];
+            roomIndex = 0;
         }
-
+        previousRoomIndex = roomIndex;
         return nextRoom;
     }
 
@@ -198,10 +211,20 @@ public class RoomManager : MonoBehaviour
 
                 if (orb != null)
                 {
-                    Debug.Log("Initializing: " + orb.name);
                     orb.InitializeOrb(currentPlayer);
                 }
             }
         }
+    }
+
+    private int RollRoomWithDuplicateProtection(GameObject[] roomPool)
+    {
+        int roomIndex = UnityEngine.Random.Range(0, roomPool.Length);
+
+        while (roomIndex == previousRoomIndex)
+        {
+            roomIndex = UnityEngine.Random.Range(0, roomPool.Length);
+        }
+        return roomIndex;
     }
 }
