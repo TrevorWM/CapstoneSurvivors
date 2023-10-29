@@ -53,7 +53,6 @@ public abstract class ProjectileBase : MonoBehaviour
 
         if (damageCollider.IsTouchingLayers(damageLayers))
         {
-            Debug.Log("Damage Collider hit: " + collision.name);
             DamageColliderLogic(collision);
         }
 

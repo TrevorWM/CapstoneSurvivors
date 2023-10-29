@@ -18,7 +18,7 @@ MonoBehaviour:
   abilityIcon: {fileID: 21300000, guid: f23a8dd8baf9e46458d7819e6c6a7d89, type: 3}
   abilityCooldown: 5
   dotTime: 0
-  projectileSpeed: 1
+  projectileSpeed: 2
   abilityElement: 2
   commonDamageModifier: 1
   uncommonDamageModifier: 1.2

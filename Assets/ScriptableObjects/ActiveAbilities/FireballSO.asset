@@ -17,10 +17,12 @@ MonoBehaviour:
   abilityIcon: {fileID: 21300000, guid: 241f1733aa2fa6d46baa8fd0b50e8f47, type: 3}
   abilityCooldown: 2.5
   dotTime: 0
-  projectileSpeed: 5
+  projectileSpeed: 6
   abilityElement: 0
   commonDamageModifier: 0.8
   uncommonDamageModifier: 1
   rareDamageModifier: 1.2
   legendaryDamageModifier: 1.5
+  hinderanceType: 0
+  effectTime: 0
   description: Shoots a fireball which explodes on impact

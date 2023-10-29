@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         MusicPlayer.Instance.PlayMainMenuMusic();
+        //Debug.unityLogger.logEnabled = false;
     }
 
     public void StartButtonPressed()
