@@ -11,7 +11,8 @@ public class ScreenFade : MonoBehaviour
         StartCoroutine(Fade(canvasGroup));
     }
 
-    IEnumerator Fade (CanvasGroup canvasGroup)
+    // Adapted from: https://youtu.be/MkoIZTFUego
+    IEnumerator Fade(CanvasGroup canvasGroup)
     {
         while (canvasGroup.alpha < 255)
         {
