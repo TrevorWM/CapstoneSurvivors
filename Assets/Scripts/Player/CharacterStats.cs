@@ -19,6 +19,9 @@ public class CharacterStats : MonoBehaviour, IDamageable
     [SerializeField]
     private bool testHealth;
 
+    [SerializeField]
+    private GameObject deathScreen;
+
     private bool invincibleAfterHit = false;
 
     // Base Stats
@@ -275,6 +278,10 @@ public class CharacterStats : MonoBehaviour, IDamageable
         {
             this.gameObject.SetActive(false);
         }
+
+        deathScreen.GetComponent<ScreenFade>().FadeOnDeath();
+
+
     }
 
     /// <summary>
