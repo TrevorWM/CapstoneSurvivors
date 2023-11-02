@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -24,6 +25,10 @@ public class PlayerControls : MonoBehaviour
 
     [SerializeField]
     private GameObject[] currentAbilities;
+
+    [SerializeField]
+    private Slider dashSlider;
+
     private enum AbilityKeyMap
     {
         Q = 0,
@@ -32,6 +37,7 @@ public class PlayerControls : MonoBehaviour
     }
 
     private bool isDodging = false;
+    private bool allowDodge = true;
     private bool isAttacking = false;
     private Vector2 moveVector = Vector2.zero;
     private Rigidbody2D playerRigidbody;
@@ -183,11 +189,13 @@ public class PlayerControls : MonoBehaviour
     {
         if (dodgeInput.IsPressed())
         {
-            if (moveVector != Vector2.zero && Time.time - lastDodgeTime >= runtimeStats.DodgeCooldown)
+            if (moveVector != Vector2.zero && allowDodge)
             {
                 float tempMoveSpeed;
 
                 isDodging = true;
+                allowDodge = false;
+
                 lastDodgeTime = Time.time;
                 StartCoroutine("DodgeDuration");
                 tempMoveSpeed = (runtimeStats.MoveSpeed * runtimeStats.MoveSpeedModifier) + runtimeStats.DodgeForce;
@@ -209,7 +217,11 @@ public class PlayerControls : MonoBehaviour
     {
         float tempMoveSpeed;
 
+
         yield return new WaitForSeconds(runtimeStats.DodgeDuration);
+        
+        StartCoroutine(AnimateSliderOverTime(1f));
+        
         isDodging = false;
         spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
         tempMoveSpeed = runtimeStats.MoveSpeed - runtimeStats.DodgeForce;
@@ -218,6 +230,21 @@ public class PlayerControls : MonoBehaviour
         //and then re-enable the hitbox here
         playerHurtbox.gameObject.SetActive(true);
         playerCollider.excludeLayers = LayerMask.GetMask("Hitbox", "Interactable");
+        
+    }
+
+    IEnumerator AnimateSliderOverTime(float seconds)
+    {
+        float animationTime = 0f;
+        while (animationTime < seconds)
+        {
+            animationTime += Time.deltaTime;
+            float lerpValue = animationTime / seconds;
+            dashSlider.value = Mathf.Lerp(0f, 1f, lerpValue);
+            yield return null;
+        }
+        allowDodge = true;
+
     }
 
     /// <summary>
