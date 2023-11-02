@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5816929903169527994, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: orthographic size
-      value: 11.25
+      value: 8.4375
       objectReference: {fileID: 0}
     - target: {fileID: 5816929903169527994, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -466,6 +466,14 @@ PrefabInstance:
       propertyPath: bossRoomPool.Array.data[1]
       value: 
       objectReference: {fileID: 796854714157457264, guid: e79bf95b19eda874198d0fa3dd3f3d1f, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level2TutorialRoomPool.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level2TutorialRoomPool.Array.data[0]
+      value: 
+      objectReference: {fileID: 796854714157457264, guid: ef2ae68476b5a99459b7c4bb4cc72942, type: 3}
     - target: {fileID: 7800590222984004608, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.3659093

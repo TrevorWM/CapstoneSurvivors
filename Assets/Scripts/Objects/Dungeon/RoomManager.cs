@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Events;
@@ -34,6 +35,9 @@ public class RoomManager : MonoBehaviour
     private GameObject[] roomPool;
 
     [SerializeField, SerializeReference]
+    private GameObject[] level2TutorialRoomPool;
+
+    [SerializeField, SerializeReference]
     private GameObject[] level2RoomPool;
 
     [SerializeField, SerializeReference]
@@ -46,7 +50,8 @@ public class RoomManager : MonoBehaviour
     private IDungeonRoom currentRoomLogic;
     private GameObject nextRoom;
     private int previousRoomIndex;
-    private bool tutorialComplete = false;
+    private bool tutorial1Complete = false;
+    private bool tutorial2Complete = false;
 
     private GameObject currentPlayer;
     private GameObject currentUpgradeOrb;
@@ -153,13 +158,23 @@ public class RoomManager : MonoBehaviour
         GameObject nextRoom = null;
         int roomIndex;
 
-        if (!tutorialComplete)
+      
+        if (!tutorial1Complete)
         {
-            if (roomCount == 1) nextRoom = tutorialRoomPool[0];
-            else if (roomCount == 2)
+            if (floorCount == 0 && roomCount == 1) nextRoom = tutorialRoomPool[0];
+            else if (floorCount == 0 && roomCount == 2)
             {
                 nextRoom = tutorialRoomPool[1];
-                tutorialComplete = true;
+                tutorial1Complete = true;
+            }
+            return nextRoom;
+        }
+        if (!tutorial2Complete && floorCount == 1)
+        {
+            if (floorCount == 1 && roomCount == 1)
+            {
+                nextRoom = level2TutorialRoomPool[0];
+                tutorial2Complete = true;
             }
             return nextRoom;
         }
