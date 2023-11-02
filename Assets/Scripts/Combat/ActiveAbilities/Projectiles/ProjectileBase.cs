@@ -33,6 +33,19 @@ public abstract class ProjectileBase : MonoBehaviour
         this.projectileSpeed = projectileSpeed;
         this.attackPayload = payload;
         this.abilityBase = abilityBase;
+        Vector3 shootAngle = this.transform.eulerAngles;
+        SpriteRenderer projectileSprite = this.GetComponentInChildren<SpriteRenderer>();
+
+        //Flips the sprite so it's always right side up when shooting
+        if ((shootAngle.z > 90 && shootAngle.z < 270))
+        { 
+            if (projectileSprite != null) projectileSprite.flipY = true;
+        }
+        else
+        {
+            if (projectileSprite != null) projectileSprite.flipY = false;
+        }
+        
     }
 
     private void Update()

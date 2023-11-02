@@ -36,4 +36,5 @@ MonoBehaviour:
   - {fileID: 1286399037019628021, guid: d0acbf105f1ec6849b0d378e37b3f38f, type: 3}
   - {fileID: 8797331646011887251, guid: 146c5f0128b6eeb4e97651ed4aef11c3, type: 3}
   - {fileID: 1286399037019628021, guid: d59d8500873ed1d479fce7cab06022f9, type: 3}
+  - {fileID: 7233856515193898678, guid: 08e1e24287fc1dc49907ed0e359ad55b, type: 3}
   healthPotion: {fileID: 2656812543762864619, guid: 534f0017183478b45ad59638d48b2882, type: 3}

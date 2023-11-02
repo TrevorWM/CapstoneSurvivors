@@ -20,7 +20,6 @@ public class ProjectileObstacle : MonoBehaviour
     {
         if (projectile != null && thisCollider.IsTouchingLayers(collisionLayer))
         {
-            Debug.Log("I hit the wall!");
             projectile.gameObject.SetActive(false);
         }
         
