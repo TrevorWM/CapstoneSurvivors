@@ -32,4 +32,9 @@ public class AimTowardsMouseComponent : MonoBehaviour
 
         shootPosTransform.rotation = Quaternion.Euler(0, 0, angle);
     }
+
+    public Vector2 GetMousePosition()
+    {
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
 }

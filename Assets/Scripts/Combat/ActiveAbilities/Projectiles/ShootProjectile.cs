@@ -11,6 +11,9 @@ public class ShootProjectile : MonoBehaviour
     private AimTowardsMouseComponent aimHelper;
 
     [SerializeField]
+    private bool shootFromMouse = false;
+
+    [SerializeField]
     private ProjectilePool projectilePool;
 
     [SerializeField]
@@ -60,7 +63,10 @@ public class ShootProjectile : MonoBehaviour
         ProjectileBase projectile = projectilePool.GetProjectile();
         
         aimHelper.UpdateAimTowardsMouse();
-        projectile.transform.position = aimHelper.GetShootPosition();
+
+        if (shootFromMouse) projectile.transform.position = aimHelper.GetMousePosition();
+        else projectile.transform.position = aimHelper.GetShootPosition();
+
         projectile.transform.rotation = aimHelper.GetShootRotation();
         Vector2 shootDirection = aimHelper.GetShootDirection();
 

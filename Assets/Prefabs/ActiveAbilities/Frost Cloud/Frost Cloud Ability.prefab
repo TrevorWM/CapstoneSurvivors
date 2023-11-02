@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimHelper: {fileID: 3798112852087967528}
+  shootFromMouse: 0
   projectilePool: {fileID: 3142306519447561756}
   projectileSpeed: 10
 --- !u!114 &3142306519447561756
