@@ -9,10 +9,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Kenney Mini Square SDF Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_Parent: {fileID: 2100000, guid: ca84f0234621f1249a6da4b663250a47, type: 2}
+  m_Parent: {fileID: 2100000, guid: ff74bc1a44dbb7946862f6801dd463a2, type: 2}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - UNDERLAY_ON
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
