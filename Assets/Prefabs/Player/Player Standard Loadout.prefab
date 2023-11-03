@@ -4407,7 +4407,6 @@ GameObject:
   - component: {fileID: 7831794182756457449}
   - component: {fileID: 4801694858583658517}
   - component: {fileID: 6995238578291998644}
-  - component: {fileID: 7541953461940859342}
   m_Layer: 0
   m_Name: PauseUI
   m_TagString: Untagged
@@ -4501,38 +4500,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7541953461940859342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5566959166037620504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f870cfc01dc36a4b99dcc4f8cc959e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  purpleCommon: {fileID: 21300000, guid: c52eb877e5bc8d24cad9c684c28ddbce, type: 3}
-  purpleUncommon: {fileID: 21300000, guid: 3a5cc5cc0ffcd0f4e93406de2dd0a7c9, type: 3}
-  purpleRare: {fileID: 21300000, guid: 2f6def96747e81846a2c31672b48927d, type: 3}
-  purpleLegendary: {fileID: 21300000, guid: c79fc16d35c6f78488261ef7ce880e76, type: 3}
-  redCommon: {fileID: 21300000, guid: 710b15350ff32824daa0c14754516fa2, type: 3}
-  redUncommon: {fileID: 21300000, guid: f5d1d92457a31ec4283d7ec5b77222ff, type: 3}
-  redRare: {fileID: 21300000, guid: 1dc645aa400893e4aaf44a64cabb911d, type: 3}
-  redLegendary: {fileID: 21300000, guid: 14da8144407d77f4f8f6630885c82d49, type: 3}
-  portals:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  texts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  statImages:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &5585605804498227271
 GameObject:
   m_ObjectHideFlags: 0
