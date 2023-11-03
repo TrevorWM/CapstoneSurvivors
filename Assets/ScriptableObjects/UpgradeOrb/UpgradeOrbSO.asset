@@ -17,7 +17,7 @@ MonoBehaviour:
   rareWeight: 6
   legendaryWeight: 1
   minimumWeight: 1
-  passiveChance: 0.129
+  passiveChance: 0.65
   passiveUpgradeList:
   - {fileID: 6245891642149629093, guid: 06ca424f405ed3b4fa22c610749c3bbd, type: 3}
   - {fileID: 529743361393889229, guid: 207fcae2932676848bb9e975754fb578, type: 3}
