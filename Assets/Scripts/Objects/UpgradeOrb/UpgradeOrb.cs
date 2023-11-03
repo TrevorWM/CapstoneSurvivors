@@ -65,7 +65,7 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
 
         statUI.SetActive(true);
         PauseInfo stats = statUI.GetComponent<PauseInfo>();
-        stats.Enable(playerStats);
+        stats.ShowReducedStats(playerStats);
 
         float playerHealthPercent = (playerStats.CurrentHealth / playerStats.MaxHealth) * 100;
         bool rolledForPotion = false;

@@ -334,7 +334,7 @@ public class PlayerControls : MonoBehaviour
             DisablePlayerActions();
             Time.timeScale = 0.0f;
             pauseUI.SetActive(true);
-            pause.Enable(runtimeStats);
+            pause.ShowStats(runtimeStats);
         } 
         else if (pauseInput.WasPerformedThisFrame() && gamePaused)
         {

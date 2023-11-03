@@ -26,11 +26,18 @@ public class PauseInfo : MonoBehaviour
     [SerializeField]
     private GameObject critRateText;
 
-    public void Enable(CharacterStats stats)
+    public void ShowStats(CharacterStats stats)
     {
         playerStats = stats;
         playerStats.PrintStatSheet();
         DisplayStats();
+    }
+
+    public void ShowReducedStats(CharacterStats stats)
+    {
+        playerStats = stats;
+        playerStats.PrintStatSheet();
+        DisplayReducedStats();
     }
 
     private void DisplayStats()
@@ -52,6 +59,27 @@ public class PauseInfo : MonoBehaviour
         critDamText.GetComponent<TextMeshProUGUI>().text = "Critical Damage Multiplier: " + playerStats.CriticalDamageMultiplier * 100f + "% base damage";
 
         critRateText.GetComponent<TextMeshProUGUI>().text = "Critical Damage Chance: " + playerStats.CriticalChance + "%";
+    }
+
+    private void DisplayReducedStats()
+    {
+        damageText.GetComponent<TextMeshProUGUI>().text = "" + playerStats.BaseDamage;
+
+        rechargeText.GetComponent<TextMeshProUGUI>().text = playerStats.CooldownReduction * 100f + "%";
+
+        defenseText.GetComponent<TextMeshProUGUI>().text = playerStats.Defense +"";
+
+        speedText.GetComponent<TextMeshProUGUI>().text = playerStats.MoveSpeedModifier * 100f + "%";
+
+        fireText.GetComponent<TextMeshProUGUI>().text = playerStats.FireAffinity * 100f + "%";
+
+        waterText.GetComponent<TextMeshProUGUI>().text = playerStats.WaterAffinity * 100f + "%";
+
+        natureText.GetComponent<TextMeshProUGUI>().text = playerStats.NatureAffinity * 100f + "%";
+
+        critDamText.GetComponent<TextMeshProUGUI>().text = playerStats.CriticalDamageMultiplier * 100f + "%";
+
+        critRateText.GetComponent<TextMeshProUGUI>().text = playerStats.CriticalChance + "%";
     }
 
 }
