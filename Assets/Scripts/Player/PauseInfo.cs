@@ -50,11 +50,11 @@ public class PauseInfo : MonoBehaviour
 
         speedText.GetComponent<TextMeshProUGUI>().text = "Move Speed: " + playerStats.MoveSpeedModifier * 100f + "%";
 
-        fireText.GetComponent<TextMeshProUGUI>().text = "Fire Affinity: Fire abilities deal " + playerStats.FireAffinity * 100f + "% of base damage";
+        fireText.GetComponent<TextMeshProUGUI>().text = "Fire Affinity: Fire abilities deal +" + Mathf.Round(playerStats.FireAffinity * 100f - 100f) + "% damage";
 
-        waterText.GetComponent<TextMeshProUGUI>().text = "Water Affinity: Water abilities deal " + playerStats.WaterAffinity * 100f + "% of base damage";
+        waterText.GetComponent<TextMeshProUGUI>().text = "Water Affinity: Water abilities deal +" + Mathf.Round(playerStats.WaterAffinity * 100f - 100f) + "% damage";
 
-        natureText.GetComponent<TextMeshProUGUI>().text = "Nature Affinity: Nature abilities deal " + playerStats.NatureAffinity * 100f + "% of base damage";
+        natureText.GetComponent<TextMeshProUGUI>().text = "Nature Affinity: Nature abilities deal +" + Mathf.Round(playerStats.NatureAffinity * 100f - 100f) + "% damage";
 
         critDamText.GetComponent<TextMeshProUGUI>().text = "Critical Damage Multiplier: " + playerStats.CriticalDamageMultiplier * 100f + "% base damage";
 
@@ -63,19 +63,19 @@ public class PauseInfo : MonoBehaviour
 
     private void DisplayReducedStats()
     {
-        damageText.GetComponent<TextMeshProUGUI>().text = "" + playerStats.BaseDamage;
+        damageText.GetComponent<TextMeshProUGUI>().text = playerStats.BaseDamage + "";
 
-        rechargeText.GetComponent<TextMeshProUGUI>().text = playerStats.CooldownReduction * 100f + "%";
+        rechargeText.GetComponent<TextMeshProUGUI>().text = "+" + playerStats.CooldownReduction * 100f + "%";
 
-        defenseText.GetComponent<TextMeshProUGUI>().text = playerStats.Defense +"";
+        defenseText.GetComponent<TextMeshProUGUI>().text = playerStats.Defense + "";
 
         speedText.GetComponent<TextMeshProUGUI>().text = playerStats.MoveSpeedModifier * 100f + "%";
 
-        fireText.GetComponent<TextMeshProUGUI>().text = playerStats.FireAffinity * 100f + "%";
+        fireText.GetComponent<TextMeshProUGUI>().text = "+" + Mathf.Round(playerStats.FireAffinity * 100f - 100f) + "%";
 
-        waterText.GetComponent<TextMeshProUGUI>().text = playerStats.WaterAffinity * 100f + "%";
+        waterText.GetComponent<TextMeshProUGUI>().text = "+" + Mathf.Round(playerStats.WaterAffinity * 100f - 100f) + "%";
 
-        natureText.GetComponent<TextMeshProUGUI>().text = playerStats.NatureAffinity * 100f + "%";
+        natureText.GetComponent<TextMeshProUGUI>().text = "+" + Mathf.Round(playerStats.NatureAffinity * 100f - 100f) + "%";
 
         critDamText.GetComponent<TextMeshProUGUI>().text = playerStats.CriticalDamageMultiplier * 100f + "%";
 
