@@ -15,6 +15,9 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     [SerializeField]
     private GameObject playerFallback;
 
+    [SerializeField]
+    private GameObject statUI;
+
     private GameObject playerToUpgrade;
 
     public UpgradeMenu upgradeUI;
@@ -60,6 +63,10 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
         playerControls.enabled = false;
         Time.timeScale = 0.0f;
 
+        statUI.SetActive(true);
+        PauseInfo stats = statUI.GetComponent<PauseInfo>();
+        stats.Enable(playerStats);
+
         float playerHealthPercent = (playerStats.CurrentHealth / playerStats.MaxHealth) * 100;
         bool rolledForPotion = false;
 
@@ -92,6 +99,8 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     {
         upgradeUI.HideUpgradeMenu();
         Debug.Log("chosenUpgrade: " + chosenUpgrade);
+
+        statUI.SetActive(false);
 
         if (chosenUpgrade.Category == UpgradeCategory.Passive)
         {

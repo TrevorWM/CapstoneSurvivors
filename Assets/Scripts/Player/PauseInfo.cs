@@ -26,9 +26,9 @@ public class PauseInfo : MonoBehaviour
     [SerializeField]
     private GameObject critRateText;
 
-    private void OnEnable()
+    public void Enable(CharacterStats stats)
     {
-        playerStats = GetComponentInParent<CharacterStats>();
+        playerStats = stats;
         playerStats.PrintStatSheet();
         DisplayStats();
     }
