@@ -19,6 +19,9 @@ public class ShootProjectile : MonoBehaviour
     [SerializeField]
     private float projectileSpeed;
 
+    [SerializeField]
+    private bool alwaysUp = false;
+
     private CharacterStats characterStats;
     private ActiveAbilityBase activeAbility;
     private ActiveAbilitySO abilityStats;
@@ -67,7 +70,8 @@ public class ShootProjectile : MonoBehaviour
         if (shootFromMouse) projectile.transform.position = aimHelper.GetMousePosition();
         else projectile.transform.position = aimHelper.GetShootPosition();
 
-        projectile.transform.rotation = aimHelper.GetShootRotation();
+        if (alwaysUp) projectile.transform.rotation = Quaternion.Euler(0, 0, 0);
+        else projectile.transform.rotation = aimHelper.GetShootRotation();
         Vector2 shootDirection = aimHelper.GetShootDirection();
 
         BuildAttackPayload();
