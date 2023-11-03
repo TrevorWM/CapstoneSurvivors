@@ -60,6 +60,8 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     public CharacterStatsSO EnemyStats { get => enemyStats; private set => enemyStats = value; }
     public bool StopMoving { get => stopMoving; set => stopMoving = value; }
 
+    public AIData AIData { get => aiData; }
+
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -185,6 +187,11 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         {
             // getting movement direction
             movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aiData);
+        }
+
+        if (aiData.IsConfused)
+        {
+            movementInput *= movementDirectionSolver.GetRandomMoveDirection();
         }
 
         if (enemyRigidbody && movementInput != null)

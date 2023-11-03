@@ -50,23 +50,20 @@ public abstract class ProjectileBase : MonoBehaviour
 
     private void Update()
     {
-        transform.position += shootDirection * projectileSpeed * Time.deltaTime;
+        if (projectileSpeed > 0) transform.position += shootDirection * projectileSpeed * Time.deltaTime;
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Uses a bitshift and bitwise and in order to see if the object being
-        // hit is in the layermask that the projectile is looking at.
-        // Info from https://discussions.unity.com/t/check-if-colliding-with-a-layer/145616/2 User: Krnitheesh16
-        if (collisionCollider.IsTouchingLayers(collisionLayers))
-        {
-            CollisionColliderLogic(collision);
-        }
-
         if (damageCollider.IsTouchingLayers(damageLayers))
         {
             DamageColliderLogic(collision);
+        }
+
+        if (collisionCollider.IsTouchingLayers(collisionLayers))
+        {
+            CollisionColliderLogic(collision);
         }
 
         

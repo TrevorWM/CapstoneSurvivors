@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatingDamagePrefab: {fileID: 5765215981924090144, guid: 0f63be08d2b820c49b1f51513c5ea9d8, type: 3}
+  despawnTime: 2
   elementInfo: {fileID: 11400000, guid: 424812d20161c0d49b233ce520a77d3a, type: 2}
   textPoolSize: 5
   testSpawner: 0

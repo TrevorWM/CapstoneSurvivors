@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d86edda9212d1348bb72be6aca1589e, type: 3}
+  m_Name: BeeSwarmSO
+  m_EditorClassIdentifier: 
+  abilityName: Bee Swarm
+  abilityDescription: Drop a bee hive on your enemies dealing damage and confusing
+    them!
+  abilityIcon: {fileID: 21300000, guid: 3f21324890220d443a23c3d15c1ab4b0, type: 3}
+  abilityCooldown: 10
+  dotTime: 0
+  projectileSpeed: 0
+  abilityElement: 1
+  commonDamageModifier: 0.3
+  uncommonDamageModifier: 0.5
+  rareDamageModifier: 0.7
+  legendaryDamageModifier: 1
+  hinderanceType: 0
+  effectTime: 5
+  description: Drop a bee hive on your enemies dealing damage and confusing them!

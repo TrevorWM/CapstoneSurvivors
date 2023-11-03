@@ -120,6 +120,7 @@ MonoBehaviour:
   targets: []
   obstacles: []
   currentTarget: {fileID: 0}
+  isConfused: 0
 --- !u!114 &6190118244469720244
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -72,6 +72,7 @@ public class ShootProjectile : MonoBehaviour
 
         if (alwaysUp) projectile.transform.rotation = Quaternion.Euler(0, 0, 0);
         else projectile.transform.rotation = aimHelper.GetShootRotation();
+        
         Vector2 shootDirection = aimHelper.GetShootDirection();
 
         BuildAttackPayload();

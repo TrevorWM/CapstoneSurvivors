@@ -12,5 +12,24 @@ public class AIData : MonoBehaviour
     // current target to follow
     public Transform currentTarget;
 
+    [SerializeField]
+    private bool isConfused = false;
+
+    public bool IsConfused { get => isConfused; }
+
     public int GetTargetsCount() => targets == null ? 0 : targets.Count;
+    public void ConfuseEnemy(float duration)
+    {
+        if (!isConfused)
+        {
+            isConfused = true;
+            StartCoroutine(EndConfusion(duration));
+        }
+    }
+
+    private IEnumerator EndConfusion(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isConfused = false;
+    }
 }
