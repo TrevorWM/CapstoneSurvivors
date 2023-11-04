@@ -292,7 +292,7 @@ public class PlayerControls : MonoBehaviour
                     
                     float abilityCooldown = ability.ActiveAbilitySO.AbilityCooldown;
                     float cooldownReduction = abilityCooldown * runtimeStats.CooldownReduction;
-                    float clampedCooldown = Mathf.Max(0.01f, (abilityCooldown - cooldownReduction));
+                    float clampedCooldown = Mathf.Max(0.1f, (abilityCooldown - cooldownReduction));
 
                     ability.GetComponent<ShootProjectile>().Attack();
 

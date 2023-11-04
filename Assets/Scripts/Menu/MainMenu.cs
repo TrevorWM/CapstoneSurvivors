@@ -17,13 +17,14 @@ public class MainMenu : MonoBehaviour
         MusicPlayer.Instance.PlayMainMenuMusic();
 
 
-#if UNITY_WEBGL
+#if !UNITY_EDITOR
         Debug.unityLogger.logEnabled = false;
         settingsButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
 #endif
 
 #if UNITY_STANDALONE
+        quitButton.gameObject.SetActive(true);
         quitButton.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
 #endif
     }
@@ -36,6 +37,7 @@ public class MainMenu : MonoBehaviour
 
     public void QuitButtonPressed()
     {
+        SoundEffectPlayer.Instance.MenuSelectSound();
         Debug.Log("Quitting game");
         Application.Quit();
     }

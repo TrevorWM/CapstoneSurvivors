@@ -56,9 +56,16 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
     private Hinderance currentHinderance;
 
+    //Confusion stuff
+    Vector2 inputModifier;
+    private bool confused = false;
+    private bool changeDirection = true;
+
 
     public CharacterStatsSO EnemyStats { get => enemyStats; private set => enemyStats = value; }
     public bool StopMoving { get => stopMoving; set => stopMoving = value; }
+
+    public AIData AIData { get => aiData; }
 
     private void Awake()
     {
@@ -175,7 +182,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
 
     private void HandleMovement()
-    {
+    {        
         if (runAway)
         {
             // make them run a bit faster cause the speed is wonky
@@ -185,6 +192,19 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         {
             // getting movement direction
             movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aiData);
+        }
+
+        if (confused && changeDirection)
+        {
+            inputModifier = movementDirectionSolver.GetRandomMoveDirection();
+            StartCoroutine(ChangeConfuseDirection());
+            changeDirection = false;
+            movementInput *= inputModifier;
+        }
+        else if (confused)
+        {
+            movementInput *= inputModifier;
+            
         }
 
         if (enemyRigidbody && movementInput != null)
@@ -267,7 +287,12 @@ public class BasicEnemy : MonoBehaviour, IDamageable
                 stopped = true;
                 spriteRenderer.color = new Color(.61f,.46f,29f,1f);
                 StartCoroutine(StopTimer(payload.EffectTime));
-            } else // else just do normal hurt stuff
+            } else if (payload.Hinderance == Hinderance.Confuse)
+            {
+                confused = true;
+                StartCoroutine(ConfusionTimer(payload.EffectTime));
+            }
+            else // else just do normal hurt stuff
             {
                 flashSprite.HitFlash(spriteRenderer);
             }
@@ -294,6 +319,19 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         stopped = false;
         spriteRenderer.color = Color.white;
         currentHinderance = Hinderance.None;
+    }
+
+    IEnumerator ConfusionTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        confused = false;
+        currentHinderance = Hinderance.None;
+    }
+
+    IEnumerator ChangeConfuseDirection()
+    {
+        yield return new WaitForSeconds(0.5f);
+        changeDirection = true;
     }
 
     private void OnDeath()

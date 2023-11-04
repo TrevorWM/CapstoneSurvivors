@@ -47,7 +47,9 @@ public class UpgradeOrb : MonoBehaviour, IInteractable
     {
         if (playerToUpgrade == null)
         {
-
+            playerToUpgrade = playerFallback;
+            playerStats = playerToUpgrade.GetComponent<CharacterStats>();
+            playerControls = playerToUpgrade.GetComponent<PlayerControls>();
         }
         
         orbUsed?.Invoke();

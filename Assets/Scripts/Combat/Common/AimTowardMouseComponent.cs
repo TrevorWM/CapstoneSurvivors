@@ -32,4 +32,18 @@ public class AimTowardsMouseComponent : MonoBehaviour
 
         shootPosTransform.rotation = Quaternion.Euler(0, 0, angle);
     }
+
+    public Vector2 GetMousePosition()
+    {
+        Vector2 currentPosition = new Vector2(shootPosTransform.position.x, shootPosTransform.position.y);
+
+        // Gets the world position of the mouse
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        RaycastHit2D wallCheck = Physics2D.Raycast(transform.position, (mousePosition - currentPosition), Mathf.Abs(Vector2.Distance(mousePosition, currentPosition)), LayerMask.GetMask("Obstacle"));
+
+        if (wallCheck) return currentPosition;
+        
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
 }
