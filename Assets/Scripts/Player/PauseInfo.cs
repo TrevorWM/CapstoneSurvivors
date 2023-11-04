@@ -48,7 +48,7 @@ public class PauseInfo : MonoBehaviour
 
         defenseText.GetComponent<TextMeshProUGUI>().text = "Defense: Reduce all damage taken by " + playerStats.Defense + " damage";
 
-        speedText.GetComponent<TextMeshProUGUI>().text = "Move Speed: " + playerStats.MoveSpeedModifier * 100f + "%";
+        speedText.GetComponent<TextMeshProUGUI>().text = "Move Speed: +" + Mathf.Round(playerStats.MoveSpeedModifier * 100f - 100) + "%";
 
         fireText.GetComponent<TextMeshProUGUI>().text = "Fire Affinity: Fire abilities deal +" + Mathf.Round(playerStats.FireAffinity * 100f - 100f) + "% damage";
 
@@ -56,7 +56,7 @@ public class PauseInfo : MonoBehaviour
 
         natureText.GetComponent<TextMeshProUGUI>().text = "Nature Affinity: Nature abilities deal +" + Mathf.Round(playerStats.NatureAffinity * 100f - 100f) + "% damage";
 
-        critDamText.GetComponent<TextMeshProUGUI>().text = "Critical Damage Multiplier: " + playerStats.CriticalDamageMultiplier * 100f + "% base damage";
+        critDamText.GetComponent<TextMeshProUGUI>().text = "Critical Damage: +" + Mathf.Round(playerStats.CriticalDamageMultiplier * 100f - 100) + "% damage";
 
         critRateText.GetComponent<TextMeshProUGUI>().text = "Critical Damage Chance: " + playerStats.CriticalChance + "%";
     }
@@ -69,7 +69,7 @@ public class PauseInfo : MonoBehaviour
 
         defenseText.GetComponent<TextMeshProUGUI>().text = playerStats.Defense + "";
 
-        speedText.GetComponent<TextMeshProUGUI>().text = playerStats.MoveSpeedModifier * 100f + "%";
+        speedText.GetComponent<TextMeshProUGUI>().text = "+" + Mathf.Round(playerStats.MoveSpeedModifier * 100f - 100) + "%";
 
         fireText.GetComponent<TextMeshProUGUI>().text = "+" + Mathf.Round(playerStats.FireAffinity * 100f - 100f) + "%";
 
@@ -77,7 +77,7 @@ public class PauseInfo : MonoBehaviour
 
         natureText.GetComponent<TextMeshProUGUI>().text = "+" + Mathf.Round(playerStats.NatureAffinity * 100f - 100f) + "%";
 
-        critDamText.GetComponent<TextMeshProUGUI>().text = playerStats.CriticalDamageMultiplier * 100f + "%";
+        critDamText.GetComponent<TextMeshProUGUI>().text = "+" + Mathf.Round(playerStats.CriticalDamageMultiplier * 100f - 100) + "%";
 
         critRateText.GetComponent<TextMeshProUGUI>().text = playerStats.CriticalChance + "%";
     }
