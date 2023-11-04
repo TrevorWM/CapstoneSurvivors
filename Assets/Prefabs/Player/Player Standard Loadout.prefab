@@ -1398,7 +1398,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d468451ba2ef4de41ad0e5c2f640729a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a3c0cb22ba5d9d4abc891d18537ecda, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3323,7 +3323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d468451ba2ef4de41ad0e5c2f640729a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a3c0cb22ba5d9d4abc891d18537ecda, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3956,7 +3956,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d468451ba2ef4de41ad0e5c2f640729a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a3c0cb22ba5d9d4abc891d18537ecda, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4563,7 +4563,6 @@ GameObject:
   - component: {fileID: 7831794182756457449}
   - component: {fileID: 4801694858583658517}
   - component: {fileID: 6995238578291998644}
-  - component: {fileID: 7541953461940859342}
   m_Layer: 0
   m_Name: PauseUI
   m_TagString: Untagged
@@ -4657,38 +4656,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7541953461940859342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5566959166037620504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f870cfc01dc36a4b99dcc4f8cc959e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  purpleCommon: {fileID: 21300000, guid: c52eb877e5bc8d24cad9c684c28ddbce, type: 3}
-  purpleUncommon: {fileID: 21300000, guid: 3a5cc5cc0ffcd0f4e93406de2dd0a7c9, type: 3}
-  purpleRare: {fileID: 21300000, guid: 2f6def96747e81846a2c31672b48927d, type: 3}
-  purpleLegendary: {fileID: 21300000, guid: c79fc16d35c6f78488261ef7ce880e76, type: 3}
-  redCommon: {fileID: 21300000, guid: 710b15350ff32824daa0c14754516fa2, type: 3}
-  redUncommon: {fileID: 21300000, guid: f5d1d92457a31ec4283d7ec5b77222ff, type: 3}
-  redRare: {fileID: 21300000, guid: 1dc645aa400893e4aaf44a64cabb911d, type: 3}
-  redLegendary: {fileID: 21300000, guid: 14da8144407d77f4f8f6630885c82d49, type: 3}
-  portals:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  texts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  statImages:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &5585605804498227271
 GameObject:
   m_ObjectHideFlags: 0
@@ -6309,10 +6276,10 @@ MonoBehaviour:
   QBackground: {fileID: 2022045400470548398}
   RMBBackground: {fileID: 4183093052754754739}
   EBackground: {fileID: 4932360336079133598}
-  CommonBackground: {fileID: 21300000, guid: a8aee94b8b76bec4c84e9c9d17112719, type: 3}
-  UncommonBackground: {fileID: 21300000, guid: 04d14ba1c13c63d47886ffd29c36d296, type: 3}
-  RareBackground: {fileID: 21300000, guid: 6e732e7bb2f10204697422f7ecc11740, type: 3}
-  LegendaryBackground: {fileID: 21300000, guid: b44d82882f41014468dabc0c34f1acfc, type: 3}
+  CommonBackground: {fileID: 21300000, guid: ee8cb0d0ba87ea04b977192ed022375e, type: 3}
+  UncommonBackground: {fileID: 21300000, guid: c487e7cf8bbbf8949bbd02157bec9361, type: 3}
+  RareBackground: {fileID: 21300000, guid: d67512cac5e56f24d93a43c28c6c1e62, type: 3}
+  LegendaryBackground: {fileID: 21300000, guid: c04f13a7a90345441bd7167f56c2190f, type: 3}
   QAbility: {fileID: 4994514907252015179}
   RMBAbility: {fileID: 4292540222013369575}
   EAbility: {fileID: 9126708795102525746}

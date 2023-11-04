@@ -16,6 +16,7 @@ public class PlayerControls : MonoBehaviour
 
     [SerializeField]
     private GameObject pauseUI;
+    private PauseInfo pause;
 
     [SerializeField]
     private SetAbilityUI setAbilityUI;
@@ -89,6 +90,7 @@ public class PlayerControls : MonoBehaviour
         MusicPlayer.Instance.PlayLevel1Music();
         playerHurtbox = GetComponentInChildren<Hurtbox>();
         playerCollider = GetComponent<CircleCollider2D>();
+        pause = pauseUI.GetComponentInChildren<PauseInfo>();
     }
 
     private void OnEnable()
@@ -332,6 +334,7 @@ public class PlayerControls : MonoBehaviour
             DisablePlayerActions();
             Time.timeScale = 0.0f;
             pauseUI.SetActive(true);
+            pause.ShowStats(runtimeStats);
         } 
         else if (pauseInput.WasPerformedThisFrame() && gamePaused)
         {
