@@ -11,6 +11,8 @@ public class BeeSwarmBase : ActiveAbilityBase
     {
         base.InitializeRarityBasedStats(rolledUpgradeRarity);
         EffectTime = this.ActiveAbilitySO.EffectTime;
+        dotTime = (int)this.ActiveAbilitySO.EffectTime;
+        
     }
 
     private void OnEnable()

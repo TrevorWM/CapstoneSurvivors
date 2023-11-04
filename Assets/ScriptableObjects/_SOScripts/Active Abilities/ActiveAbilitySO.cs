@@ -82,4 +82,5 @@ public enum Hinderance
     None = 0,
     Slow = 1,
     Stop = 2,
+    Confuse = 3,
 }

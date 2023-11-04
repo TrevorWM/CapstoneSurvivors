@@ -33,7 +33,6 @@ public class BeeSwarmOnHit : OnHitEffect, IDamager
                 GameObject bees = Instantiate(beesPrefab, enemy.transform);
                 DespawnAfterTime beeDespawn = bees.GetComponent<DespawnAfterTime>();
                 beeDespawn.StartTimer(effectTime);
-                enemy.AIData.ConfuseEnemy(effectTime);
             }
         }
     }

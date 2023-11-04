@@ -46,7 +46,12 @@ public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
         } else if (h == Hinderance.Stop)
         {
             speedReduction = 0.01f;
-        } else
+        } 
+        else if (h == Hinderance.Confuse)
+        {
+            direction *= GetRandomMoveDirection();
+        }
+        else
         {
             speedReduction = 1f;
         }
@@ -97,5 +102,26 @@ public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
         return;
     }
 
+    private Vector2 GetRandomMoveDirection()
+    {
+        float[] interest = new float[8];
 
+        for (int i = 0; i < 8; i++)
+        {
+            interest[i] = Random.Range(0f, 1f);
+        }
+
+        //get the average direction
+        Vector2 outputDirection = Vector2.zero;
+
+        for (int i = 0; i < 8; i++)
+        {
+            outputDirection += Directions.eightDirections[i] * interest[i];
+        }
+
+        outputDirection.Normalize();
+
+        //return the selected movement direction
+        return outputDirection;
+    }
 }
