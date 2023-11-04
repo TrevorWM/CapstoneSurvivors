@@ -24,6 +24,6 @@ MonoBehaviour:
   uncommonDamageModifier: 0.5
   rareDamageModifier: 0.7
   legendaryDamageModifier: 1
-  hinderanceType: 0
+  hinderanceType: 3
   effectTime: 5
   description: Drop a bee hive on your enemies dealing damage and confusing them!
