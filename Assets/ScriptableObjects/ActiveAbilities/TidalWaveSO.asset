@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d86edda9212d1348bb72be6aca1589e, type: 3}
+  m_Name: TidalWaveSO
+  m_EditorClassIdentifier: 
+  abilityName: Tidal Wave
+  abilityDescription: Create a wave that pushes enemies back and damages them
+  abilityIcon: {fileID: 21300000, guid: f586230899dc94549bffd1e61890ded6, type: 3}
+  abilityCooldown: 5
+  dotTime: 0
+  projectileSpeed: 5
+  abilityElement: 2
+  commonDamageModifier: 0.4
+  uncommonDamageModifier: 0.6
+  rareDamageModifier: 0.8
+  legendaryDamageModifier: 1.1
+  hinderanceType: 0
+  effectTime: 0
+  description: 

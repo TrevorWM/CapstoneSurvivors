@@ -11,10 +11,16 @@ public class ShootProjectile : MonoBehaviour
     private AimTowardsMouseComponent aimHelper;
 
     [SerializeField]
+    private bool shootFromMouse = false;
+
+    [SerializeField]
     private ProjectilePool projectilePool;
 
     [SerializeField]
     private float projectileSpeed;
+
+    [SerializeField]
+    private bool alwaysUp = false;
 
     private CharacterStats characterStats;
     private ActiveAbilityBase activeAbility;
@@ -60,8 +66,13 @@ public class ShootProjectile : MonoBehaviour
         ProjectileBase projectile = projectilePool.GetProjectile();
         
         aimHelper.UpdateAimTowardsMouse();
-        projectile.transform.position = aimHelper.GetShootPosition();
-        projectile.transform.rotation = aimHelper.GetShootRotation();
+
+        if (shootFromMouse) projectile.transform.position = aimHelper.GetMousePosition();
+        else projectile.transform.position = aimHelper.GetShootPosition();
+
+        if (alwaysUp) projectile.transform.rotation = Quaternion.Euler(0, 0, 0);
+        else projectile.transform.rotation = aimHelper.GetShootRotation();
+        
         Vector2 shootDirection = aimHelper.GetShootDirection();
 
         BuildAttackPayload();

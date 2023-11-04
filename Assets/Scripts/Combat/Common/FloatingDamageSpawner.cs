@@ -8,6 +8,8 @@ public class FloatingDamageSpawner : MonoBehaviour
     [SerializeField]
     private GameObject floatingDamagePrefab;
 
+    private float despawnTime = .5f;
+
     [SerializeField]
     private ElementInfoSO elementInfo;
 
@@ -102,6 +104,7 @@ public class FloatingDamageSpawner : MonoBehaviour
                 
                 currentTextInstance.transform.position = RandomizeSpawnPosition(spawnTransform);
                 currentTextInstance.SetActive(true);
+                currentTextInstance.GetComponent<DespawnAfterTime>().StartTimer(despawnTime);
                 textIndex = (textIndex + 1) % textPoolSize;
             }
         }

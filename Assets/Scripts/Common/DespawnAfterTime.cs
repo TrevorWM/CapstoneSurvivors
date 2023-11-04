@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class DespawnAfterTime : MonoBehaviour
 {
-
-    [SerializeField]
     private float objectLifetime;
+    public float ObjectLifetime { get => objectLifetime; set => objectLifetime = value; }
 
     private void OnValidate()
     {
-        objectLifetime = Mathf.Max(0.1f, objectLifetime);
+        ObjectLifetime = Mathf.Max(0.1f, ObjectLifetime);
     }
 
-    private void OnEnable()
+    public void StartTimer(float duration)
     {
+        objectLifetime = duration;
         StartCoroutine(Despawn());
     }
 
     private IEnumerator Despawn()
     {
-        yield return new WaitForSeconds(objectLifetime);
+        yield return new WaitForSeconds(ObjectLifetime);
         this.gameObject.SetActive(false);
     }
 }
