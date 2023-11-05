@@ -45,7 +45,6 @@ public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
         while (chargeFade.color.a < 1)
         {
             alpha += Time.deltaTime;
-            Debug.Log("Color:" + alpha);
             chargeFade.color = new(1f, 1f, 1f, alpha);
             yield return null;
         }
