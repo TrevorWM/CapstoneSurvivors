@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
   m_Name: SpearChargerSO
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  maxHealth: 60
   defense: 0
   moveSpeed: 4
   baseDamage: 35
