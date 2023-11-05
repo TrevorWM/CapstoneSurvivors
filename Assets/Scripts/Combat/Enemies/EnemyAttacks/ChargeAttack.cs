@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
@@ -10,6 +11,8 @@ public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
     private LayerMask hitLayers;
     [SerializeField]
     private Collider2D attackCollider;
+    [SerializeField]
+    private SpriteRenderer chargeFade;
    
     private BasicEnemy ownerScript;
     private AttackPayload attackPayload;
@@ -29,9 +32,24 @@ public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
     private IEnumerator ChargeUp()
     {
         Debug.Log("ChargingUp");
+        if (chargeFade != null)
+            StartCoroutine(FadeSprite());
         yield return new WaitForSeconds(0.75f);
         Debug.Log("Attacking");
         StartCoroutine(Charge());
+    }
+
+    IEnumerator FadeSprite()
+    {
+        float alpha = 0f;
+        while (chargeFade.color.a < 1)
+        {
+            alpha += Time.deltaTime;
+            Debug.Log("Color:" + alpha);
+            chargeFade.color = new(1f, 1f, 1f, alpha);
+            yield return null;
+        }
+        yield return null;
     }
 
     private IEnumerator Charge()
@@ -58,11 +76,15 @@ public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
         //charge at player
         enemyRigidbody.velocity = direction * enemyStats.MoveSpeed * 6.0f * speedReduction;
         attackCollider.enabled = true;
-        
+
         yield return new WaitForSeconds(0.75f);
         attackCollider.enabled = false;
         
         ownerScript.StopMoving = false;
+        
+        if (chargeFade != null)
+            chargeFade.color = new(1f, 1f, 1f, 0f);
+
     }
 
     public void Initialize(CharacterStatsSO stats, UpgradeRarity rarity = UpgradeRarity.Common)
@@ -108,7 +130,7 @@ public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
 
         for (int i = 0; i < 8; i++)
         {
-            interest[i] = Random.Range(0f, 1f);
+            interest[i] = UnityEngine.Random.Range(0f, 1f);
         }
 
         //get the average direction

@@ -21,8 +21,6 @@ public class PointAtPlayer : MonoBehaviour
         {
             // Calculate the rotation angle
             angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            
-            Debug.Log("angle: " + angle);
 
             // Apply the rotation
             transform.rotation = Quaternion.AngleAxis(angle -45f, Vector3.forward);
