@@ -120,11 +120,11 @@ public class PlayerControls : MonoBehaviour
 
         if (moveVector == Vector2.zero)
         {
-            animator.Play("Still");
+            animator.SetBool("IsMoving", false);
         }
         else
         {
-            animator.Play("Walk");
+            animator.SetBool("IsMoving", true);
         }
 
         if (moveVector.x > 0)
