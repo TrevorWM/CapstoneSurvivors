@@ -330,7 +330,6 @@ public class CharacterStats : MonoBehaviour, IDamageable
             
             if (this.gameObject.layer == LayerMask.NameToLayer("Player") && !invincibleAfterHit)
             {
-                animator.SetBool("IsHurting", true);
                 invincibleAfterHit = true;
                 StartCoroutine(DisableInvincibility(0.5f));
                 
@@ -342,9 +341,11 @@ public class CharacterStats : MonoBehaviour, IDamageable
 
     private IEnumerator DisableInvincibility(float duration)
     {
-        yield return new WaitForSeconds(duration * .5f);
-        animator.SetBool("IsHurting", false);
-        yield return new WaitForSeconds(duration * .5f);
+        for (int i = 1; i < 11; i++)
+        {
+            yield return new WaitForSeconds(duration * (1/i));
+            flashSprite.HitFlash(spriteRenderer);
+        }
         invincibleAfterHit = false;
     }
 
