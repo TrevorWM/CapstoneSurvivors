@@ -220,7 +220,7 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 1
     m_Data: {r: 1, g: 1, b: 1, a: 1}
-  - m_RefCount: 0
+  - m_RefCount: 1
     m_Data: {r: 1.25814e-40, g: 1.25814e-40, b: 1.25814e-40, a: 1.25814e-40}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -5015,6 +5015,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1433461670688151630, guid: 9d9be0fb98009c24ba041eb1b9e3b967, type: 3}
+      propertyPath: attack
+      value: 
+      objectReference: {fileID: 8797331646011887251, guid: 08fb35e51c6a8a44aba7e12ea3e03c23, type: 3}
     - target: {fileID: 1433461670688151630, guid: 9d9be0fb98009c24ba041eb1b9e3b967, type: 3}
       propertyPath: enemyDeath.m_PersistentCalls.m_Calls.Array.size
       value: 1
