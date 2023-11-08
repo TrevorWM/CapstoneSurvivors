@@ -34,4 +34,4 @@ MonoBehaviour:
   characterSprite: {fileID: 0}
   weaponSprite: {fileID: 0}
   rightFacingSprite: 1
-  overrideVisuals: 0
+  overrideVisuals: 1
