@@ -409,6 +409,7 @@ MonoBehaviour:
   hitLayers:
     serializedVersion: 2
     m_Bits: 8
+  angleOffset: -45
 --- !u!1 &3315909187273909747
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,6 +727,7 @@ MonoBehaviour:
   hitLayers:
     serializedVersion: 2
     m_Bits: 8
+  angleOffset: -45
 --- !u!95 &8225760145269441527
 Animator:
   serializedVersion: 5

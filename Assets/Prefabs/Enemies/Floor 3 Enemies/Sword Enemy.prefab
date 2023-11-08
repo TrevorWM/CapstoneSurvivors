@@ -526,6 +526,7 @@ MonoBehaviour:
   hitLayers:
     serializedVersion: 2
     m_Bits: 8
+  angleOffset: -45
 --- !u!95 &4955553302931479181
 Animator:
   serializedVersion: 5
