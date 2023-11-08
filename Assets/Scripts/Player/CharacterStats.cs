@@ -89,7 +89,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
     public float MoveSpeedModifier
     {
         get => moveSpeedModifier;
-        set => moveSpeedModifier = Mathf.Max(1, value);
+        set => moveSpeedModifier = Mathf.Clamp(value, 1f,4f);
     }
     public float BaseDamage
     {
