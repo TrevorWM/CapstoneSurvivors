@@ -140,9 +140,14 @@ public class DemonDoor : MonoBehaviour, IDamageable
         int randomPosition = Random.Range(0, bossShootPositions.Length);
         StartCoroutine(ShootRotation(bossShootPositions[randomPosition], 20f, 360f));
         yield return new WaitForSeconds(1f);
-        
 
-        if (runtimeHP > bossStats.MaxHealth/2)
+        //Another random pillar shoots a circle
+        randomPosition = Random.Range(0, bossShootPositions.Length);
+        StartCoroutine(ShootRotation(bossShootPositions[randomPosition], 20f, 360f));
+        yield return new WaitForSeconds(1f);
+
+
+        if (runtimeHP > bossStats.MaxHealth * 0.65)
         {
             StartCoroutine(PhaseOne());
         }

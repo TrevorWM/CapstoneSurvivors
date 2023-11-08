@@ -16,7 +16,7 @@ MonoBehaviour:
   defense: 0
   moveSpeed: 5.05
   baseDamage: 10
-  attacksPerSecond: 15
+  attacksPerSecond: 2
   criticalChance: 2
   criticalDamageMultiplier: 2
   characterElement: 3
