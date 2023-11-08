@@ -30,7 +30,9 @@ public class FirstLich : MonoBehaviour, IDamageable
     private Transform player;
     private bool fightStarted = false;
     private bool phaseOneSpawn = false;
-    private bool phaseTwoSpawn = false;
+    private bool phaseTwoSpawn1 = false;
+    private bool phaseTwoSpawn2 = false;
+    private bool phaseTwoSpawn3 = false;
 
     public UnityEvent bossSpawned;
     public UnityEvent bossDeath;
@@ -96,7 +98,7 @@ public class FirstLich : MonoBehaviour, IDamageable
         foreach (IEnemyAttack attack in enemyAttacks)
         {
             attack.DoAttack(bossStats, GetDirectionToPlayer());
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
         this.transform.position = teleportPositions[UnityEngine.Random.Range(0, teleportPositions.Length)].position;
 
@@ -127,7 +129,7 @@ public class FirstLich : MonoBehaviour, IDamageable
 
         this.transform.position = teleportPositions[newPosition].position;
         lastPosition = newPosition;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.75f);
         ShootThreeTowardsPlayer(0);
         yield return new WaitForSeconds(1f);
 
@@ -135,7 +137,7 @@ public class FirstLich : MonoBehaviour, IDamageable
 
         this.transform.position = teleportPositions[newPosition].position;
         lastPosition = newPosition;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.75f);
         ShootThreeTowardsPlayer(1);
         yield return new WaitForSeconds(1f);
         
@@ -143,20 +145,34 @@ public class FirstLich : MonoBehaviour, IDamageable
 
         this.transform.position = teleportPositions[newPosition].position;
         lastPosition = newPosition;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.75f);
         ShootThreeTowardsPlayer(2);
 
-        if (runtimeHP < (bossStats.MaxHealth * 0.33f) && !phaseTwoSpawn)
+        if (runtimeHP < (bossStats.MaxHealth * 0.4f) && !phaseTwoSpawn1)
         {
             spawnMonster?.Invoke(phaseTwoAdd);
-            phaseTwoSpawn = true;
-            yield return new WaitForSeconds(5f);
+            phaseTwoSpawn1 = true;
+            yield return new WaitForSeconds(4f);
+        }
+        else if (runtimeHP < (bossStats.MaxHealth * 0.25f) && !phaseTwoSpawn2)
+        {
+            spawnMonster?.Invoke(phaseTwoAdd);
+            phaseTwoSpawn2 = true;
+            yield return new WaitForSeconds(4f);
+        }
+        else if (runtimeHP < (bossStats.MaxHealth * 0.1f) && !phaseTwoSpawn3)
+        {
+            spawnMonster?.Invoke(phaseTwoAdd);
+            phaseTwoSpawn3 = true;
+            yield return new WaitForSeconds(4f);
         }
         else
         {
-            phaseTwoSpawn = false;
+            phaseTwoSpawn1 = false;
+            phaseTwoSpawn2 = false;
+            phaseTwoSpawn3 = false;
         }
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
 
         StartCoroutine(PhaseTwo());
