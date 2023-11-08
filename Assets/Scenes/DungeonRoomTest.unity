@@ -463,6 +463,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: BonusRoomPool.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3RoomPool.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: bossRoomPool.Array.data[0]
       value: 
       objectReference: {fileID: 509820833389698090, guid: 1e9257e0246540d419f346e1c8b91c06, type: 3}
@@ -471,17 +479,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 796854714157457264, guid: e79bf95b19eda874198d0fa3dd3f3d1f, type: 3}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: BonusRoomPool.Array.data[1]
+      value: 
+      objectReference: {fileID: 5807390494452671454, guid: 661093d2d5d02de438fd39f9b8a6959a, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3RoomPool.Array.data[0]
+      value: 
+      objectReference: {fileID: 796854714157457264, guid: 838fad9085c056847915d13bc4d84488, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: tutorialRoomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 1373664824061508511, guid: 8dab2cc4bb0e7834789cb4269d72560d, type: 3}
+      objectReference: {fileID: 5807390494452671454, guid: e156c73cb6617ea4ab04867e57366647, type: 3}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: level2TutorialRoomPool.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3TutorialRoomPool.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: level2TutorialRoomPool.Array.data[0]
       value: 
       objectReference: {fileID: 796854714157457264, guid: ef2ae68476b5a99459b7c4bb4cc72942, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3TutorialRoomPool.Array.data[0]
+      value: 
+      objectReference: {fileID: 796854714157457264, guid: 1e3b707c02bf35845af5da573fe77264, type: 3}
     - target: {fileID: 7800590222984004608, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.3659093

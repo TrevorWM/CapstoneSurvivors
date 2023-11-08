@@ -48,6 +48,8 @@ MonoBehaviour:
   player: {fileID: 6204503042473553551, guid: bd3adebf8a0cd8744841d781e8ad55a5, type: 3}
   upgradeOrb: {fileID: 9000103055329027066, guid: 491ac0a17f645574da1f74e971f3bc39, type: 3}
   roomsBeforeBoss: 10
+  roomCount: 0
+  floorCount: 0
   tutorialRoomPool:
   - {fileID: 5807390494452671454, guid: e156c73cb6617ea4ab04867e57366647, type: 3}
   - {fileID: 5807390494452671454, guid: ef16ae15f0bae6a428e05341dd4cd29a, type: 3}
@@ -60,6 +62,7 @@ MonoBehaviour:
   - {fileID: 5807390494452671454, guid: d1653035036b74b42b7f78a9a813427f, type: 3}
   - {fileID: 5807390494452671454, guid: 9f9584bb368a0a84c800a103abd38d39, type: 3}
   - {fileID: 5807390494452671454, guid: 945891e58442a2c44b3703d1a7594f58, type: 3}
+  level2TutorialRoomPool: []
   level2RoomPool:
   - {fileID: 796854714157457264, guid: c2adb74773073644fa0dffb66b796d35, type: 3}
   - {fileID: 1347683731657093086, guid: f78d662f53bfa014f945e822316afcc6, type: 3}

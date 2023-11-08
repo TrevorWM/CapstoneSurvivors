@@ -41,6 +41,12 @@ public class RoomManager : MonoBehaviour
     private GameObject[] level2RoomPool;
 
     [SerializeField, SerializeReference]
+    private GameObject[] level3TutorialRoomPool;
+
+    [SerializeField, SerializeReference]
+    private GameObject[] level3RoomPool;
+
+    [SerializeField, SerializeReference]
     private GameObject[] bossRoomPool;
 
     [SerializeField, SerializeReference]
@@ -52,6 +58,7 @@ public class RoomManager : MonoBehaviour
     private int previousRoomIndex;
     private bool tutorial1Complete = false;
     private bool tutorial2Complete = false;
+    private bool tutorial3Complete = false;
 
     private GameObject currentPlayer;
     private GameObject currentUpgradeOrb;
@@ -178,12 +185,21 @@ public class RoomManager : MonoBehaviour
             }
             return nextRoom;
         }
+        if (!tutorial3Complete && floorCount == 2)
+        {
+            if (floorCount == 2 && roomCount == 1)
+            {
+                nextRoom = level3TutorialRoomPool[0];
+                tutorial3Complete = true;
+            }
+            return nextRoom;
+        }
 
 
         if (roomCount % (treasureRoomCount) == 0)
         {
             roomIndex = 0;
-            nextRoom = BonusRoomPool[roomIndex];
+            nextRoom = BonusRoomPool[floorCount];
         }
         else if (roomCount % roomsBeforeBoss == 0)
         {
@@ -191,22 +207,53 @@ public class RoomManager : MonoBehaviour
             if (floorCount >= bossRoomPool.Length) roomIndex = floorCount % bossRoomPool.Length;
             nextRoom = bossRoomPool[roomIndex];
         }
-        else if (floorCount % 2 == 0)
+        else if (floorCount == 0)
         {
             roomIndex = RollRoomWithDuplicateProtection(roomPool);
             nextRoom = roomPool[roomIndex];
         }
-        else if (floorCount % 2 == 1)
+        else if (floorCount == 1)
         {
             roomIndex = RollRoomWithDuplicateProtection(level2RoomPool);
             nextRoom = level2RoomPool[roomIndex];
         }
-        else
+        else if (floorCount == 2)
         {
-            roomIndex = 0;
+            roomIndex = RollRoomWithDuplicateProtection(level3RoomPool);
+            nextRoom = level3RoomPool[roomIndex];
+        }
+        else // only after player has beaten all levels, so just give them a random room from any level
+        {
+            (nextRoom, roomIndex) = RollRandomRoom();
         }
         previousRoomIndex = roomIndex;
         return nextRoom;
+    }
+
+
+    private (GameObject, int) RollRandomRoom()
+    {
+        int randFloor = UnityEngine.Random.Range(0, 3);
+        int roomIndex = 0;
+        GameObject room = null;
+
+        switch (randFloor)
+        {
+            case 0:
+                roomIndex = RollRoomWithDuplicateProtection(roomPool);
+                room = roomPool[roomIndex];
+                break;
+            case 1:
+                roomIndex = RollRoomWithDuplicateProtection(level2RoomPool);
+                room = level2RoomPool[roomIndex];
+                break;
+            case 2:
+                roomIndex = RollRoomWithDuplicateProtection(level3RoomPool);
+                room = level3RoomPool[roomIndex];
+                break;
+        }
+
+        return (room, roomIndex);
     }
 
     /// <summary>
