@@ -164,8 +164,6 @@ public class FirstLich : MonoBehaviour, IDamageable
 
     private void ShootThreeTowardsPlayer(int abilityIndex)
     {
-        float angleToPlayer = Vector2.Angle(this.transform.position, player.transform.position);
-
         Vector2 positiveRotation = Quaternion.AngleAxis(10f, Vector3.forward) * GetDirectionToPlayer();
         Vector2 negativeRotation = Quaternion.AngleAxis(-10f, Vector3.forward) * GetDirectionToPlayer();
 
