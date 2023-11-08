@@ -42,7 +42,7 @@ public class AimTowardsMouseComponent : MonoBehaviour
 
         RaycastHit2D wallCheck = Physics2D.Raycast(transform.position, (mousePosition - currentPosition), Mathf.Abs(Vector2.Distance(mousePosition, currentPosition)), LayerMask.GetMask("Obstacle"));
 
-        if (wallCheck) return currentPosition;
+        if (wallCheck) return wallCheck.point - (mousePosition - currentPosition).normalized;
         
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }

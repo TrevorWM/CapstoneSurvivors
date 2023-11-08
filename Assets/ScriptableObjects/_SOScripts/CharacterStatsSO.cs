@@ -37,6 +37,7 @@ public class CharacterStatsSO : ScriptableObject
     [SerializeField] private Sprite characterSprite;
     [SerializeField] private Sprite weaponSprite;
     [SerializeField] private bool rightFacingSprite;
+    [SerializeField] private bool overrideVisuals;
     
     /*
         Field encapsulation so that we can contain the data validation logic to this class
@@ -140,6 +141,7 @@ public class CharacterStatsSO : ScriptableObject
         set => characterElement = value; 
     }
     public EnemyType AiType { get => aiType; set => aiType = value; }
+    public bool OverrideVisuals { get => overrideVisuals; set => overrideVisuals = value; }
 
 
     /// <summary>

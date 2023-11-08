@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 311187456167225846, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 311187456167225846, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_GridSnapping
@@ -153,7 +153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5816929903169527994, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: orthographic size
-      value: 8.4375
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5816929903169527994, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -470,6 +470,10 @@ PrefabInstance:
       propertyPath: bossRoomPool.Array.data[1]
       value: 
       objectReference: {fileID: 796854714157457264, guid: e79bf95b19eda874198d0fa3dd3f3d1f, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: tutorialRoomPool.Array.data[0]
+      value: 
+      objectReference: {fileID: 1373664824061508511, guid: 8dab2cc4bb0e7834789cb4269d72560d, type: 3}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: level2TutorialRoomPool.Array.size
       value: 1

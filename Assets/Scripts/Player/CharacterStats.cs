@@ -56,6 +56,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
     //Visual
     private bool rightFacingSprite;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
     public UnityEvent playerDied;
     public UnityEvent<float, float> updateHealth;
@@ -226,6 +227,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
         rightFacingSprite = characterStatsSO.RightFacingSprite;
         
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
         updateHealth?.Invoke(currentHealth, maxHealth);
         if (testHealth) StartCoroutine(TestHP());
     }
@@ -323,20 +325,27 @@ public class CharacterStats : MonoBehaviour, IDamageable
     {
         if (payload.EnemyProjectile && CurrentHealth > 0)
         {
-            flashSprite.HitFlash(spriteRenderer);
+            
             float damage = calculator.CalculateDamage(payload, ownerStats: this);
-            RemoveHealth(damage);
+            
             if (this.gameObject.layer == LayerMask.NameToLayer("Player") && !invincibleAfterHit)
             {
                 invincibleAfterHit = true;
                 StartCoroutine(DisableInvincibility(0.5f));
+                
             }
+            RemoveHealth(damage);
+            flashSprite.HitFlash(spriteRenderer);
         }
     }
 
     private IEnumerator DisableInvincibility(float duration)
     {
-        yield return new WaitForSeconds(duration);
+        for (int i = 1; i < 11; i++)
+        {
+            yield return new WaitForSeconds(duration * (1/i));
+            flashSprite.HitFlash(spriteRenderer);
+        }
         invincibleAfterHit = false;
     }
 
