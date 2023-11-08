@@ -199,7 +199,10 @@ public class RoomManager : MonoBehaviour
         if (roomCount % (treasureRoomCount) == 0)
         {
             roomIndex = 0;
-            nextRoom = BonusRoomPool[floorCount];
+            if (floorCount < 3)
+                nextRoom = BonusRoomPool[floorCount];
+            else
+                nextRoom = BonusRoomPool[UnityEngine.Random.Range(0, BonusRoomPool.Length)];
         }
         else if (roomCount % roomsBeforeBoss == 0)
         {
