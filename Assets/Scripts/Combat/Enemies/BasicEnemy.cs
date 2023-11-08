@@ -113,7 +113,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         {
             Vector3 scale;
 
-            if (enemyRigidbody.velocity.x > 0)
+            if (enemyRigidbody.velocity.x > 0 && !enemyStats.OverrideVisuals)
             {
                 if (this.gameObject.transform.localScale.x < 0)
                 {
@@ -121,7 +121,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
                     this.gameObject.transform.localScale = scale;
                 }
             }
-            else if (enemyRigidbody.velocity.x < 0)
+            else if (enemyRigidbody.velocity.x < 0 && !enemyStats.OverrideVisuals)
             {
                 if (this.gameObject.transform.localScale.x > 0)
                 {
