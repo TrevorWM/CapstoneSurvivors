@@ -192,6 +192,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cc3652d311da0140b57a6e28afcbab9, type: 3}
+--- !u!1001 &193264165
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3574591359294871927, guid: e19d366d04260a64bb9f26f3c7e4e477, type: 3}
+      propertyPath: m_Name
+      value: DarkSorcerer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048436168766289364, guid: e19d366d04260a64bb9f26f3c7e4e477, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048436168766289364, guid: e19d366d04260a64bb9f26f3c7e4e477, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048436168766289364, guid: e19d366d04260a64bb9f26f3c7e4e477, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048436168766289364, guid: e19d366d04260a64bb9f26f3c7e4e477, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048436168766289364, guid: e19d366d04260a64bb9f26f3c7e4e477, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048436168766289364, guid: e19d366d04260a64bb9f26f3c7e4e477, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048436168766289364, guid: e19d366d04260a64bb9f26f3c7e4e477, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048436168766289364, guid: e19d366d04260a64bb9f26f3c7e4e477, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048436168766289364, guid: e19d366d04260a64bb9f26f3c7e4e477, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048436168766289364, guid: e19d366d04260a64bb9f26f3c7e4e477, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e19d366d04260a64bb9f26f3c7e4e477, type: 3}
 --- !u!1 &200427327
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +519,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireSorcerer
       objectReference: {fileID: 0}
+    - target: {fileID: 6508978941447238353, guid: f29a838b43258f749bbef26f3a095dc7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -481,7 +542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1273105804648034894, guid: 5bf8bfbbed7a68c408c26fa0d87d08b3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7028438650709132940, guid: 5bf8bfbbed7a68c408c26fa0d87d08b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -579,6 +640,10 @@ PrefabInstance:
     - target: {fileID: 6508978941447238353, guid: 179c322abc018234398d7fe0d8325f5e, type: 3}
       propertyPath: m_Name
       value: WaterSorcerer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508978941447238353, guid: 179c322abc018234398d7fe0d8325f5e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1642,6 +1707,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NatureSorcerer
       objectReference: {fileID: 0}
+    - target: {fileID: 6508978941447238353, guid: d47a14de150b76044a8db44e2b57016b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2373,7 +2442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6817480207312608784, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 6817480207312608784, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2610,3 +2679,4 @@ SceneRoots:
   - {fileID: 269787139}
   - {fileID: 1580547872}
   - {fileID: 492835692}
+  - {fileID: 193264165}

@@ -79,8 +79,11 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
     public void OnSpawn()
     {
-        enemySpawn.AddListener(FindObjectOfType<RoomLogic>().EnemyAdded);
-        enemyDeath.AddListener(FindObjectOfType<RoomLogic>().EnemyRemoved);
+        RoomLogic room = FindAnyObjectByType<RoomLogic>();
+        if (room == null) return;
+
+        enemySpawn.AddListener(room.EnemyAdded);
+        enemyDeath.AddListener(room.EnemyRemoved);
     }
 
     private void Start()

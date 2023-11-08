@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnEnemy(GameObject enemyObject)
     {
         GameObject enemy = Instantiate(enemyObject, this.transform);
-        enemy.GetComponent<BasicEnemy>().OnSpawn();
+        BasicEnemy enemyScript = enemy.GetComponent<BasicEnemy>();
+        enemyScript?.OnSpawn();
     }
 }
