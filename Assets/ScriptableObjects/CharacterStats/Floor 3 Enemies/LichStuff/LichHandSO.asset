@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
+  m_Name: LichHandSO
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  defense: 5
+  moveSpeed: 3
+  baseDamage: 30
+  attacksPerSecond: 0.5
+  criticalChance: 0
+  criticalDamageMultiplier: 0
+  characterElement: 3
+  dodgeForce: 1
+  dodgeDuration: 0.1
+  dodgeCooldown: 0
+  waterAffinity: 0
+  fireAffinity: 0
+  natureAffinity: 0
+  cooldownReduction: 0
+  detectionRadius: 10000
+  followDistance: 5
+  aiType: 3
+  projectileSpeed: 0
+  characterSprite: {fileID: 0}
+  weaponSprite: {fileID: 0}
+  rightFacingSprite: 0
