@@ -28,9 +28,10 @@ MonoBehaviour:
   natureAffinity: 0
   cooldownReduction: 0
   detectionRadius: 10000
-  followDistance: 5
+  followDistance: 8
   aiType: 3
-  projectileSpeed: 0
+  projectileSpeed: 4
   characterSprite: {fileID: 0}
   weaponSprite: {fileID: 0}
   rightFacingSprite: 0
+  overrideVisuals: 1

@@ -21,15 +21,19 @@ public class LichSecond : MonoBehaviour, IDamageable
 
     [SerializeField]
     private GameObject leftHand;
+    private SpriteRenderer leftHandRenderer;
+    private BasicEnemy leftHandScript;
 
     [SerializeField]
     private GameObject rightHand;
+    private SpriteRenderer rightHandRenderer;
+    private BasicEnemy rightHandScript;
 
     [SerializeField]
-    private GameObject leftGun;
+    private Sprite leftGunSprite, leftHandSprite;
 
     [SerializeField]
-    private GameObject rightGun;
+    private Sprite rightGunSprite, rightHandSprite;
 
     private float runtimeHP = 0;
     private Transform player;
@@ -37,7 +41,6 @@ public class LichSecond : MonoBehaviour, IDamageable
 
     public UnityEvent bossSpawned;
     public UnityEvent bossDeath;
-    public UnityEvent<GameObject> spawnMonster;
 
     private void Start()
     {
@@ -45,6 +48,8 @@ public class LichSecond : MonoBehaviour, IDamageable
         bossHealthBar.gameObject.SetActive(false);
         InitializeAbilities();
         bossSpawned?.Invoke();
+        leftHandScript = leftHand.GetComponent<BasicEnemy>();
+        leftHandRenderer = leftHandScript.GetComponentInChildren<SpriteRenderer>();
     }
 
     private void InitializeAbilities()
@@ -56,7 +61,7 @@ public class LichSecond : MonoBehaviour, IDamageable
             for (int i = 0; i < activeAbilities.Length; i++)
             {
                 enemyAttacks[i] = Instantiate(activeAbilities[i], gameObject.transform).GetComponent<IEnemyAttack>();
-                enemyAttacks[i].Initialize(bossStats);
+                enemyAttacks[i].Initialize(bossStats, UpgradeRarity.Legendary);
             }
         } 
     }
@@ -88,11 +93,36 @@ public class LichSecond : MonoBehaviour, IDamageable
 
     private void StartPhaseOne()
     {
+        SwapLeftToFingerGun(activeAbilities[1]);
         Debug.Log("Start Phase One!");
     }
 
     private Vector2 GetDirectionToPlayer()
     {
         return (player.transform.position - transform.position).normalized;
+    }
+
+    private void SwapLeftToFingerGun(GameObject ability)
+    {
+        leftHandRenderer.sprite = leftGunSprite;
+        leftHandScript.ChangeAttack(ability, EnemyType.Ranged, UpgradeRarity.Legendary);
+    }
+
+    private void SwapLeftToPalm(GameObject ability)
+    {
+        leftHandRenderer.sprite = leftHandSprite;
+        leftHandScript.ChangeAttack(ability, EnemyType.Charger);
+    }
+
+    private void SwapRightToFingerGun(GameObject ability)
+    {
+        rightHandRenderer.sprite = rightGunSprite;
+        rightHandScript.ChangeAttack(ability, EnemyType.Ranged, UpgradeRarity.Legendary);
+    }
+
+    private void SwapRightToPalm(GameObject ability)
+    {
+        rightHandRenderer.sprite = rightHandSprite;
+        rightHandScript.ChangeAttack(ability, EnemyType.Charger);
     }
 }
