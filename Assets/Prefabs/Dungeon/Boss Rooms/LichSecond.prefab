@@ -80,10 +80,34 @@ MonoBehaviour:
   pivotPoint: {fileID: 7827986010213286826}
   bossSpawned:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6190835655596311250}
+        m_TargetAssemblyTypeName: RoomLogic, Assembly-CSharp
+        m_MethodName: EnemyAdded
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6768672304959163153}
+          m_ObjectArgumentAssemblyTypeName: DamageCalculator, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   bossDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6190835655596311250}
+        m_TargetAssemblyTypeName: RoomLogic, Assembly-CSharp
+        m_MethodName: EnemyRemoved
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6768672304959163153}
+          m_ObjectArgumentAssemblyTypeName: DamageCalculator, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &249491033616769280
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +296,7 @@ MonoBehaviour:
   playerStartPosition: {fileID: 5780830403478948356}
   upgradeOrbPosition: {fileID: 7889810635013012452}
   doorTilemap: {fileID: 6174902348744783955}
-  openDoorTile: {fileID: 11400000, guid: 8645427688e15f4478b25037044235d2, type: 2}
+  openDoorTile: {fileID: 11400000, guid: 08ee8ef7f66635947964182a37bb409e, type: 2}
   floatingDamageSpawner: {fileID: 5293439844192026919}
 --- !u!114 &5293439844192026919
 MonoBehaviour:

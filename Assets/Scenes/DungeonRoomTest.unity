@@ -460,7 +460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: bossRoomPool.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: bossRoomPool.Array.data[0]
@@ -470,6 +470,10 @@ PrefabInstance:
       propertyPath: bossRoomPool.Array.data[1]
       value: 
       objectReference: {fileID: 796854714157457264, guid: e79bf95b19eda874198d0fa3dd3f3d1f, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: bossRoomPool.Array.data[2]
+      value: 
+      objectReference: {fileID: 796854714157457264, guid: b32bdc2b8fd48b045b05c35b253a50d5, type: 3}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: tutorialRoomPool.Array.data[0]
       value: 

@@ -54,6 +54,7 @@ public class LichSecond : MonoBehaviour, IDamageable
         bossHealthBar.gameObject.SetActive(false);
         InitializeAbilities();
         bossSpawned?.Invoke();
+
         leftHandScript = leftHand.GetComponent<BasicEnemy>();
         leftHandRenderer = leftHandScript.GetComponentInChildren<SpriteRenderer>();
         rightHandScript = rightHand.GetComponent<BasicEnemy>();
@@ -129,7 +130,10 @@ public class LichSecond : MonoBehaviour, IDamageable
 
     private void HandleDeath()
     {
+        AttackPayload killHands = new AttackPayload(99999, 0, ElementType.None, 0, 0);
         bossDeath?.Invoke();
+        leftHandScript.TakeDamage(killHands);
+        rightHandScript.TakeDamage(killHands);
         this.gameObject.SetActive(false);
     }
 
