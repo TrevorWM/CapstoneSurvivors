@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   defense: 5
-  moveSpeed: 3
-  baseDamage: 30
+  moveSpeed: 1
+  baseDamage: 5
   attacksPerSecond: 0.5
   criticalChance: 0
   criticalDamageMultiplier: 0
@@ -28,9 +28,9 @@ MonoBehaviour:
   natureAffinity: 0
   cooldownReduction: 0
   detectionRadius: 10000
-  followDistance: 8
+  followDistance: 10
   aiType: 3
-  projectileSpeed: 4
+  projectileSpeed: 5
   characterSprite: {fileID: 0}
   weaponSprite: {fileID: 0}
   rightFacingSprite: 0

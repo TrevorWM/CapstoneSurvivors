@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LichHeadSO
   m_EditorClassIdentifier: 
   maxHealth: 3000
-  defense: 10
+  defense: 0
   moveSpeed: 0
   baseDamage: 30
   attacksPerSecond: 1

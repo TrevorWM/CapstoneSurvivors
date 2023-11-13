@@ -350,9 +350,11 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     
     public void ChangeAttack(GameObject newAttackPrefab, EnemyType newEnemyType, UpgradeRarity newRarity = UpgradeRarity.Common)
     {
-        enemyAttack = Instantiate(newAttackPrefab, gameObject.transform).GetComponent<IEnemyAttack>(); ;
+        enemyAttack = Instantiate(newAttackPrefab, gameObject.transform).GetComponent<IEnemyAttack>();
         enemyAttack.Initialize(enemyStats, newRarity);
         enemyType = newEnemyType;
+        isAttacking = false;
+        stopMoving = false;
     }
 }
 
