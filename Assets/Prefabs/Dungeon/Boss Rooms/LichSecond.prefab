@@ -7570,7 +7570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4539539244664455191, guid: 3b03eac79c3b66c44b03308e2fa5f635, type: 3}
       propertyPath: m_text
-      value: Lich
+      value: True Lich
       objectReference: {fileID: 0}
     - target: {fileID: 8177725469700651932, guid: 3b03eac79c3b66c44b03308e2fa5f635, type: 3}
       propertyPath: m_Pivot.x
