@@ -464,7 +464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: BonusRoomPool.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: level3RoomPool.Array.size
@@ -486,6 +486,10 @@ PrefabInstance:
       propertyPath: BonusRoomPool.Array.data[1]
       value: 
       objectReference: {fileID: 5807390494452671454, guid: 661093d2d5d02de438fd39f9b8a6959a, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: BonusRoomPool.Array.data[2]
+      value: 
+      objectReference: {fileID: 5807390494452671454, guid: 1a424405eac3cd446a20159fba6c74b4, type: 3}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: level3RoomPool.Array.data[0]
       value: 
