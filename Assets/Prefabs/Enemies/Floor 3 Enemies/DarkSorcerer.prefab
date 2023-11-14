@@ -769,6 +769,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3584429619713903664, guid: b6ef02b676aa0924fbbceed2d83a72c7, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 1273105804648034894, guid: 7c8e7520f725abd4b9a44df19a5f759d, type: 3}
+    - target: {fileID: 3584429619713903664, guid: b6ef02b676aa0924fbbceed2d83a72c7, type: 3}
       propertyPath: spawnMonster.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}

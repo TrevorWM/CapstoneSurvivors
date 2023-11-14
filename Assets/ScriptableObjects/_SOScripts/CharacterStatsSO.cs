@@ -68,7 +68,7 @@ public class CharacterStatsSO : ScriptableObject
     public float AttacksPerSecond 
     { 
         get => attacksPerSecond; 
-        set => attacksPerSecond = Mathf.Max(0.5f, value); 
+        set => attacksPerSecond = Mathf.Max(0.0001f, value); 
     }
     public float CriticalChance 
     { 
