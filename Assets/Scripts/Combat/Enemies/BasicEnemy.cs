@@ -23,6 +23,8 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     [SerializeField]
     private Vector2 movementInput;
     [SerializeField]
+    private bool willRun = true;
+    [SerializeField]
     private ContextSolver movementDirectionSolver;
     [SerializeField]
     private CharacterStatsSO enemyStats;
@@ -32,6 +34,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private DamageCalculator calculator;
     [SerializeReference]
     private GameObject attack;
+
     private IEnemyAttack enemyAttack;
 
     public UnityEvent<DamageCalculator> enemySpawn;
@@ -44,6 +47,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private float currentHealth;
     private bool runAway = false;
     private readonly float tooClose = 3f;
+
     private bool slowed = false;
     private Vector2 slowVector = new (0.3f, 0.3f);
     private bool stopped = false;
@@ -55,6 +59,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     private Vector3 flipXScale = new Vector3(-1f, 1f, 1f);
 
     private Hinderance currentHinderance;
+    private EnemyType enemyType;
 
     //Confusion stuff
     Vector2 inputModifier;
@@ -92,6 +97,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         currentHealth = EnemyStats.MaxHealth;
 
         enemySpawn.Invoke(calculator);
+        enemyType = enemyStats.AiType;
 
         enemyAttack = Instantiate(attack, gameObject.transform).GetComponent<IEnemyAttack>();
         enemyAttack.Initialize(enemyStats);
@@ -141,7 +147,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
             if(distance <= EnemyStats.FollowDistance + meleeBuffer)
             {
                 // if they have, they can try to attack
-                if (EnemyStats.AiType != EnemyType.Melee)
+                if (enemyType != EnemyType.Melee)
                 {
                     if (!isAttacking && !StopMoving)
                     {
@@ -150,11 +156,11 @@ public class BasicEnemy : MonoBehaviour, IDamageable
                         StartCoroutine(BasicAttackCooldown());
                     }
                     // if a ranged enemy gets too close we want them to run away
-                    if (distance < tooClose)
+                    if (distance < tooClose && willRun)
                     {
                         runAway = true;
                     }
-                    if (EnemyStats.AiType == EnemyType.Charger)
+                    if (enemyType == EnemyType.Charger)
                     {
                         StopMoving = true;
                     }
@@ -342,6 +348,14 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         gameObject.SetActive(false);
     }
     
+    public void ChangeAttack(GameObject newAttackPrefab, EnemyType newEnemyType, UpgradeRarity newRarity = UpgradeRarity.Common)
+    {
+        enemyAttack = Instantiate(newAttackPrefab, gameObject.transform).GetComponent<IEnemyAttack>();
+        enemyAttack.Initialize(enemyStats, newRarity);
+        enemyType = newEnemyType;
+        isAttacking = false;
+        stopMoving = false;
+    }
 }
 
 

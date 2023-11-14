@@ -28,11 +28,12 @@ public class BeeSwarmOnHit : OnHitEffect, IDamager
         if (collision != null)
         {
             BasicEnemy enemy = collision.gameObject.GetComponentInChildren<BasicEnemy>();
-            if (enemy != null)
+            Hurtbox enemyHurtbox = collision.gameObject.GetComponentInChildren<Hurtbox>();
+            if (enemy != null && enemyHurtbox != null)
             {
                 GameObject bees = Instantiate(beesPrefab, enemy.transform);
                 DespawnAfterTime beeDespawn = bees.GetComponent<DespawnAfterTime>();
-                beeDespawn.StartTimer(effectTime);
+                if (enemy.gameObject.activeInHierarchy) beeDespawn.StartTimer(effectTime);
             }
         }
     }

@@ -13,6 +13,8 @@ public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
     private Collider2D attackCollider;
     [SerializeField]
     private SpriteRenderer chargeFade;
+    [SerializeField]
+    private float chargeSpeed = 6f;
    
     private BasicEnemy ownerScript;
     private AttackPayload attackPayload;
@@ -73,7 +75,7 @@ public class ChargeAttack : MonoBehaviour, IEnemyAttack, IDamager
             speedReduction = 1f;
         }
         //charge at player
-        enemyRigidbody.velocity = direction * enemyStats.MoveSpeed * 6.0f * speedReduction;
+        enemyRigidbody.velocity = direction * enemyStats.MoveSpeed * chargeSpeed * speedReduction;
         attackCollider.enabled = true;
 
         yield return new WaitForSeconds(0.75f);
