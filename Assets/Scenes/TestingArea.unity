@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 311187456167225846, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 311187456167225846, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_GridSnapping
@@ -153,7 +153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5816929903169527994, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: orthographic size
-      value: 8
+      value: 8.4375
       objectReference: {fileID: 0}
     - target: {fileID: 5816929903169527994, guid: 87a4d399e81974048a18f09ae703799d, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -456,28 +456,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: roomsBeforeBoss
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: bossRoomPool.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: bossRoomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 509820833389698090, guid: 1e9257e0246540d419f346e1c8b91c06, type: 3}
+      objectReference: {fileID: 796854714157457264, guid: b32bdc2b8fd48b045b05c35b253a50d5, type: 3}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: bossRoomPool.Array.data[1]
       value: 
       objectReference: {fileID: 796854714157457264, guid: e79bf95b19eda874198d0fa3dd3f3d1f, type: 3}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
-      propertyPath: bossRoomPool.Array.data[2]
-      value: 
-      objectReference: {fileID: 796854714157457264, guid: b32bdc2b8fd48b045b05c35b253a50d5, type: 3}
-    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: tutorialRoomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 5807390494452671454, guid: e156c73cb6617ea4ab04867e57366647, type: 3}
+      objectReference: {fileID: 796854714157457264, guid: b32bdc2b8fd48b045b05c35b253a50d5, type: 3}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: level2TutorialRoomPool.Array.size
       value: 1
