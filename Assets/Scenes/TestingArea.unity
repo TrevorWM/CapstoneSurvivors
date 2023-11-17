@@ -473,7 +473,7 @@ PrefabInstance:
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: tutorialRoomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 796854714157457264, guid: b32bdc2b8fd48b045b05c35b253a50d5, type: 3}
+      objectReference: {fileID: 796854714157457264, guid: cea455a8edd106c4abb8c22c825c68eb, type: 3}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: level2TutorialRoomPool.Array.size
       value: 1
