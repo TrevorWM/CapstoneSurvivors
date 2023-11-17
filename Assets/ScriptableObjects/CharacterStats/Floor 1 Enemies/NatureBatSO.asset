@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
   m_Name: NatureBatSO
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 25
   defense: 0
   moveSpeed: 3
-  baseDamage: 15
+  baseDamage: 10
   attacksPerSecond: 1
-  criticalChance: 5
+  criticalChance: 0
   criticalDamageMultiplier: 2
   characterElement: 1
   dodgeForce: 1
@@ -34,3 +34,4 @@ MonoBehaviour:
   characterSprite: {fileID: 0}
   weaponSprite: {fileID: 0}
   rightFacingSprite: 1
+  overrideVisuals: 0

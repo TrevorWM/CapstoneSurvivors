@@ -15,14 +15,14 @@ MonoBehaviour:
   abilityName: Icicle
   abilityDescription: Shoot an icicle which pierces through multiple enemies
   abilityIcon: {fileID: 21300000, guid: fe2bcc1d04e4afb4aa573b66c0da2574, type: 3}
-  abilityCooldown: 3
+  abilityCooldown: 4
   dotTime: 0
   projectileSpeed: 10
   abilityElement: 2
-  commonDamageModifier: 1.5
-  uncommonDamageModifier: 2
-  rareDamageModifier: 2.5
-  legendaryDamageModifier: 3
+  commonDamageModifier: 1.25
+  uncommonDamageModifier: 1.75
+  rareDamageModifier: 2.25
+  legendaryDamageModifier: 2.75
   hinderanceType: 0
   effectTime: 0
   description: Shoot an icicle which pierces through multiple enemies

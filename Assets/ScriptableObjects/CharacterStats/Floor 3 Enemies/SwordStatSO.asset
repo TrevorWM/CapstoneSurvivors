@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 90
   defense: 0
-  moveSpeed: 2.5
-  baseDamage: 35
+  moveSpeed: 3.25
+  baseDamage: 20
   attacksPerSecond: 1
   criticalChance: 5
   criticalDamageMultiplier: 2

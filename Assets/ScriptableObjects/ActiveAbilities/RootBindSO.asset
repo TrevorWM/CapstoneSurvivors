@@ -16,7 +16,7 @@ MonoBehaviour:
   abilityDescription: Leave a mess of roots in front of you, stopping any enemy who
     walks over it
   abilityIcon: {fileID: 21300000, guid: bb1a23f06bc5d9945aabd59effa7aec4, type: 3}
-  abilityCooldown: 10
+  abilityCooldown: 8
   dotTime: 0
   projectileSpeed: 0
   abilityElement: 1

@@ -19,10 +19,10 @@ MonoBehaviour:
   dotTime: 0
   projectileSpeed: 6
   abilityElement: 0
-  commonDamageModifier: 0.8
-  uncommonDamageModifier: 1
-  rareDamageModifier: 1.2
-  legendaryDamageModifier: 1.5
+  commonDamageModifier: 1
+  uncommonDamageModifier: 1.2
+  rareDamageModifier: 1.3
+  legendaryDamageModifier: 1.4
   hinderanceType: 0
   effectTime: 0
   description: Shoots a fireball which explodes on impact

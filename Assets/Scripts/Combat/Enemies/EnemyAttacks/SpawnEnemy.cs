@@ -39,6 +39,6 @@ public class SpawnEnemy : MonoBehaviour, IEnemyAttack
 
     public void AbilityCleanup()
     {
-        throw new System.NotImplementedException();
+        return;
     }
 }

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
   m_Name: FireSorcererSO
   m_EditorClassIdentifier: 
-  maxHealth: 70
+  maxHealth: 60
   defense: 0
-  moveSpeed: 2
-  baseDamage: 15
+  moveSpeed: 2.75
+  baseDamage: 10
   attacksPerSecond: 1
-  criticalChance: 25
+  criticalChance: 0
   criticalDamageMultiplier: 2
   characterElement: 0
   dodgeForce: 1

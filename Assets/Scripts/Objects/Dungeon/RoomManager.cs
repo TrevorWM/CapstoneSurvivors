@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,10 @@ public class RoomManager : MonoBehaviour
     [SerializeField, SerializeReference]
     private GameObject[] BonusRoomPool;
 
+    private List<GameObject> level1RoomPoolRandom;
+    private List<GameObject> level2RoomPoolRandom;
+    private List<GameObject> level3RoomPoolRandom;
+
     private GameObject currentRoom;
     private IDungeonRoom currentRoomLogic;
     private GameObject nextRoom;
@@ -80,7 +85,35 @@ public class RoomManager : MonoBehaviour
         //floorCount = 0;
         treasureRoomCount = roomsBeforeBoss + 1;
         StartRoom(startingRoom);
+
+        // create a randomized array for each room pool
+        System.Random rand = new System.Random();
+        level1RoomPoolRandom = new List<GameObject>(roomPool.OrderBy(x => rand.Next()).ToArray());
+
+
+        rand = new System.Random();
+        level2RoomPoolRandom = new List<GameObject>(level2RoomPool.OrderBy(x => rand.Next()).ToArray());
+
+        rand = new System.Random();
+        level3RoomPoolRandom = new List<GameObject>(level3RoomPool.OrderBy(x => rand.Next()).ToArray());
+
+        DebugLogGameObjects(level1RoomPoolRandom);
+        DebugLogGameObjects(level2RoomPoolRandom);
+        DebugLogGameObjects(level3RoomPoolRandom);
+
     }
+
+    static void DebugLogGameObjects(List<GameObject> gameObjects)
+    {
+        Debug.Log("List of Game Objects:");
+
+        foreach (var gameObject in gameObjects)
+        {
+            // Using ToString method for a custom representation
+            Debug.Log(gameObject.ToString());
+        }
+    }
+
 
     /// <summary>
     /// This function checks if there is a current room, and destroys it if it exists.
@@ -212,18 +245,44 @@ public class RoomManager : MonoBehaviour
         }
         else if (floorCount == 0)
         {
-            roomIndex = RollRoomWithDuplicateProtection(roomPool);
-            nextRoom = roomPool[roomIndex];
+            if (level1RoomPoolRandom.Count > 0)
+            {
+                roomIndex = 0;
+                nextRoom = level1RoomPoolRandom[roomIndex];
+                level1RoomPoolRandom.RemoveAt(roomIndex);
+            } else
+            {
+                roomIndex = RollRoomWithDuplicateProtection(roomPool);
+                nextRoom = roomPool[roomIndex];
+            }
         }
         else if (floorCount == 1)
         {
-            roomIndex = RollRoomWithDuplicateProtection(level2RoomPool);
-            nextRoom = level2RoomPool[roomIndex];
+            if (level2RoomPoolRandom.Count > 0)
+            {
+                roomIndex = 0;
+                nextRoom = level2RoomPoolRandom[roomIndex];
+                level2RoomPoolRandom.RemoveAt(roomIndex);
+            }
+            else
+            {
+                roomIndex = RollRoomWithDuplicateProtection(level2RoomPool);
+                nextRoom = level2RoomPool[roomIndex];
+            }
         }
         else if (floorCount == 2)
         {
-            roomIndex = RollRoomWithDuplicateProtection(level3RoomPool);
-            nextRoom = level3RoomPool[roomIndex];
+            if (level2RoomPoolRandom.Count > 0)
+            {
+                roomIndex = 0;
+                nextRoom = level3RoomPoolRandom[roomIndex];
+                level3RoomPoolRandom.RemoveAt(roomIndex);
+            }
+            else
+            {
+                roomIndex = RollRoomWithDuplicateProtection(level3RoomPool);
+                nextRoom = level3RoomPool[roomIndex];
+            }
         }
         else // only after player has beaten all levels, so just give them a random room from any level
         {

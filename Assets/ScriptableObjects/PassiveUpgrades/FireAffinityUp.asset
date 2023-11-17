@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Fire Affinity Up
   statToModify: 9
-  commonUpgradeAmount: 0.05
-  uncommonUpgradeAmount: 0.1
-  rareUpgradeAmount: 0.15
+  commonUpgradeAmount: 0.075
+  uncommonUpgradeAmount: 0.125
+  rareUpgradeAmount: 0.175
   legendaryUpgradeAmount: 0.25
   description: Increases damage of fire abilities
   spriteArray:

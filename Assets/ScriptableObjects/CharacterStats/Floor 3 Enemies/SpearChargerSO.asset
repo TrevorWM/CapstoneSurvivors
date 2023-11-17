@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 60
   defense: 0
-  moveSpeed: 4
-  baseDamage: 35
+  moveSpeed: 4.5
+  baseDamage: 20
   attacksPerSecond: 1
-  criticalChance: 5
+  criticalChance: 0
   criticalDamageMultiplier: 2
   characterElement: 3
   dodgeForce: 1

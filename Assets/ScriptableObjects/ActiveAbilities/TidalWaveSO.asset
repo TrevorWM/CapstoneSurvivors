@@ -25,4 +25,4 @@ MonoBehaviour:
   legendaryDamageModifier: 1.1
   hinderanceType: 0
   effectTime: 0
-  description: 
+  description: Create a wave that pushes enemies back and damages them
