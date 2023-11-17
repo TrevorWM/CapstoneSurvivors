@@ -463,6 +463,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: BonusRoomPool.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3RoomPool.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: bossRoomPool.Array.data[0]
       value: 
       objectReference: {fileID: 509820833389698090, guid: 1e9257e0246540d419f346e1c8b91c06, type: 3}
@@ -475,6 +483,50 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 796854714157457264, guid: b32bdc2b8fd48b045b05c35b253a50d5, type: 3}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: BonusRoomPool.Array.data[1]
+      value: 
+      objectReference: {fileID: 5807390494452671454, guid: 661093d2d5d02de438fd39f9b8a6959a, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: BonusRoomPool.Array.data[2]
+      value: 
+      objectReference: {fileID: 5807390494452671454, guid: 1a424405eac3cd446a20159fba6c74b4, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3RoomPool.Array.data[0]
+      value: 
+      objectReference: {fileID: 796854714157457264, guid: 755b2eb6eee691d40a1e2ca3dc92e9df, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3RoomPool.Array.data[1]
+      value: 
+      objectReference: {fileID: 796854714157457264, guid: 838fad9085c056847915d13bc4d84488, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3RoomPool.Array.data[2]
+      value: 
+      objectReference: {fileID: 796854714157457264, guid: 4408a0474a8ca204e8b8acbe7ba2afb3, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3RoomPool.Array.data[3]
+      value: 
+      objectReference: {fileID: 796854714157457264, guid: 8fea6ddc5776ad14f873d9311713e21e, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3RoomPool.Array.data[4]
+      value: 
+      objectReference: {fileID: 796854714157457264, guid: 50be193e7f0ac6049a06bef74d3928ae, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3RoomPool.Array.data[5]
+      value: 
+      objectReference: {fileID: 796854714157457264, guid: e25c26a234b944b43b6acc7dfa3707f4, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3RoomPool.Array.data[6]
+      value: 
+      objectReference: {fileID: 796854714157457264, guid: 88f9e393b258fb24e8bf9350bdfc0741, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3RoomPool.Array.data[7]
+      value: 
+      objectReference: {fileID: 796854714157457264, guid: 4f8346e83bbe49343a9cd48105103e0a, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3RoomPool.Array.data[8]
+      value: 
+      objectReference: {fileID: 796854714157457264, guid: cea455a8edd106c4abb8c22c825c68eb, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: tutorialRoomPool.Array.data[0]
       value: 
       objectReference: {fileID: 5807390494452671454, guid: e156c73cb6617ea4ab04867e57366647, type: 3}
@@ -483,9 +535,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3TutorialRoomPool.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: level2TutorialRoomPool.Array.data[0]
       value: 
       objectReference: {fileID: 796854714157457264, guid: ef2ae68476b5a99459b7c4bb4cc72942, type: 3}
+    - target: {fileID: 4041536410859463382, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
+      propertyPath: level3TutorialRoomPool.Array.data[0]
+      value: 
+      objectReference: {fileID: 796854714157457264, guid: 1e3b707c02bf35845af5da573fe77264, type: 3}
     - target: {fileID: 7800590222984004608, guid: f87c1d484c5a69f4686ee612ca83f8ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.3659093
