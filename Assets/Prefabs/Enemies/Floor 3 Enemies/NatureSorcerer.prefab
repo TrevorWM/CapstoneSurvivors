@@ -248,7 +248,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 90c8d6ecb56b54a4fbe788c4b24b389e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -591,6 +591,7 @@ MonoBehaviour:
   aiData: {fileID: 5234646199516632397}
   detectionDelay: 0.05
   movementInput: {x: 0, y: 0}
+  willRun: 1
   movementDirectionSolver: {fileID: 4742228905648544628}
   enemyStats: {fileID: 11400000, guid: 7272b6e61b440db4c91baa2f40e05fb0, type: 2}
   flashSprite: {fileID: 936542112781181270}
