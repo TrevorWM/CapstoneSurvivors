@@ -138,16 +138,16 @@ public class DemonDoor : MonoBehaviour, IDamageable
 
         //Random pillar shoots a circle
         int randomPosition = Random.Range(0, bossShootPositions.Length);
-        StartCoroutine(ShootRotation(bossShootPositions[randomPosition], 20f, 360f));
+        StartCoroutine(ShootRotation(bossShootPositions[randomPosition], Random.Range(15f, 25f), 360f));
         yield return new WaitForSeconds(1f);
 
         //Another random pillar shoots a circle
         randomPosition = Random.Range(0, bossShootPositions.Length);
-        StartCoroutine(ShootRotation(bossShootPositions[randomPosition], 20f, 360f));
+        StartCoroutine(ShootRotation(bossShootPositions[randomPosition], Random.Range(15f, 25f), 360f));
         yield return new WaitForSeconds(1f);
 
 
-        if (runtimeHP > bossStats.MaxHealth * 0.65)
+        if (runtimeHP > bossStats.MaxHealth * 0.60)
         {
             StartCoroutine(PhaseOne());
         }
@@ -163,16 +163,16 @@ public class DemonDoor : MonoBehaviour, IDamageable
         //Shoot in a wave around the pillar
         foreach (Transform shootPosition in bossShootPositions)
         {
-            StartCoroutine(ShootRotation(shootPosition, 15f, 360f, 0.3f));
+            StartCoroutine(ShootRotation(shootPosition, Random.Range(15f, 25f), 360f, 0.3f));
         }
         yield return new WaitForSeconds(2f);
 
         //Shoot a full circle pulse from opposite corners
-        StartCoroutine(ShootRotation(bossShootPositions[0], 30f, 360f));
-        StartCoroutine(ShootRotation(bossShootPositions[2], 30f, 360f));
+        StartCoroutine(ShootRotation(bossShootPositions[0], Random.Range(25f, 35f), 360f));
+        StartCoroutine(ShootRotation(bossShootPositions[2], Random.Range(25f, 35f), 360f));
         yield return new WaitForSeconds(3f);
-        StartCoroutine(ShootRotation(bossShootPositions[1], 30f, 360f));
-        StartCoroutine(ShootRotation(bossShootPositions[3], 30f, 360f));
+        StartCoroutine(ShootRotation(bossShootPositions[1], Random.Range(25f, 35f), 360f));
+        StartCoroutine(ShootRotation(bossShootPositions[3], Random.Range(25f, 35f), 360f));
         yield return new WaitForSeconds(3f);
         
         if (runtimeHP > 0) StartCoroutine(PhaseTwo());
