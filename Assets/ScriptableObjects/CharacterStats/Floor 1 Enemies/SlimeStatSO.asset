@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
   m_Name: SlimeStatSO
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  maxHealth: 45
   defense: 0
   moveSpeed: 2.25
   baseDamage: 5

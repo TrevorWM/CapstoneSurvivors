@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a005166e5e267489268a539c2d269e, type: 3}
   m_Name: NatureSnakeSO
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  maxHealth: 35
   defense: 0
   moveSpeed: 2.25
   baseDamage: 10
@@ -30,7 +30,7 @@ MonoBehaviour:
   detectionRadius: 1000
   followDistance: 4
   aiType: 2
-  projectileSpeed: 3
+  projectileSpeed: 4
   characterSprite: {fileID: 0}
   weaponSprite: {fileID: 0}
   rightFacingSprite: 1
