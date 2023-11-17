@@ -19,10 +19,10 @@ MonoBehaviour:
   dotTime: 0
   projectileSpeed: 10
   abilityElement: 2
-  commonDamageModifier: 1.5
-  uncommonDamageModifier: 2
-  rareDamageModifier: 2.5
-  legendaryDamageModifier: 3
+  commonDamageModifier: 1.25
+  uncommonDamageModifier: 1.75
+  rareDamageModifier: 2.25
+  legendaryDamageModifier: 2.75
   hinderanceType: 0
   effectTime: 0
   description: Shoot an icicle which pierces through multiple enemies

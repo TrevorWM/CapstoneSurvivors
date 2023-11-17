@@ -25,15 +25,15 @@ public class FireballBase : ActiveAbilityBase
         }
         else if (rarity == UpgradeRarity.Rare || rarity == UpgradeRarity.Legendary)
         {
-            aoeScale = new Vector3(2f, 2f, 1);
+            aoeScale = new Vector3(2.25f, 2.25f, 1);
         }
         else if (rarity == UpgradeRarity.Uncommon || rarity == UpgradeRarity.Legendary)
         {
-            aoeScale = new Vector3(1.5f, 1.5f, 1);
+            aoeScale = new Vector3(2f, 2f, 1);
         }
         else
         {
-            aoeScale = new Vector3(1,1,1);
+            aoeScale = new Vector3(1.75f,1.75f,1);
         }
     }
 

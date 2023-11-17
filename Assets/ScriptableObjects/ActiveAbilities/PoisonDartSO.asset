@@ -19,10 +19,10 @@ MonoBehaviour:
   dotTime: 5
   projectileSpeed: 10
   abilityElement: 1
-  commonDamageModifier: 0.5
-  uncommonDamageModifier: 0.7
-  rareDamageModifier: 0.9
-  legendaryDamageModifier: 1.1
+  commonDamageModifier: 0.75
+  uncommonDamageModifier: 1
+  rareDamageModifier: 1.25
+  legendaryDamageModifier: 1.5
   hinderanceType: 0
   effectTime: 0
   description: Shoots a poison dart which poisons the hit enemy
