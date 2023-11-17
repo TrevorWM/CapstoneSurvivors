@@ -1593,7 +1593,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 125}
+  m_AnchoredPosition: {x: 0, y: 150}
   m_SizeDelta: {x: 1920, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1735600783
@@ -1616,9 +1616,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Trevor Meester, Zachary Swensrude \\nMacEwan University\\nMusic: Marllon
-    Silva (xDeviruchi)\\nTitle Font: Copyright (c) 2018-2021,  \u201CColorSwitchFan25\u201D\\nOther
-    Fonts: kenney.nl"
+  m_text: "Trevor Meester, Zachary Swensrude \\nSupervised by: Dr. Qorbani \\nMacEwan
+    University\\nMusic: Marllon Silva (xDeviruchi)\\nTitle Font: Copyright (c) 2018-2021, 
+    \u201CColorSwitchFan25\u201D\\nOther Fonts: kenney.nl"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbb4b5f7002517041b27a584d05eafba, type: 2}
   m_sharedMaterial: {fileID: -5828764486495883427, guid: dbb4b5f7002517041b27a584d05eafba, type: 2}
