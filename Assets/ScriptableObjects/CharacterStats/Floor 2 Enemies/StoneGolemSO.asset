@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 150
   defense: 5
-  moveSpeed: 1
-  baseDamage: 25
+  moveSpeed: 2
+  baseDamage: 15
   attacksPerSecond: 1
   criticalChance: 0
   criticalDamageMultiplier: 2
@@ -34,3 +34,4 @@ MonoBehaviour:
   characterSprite: {fileID: 0}
   weaponSprite: {fileID: 0}
   rightFacingSprite: 1
+  overrideVisuals: 0
