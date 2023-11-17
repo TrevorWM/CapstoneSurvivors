@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: DemonDoor
   m_EditorClassIdentifier: 
   maxHealth: 1000
-  defense: 0
+  defense: 5
   moveSpeed: 0
   baseDamage: 15
   attacksPerSecond: 1
-  criticalChance: 5
+  criticalChance: 0
   criticalDamageMultiplier: 2
   characterElement: 3
   dodgeForce: 1
@@ -34,3 +34,4 @@ MonoBehaviour:
   characterSprite: {fileID: 21300000, guid: 5b2fc2f3b7b944045a7d50fa3cfb1295, type: 3}
   weaponSprite: {fileID: 0}
   rightFacingSprite: 0
+  overrideVisuals: 0

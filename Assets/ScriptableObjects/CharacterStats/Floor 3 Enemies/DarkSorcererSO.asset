@@ -16,7 +16,7 @@ MonoBehaviour:
   defense: 0
   moveSpeed: 2
   baseDamage: 35
-  attacksPerSecond: 2
+  attacksPerSecond: 0.2
   criticalChance: 5
   criticalDamageMultiplier: 2
   characterElement: 3
@@ -28,10 +28,10 @@ MonoBehaviour:
   natureAffinity: 0
   cooldownReduction: 0
   detectionRadius: 1000
-  followDistance: 6
+  followDistance: 8
   aiType: 2
   projectileSpeed: 3
   characterSprite: {fileID: 0}
   weaponSprite: {fileID: 0}
   rightFacingSprite: 1
-  overrideVisuals: 0
+  overrideVisuals: 1
