@@ -69,6 +69,7 @@ public class RoomManager : MonoBehaviour
     private GameObject currentUpgradeOrb;
     private UpgradeOrb upgradeOrbLogic;
 
+
     
     
     private int treasureRoomCount;
@@ -81,8 +82,6 @@ public class RoomManager : MonoBehaviour
 
     public void Awake()
     {
-        //roomCount = 0;
-        //floorCount = 0;
         treasureRoomCount = roomsBeforeBoss + 1;
         StartRoom(startingRoom);
 

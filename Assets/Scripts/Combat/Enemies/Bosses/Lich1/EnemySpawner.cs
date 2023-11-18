@@ -9,11 +9,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        room = FindAnyObjectByType<RoomLogic>().gameObject;
+        
     }
 
     public void SpawnEnemy(GameObject enemyObject)
     {
+        room = FindAnyObjectByType<RoomLogic>().gameObject;
         GameObject enemy = Instantiate(enemyObject, room.transform);
         enemy.transform.position = this.transform.position;
         BasicEnemy enemyScript = enemy.GetComponent<BasicEnemy>();

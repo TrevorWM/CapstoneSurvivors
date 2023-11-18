@@ -15,7 +15,8 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         MusicPlayer.Instance.PlayMainMenuMusic();
-
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
 
 #if !UNITY_EDITOR
         Debug.unityLogger.logEnabled = false;
