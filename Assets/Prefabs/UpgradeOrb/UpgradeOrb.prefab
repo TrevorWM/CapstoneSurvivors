@@ -3372,9 +3372,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3033973130391212855, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3139853053872692075, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
       propertyPath: m_text
       value: test
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227175174849439157, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3321994265872351408, guid: fc1b6bc953b2ea6468b34a406e5d2c75, type: 3}
       propertyPath: m_LocalScale.x
